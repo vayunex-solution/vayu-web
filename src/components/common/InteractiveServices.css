@@ -445,9 +445,9 @@
 
 @media (max-width: 768px) {
     .services-showcase {
-        margin: 2rem 0.75rem;
-        padding: 2rem 1rem;
-        border-radius: 20px;
+        margin: 3rem 1rem;
+        padding: 2.5rem 1.5rem;
+        border-radius: 24px;
     }
 
     .services-grid {
@@ -456,18 +456,11 @@
     }
 
     .service-card {
-        padding: 1.25rem;
-        opacity: 1 !important;
-        transform: none !important;
-        animation: none !important;
+        padding: 1.5rem;
     }
 
     .services-header h2 {
-        font-size: 1.75rem;
-    }
-
-    .services-header>p {
-        font-size: 0.95rem;
+        font-size: 2rem;
     }
 
     .hover-preview {
@@ -477,120 +470,5 @@
     .main-cta-btn {
         padding: 1rem 2rem;
         font-size: 1rem;
-        animation: none !important;
-    }
-
-    /* Disable heavy animations on mobile for performance */
-    .floating-orb {
-        display: none !important;
-    }
-
-    .card-glow {
-        display: none;
-    }
-
-    .card-shine {
-        display: none;
-    }
-
-    .services-badge {
-        padding: 8px 16px;
-        font-size: 0.8rem;
-    }
-
-    .service-icon-wrapper {
-        width: 50px;
-        height: 50px;
-    }
-
-    .service-icon-wrapper i {
-        font-size: 1.4rem;
-    }
-
-    .service-title {
-        font-size: 1.1rem;
-    }
-
-    .service-desc {
-        font-size: 0.9rem;
-        margin-bottom: 1rem;
-    }
-
-    .arrow-container {
-        width: 32px;
-        height: 32px;
-    }
-}
-
-/* Samsung S23 and similar high-res phones (360-412px) */
-@media (max-width: 430px) {
-    .services-showcase {
-        margin: 1.5rem 0.5rem;
-        padding: 1.5rem 0.75rem;
-        border-radius: 16px;
-    }
-
-    .services-header {
-        margin-bottom: 2rem;
-    }
-
-    .services-header h2 {
-        font-size: 1.5rem;
-    }
-
-    .services-grid {
-        gap: 0.75rem;
-    }
-
-    .service-card {
-        padding: 1rem;
-        border-radius: 16px;
-    }
-
-    .service-icon-wrapper {
-        width: 45px;
-        height: 45px;
-        margin-bottom: 1rem;
-    }
-
-    .service-title {
-        font-size: 1rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .service-desc {
-        font-size: 0.85rem;
-        line-height: 1.5;
-    }
-
-    .service-cta span {
-        font-size: 0.9rem;
-    }
-
-    .main-cta-btn {
-        padding: 0.9rem 1.5rem;
-        font-size: 0.9rem;
-        gap: 8px;
-    }
-
-    .services-bottom-cta {
-        margin-top: 2rem;
-    }
-}
-
-/* Reduce motion for users who prefer it */
-@media (prefers-reduced-motion: reduce) {
-
-    .floating-orb,
-    .card-shine,
-    .card-glow {
-        display: none !important;
-    }
-
-    .service-card,
-    .main-cta-btn,
-    .services-showcase {
-        animation: none !important;
-        transition: none !important;
     }
 }
