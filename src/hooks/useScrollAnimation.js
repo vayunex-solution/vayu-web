@@ -5,17 +5,21 @@ const useScrollAnimation = () => {
   const ref = useRef(null);
 
   useEffect(() => {
+    // Lower threshold on mobile for faster animation trigger
+    const isMobile = window.innerWidth <= 768;
+    const threshold = isMobile ? 0.1 : 0.3;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          observer.unobserve(entry.target); // Stop observing once it's visible
+          observer.unobserve(entry.target);
         }
       },
       {
-        root: null, // viewport
-        rootMargin: '0px',
-        threshold: 0.3, // 30% of the element is visible
+        root: null,
+        rootMargin: '50px',
+        threshold: threshold,
       }
     );
 
@@ -29,11 +33,9 @@ const useScrollAnimation = () => {
         observer.unobserve(currentRef);
       }
     };
-  }, []); // Empty dependency array means this effect runs only once
+  }, []);
 
-  // FIX: Return an array instead of an object
   return [ref, isVisible];
 };
 
 export default useScrollAnimation;
-
