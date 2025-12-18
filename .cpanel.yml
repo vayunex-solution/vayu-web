@@ -1,4 +1,4 @@
 ---
 deployment:
   tasks:
-    - /bin/cp -Rf build/. /home/vayunexs/vayunexsolution.com/
+    - /bin/cp -Rf build/. /home/vayunexs/public_html/
