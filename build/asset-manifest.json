@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f1fad0d5.css",
+    "main.js": "/static/js/main.f084e51f.js",
+    "static/js/206.2f1aca22.chunk.js": "/static/js/206.2f1aca22.chunk.js",
+    "static/media/ronit.jpg": "/static/media/ronit.e5902e15f7e1e29fd267.jpg",
+    "static/media/growth-seo.png": "/static/media/growth-seo.6d93c7544f0db53972f3.png",
+    "static/media/training.png": "/static/media/training.9ed7f5ba61fee3c05cd8.png",
+    "static/media/ai-data.png": "/static/media/ai-data.329f3a0da0052e9c5486.png",
+    "static/media/web-dev.png": "/static/media/web-dev.2513ff063cd63275b6a3.png",
+    "static/media/paynex-logo.png": "/static/media/paynex-logo.27d384a54d91ba481e3c.png",
+    "static/media/vayubase-hero.png": "/static/media/vayubase-hero.1c269bd84163738e5473.png",
+    "static/media/paynex-hero.png": "/static/media/paynex-hero.fffa3a1770b431240fef.png",
+    "static/media/recruitment.png": "/static/media/recruitment.f44206f092c5c44a7c2d.png",
+    "static/media/vayunex-logo.png": "/static/media/vayunex-logo.5116c4e5323b27908498.png",
+    "static/media/flownex-hero.png": "/static/media/flownex-hero.477c133e1e4a32284d53.png",
+    "static/media/vayubase-logo.png": "/static/media/vayubase-logo.106169964f4743d0d9cb.png",
+    "static/media/yash.jpeg": "/static/media/yash.707ad1b574ddb04d1767.jpeg",
+    "index.html": "/index.html"
+  },
+  "entrypoints": [
+    "static/css/main.f1fad0d5.css",
+    "static/js/main.f084e51f.js"
+  ]
+}
