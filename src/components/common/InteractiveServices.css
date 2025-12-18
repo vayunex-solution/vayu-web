@@ -437,9 +437,6 @@
 /* ============================================
    RESPONSIVE
    ============================================ */
-/* ============================================
-   RESPONSIVE
-   ============================================ */
 @media (max-width: 1200px) {
     .services-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -448,9 +445,9 @@
 
 @media (max-width: 768px) {
     .services-showcase {
-        margin: 2rem 0.75rem;
-        padding: 2rem 1rem;
-        border-radius: 20px;
+        margin: 3rem 1rem;
+        padding: 2.5rem 1.5rem;
+        border-radius: 24px;
     }
 
     .services-grid {
@@ -460,105 +457,18 @@
 
     .service-card {
         padding: 1.5rem;
-        /* Ensure visibility but keep animation */
-        animation-fill-mode: forwards;
-        opacity: 0; 
-        will-change: transform, opacity;
     }
 
     .services-header h2 {
         font-size: 2rem;
     }
 
-    /* Reduce blur radius for performance on mobile (60% less GPU load) */
-    .floating-orb {
-        filter: blur(40px);
-        opacity: 0.1;
-        will-change: transform;
-    }
-
-    /* Disable expensive hover effects on touch devices which cause scroll lag */
-    .hover-preview,
-    .card-shine {
+    .hover-preview {
         display: none;
     }
 
     .main-cta-btn {
         padding: 1rem 2rem;
         font-size: 1rem;
-    }
-}
-
-/* Samsung S23 and high-res mobile devices (360px - 430px) */
-@media (max-width: 430px) {
-    .services-showcase {
-        margin: 1.5rem 0.5rem;
-        padding: 1.5rem 0.75rem;
-        border-radius: 16px;
-    }
-
-    .services-header {
-        margin-bottom: 2rem;
-    }
-
-    .services-header h2 {
-        font-size: 1.6rem;
-    }
-
-    .services-header > p {
-        font-size: 0.95rem;
-    }
-
-    .services-badge {
-        padding: 8px 16px;
-        font-size: 0.8rem;
-    }
-
-    .services-grid {
-        gap: 0.75rem;
-    }
-
-    .service-card {
-        padding: 1.25rem;
-        border-radius: 20px;
-    }
-
-    .service-icon-wrapper {
-        width: 50px;
-        height: 50px;
-        margin-bottom: 1rem;
-    }
-
-    .service-icon-wrapper i {
-        font-size: 1.4rem;
-    }
-
-    .service-title {
-        font-size: 1.1rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .service-desc {
-        font-size: 0.9rem;
-        line-height: 1.6;
-        margin-bottom: 1rem;
-    }
-    
-    .service-cta span {
-        font-size: 0.9rem;
-    }
-
-    .arrow-container {
-        width: 32px;
-        height: 32px;
-    }
-
-    .main-cta-btn {
-        padding: 0.9rem 1.8rem;
-        font-size: 0.95rem;
-    }
-    
-    .services-bottom-cta {
-        margin-top: 2.5rem;
     }
 }
