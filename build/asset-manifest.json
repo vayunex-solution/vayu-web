@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.f1fad0d5.css",
+    "main.css": "/static/css/main.3b6f5b18.css",
     "main.js": "/static/js/main.f084e51f.js",
     "static/js/206.2f1aca22.chunk.js": "/static/js/206.2f1aca22.chunk.js",
     "static/media/ronit.jpg": "/static/media/ronit.e5902e15f7e1e29fd267.jpg",
@@ -19,7 +19,7 @@
     "index.html": "/index.html"
   },
   "entrypoints": [
-    "static/css/main.f1fad0d5.css",
+    "static/css/main.3b6f5b18.css",
     "static/js/main.f084e51f.js"
   ]
 }
