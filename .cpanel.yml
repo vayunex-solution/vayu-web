@@ -1,10 +1,4 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/vayunexs/vayunexsolution.com/
-    # Clear old files (keep .htaccess if exists)
-    - /bin/find $DEPLOYPATH -mindepth 1 -not -name '.htaccess' -not -name '.well-known' -delete 2>/dev/null || true
-    # Copy build folder contents to deploy path
-    - /bin/cp -R build/* $DEPLOYPATH
-    # Set correct permissions
-    - /bin/chmod -R 755 $DEPLOYPATH
+    - /bin/cp -Rf build/. /home/vayunexs/vayunexsolution.com/
