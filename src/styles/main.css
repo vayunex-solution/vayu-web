@@ -8,17 +8,11 @@
   padding: 0;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   background-color: var(--primary-bg);
   color: var(--primary-text);
   font-family: var(--font-primary);
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden; /* Prevents horizontal scroll */
 }
 
 a {
@@ -28,61 +22,4 @@ a {
 
 ul {
   list-style-type: none;
-}
-
-/* ============================================
-   GLOBAL PERFORMANCE OPTIMIZATIONS
-   ============================================ */
-
-/* GPU acceleration for animated elements */
-.animated,
-[class*="orb"],
-[class*="float"],
-[class*="glow"] {
-  will-change: transform, opacity;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-}
-
-/* Optimize images */
-img {
-  content-visibility: auto;
-}
-
-/* Reduce animations on mobile for performance */
-@media (max-width: 768px) {
-
-  /* Reduce blur effects (very expensive) */
-  [class*="orb"] {
-    filter: blur(60px) !important;
-    opacity: 0.08 !important;
-  }
-
-  /* Simplify box-shadows */
-  [class*="card"],
-  [class*="btn"] {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
-  }
-
-  /* Disable complex animations */
-  .card-shine,
-  .card-glow {
-    display: none !important;
-  }
-}
-
-/* For users who prefer reduced motion */
-@media (prefers-reduced-motion: reduce) {
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-
-  html {
-    scroll-behavior: auto;
-  }
 }
