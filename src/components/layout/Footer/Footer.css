@@ -1,0 +1,156 @@
+/* src/components/layout/Footer/Footer.css */
+
+.footer {
+    background-color: #0c0618; /* A deep, dark purple */
+    color: var(--text-medium);
+    padding: 4rem 2rem 0; /* Padding upar zyada, neeche 0 */
+    position: relative;
+    z-index: 50; /* Baaki content ke upar rahega */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 3rem;
+}
+
+.footer-section h4 {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+/* Title ke neeche ek accent line */
+.footer-section h4::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+/* --- Naya Footer Logo Styles --- */
+.footer-logo-container {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    margin-bottom: 1rem;
+}
+
+.footer-logo-image {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.footer-logo-text-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-logo-main {
+    color: #fff;
+    font-size: 1.8rem;
+    font-family: var(--font-logo);
+    letter-spacing: 1px;
+}
+
+.footer-logo-subtitle {
+    color: var(--text-medium);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: -5px;
+}
+
+
+.footer-about p {
+    line-height: 1.7;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-section ul a {
+    color: var(--text-medium);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-section ul a:hover {
+    color: #fff;
+    padding-left: 5px; /* Hover par halka sa indent */
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-5px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 3rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr 1fr; /* Mobile par 2 columns */
+        text-align: center;
+    }
+    
+    .footer-logo-container {
+        justify-content: center; /* Logo ko center mein karein */
+    }
+
+    .footer-section h4::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .footer-about {
+        grid-column: 1 / -1; /* About section poori width lega */
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-container {
+        grid-template-columns: 1fr; /* Chote mobile par 1 column */
+    }
+}
+

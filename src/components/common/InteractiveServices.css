@@ -1,0 +1,474 @@
+/* src/components/common/InteractiveServices.css - ULTRA PREMIUM CARD DESIGN */
+
+/* ============================================
+   MAIN CONTAINER
+   ============================================ */
+.services-showcase {
+    max-width: 1400px;
+    margin: 5rem auto;
+    padding: 4rem 5%;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, rgba(10, 10, 25, 0.5) 0%, rgba(10, 10, 25, 0.8) 100%);
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.services-showcase.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================
+   BACKGROUND EFFECTS
+   ============================================ */
+.services-bg-effects {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.floating-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    animation: orbFloat 20s ease-in-out infinite;
+}
+
+.orb-1 {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, #9f55ff, #4facfe);
+    top: -150px;
+    right: -100px;
+    opacity: 0.15;
+}
+
+.orb-2 {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, #00d4ff, #0099cc);
+    bottom: -100px;
+    left: -100px;
+    opacity: 0.1;
+    animation-delay: -5s;
+}
+
+.orb-3 {
+    width: 200px;
+    height: 200px;
+    background: #ff6b6b;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.05;
+    animation-delay: -10s;
+}
+
+@keyframes orbFloat {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(30px, -30px) scale(1.05);
+    }
+}
+
+/* ============================================
+   SECTION HEADER
+   ============================================ */
+.services-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+    z-index: 2;
+}
+
+.services-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, rgba(159, 85, 255, 0.2), rgba(79, 172, 254, 0.1));
+    border: 1px solid rgba(159, 85, 255, 0.4);
+    border-radius: 50px;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.services-header h2 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #4facfe, #00d4ff, #9f55ff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shineText 3s linear infinite;
+}
+
+@keyframes shineText {
+    0% {
+        background-position: 0% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
+}
+
+.services-header>p {
+    color: #888;
+    font-size: 1.1rem;
+}
+
+/* ============================================
+   SERVICES GRID
+   ============================================ */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* ============================================
+   SERVICE CARD
+   ============================================ */
+.service-card {
+    position: relative;
+    background: rgba(15, 15, 30, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 2rem;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+
+    animation: cardFadeIn 0.6s ease forwards;
+    animation-delay: var(--delay);
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+@keyframes cardFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Card Glow Effect */
+.card-glow {
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, var(--card-color), transparent 50%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: -1;
+    border-radius: 26px;
+    filter: blur(20px);
+}
+
+.service-card:hover .card-glow {
+    opacity: 0.4;
+}
+
+.service-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: var(--card-color);
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.4),
+        0 0 40px rgba(var(--card-rgb, 159, 85, 255), 0.15);
+}
+
+/* Card Inner Content */
+.card-inner {
+    position: relative;
+    z-index: 2;
+}
+
+/* ============================================
+   ICON
+   ============================================ */
+.service-icon-wrapper {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    margin-bottom: 1.5rem;
+}
+
+.icon-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--card-color), rgba(var(--card-color), 0.3));
+    border-radius: 20px;
+    opacity: 0.15;
+    transition: all 0.4s ease;
+}
+
+.service-card:hover .icon-bg {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.service-icon-wrapper i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.8rem;
+    color: var(--card-color);
+    transition: all 0.4s ease;
+}
+
+.service-card:hover .service-icon-wrapper i {
+    color: #fff;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* ============================================
+   TITLE & DESCRIPTION
+   ============================================ */
+.service-title {
+    font-size: 1.3rem;
+    color: #fff;
+    margin-bottom: 0.75rem;
+    transition: color 0.3s ease;
+}
+
+.service-card:hover .service-title {
+    color: var(--card-color);
+}
+
+.service-desc {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #888;
+    margin-bottom: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.service-card:hover .service-desc {
+    color: #aaa;
+}
+
+/* ============================================
+   CTA BUTTON
+   ============================================ */
+.service-cta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.service-cta span {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--card-color);
+    transition: all 0.3s ease;
+}
+
+.arrow-container {
+    width: 36px;
+    height: 36px;
+    background: var(--card-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+}
+
+.arrow-container i {
+    color: #fff;
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover .arrow-container {
+    transform: translateX(8px);
+    box-shadow: 0 0 20px var(--card-color);
+}
+
+.service-card:hover .arrow-container i {
+    animation: arrowBounce 0.6s ease infinite;
+}
+
+@keyframes arrowBounce {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(4px);
+    }
+}
+
+/* ============================================
+   HOVER IMAGE PREVIEW
+   ============================================ */
+.hover-preview {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    opacity: 0;
+    transition: all 0.5s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hover-preview::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(15, 15, 30, 1) 0%, transparent 100%);
+    z-index: 1;
+}
+
+.hover-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0 24px 24px 0;
+}
+
+.service-card:hover .hover-preview {
+    opacity: 0.4;
+}
+
+/* ============================================
+   SHINE EFFECT
+   ============================================ */
+.card-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.6s ease;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.service-card:hover .card-shine {
+    left: 100%;
+}
+
+/* ============================================
+   BOTTOM CTA
+   ============================================ */
+.services-bottom-cta {
+    text-align: center;
+    margin-top: 4rem;
+    position: relative;
+    z-index: 2;
+}
+
+.main-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 1.2rem 3rem;
+    background: linear-gradient(135deg, #9f55ff, #4facfe);
+    background-size: 200% 200%;
+    border-radius: 50px;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    box-shadow:
+        0 15px 40px rgba(159, 85, 255, 0.4),
+        0 0 30px rgba(159, 85, 255, 0.2);
+    animation: btnPulse 2s ease-in-out infinite;
+}
+
+@keyframes btnPulse {
+
+    0%,
+    100% {
+        box-shadow:
+            0 15px 40px rgba(159, 85, 255, 0.4),
+            0 0 30px rgba(159, 85, 255, 0.2);
+    }
+
+    50% {
+        box-shadow:
+            0 20px 50px rgba(159, 85, 255, 0.6),
+            0 0 50px rgba(79, 172, 254, 0.3);
+    }
+}
+
+.main-cta-btn:hover {
+    transform: translateY(-5px) scale(1.02);
+    background-position: right center;
+}
+
+.main-cta-btn i {
+    transition: transform 0.3s ease;
+}
+
+.main-cta-btn:hover i {
+    transform: translateX(5px) rotate(-15deg);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1200px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .services-showcase {
+        margin: 3rem 1rem;
+        padding: 2.5rem 1.5rem;
+        border-radius: 24px;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .service-card {
+        padding: 1.5rem;
+    }
+
+    .services-header h2 {
+        font-size: 2rem;
+    }
+
+    .hover-preview {
+        display: none;
+    }
+
+    .main-cta-btn {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    }
+}

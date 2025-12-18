@@ -1,0 +1,24 @@
+/* --- VAYUNEX WEBSITE - CSS VARIABLES --- */
+
+:root {
+  /* Colors */
+  --primary-bg: #0A0A0A; /* Very dark, almost black background */
+  --secondary-bg: #1A1A1A; /* Slightly lighter bg for cards/sections */
+  --navbar-bg: rgba(16, 16, 16, 0.5); /* Semi-transparent navbar bg */
+  
+  --primary-text: #EAEAEA; /* Light grey for primary text */
+  --secondary-text: #A0A0A0; /* Dimmer text for subtitles */
+  
+  --accent-primary: #007BFF; /* A vibrant blue for accents */
+  --accent-hover: #0056b3; /* Darker blue for hover states */
+  --accent-gradient: linear-gradient(90deg, #007BFF 0%, #00C6FF 100%);
+
+  /* Typography */
+  --font-primary: 'Inter', sans-serif;
+  --font-secondary: 'Poppins', sans-serif;
+  
+  /* Sizing & Spacing */
+  --navbar-height: 70px;
+  --border-radius: 12px;
+  --container-padding: 0 5%;
+}

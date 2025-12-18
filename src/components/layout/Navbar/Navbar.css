@@ -1,0 +1,207 @@
+/* src/components/layout/Navbar/Navbar.css */
+
+.navbar {
+  background: transparent;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar.scrolled {
+  background: rgba(13, 13, 34, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  height: 70px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  max-width: 1300px;
+  padding: 0 2rem;
+}
+
+/* --- Logo Section Styles --- */
+.navbar-logo-container {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-image {
+    height: 40px;
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+}
+
+.navbar-logo-container:hover .logo-image {
+    transform: rotate(-10deg);
+}
+
+.logo-text-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-main {
+    color: #fff;
+    font-size: 1.8rem;
+    font-family: var(--font-logo);
+    letter-spacing: 1px;
+}
+
+.logo-subtitle {
+    color: var(--text-medium);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: -5px;
+}
+
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  padding: 0 1rem;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 5px 0;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary-color);
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease;
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.nav-cta-desktop {
+  background: linear-gradient(90deg, var(--primary-color), #4d82ff);
+  color: #fff;
+  padding: 0.7rem 1.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+}
+
+.nav-cta-desktop:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(138, 43, 226, 0.8);
+}
+
+.nav-cta-mobile {
+    display: none; /* Mobile button desktop par chupa rahega */
+}
+
+.hamburger-icon {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+
+/* --- Responsive Styles (Normal Mobile Menu) --- */
+@media screen and (max-width: 960px) {
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: calc(100vh - 80px); /* Poori height le, navbar ko chhod kar */
+    position: absolute;
+    top: 80px;
+    left: -100%; /* Shuru mein screen ke baahar */
+    opacity: 1;
+    transition: all 0.5s ease;
+    background: #0d0d22;
+  }
+
+  .nav-menu.active {
+    left: 0; /* Active hone par screen par aayega */
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: 1;
+  }
+  
+  .nav-links {
+      flex-direction: column; /* Links ko vertically align karein */
+      width: 100%;
+      padding-top: 2rem;
+  }
+
+  .nav-links li {
+    padding: 1.5rem 0;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .nav-link {
+      font-size: 1.5rem;
+  }
+
+  .hamburger-icon {
+    display: block;
+  }
+
+  .nav-cta-desktop {
+      display: none; /* Desktop button mobile par hide karein */
+  }
+  
+  .nav-cta-mobile {
+      display: block; /* Mobile button ko show karein */
+      text-align: center;
+      padding: 1rem 2rem;
+      width: 80%;
+      margin: 2rem auto 0;
+      background: linear-gradient(90deg, var(--primary-color), #4d82ff);
+      color: #fff;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.2rem;
+  }
+}
+
