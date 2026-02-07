@@ -90,7 +90,7 @@ const InteractiveServices = ({ services }) => {
 
                             {/* Hover Image Preview */}
                             <div className="hover-preview">
-                                <img src={service.imageUrl} alt={service.title} />
+                                <img src={service.imageUrl} alt={service.title} loading="lazy" />
                             </div>
                         </div>
 

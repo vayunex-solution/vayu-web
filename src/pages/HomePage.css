@@ -9,19 +9,25 @@
 /* Yahan hum poori site ke liye foundational colors aur styles set kar rahe hain. */
 :root {
     /* Celestial Palette: Deep space colors */
-    --primary-glow: #9f55ff; /* A deep, rich purple */
-    --secondary-glow: #00d4ff; /* A vibrant cyan */
+    --primary-glow: #9f55ff;
+    /* A deep, rich purple */
+    --secondary-glow: #00d4ff;
+    /* A vibrant cyan */
     --primary-glow-rgb: 159, 85, 255;
     --secondary-glow-rgb: 0, 212, 255;
-    
+
     /* Background & Text Palette */
-    --dark-bg-primary: #02000a; /* Almost pure black, for that deep space feel */
+    --dark-bg-primary: #02000a;
+    /* Almost pure black, for that deep space feel */
     --dark-bg-secondary: #080410;
-    --text-light: #f0f0f5; /* Slightly off-white for better readability */
-    --text-medium: #b0b8d3; /* Soft blue-grey for subtitles */
-    
+    --text-light: #f0f0f5;
+    /* Slightly off-white for better readability */
+    --text-medium: #b0b8d3;
+    /* Soft blue-grey for subtitles */
+
     /* UI Elements */
-    --glass-border: rgba(255, 255, 255, 0.15); /* Thoda aur visible border */
+    --glass-border: rgba(255, 255, 255, 0.15);
+    /* Thoda aur visible border */
 }
 
 /* === 2. HERO SECTION: THE 3D RIBBON GATEWAY (RESTORED) === */
@@ -31,7 +37,8 @@
     min-height: 750px;
     position: relative;
     overflow: hidden;
-    background-color: var(--dark-bg-primary); /* Simple dark background for canvas focus */
+    background-color: var(--dark-bg-primary);
+    /* Simple dark background for canvas focus */
 }
 
 /* 3D Canvas ko right side par fix kiya gaya hai */
@@ -42,6 +49,7 @@
     width: 55%;
     height: 100%;
     z-index: 1;
+    overflow: hidden;
 }
 
 /* Overlay content ko left side par rakhta hai aur canvas ke saath blend karta hai */
@@ -63,9 +71,17 @@
     opacity: 0;
     animation: slideInFromLeft 1.2s 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
+
 @keyframes slideInFromLeft {
-    from { opacity: 0; transform: translateX(-50px); }
-    to { opacity: 1; transform: translateX(0); }
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 
@@ -83,10 +99,19 @@
     animation: elemental-flow 8s ease-in-out infinite;
     text-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
 }
+
 @keyframes elemental-flow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 
@@ -114,6 +139,7 @@
     overflow: hidden;
     backdrop-filter: blur(5px);
 }
+
 .hero-cta::before {
     content: '';
     position: absolute;
@@ -124,9 +150,11 @@
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
     transition: left 0.6s ease;
 }
+
 .hero-cta:hover::before {
     left: 100%;
 }
+
 .hero-cta:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(var(--primary-glow-rgb), 0.5);
@@ -141,14 +169,28 @@
     z-index: 10;
     overflow: hidden;
     border-top: 1px solid var(--glass-border);
-    background: rgba(10, 10, 20, 0.5); /* Semi-transparent base */
+    background: rgba(10, 10, 20, 0.5);
+    /* Semi-transparent base */
     backdrop-filter: blur(20px) saturate(150%);
     -webkit-backdrop-filter: blur(20px) saturate(150%);
 }
-.products-section { background: rgba(10, 10, 20, 0.5); }
-.services-section { background: rgba(5, 2, 11, 0.6); }
-.process-section { background: rgba(10, 10, 20, 0.5); }
-.paynex-teaser { background: rgba(0,0,0,0.7); text-align: center; }
+
+.products-section {
+    background: rgba(10, 10, 20, 0.5);
+}
+
+.services-section {
+    background: rgba(5, 2, 11, 0.6);
+}
+
+.process-section {
+    background: rgba(10, 10, 20, 0.5);
+}
+
+.paynex-teaser {
+    background: rgba(0, 0, 0, 0.7);
+    text-align: center;
+}
 
 /* Glowing Borders for Sections */
 .section::before {
@@ -162,9 +204,17 @@
     opacity: 0.5;
     animation: border-pulse 8s ease-in-out infinite;
 }
+
 @keyframes border-pulse {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 1; }
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
 }
 
 .section-title-container {
@@ -174,6 +224,7 @@
     transform: translateY(30px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
+
 .section-title-container.is-visible {
     opacity: 1;
     transform: translateY(0);
@@ -186,6 +237,7 @@
     position: relative;
     padding-bottom: 1.5rem;
 }
+
 .section-title::after {
     content: '';
     position: absolute;
@@ -199,6 +251,7 @@
     box-shadow: 0 0 15px var(--primary-glow), 0 0 15px var(--secondary-glow);
     transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
+
 .section-title-container.is-visible .section-title::after {
     width: 200px;
 }
@@ -241,7 +294,9 @@
     max-width: 500px;
     margin: 0 auto;
 }
-.subscribe-form input, .subscribe-form button {
+
+.subscribe-form input,
+.subscribe-form button {
     border: 1px solid var(--glass-border);
     border-radius: 50px;
     padding: 15px 30px;
@@ -251,15 +306,18 @@
     outline: none;
     transition: all 0.3s ease;
 }
+
 .subscribe-form input:focus {
     border-color: var(--primary-glow);
     box-shadow: 0 0 15px rgba(var(--primary-glow-rgb), 0.5);
 }
+
 .subscribe-form button {
     font-weight: bold;
     cursor: pointer;
     background: var(--primary-glow);
 }
+
 .subscribe-form button:hover {
     transform: scale(1.05);
     box-shadow: 0 0 20px rgba(var(--primary-glow-rgb), 0.7);
@@ -267,28 +325,43 @@
 
 /* === 5. RESPONSIVE DESIGN: MOBILE ADAPTATION === */
 @media (max-width: 992px) {
-    .hero-content { width: 60%; padding: 2rem; }
+    .hero-content {
+        width: 60%;
+        padding: 2rem;
+    }
 }
 
 @media (max-width: 768px) {
-    .hero-canvas-container { 
+    .hero-canvas-container {
         width: 100%;
-        opacity: 0.3; /* 3D model ko hide karne ki jagah halka sa dikhayenge */
-     }
-    .hero-overlay { 
-        background: linear-gradient(to top, var(--dark-bg-primary) 20%, transparent 100%); 
-        align-items: center; 
+        opacity: 0.3;
+        /* 3D model ko hide karne ki jagah halka sa dikhayenge */
+    }
+
+    .hero-overlay {
+        background: linear-gradient(to top, var(--dark-bg-primary) 20%, transparent 100%);
+        align-items: center;
         justify-content: center;
     }
+
     .hero-content {
         width: 100%;
         padding: 2rem 1rem 4rem 1rem;
         text-align: center;
-        justify-content: center; /* Center mein content */
+        justify-content: center;
+        /* Center mein content */
     }
-    .hero-subtitle { margin: 0 auto 2.5rem; }
-    
-    .section { padding: 80px 1rem; }
-    .subscribe-form { flex-direction: column; align-items: stretch; }
-}
 
+    .hero-subtitle {
+        margin: 0 auto 2.5rem;
+    }
+
+    .section {
+        padding: 80px 1rem;
+    }
+
+    .subscribe-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}

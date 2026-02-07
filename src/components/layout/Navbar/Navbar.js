@@ -53,7 +53,7 @@ const Navbar = () => {
           <img src={vayunexLogo} alt="Vayunex Logo" className="logo-image" />
           <div className="logo-text-container">
             <span className="logo-main">VAYUNEX</span>
-            <span className="logo-subtitle">SOLUTION</span>
+            <span className="logo-subtitle">SOLUTIONS</span>
           </div>
         </Link>
         

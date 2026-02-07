@@ -15,7 +15,7 @@ const Footer = () => {
             <img src={vayunexLogo} alt="Vayunex Logo" className="footer-logo-image" />
             <div className="footer-logo-text-container">
               <span className="footer-logo-main">VAYUNEX</span>
-              <span className="footer-logo-subtitle">SOLUTION</span>
+              <span className="footer-logo-subtitle">SOLUTIONS</span>
             </div>
           </Link>
           <p>Engineering Growth, Delivering Excellence.</p>
@@ -49,23 +49,8 @@ const Footer = () => {
 
       {/* --- Big Brand Text with Flashlight Animation --- */}
       <div className="footer-brand-section">
-        <h2 className="footer-brand-text">
-          <span className="brand-letter">V</span>
-          <span className="brand-letter">A</span>
-          <span className="brand-letter">Y</span>
-          <span className="brand-letter">U</span>
-          <span className="brand-letter">N</span>
-          <span className="brand-letter">E</span>
-          <span className="brand-letter">X</span>
-          <span className="brand-letter">S</span>
-          <span className="brand-letter">O</span>
-          <span className="brand-letter">L</span>
-          <span className="brand-letter">U</span>
-          <span className="brand-letter">T</span>
-          <span className="brand-letter">I</span>
-          <span className="brand-letter">O</span>
-          <span className="brand-letter">N</span>
-        </h2>
+        <h2 className="footer-brand-text footer-brand-main">VAYUNEX</h2>
+        <p className="footer-brand-subtitle">SOLUTIONS</p>
         <div className="flashlight-overlay"></div>
       </div>
 
