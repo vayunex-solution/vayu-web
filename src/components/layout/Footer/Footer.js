@@ -46,6 +46,29 @@ const Footer = () => {
           </div>
         </div>
       </div>
+
+      {/* --- Big Brand Text with Flashlight Animation --- */}
+      <div className="footer-brand-section">
+        <h2 className="footer-brand-text">
+          <span className="brand-letter">V</span>
+          <span className="brand-letter">A</span>
+          <span className="brand-letter">Y</span>
+          <span className="brand-letter">U</span>
+          <span className="brand-letter">N</span>
+          <span className="brand-letter">E</span>
+          <span className="brand-letter">X</span>
+          <span className="brand-letter">S</span>
+          <span className="brand-letter">O</span>
+          <span className="brand-letter">L</span>
+          <span className="brand-letter">U</span>
+          <span className="brand-letter">T</span>
+          <span className="brand-letter">I</span>
+          <span className="brand-letter">O</span>
+          <span className="brand-letter">N</span>
+        </h2>
+        <div className="flashlight-overlay"></div>
+      </div>
+
       <div className="footer-bottom">
         <p>&copy; {new Date().getFullYear()} Vayunex Solution. All Rights Reserved.</p>
       </div>
