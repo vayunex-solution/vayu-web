@@ -1,0 +1,456 @@
+/* src/pages/products/ProductPage.css - SHARED PRODUCT PAGE STYLES */
+
+.product-page {
+    background: var(--bg-primary);
+    min-height: 100vh;
+    color: var(--text-primary);
+}
+
+/* ============================================
+   1. HERO SECTION
+   ============================================ */
+.product-hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 160px 5% 100px;
+}
+
+.product-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.product-hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.25;
+}
+
+.product-hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+}
+
+[data-theme="light"] .product-hero-grid {
+    background-image: 
+        linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+}
+
+.product-hero-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.product-hero-content {
+    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.product-eyebrow {
+    display: inline-block;
+    padding: 8px 20px;
+    background: color-mix(in srgb, var(--product-accent) 15%, transparent);
+    border: 1px solid color-mix(in srgb, var(--product-accent) 30%, transparent);
+    color: var(--product-accent);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.product-hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.product-hero-subtext {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+}
+
+.product-hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 1rem 2rem;
+    background: var(--product-accent);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px color-mix(in srgb, var(--product-accent) 40%, transparent);
+}
+
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 1rem 2rem;
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-default);
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-secondary:hover {
+    background: var(--bg-surface);
+    border-color: var(--border-strong);
+}
+
+.product-hero-visual {
+    position: relative;
+    animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.2s;
+    opacity: 0;
+}
+
+.product-hero-visual img {
+    width: 100%;
+    border-radius: 20px;
+    border: 1px solid var(--border-default);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] .product-hero-visual img {
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.05);
+}
+
+/* ============================================
+   SHARED SECTION STYLES
+   ============================================ */
+.product-section {
+    padding: 100px 5%;
+    position: relative;
+}
+
+.product-section.bg-alt {
+    background: var(--bg-secondary);
+}
+
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-header-center {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 4rem;
+}
+
+.section-header-left {
+    max-width: 700px;
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* ============================================
+   2 & 3. PROBLEM & COST OF INACTION
+   ============================================ */
+.problem-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.problem-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
+    border-radius: 20px;
+    padding: 2.5rem;
+    transition: transform 0.3s ease;
+}
+
+.problem-card:hover {
+    border-color: #ff4757;
+}
+
+.problem-icon {
+    width: 50px;
+    height: 50px;
+    background: color-mix(in srgb, #ff4757 10%, transparent);
+    color: #ff4757;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.problem-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.problem-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.cost-banner {
+    background: color-mix(in srgb, var(--product-accent) 5%, transparent);
+    border: 1px solid color-mix(in srgb, var(--product-accent) 20%, transparent);
+    border-radius: 20px;
+    padding: 3rem;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.cost-banner h3 {
+    color: var(--product-accent);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* ============================================
+   5. CORE FEATURES
+   ============================================ */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
+    border-radius: 20px;
+    padding: 2.5rem;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    border-color: var(--product-accent);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transform: translateY(-5px);
+}
+
+.feature-icon {
+    width: 50px;
+    height: 50px;
+    background: color-mix(in srgb, var(--product-accent) 15%, transparent);
+    color: var(--product-accent);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.feature-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.feature-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* ============================================
+   7. OUTCOMES & BENEFITS
+   ============================================ */
+.outcomes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.outcome-card {
+    text-align: center;
+    padding: 2rem;
+}
+
+.outcome-number {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--product-accent);
+    margin-bottom: 0.5rem;
+    line-height: 1;
+}
+
+.outcome-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.outcome-desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* ============================================
+   8. TARGET AUDIENCE
+   ============================================ */
+.audience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.audience-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
+    border-radius: 16px;
+}
+
+.audience-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--bg-secondary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--product-accent);
+}
+
+.audience-card h4 {
+    margin: 0 0 0.25rem;
+}
+
+.audience-card p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* ============================================
+   12. FINAL CTA
+   ============================================ */
+.product-cta-section {
+    padding: 120px 5%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-cta-bg {
+    position: absolute;
+    inset: 0;
+    background: color-mix(in srgb, var(--product-accent) 5%, transparent);
+    z-index: 0;
+}
+
+.product-cta-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.product-cta-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.product-cta-content p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 1024px) {
+    .product-hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 3rem;
+    }
+    
+    .product-hero-cta {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-hero {
+        padding: 120px 5% 60px;
+    }
+    
+    .product-hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .product-cta-content h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-hero-cta {
+        flex-direction: column;
+    }
+    
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+}

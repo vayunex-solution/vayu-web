@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Blog {
+  id              Int       @id @default(autoincrement())
+  title           String
+  slug            String    @unique
+  excerpt         String?   @db.Text
+  content         String    @db.LongText
+  featuredImage   String?
+  author          String    @default("Vayunex Team")
+  status          String    @default("draft") // draft, published
+  seoTitle        String?
+  seoDescription  String?
+  viewCount       Int       @default(0)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  categoryId      Int?
+  category        Category? @relation(fields: [categoryId], references: [id])
+  tags            Tag[]
+}
+
+model Category {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  slug      String   @unique
+  blogs     Blog[]
+}
+
+model Tag {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  slug      String   @unique
+  blogs     Blog[]
+}

@@ -1,30 +1,18 @@
 # Robots.txt for Vayunex Solution
-# https://vayunexsolution.com
+# https://www.vayunexsolution.com
 
 User-agent: *
 Allow: /
-
-# Sitemap
-Sitemap: https://vayunexsolution.com/sitemap.xml
-
-# Disallow development/admin paths
 Disallow: /admin
-Disallow: /api
+Disallow: /dashboard
+Disallow: /api/private
+Disallow: /tmp
+Disallow: /test
 Disallow: /*.json$
 Disallow: /static/js/*.map
 
-# Allow all major search engines
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Slurp
-Allow: /
-
-User-agent: DuckDuckBot
-Allow: /
+# Sitemap
+Sitemap: https://www.vayunexsolution.com/sitemap.xml
 
 # Allow AI crawlers for AEO/GEO
 User-agent: GPTBot
@@ -36,13 +24,13 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-User-agent: CCBot
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
 Allow: /
 
 User-agent: anthropic-ai
-Allow: /
-
-User-agent: Claude-Web
 Allow: /
 
 # Crawl delay to be polite

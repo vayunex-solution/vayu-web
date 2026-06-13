@@ -1,9 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/common/SEO';
 import './NotFoundPage.css';
 
 const NotFoundPage = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+
+  useEffect(() => {
+    // Track 404 error
+    if (window.gtag) {
+      window.gtag('event', '404_error', {
+        event_category: 'Error',
+        event_label: window.location.pathname,
+        non_interaction: true
+      });
+    }
+  }, []);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      window.open(`https://www.google.com/search?q=site:vayunexsolution.com+${encodeURIComponent(searchQuery)}`, '_blank');
+    }
+  };
+
   return (
     <div className="not-found-page">
       <SEO 
@@ -42,6 +62,22 @@ const NotFoundPage = () => {
             <Link to="/contact" className="btn-contact">
               <i className="fas fa-headset"></i> Contact Support
             </Link>
+          </div>
+          
+          {/* Search Box */}
+          <div className="not-found-search">
+            <form onSubmit={handleSearch} className="search-form">
+              <input
+                type="text"
+                placeholder="Search Vayunex..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="search-input"
+              />
+              <button type="submit" className="search-btn">
+                <i className="fas fa-search"></i>
+              </button>
+            </form>
           </div>
           
           {/* Quick Links */}

@@ -1,142 +1,262 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useMemo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-// Components
-import HeroCanvas from '../components/3D/HeroCanvas';
-import InteractiveServices from '../components/common/InteractiveServices';
-import ProcessTimeline from '../components/common/ProcessTimeline';
-import ProductShowcase from '../components/common/ProductShowcase';
-import Testimonials from '../components/common/Testimonials';
+// Existing Components (preserved)
+import Hyperspeed from '../components/Hyperspeed/Hyperspeed';
+import BlurText from '../components/common/BlurText';
 import SEO from '../components/common/SEO';
+
+// New Premium Sections
+import DualEngine from '../components/common/DualEngine';
+import ProductEcosystem from '../components/common/ProductEcosystem';
+import CoreServices from '../components/common/CoreServices';
+import TrustSection from '../components/common/TrustSection';
+import IndustryNetwork from '../components/common/IndustryNetwork';
+import CompanyMission from '../components/common/CompanyMission';
+import FinalCTA from '../components/common/FinalCTA';
+
+// Analytics
+import { trackCTA } from '../utils/analytics';
 
 // Styles
 import './HomePage.css';
 
-// Data
-import webDevImage from '../assets/images/web-dev.png';
-import aiDataImage from '../assets/images/ai-data.png';
-import recruitmentImage from '../assets/images/recruitment.png';
-import growthSeoImage from '../assets/images/growth-seo.png';
-import trainingImage from '../assets/images/training.png';
+import paynexLogo from '../assets/images/paynex-logo.webp';
+import socialnexLogo from '../assets/images/socialnex-logo.webp';
+import schooldostLogo from '../assets/images/schooldost-logo.webp';
 
-// --- Helper Hook for Scroll Animations ---
-const useIntersectionObserver = (refs) => {
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
+// ---- Hero Visual: Premium Floating Dashboard Panels ----
+const HeroVisual = () => (
+  <div className="hero-visual" aria-hidden="true">
+    {/* Main product preview card */}
+    <div className="hv-card hv-card--main">
+      <div className="hv-card-header">
+        <div className="hv-dots">
+          <span className="hv-dot hv-dot--red" />
+          <span className="hv-dot hv-dot--yellow" />
+          <span className="hv-dot hv-dot--green" />
+        </div>
+        <span className="hv-card-label">Vayunex Suite — Operations Console</span>
+      </div>
+      <div className="hv-card-body">
+        <div className="hv-console-terminal">
+          <div className="hv-console-line"><span className="hv-console-tag hv-console-tag--system">[system]</span> Core Engine v5.0 initialized</div>
+          <div className="hv-console-line"><span className="hv-console-tag hv-console-tag--paynex">[paynex]</span> Gateway ONLINE • Ping: 18ms</div>
+          <div className="hv-console-line"><span className="hv-console-tag hv-console-tag--jwelnex">[jwelnex]</span> ERP sync complete: 142 items</div>
+          <div className="hv-console-line"><span className="hv-console-tag hv-console-tag--social">[social]</span> Schedule active • 8 posts queued</div>
+          <div className="hv-console-line"><span className="hv-console-tag hv-console-tag--school">[school]</span> DB replica synced successfully</div>
+        </div>
+        <div className="hv-console-divider" />
+        <div className="hv-status-row">
+          <span className="hv-status-item hv-status-item--live">
+            <span className="hv-live-dot" />
+            All Systems Operational
+          </span>
+          <span className="hv-status-item">Avg Ping: 22ms</span>
+        </div>
+      </div>
+    </div>
 
-    refs.forEach((ref) => {
-      if (ref.current) observer.observe(ref.current);
-    });
+    {/* Floating mini card: PayNex */}
+    <div className="hv-card hv-card--float hv-card--left">
+      <div className="hv-float-logo-wrapper">
+        <img src={paynexLogo} alt="PayNex Logo" className="hv-float-logo" />
+      </div>
+      <div className="hv-float-text">
+        <span className="hv-float-name">PayNex</span>
+        <span className="hv-float-sub">Public Beta</span>
+      </div>
+    </div>
 
-    return () => {
-      refs.forEach((ref) => {
-        if (ref.current) observer.unobserve(ref.current);
-      });
-    };
-  }, [refs]);
-};
+    {/* Floating mini card: SocialNex */}
+    <div className="hv-card hv-card--float hv-card--right">
+      <div className="hv-float-logo-wrapper">
+        <img src={socialnexLogo} alt="SocialNex Logo" className="hv-float-logo" />
+      </div>
+      <div className="hv-float-text">
+        <span className="hv-float-name">SocialNex</span>
+        <span className="hv-float-sub">Coming Soon</span>
+      </div>
+    </div>
 
+    {/* Floating mini card: SchoolDost */}
+    <div className="hv-card hv-card--float hv-card--right-bottom">
+      <div className="hv-float-logo-wrapper">
+        <img src={schooldostLogo} alt="SchoolDost Logo" className="hv-float-logo" />
+      </div>
+      <div className="hv-float-text">
+        <span className="hv-float-name">SchoolDost</span>
+        <span className="hv-float-sub">Coming Soon</span>
+      </div>
+    </div>
+  </div>
+);
 
+// ---- Main HomePage ----
 const HomePage = () => {
-  // Data
-  const services = [
-    { imageUrl: webDevImage, title: "Web & App Development", description: "Building custom-built, high-performance digital platforms to establish and enhance your online presence.", link: "/services/web-development" },
-    { imageUrl: aiDataImage, title: "AI & Data Science", description: "Leveraging AI and data analytics to provide intelligent insights and drive business decisions.", link: "/services/ai-data-science" },
-    { imageUrl: recruitmentImage, title: "Recruitment & Staffing", description: "Connecting businesses with top-tier talent through bespoke, strategic recruitment solutions.", link: "/services/recruitment" },
-    { imageUrl: growthSeoImage, title: "Digital Marketing", description: "Transform your brand with social media management, content creation, and data-driven marketing strategies.", link: "/services/digital-marketing" },
-    { imageUrl: growthSeoImage, title: "Growth & SEO Strategy", description: "Designing custom strategies to expand sales pipelines and accelerate your revenue growth through SEO.", link: "/services/seo-growth" },
-    { imageUrl: trainingImage, title: "Skill Development", description: "Empowering the next generation of tech talent through our dedicated hands-on training portal.", link: "/services/training" }
-  ];
+  // Set default theme to light on first load
+  useEffect(() => {
+    const saved = localStorage.getItem('vayunex-theme');
+    if (!saved) {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  }, []);
 
-  // Refs for Animations
-  const productsTitleRef = useRef(null);
-  const servicesTitleRef = useRef(null);
-  const processTitleRef = useRef(null);
-  const paynexRef = useRef(null);
-
-  useIntersectionObserver([productsTitleRef, servicesTitleRef, processTitleRef, paynexRef]);
+  const hyperspeedOptions = useMemo(() => ({
+    onSpeedUp: () => {},
+    onSlowDown: () => {},
+    distortion: 'turbulentDistortion',
+    length: 400,
+    roadWidth: 10,
+    islandWidth: 2,
+    lanesPerRoad: 3,
+    fov: 90,
+    fovSpeedUp: 150,
+    speedUp: 2,
+    carLightsFade: 0.4,
+    totalSideLightSticks: 20,
+    lightPairsPerRoadWay: 40,
+    shoulderLinesWidthPercentage: 0.05,
+    brokenLinesWidthPercentage: 0.1,
+    brokenLinesLengthPercentage: 0.5,
+    lightStickWidth: [0.12, 0.5],
+    lightStickHeight: [1.3, 1.7],
+    movingAwaySpeed: [60, 80],
+    movingCloserSpeed: [-120, -160],
+    carLightsLength: [12, 80],
+    carLightsRadius: [0.05, 0.14],
+    carWidthPercentage: [0.3, 0.5],
+    carShiftX: [-0.8, 0.8],
+    carFloorSeparation: [0, 5],
+    colors: {
+      roadColor: 0x080c1f,
+      islandColor: 0x0a0f26,
+      background: 0x050505,
+      shoulderLines: 0x1e1e4f,
+      brokenLines: 0x1e1e4f,
+      leftCars: [0x6366F1, 0x3B82F6, 0x8B5CF6],
+      rightCars: [0x3B82F6, 0x6366F1, 0x14B8A6],
+      sticks: 0x6366F1,
+    },
+  }), []);
 
   return (
     <main className="home-page">
       <SEO
-        title="Top IT, Web Development & Recruitment Company in Chandigarh Tricity"
-        description="Vayunex is a leading IT and recruitment company in Chandigarh, Mohali, and Panchkula, offering web development, AI solutions, and innovative products like PayNex."
-        keywords="IT company Chandigarh, web development Mohali, recruitment agency Panchkula, Vayunex, PayNex, AI services Punjab, software company Haryana, best IT company in Zirakpur"
+        title="Vayunex Solution — Enterprise SaaS & Custom Software Development"
+        description="Vayunex Solution builds enterprise-grade SaaS products, AI-powered systems, and custom software for modern businesses. Products include Jwelnex ERP, PayNex, SocialNex, SchoolDost, and InventoryNex."
+        keywords="enterprise software development, SaaS development India, custom software company, ERP software, AI development, Jwelnex ERP, PayNex, Vayunex Solution, business automation, web application development"
       />
 
-      {/* --- Hero Section --- */}
-      <section className="hero-section">
-        <HeroCanvas />
-        <div className="hero-overlay">
+      {/* ========== SECTION 1: HERO ========== */}
+      <section className="hero-section" aria-label="Hero">
+        {/* Hyperspeed background — dark mode only */}
+        <div className="hero-canvas-container" aria-hidden="true">
+          <Hyperspeed effectOptions={hyperspeedOptions} />
+        </div>
+
+        {/* Overlay */}
+        <div className="hero-overlay" aria-hidden="true" />
+
+        {/* Hero Content */}
+        <div className="hero-inner">
           <div className="hero-content">
+            {/* Badge pill */}
+            <div className="hero-pill">
+              <span className="hero-pill-badge">
+                <span className="hero-pill-dot" aria-hidden="true" />
+                Product-Led Engineering
+              </span>
+              <span>We build technology for ourselves, and for select enterprise partners.</span>
+            </div>
+
+            {/* H1 */}
             <h1 className="hero-title">
-              We Engineer Growth.
-              <br />
-              We Deliver Excellence.
+              <BlurText
+                text="Building High-Performance Software Ecosystems"
+                delay={200}
+                animateBy="words"
+                direction="top"
+              />
             </h1>
-            <p className="hero-subtitle">
-              Vayunex is your strategic partner in IT, Recruitment, and Business Consulting. We turn ambitious ideas into market-realities.
-            </p>
-            <Link to="/contact" className="hero-cta">
-              Let's Build Together
-            </Link>
+
+            {/* Sub */}
+            <div className="hero-subtitle">
+              <BlurText
+                text="Vayunex is an enterprise software company. We actively build and scale our own suite of SaaS products, and apply those same engineering standards to deliver exceptional technology for our partners."
+                delay={900}
+                animateBy="words"
+                direction="bottom"
+              />
+            </div>
+
+            {/* CTAs */}
+            <div className="hero-cta-group">
+              <Link 
+                to="/products" 
+                className="hero-cta-primary" 
+                id="hero-cta-products"
+                onClick={() => trackCTA('Explore Products', 'Homepage Hero', '/products')}
+              >
+                Explore Products
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </Link>
+              <Link 
+                to="/contact" 
+                className="hero-cta-secondary" 
+                id="hero-cta-contact"
+                onClick={() => trackCTA('Talk to Engineering', 'Homepage Hero', '/contact')}
+              >
+                Talk to Engineering
+              </Link>
+            </div>
+
+            {/* Product count indicator */}
+            <div className="hero-proof">
+              <div className="hero-proof-stack">
+                {['J', 'P', 'S', 'S', 'I'].map((letter, i) => (
+                  <span key={i} className="hero-proof-avatar" style={{ zIndex: 5 - i }}>
+                    {letter}
+                  </span>
+                ))}
+              </div>
+              <span className="hero-proof-text">
+                5 products in active development
+              </span>
+            </div>
+          </div>
+
+          {/* Hero Visual */}
+          <div className="hero-visual-wrapper" aria-hidden="true">
+            <HeroVisual />
           </div>
         </div>
       </section>
 
-      {/* --- Products Section --- */}
-      <section id="products" className="section products-section">
-        <div ref={productsTitleRef} className="section-title-container">
-          <h2 className="section-title">Our Flagship Product</h2>
-        </div>
-        <ProductShowcase />
-      </section>
+      {/* ========== SECTION 2: THE DUAL ENGINE ========== */}
+      <DualEngine />
 
-      {/* --- Services Section --- */}
-      <section id="services" className="section services-section">
-        <div ref={servicesTitleRef} className="section-title-container">
-          <h2 className="section-title">Our Expert Services</h2>
-        </div>
-        <InteractiveServices services={services} />
-      </section>
+      {/* ========== SECTION 3: PRODUCT ECOSYSTEM ========== */}
+      <ProductEcosystem />
 
-      {/* --- Process Section --- */}
-      <section className="section process-section">
-        <div ref={processTitleRef} className="section-title-container">
-          <h2 className="section-title">Our Strategic Process</h2>
-        </div>
-        <ProcessTimeline />
-      </section>
+      {/* ========== SECTION 3: CORE SERVICES ========== */}
+      <CoreServices />
 
-      {/* --- Testimonials Section --- */}
-      <Testimonials />
+      {/* ========== SECTION 4: TRUST & PROOF ========== */}
+      <TrustSection />
 
-      {/* --- PayNex Teaser Section --- */}
-      <section className="section paynex-teaser" >
-        <div ref={paynexRef} className="paynex-content section-title-container">
-          <p className="paynex-subtitle">ALWAYS INNOVATING</p>
-          <h2 className="paynex-title">What's Next?</h2>
-          <p className="paynex-description">
-            We are constantly building the next generation of digital products. Stay tuned for what's coming.
-          </p>
-          <div className="subscribe-form">
-            <input type="email" placeholder="Enter your email for updates" />
-            <button>Subscribe</button>
-          </div>
-        </div>
-      </section>
+      {/* ========== SECTION 5: INDUSTRY NETWORK ========== */}
+      <IndustryNetwork />
+
+      {/* ========== SECTION 6: COMPANY MISSION ========== */}
+      <CompanyMission />
+
+      {/* ========== SECTION 6: FINAL CTA ========== */}
+      <FinalCTA />
     </main>
   );
 };
 
 export default HomePage;
-

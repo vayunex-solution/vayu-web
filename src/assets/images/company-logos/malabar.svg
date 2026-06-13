@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" width="100%" height="100%">
+  <!-- Definition for Gold Gradients -->
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37" />
+      <stop offset="50%" stop-color="#F3E5AB" />
+      <stop offset="100%" stop-color="#AA7C11" />
+    </linearGradient>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#800808" />
+      <stop offset="100%" stop-color="#4A0000" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background container with rounded corners -->
+  <rect width="100%" height="100%" rx="12" fill="url(#bgGrad)" />
+
+  <!-- Logo Icon on the left -->
+  <g transform="translate(45, 60)">
+    <!-- Outer ornate circle -->
+    <circle r="32" fill="none" stroke="url(#goldGrad)" stroke-width="2.5" />
+    <circle r="27" fill="none" stroke="url(#goldGrad)" stroke-width="1" stroke-dasharray="3,3" />
+    <!-- Center stylized "M" -->
+    <path d="M -12,12 L -12,-8 C -12,-16 0,-16 0,-8 L 0,12 M 0,-8 C 0,-16 12,-16 12,-8 L 12,12" 
+          fill="none" stroke="url(#goldGrad)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+    <!-- Diamond/Star symbol at the bottom -->
+    <path d="M 0,18 L 3,21 L 0,24 L -3,21 Z" fill="url(#goldGrad)" />
+  </g>
+
+  <!-- Typography on the right -->
+  <text x="115" y="58" font-family="'Cinzel', 'Times New Roman', 'Georgia', serif" font-size="28" font-weight="bold" fill="url(#goldGrad)" letter-spacing="4">MALABAR</text>
+  <text x="117" y="86" font-family="'Montserrat', 'Inter', 'Helvetica', sans-serif" font-size="12" font-weight="600" fill="#F3E5AB" letter-spacing="3">GOLD &amp; DIAMONDS</text>
+</svg>

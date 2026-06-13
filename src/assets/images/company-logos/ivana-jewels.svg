@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" width="100%" height="100%">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37" />
+      <stop offset="100%" stop-color="#AA7C11" />
+    </linearGradient>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E1E24" />
+      <stop offset="100%" stop-color="#121214" />
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" rx="12" fill="url(#bgGrad)" />
+  <g transform="translate(45, 60)">
+    <path d="M 0,-22 L 18,-8 L 10,20 L -10,20 L -18,-8 Z" fill="none" stroke="url(#goldGrad)" stroke-width="2" />
+    <path d="M 0,-22 L 0,20 M -18,-8 L 18,-8 M -10,20 L 0,-22 L 10,20" stroke="url(#goldGrad)" stroke-width="1" />
+  </g>
+  <text x="110" y="60" font-family="'Playfair Display', serif" font-size="32" font-weight="bold" fill="url(#goldGrad)" letter-spacing="3">IVANA</text>
+  <text x="112" y="82" font-family="'Montserrat', sans-serif" font-size="12" font-weight="600" fill="#D4AF37" letter-spacing="6">JEWELS</text>
+</svg>

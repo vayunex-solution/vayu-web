@@ -12,10 +12,21 @@ const SEO = ({
   faqData
 }) => {
   const siteName = 'Vayunex Solution';
-  const siteUrl = 'https://vayunexsolution.com';
-  const defaultImage = `${siteUrl}/og-image.png`;
-  const currentUrl = typeof window !== 'undefined' ? window.location.href : siteUrl;
-  const canonical = canonicalUrl || currentUrl;
+  const siteUrl = 'https://www.vayunexsolution.com';
+  const defaultImage = `${siteUrl}/assets/og-default.jpg`;
+  
+  // Canonical Enforcement: HTTPS, WWW, No Trailing Slash
+  let rawUrl = canonicalUrl || (typeof window !== 'undefined' ? window.location.href : siteUrl);
+  // Ensure https and www
+  rawUrl = rawUrl.replace(/^http:\/\//i, 'https://');
+  if (rawUrl.startsWith('https://vayunexsolution.com')) {
+    rawUrl = rawUrl.replace('https://vayunexsolution.com', 'https://www.vayunexsolution.com');
+  }
+  // Remove trailing slash if not root
+  if (rawUrl.endsWith('/') && rawUrl !== 'https://www.vayunexsolution.com/') {
+    rawUrl = rawUrl.slice(0, -1);
+  }
+  const canonical = rawUrl;
 
   // Organization Schema
   const organizationSchema = {
@@ -34,17 +45,50 @@ const SEO = ({
     },
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+91-9518051255",
+      "telephone": "+91-8930733725",
       "contactType": "customer service",
       "email": "info@vayunexsolution.com",
       "availableLanguage": ["English", "Hindi"]
     },
     "sameAs": [
-      "https://www.facebook.com/vayunexsolution",
-      "https://www.instagram.com/vayunexsolution",
-      "https://www.linkedin.com/company/vayunexsolution",
+      "https://www.facebook.com/share/1B52ioXjqw/",
+      "https://www.instagram.com/vayunexsolution?igsh=cW1qZ3llODhzcm52",
+      "https://www.linkedin.com/company/vayunex-solution/",
       "https://twitter.com/vayunexsolution"
     ]
+  };
+
+  // LocalBusiness Schema
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Vayunex Solution",
+    "image": `${siteUrl}/logo.png`,
+    "url": siteUrl,
+    "telephone": "+91-8930733725",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Mohali",
+      "addressRegion": "Punjab",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 30.7046,
+      "longitude": 76.7179
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "09:00",
+      "closes": "18:00"
+    }
   };
 
   // WebPage Schema
@@ -67,6 +111,31 @@ const SEO = ({
         "@type": "ImageObject",
         "url": `${siteUrl}/logo.png`
       }
+    }
+  };
+
+  // Person Schema (Founder)
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Yash Kumar",
+    "jobTitle": "Founder & Product Lead",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Vayunex Solution"
+    }
+  };
+
+  // WebSite Schema with SearchAction
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Vayunex Solution",
+    "url": siteUrl,
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": `${siteUrl}/search?q={search_term_string}`,
+      "query-input": "required name=search_term_string"
     }
   };
 
@@ -142,10 +211,19 @@ const SEO = ({
 
       {/* --- Structured Data (JSON-LD) for SEO/AEO/GEO --- */}
       <script type="application/ld+json">
+        {JSON.stringify(websiteSchema)}
+      </script>
+      <script type="application/ld+json">
         {JSON.stringify(organizationSchema)}
       </script>
       <script type="application/ld+json">
+        {JSON.stringify(personSchema)}
+      </script>
+      <script type="application/ld+json">
         {JSON.stringify(webPageSchema)}
+      </script>
+      <script type="application/ld+json">
+        {JSON.stringify(localBusinessSchema)}
       </script>
       <script type="application/ld+json">
         {JSON.stringify(breadcrumbSchema)}

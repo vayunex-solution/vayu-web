@@ -1,24 +1,154 @@
-/* --- VAYUNEX WEBSITE - CSS VARIABLES --- */
+/* ============================================================
+   VAYUNEX SOLUTION — DESIGN SYSTEM v5.0
+   Premium B2B Enterprise Design Tokens
+   ============================================================ */
 
-:root {
-  /* Colors */
-  --primary-bg: #0A0A0A; /* Very dark, almost black background */
-  --secondary-bg: #1A1A1A; /* Slightly lighter bg for cards/sections */
-  --navbar-bg: rgba(16, 16, 16, 0.5); /* Semi-transparent navbar bg */
-  
-  --primary-text: #EAEAEA; /* Light grey for primary text */
-  --secondary-text: #A0A0A0; /* Dimmer text for subtitles */
-  
-  --accent-primary: #007BFF; /* A vibrant blue for accents */
-  --accent-hover: #0056b3; /* Darker blue for hover states */
-  --accent-gradient: linear-gradient(90deg, #007BFF 0%, #00C6FF 100%);
+/* ---- Dark Mode (Default) ---- */
+:root,
+[data-theme="dark"] {
+  /* Backgrounds */
+  --bg-primary: #050505;
+  --bg-secondary: #0a0a0f;
+  --bg-tertiary: #0d0d18;
+  --bg-surface: rgba(255, 255, 255, 0.04);
+  --bg-surface-hover: rgba(255, 255, 255, 0.07);
+  --bg-glass: rgba(255, 255, 255, 0.05);
+  --bg-glass-hover: rgba(255, 255, 255, 0.08);
+
+  /* Borders */
+  --border-default: rgba(255, 255, 255, 0.08);
+  --border-subtle: rgba(255, 255, 255, 0.05);
+  --border-strong: rgba(255, 255, 255, 0.15);
+
+  /* Text */
+  --text-primary: #F9FAFB;
+  --text-secondary: #9CA3AF;
+  --text-tertiary: #6B7280;
+  --text-inverse: #111827;
+
+  /* Watermark */
+  --footer-watermark-color-1: rgba(99, 102, 241, 0.18);
+  --footer-watermark-color-2: rgba(59, 130, 246, 0.18);
+  --footer-watermark-shine: rgba(255, 255, 255, 0.65);
+
+
+  /* Accents */
+  --accent-blue: #3B82F6;
+  --accent-indigo: #6366F1;
+  --accent-purple: #8B5CF6;
+  --accent-teal: #14B8A6;
+  --accent-emerald: #10B981;
+  --accent-orange: #F97316;
+  --accent-amber: #F59E0B;
+  --accent-pink: #EC4899;
+  --accent-cyan: #06B6D4;
+
+  /* Primary brand gradient */
+  --gradient-brand: linear-gradient(135deg, #6366F1 0%, #3B82F6 100%);
+  --gradient-brand-subtle: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(59, 130, 246, 0.15) 100%);
+
+  /* Glows */
+  --glow-blue: 0 0 40px rgba(59, 130, 246, 0.25);
+  --glow-indigo: 0 0 40px rgba(99, 102, 241, 0.25);
+  --glow-purple: 0 0 40px rgba(139, 92, 246, 0.25);
+  --glow-teal: 0 0 40px rgba(20, 184, 166, 0.25);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.6), 0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.7), 0 8px 24px rgba(0, 0, 0, 0.6);
+
+  /* Navbar */
+  --navbar-bg: transparent;
+  --navbar-scrolled-bg: rgba(5, 5, 5, 0.85);
+  --navbar-height: 72px;
 
   /* Typography */
-  --font-primary: 'Inter', sans-serif;
-  --font-secondary: 'Poppins', sans-serif;
-  
-  /* Sizing & Spacing */
-  --navbar-height: 70px;
+  --font-primary: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-logo: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Legacy compat */
+  --primary-bg: #050505;
+  --secondary-bg: #0a0a0f;
+  --primary-text: #F9FAFB;
+  --secondary-text: #9CA3AF;
+  --accent-primary: #6366F1;
+  --accent-hover: #4F46E5;
+  --accent-gradient: linear-gradient(135deg, #6366F1 0%, #3B82F6 100%);
+  --primary-color: #6366F1;
+  --primary-glow: #6366F1;
+  --secondary-glow: #3B82F6;
+  --primary-glow-rgb: 99, 102, 241;
+  --secondary-glow-rgb: 59, 130, 246;
+  --dark-bg-primary: #050505;
+  --dark-bg-secondary: #0a0a0f;
+  --text-light: #F9FAFB;
+  --text-medium: #9CA3AF;
+  --glass-border: rgba(255, 255, 255, 0.08);
   --border-radius: 12px;
   --container-padding: 0 5%;
+}
+
+/* ---- Light Mode ---- */
+[data-theme="light"] {
+  /* Backgrounds */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8FAFC;
+  --bg-tertiary: #F1F5F9;
+  --bg-surface: rgba(0, 0, 0, 0.02);
+  --bg-surface-hover: rgba(0, 0, 0, 0.04);
+  --bg-glass: rgba(255, 255, 255, 0.8);
+  --bg-glass-hover: rgba(255, 255, 255, 0.95);
+
+  /* Borders */
+  --border-default: #E5E7EB;
+  --border-subtle: #F3F4F6;
+  --border-strong: #D1D5DB;
+
+  /* Text */
+  --text-primary: #020617;
+  --text-secondary: #1E293B;
+  --text-tertiary: #475569;
+  --text-inverse: #F9FAFB;
+
+  /* Watermark */
+  --footer-watermark-color-1: rgba(99, 102, 241, 0.25);
+  --footer-watermark-color-2: rgba(59, 130, 246, 0.25);
+  --footer-watermark-shine: rgba(99, 102, 241, 0.9);
+
+  /* Glows (lighter in light mode) */
+  --glow-blue: 0 0 40px rgba(59, 130, 246, 0.12);
+  --glow-indigo: 0 0 40px rgba(99, 102, 241, 0.12);
+  --glow-purple: 0 0 40px rgba(139, 92, 246, 0.12);
+  --glow-teal: 0 0 40px rgba(20, 184, 166, 0.12);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.15), 0 8px 24px rgba(0, 0, 0, 0.1);
+
+  /* Navbar */
+  --navbar-bg: rgba(255, 255, 255, 0.6);
+  --navbar-scrolled-bg: rgba(255, 255, 255, 0.9);
+  --gradient-brand-subtle: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(59, 130, 246, 0.08) 100%);
+
+  /* Legacy compat */
+  --primary-bg: #FFFFFF;
+  --secondary-bg: #F8FAFC;
+  --primary-text: #111827;
+  --secondary-text: #6B7280;
+  --text-light: #111827;
+  --text-medium: #6B7280;
+  --glass-border: #E5E7EB;
+  --dark-bg-primary: #FFFFFF;
+  --dark-bg-secondary: #F8FAFC;
 }

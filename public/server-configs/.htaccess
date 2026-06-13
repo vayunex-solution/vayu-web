@@ -1,0 +1,38 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Redirect non-www to www
+  RewriteCond %{HTTP_HOST} ^vayunexsolution\.com [NC]
+  RewriteRule ^(.*)$ https://www.vayunexsolution.com/$1 [L,R=301]
+
+  # Redirect HTTP to HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # React Router Catch-all
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ index.html [QSA,L]
+</IfModule>
+
+# Security Headers
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-XSS-Protection "1; mode=block"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Cache Control for Static Assets
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg "access plus 6 months"
+  ExpiresByType image/gif "access plus 6 months"
+  ExpiresByType image/png "access plus 6 months"
+  ExpiresByType image/webp "access plus 6 months"
+  ExpiresByType image/svg+xml "access plus 6 months"
+  ExpiresByType text/css "access plus 6 months"
+  ExpiresByType text/javascript "access plus 6 months"
+  ExpiresByType application/javascript "access plus 6 months"
+  ExpiresByType font/woff2 "access plus 6 months"
+</IfModule>

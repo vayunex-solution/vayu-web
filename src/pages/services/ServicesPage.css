@@ -4,7 +4,7 @@
    BASE STYLES
    ============================================ */
 .service-page {
-    background: #02000a;
+    background: var(--bg-primary);
     min-height: 100vh;
 }
 
@@ -81,6 +81,12 @@
     background-size: 60px 60px;
 }
 
+[data-theme="light"] .hero-grid {
+    background-image: 
+        linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px);
+}
+
 .service-hero-content {
     text-align: center;
     position: relative;
@@ -104,7 +110,7 @@
     background: linear-gradient(135deg, rgba(159, 85, 255, 0.2), rgba(79, 172, 254, 0.1));
     border: 1px solid rgba(159, 85, 255, 0.4);
     border-radius: 50px;
-    color: #fff;
+    color: var(--accent-indigo);
     font-size: 0.9rem;
     font-weight: 600;
     margin-bottom: 2rem;
@@ -112,7 +118,7 @@
 
 .service-hero-content h1 {
     font-size: clamp(2.5rem, 5vw, 4rem);
-    color: #fff;
+    color: var(--text-primary);
     line-height: 1.2;
     margin-bottom: 1.5rem;
 }
@@ -133,7 +139,7 @@
 
 .service-hero-content > p {
     font-size: 1.2rem;
-    color: #b0b8d3;
+    color: var(--text-secondary);
     line-height: 1.7;
     margin-bottom: 2.5rem;
 }
@@ -169,14 +175,14 @@
 }
 
 .cta-secondary {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #fff;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
+    color: var(--text-primary);
 }
 
 .cta-secondary:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.4);
+    background: var(--bg-surface-hover);
+    border-color: var(--border-strong);
 }
 
 /* ============================================
@@ -201,12 +207,12 @@
 
 .section-header h2 {
     font-size: clamp(2rem, 4vw, 2.8rem);
-    color: #fff;
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
 }
 
 .section-subtitle {
-    color: #888;
+    color: var(--text-secondary);
     font-size: 1.1rem;
 }
 
@@ -224,8 +230,8 @@
 }
 
 .type-card {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 20px;
     padding: 2rem;
     transition: all 0.4s ease;
@@ -244,13 +250,17 @@
 .type-card:hover {
     transform: translateY(-10px);
     border-color: var(--card-color);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .type-card:hover {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 .type-icon {
     width: 60px;
     height: 60px;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--bg-surface-hover);
     border-radius: 16px;
     display: flex;
     align-items: center;
@@ -268,12 +278,12 @@
 
 .type-card h3 {
     font-size: 1.2rem;
-    color: #fff;
+    color: var(--text-primary);
     margin-bottom: 0.75rem;
 }
 
 .type-card > p {
-    color: #888;
+    color: var(--text-secondary);
     font-size: 0.9rem;
     line-height: 1.6;
     margin-bottom: 1rem;
@@ -286,7 +296,7 @@
 }
 
 .type-examples li {
-    color: #b0b8d3;
+    color: var(--text-secondary);
     font-size: 0.85rem;
     padding: 0.25rem 0;
     display: flex;
@@ -304,7 +314,7 @@
    ============================================ */
 .tech-stack-section {
     padding: 80px 0;
-    background: rgba(5, 2, 15, 0.5);
+    background: var(--bg-secondary);
 }
 
 .tech-grid {
@@ -320,8 +330,8 @@
     align-items: center;
     gap: 10px;
     padding: 1.5rem 2rem;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 16px;
     transition: all 0.3s ease;
 }
@@ -329,6 +339,10 @@
 .tech-item:hover {
     transform: translateY(-5px);
     border-color: var(--tech-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .tech-item:hover {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
@@ -338,7 +352,7 @@
 }
 
 .tech-item span {
-    color: #e8e8ed;
+    color: var(--text-primary);
     font-size: 0.9rem;
     font-weight: 500;
 }
@@ -358,8 +372,8 @@
 }
 
 .package-card {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 24px;
     padding: 2.5rem;
     display: flex;
@@ -371,12 +385,16 @@
 .package-card:hover {
     transform: translateY(-10px);
     border-color: var(--pkg-color);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .package-card:hover {
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
 }
 
 .package-card.popular {
     border-color: var(--pkg-color);
-    background: linear-gradient(180deg, rgba(159, 85, 255, 0.1) 0%, rgba(10, 10, 25, 0.9) 100%);
+    background: color-mix(in srgb, var(--bg-surface) 95%, var(--pkg-color));
     transform: scale(1.05);
 }
 
@@ -399,7 +417,7 @@
 
 .package-card h3 {
     font-size: 1.5rem;
-    color: #fff;
+    color: var(--text-primary);
     margin-bottom: 1rem;
     text-align: center;
 }
@@ -408,7 +426,7 @@
     text-align: center;
     margin-bottom: 2rem;
     padding-bottom: 2rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--border-default);
 }
 
 .package-price .price {
@@ -419,7 +437,7 @@
 }
 
 .package-price .period {
-    color: #888;
+    color: var(--text-secondary);
     font-size: 0.9rem;
 }
 
@@ -436,11 +454,11 @@
     gap: 10px;
     padding: 0.75rem 0;
     font-size: 0.95rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--border-default);
 }
 
 .package-features li.included {
-    color: #e8e8ed;
+    color: var(--text-primary);
 }
 
 .package-features li.included i {
@@ -448,11 +466,11 @@
 }
 
 .package-features li.not-included {
-    color: #666;
+    color: var(--text-tertiary);
 }
 
 .package-features li.not-included i {
-    color: #666;
+    color: var(--text-tertiary);
 }
 
 .package-cta {
@@ -472,6 +490,10 @@
 
 .package-cta:hover {
     transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .package-cta:hover {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
@@ -480,7 +502,7 @@
    ============================================ */
 .process-section {
     padding: 100px 0;
-    background: rgba(5, 2, 15, 0.5);
+    background: var(--bg-secondary);
 }
 
 .process-timeline {
@@ -528,13 +550,13 @@
 }
 
 .process-content h4 {
-    color: #fff;
+    color: var(--text-primary);
     font-size: 1.1rem;
     margin-bottom: 0.5rem;
 }
 
 .process-content p {
-    color: #888;
+    color: var(--text-secondary);
     font-size: 0.85rem;
 }
 
@@ -587,12 +609,12 @@
 
 .cta-content h2 {
     font-size: clamp(2rem, 4vw, 2.5rem);
-    color: #fff;
+    color: var(--text-primary);
     margin-bottom: 1rem;
 }
 
 .cta-content > p {
-    color: #888;
+    color: var(--text-secondary);
     font-size: 1.1rem;
     margin-bottom: 2.5rem;
 }

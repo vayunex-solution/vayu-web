@@ -4,13 +4,13 @@ import useScrollAnimation from '../../hooks/useScrollAnimation';
 import './ProductShowcase.css';
 
 // Product Logos
-import paynexLogo from '../../assets/images/paynex-logo.png';
-import vayubaseLogo from '../../assets/images/vayubase-logo.png';
+import paynexLogo from '../../assets/images/paynex-logo.webp';
+import vayubaseLogo from '../../assets/images/vayubase-logo.webp';
 
 // Product Hero Images
-import paynexHero from '../../assets/images/paynex-hero.png';
-import vayubaseHero from '../../assets/images/vayubase-hero.png';
-import flownexHero from '../../assets/images/flownex-hero.png';
+import paynexHero from '../../assets/images/paynex-hero.webp';
+import vayubaseHero from '../../assets/images/vayubase-hero.webp';
+import flownexHero from '../../assets/images/flownex-hero.webp';
 
 const ProductShowcase = () => {
   const [ref, isVisible] = useScrollAnimation();

@@ -1,0 +1,48 @@
+/* src/components/common/ScrollStack.css */
+
+.scroll-stack-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  /* Extra bottom padding to ensure the last card can be fully scrolled */
+  padding-bottom: 30vh; 
+  display: block; /* Use block flow for reliable sticky behavior */
+}
+
+.scroll-stack-item {
+  position: sticky;
+  /* The top property is calculated via JS based on index */
+  width: 100%;
+  margin-bottom: 4rem; /* Replaced gap with margin-bottom */
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.4s ease;
+  transform-origin: top center;
+  will-change: transform;
+}
+
+.scroll-stack-content {
+  width: 100%;
+  position: relative;
+  border-radius: 24px;
+}
+
+/* 
+  Glassy Fluid Blurry styling (for Vayunex Labs)
+  Can be added via className="glassy-card" when using <ScrollStackItem>
+*/
+.glassy-card .scroll-stack-content {
+  background: rgba(15, 15, 25, 0.2);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+}
+
+/* 
+  Solid Professional Styling (for Core Services)
+*/
+.solid-card .scroll-stack-content {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 24px;
+}

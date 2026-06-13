@@ -1,10 +1,14 @@
-import React from 'react';
-import PageHeader from '../components/common/PageHeader';
+import React, { useState } from 'react';
 import SEO from '../components/common/SEO';
-import '../styles/InnerPage.css';
+import FinalCTA from '../components/common/FinalCTA';
+import CareerApplicationModal from '../components/common/CareerApplicationModal';
+import { trackCareerApplyClick } from '../utils/analytics';
+import './CareersPage.css';
 
 const CareersPage = () => {
-    // Perks & Benefits ka naya data
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedJob, setSelectedJob] = useState(null);
+
     const perks = [
         { icon: 'fas fa-globe', title: 'Remote First Culture' },
         { icon: 'fas fa-clock', title: 'Flexible Work Hours' },
@@ -21,56 +25,99 @@ const CareersPage = () => {
         { title: 'UI/UX Designer', location: 'Remote', department: 'Design' },
     ];
 
+    const handleApplyClick = (job) => {
+        setSelectedJob(job);
+        setIsModalOpen(true);
+        trackCareerApplyClick(job.title, job.department);
+    };
+
     return (
-        <div className="inner-page">
+        <main className="careers-page">
             <SEO 
               title="Careers - Join Our Innovative Tech Team in Tricity"
               description="Explore exciting tech career opportunities at Vayunex. We're hiring for remote and in-office positions in the Chandigarh area. Join a culture of growth."
               keywords="Tech jobs Chandigarh, IT careers Mohali, remote jobs, software developer jobs Panchkula, work at Vayunex, hiring developers Punjab"
             />
-            <PageHeader
-                title="Join Our Team"
-                subtitle="Become a part of a culture that values innovation, growth, and collaboration."
-            />
-            <div className="page-content">
-                <section className="content-section">
-                    <h2>Why Work at Vayunex?</h2>
-                    <p>
-                        At Vayunex, we are more than just a company; we are a community of passionate individuals driven by a common goal: to make a difference. We offer a dynamic work environment where creativity is encouraged, and every voice is heard. If you are looking to challenge yourself and grow with a forward-thinking company, Vayunex is the place for you.
-                    </p>
+            
+            {/* ========== HERO SECTION ========== */}
+            <section className="careers-hero" aria-label="Careers Hero">
+                <div className="careers-hero__bg">
+                    <div className="cp-orb cp-orb--1" />
+                    <div className="cp-orb cp-orb--2" />
+                    <div className="cp-grid" />
+                </div>
+                
+                <div className="container">
+                    <div className="careers-hero__content fade-up is-visible">
+                        <span className="section-eyebrow">Careers at Vayunex</span>
+                        <h1 className="hero-heading">
+                            Join Our <span className="gradient-text">Team</span>
+                        </h1>
+                        <p className="hero-subheading">
+                            Become a part of a culture that values innovation, growth, and collaboration.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            {/* ========== CONTENT SECTIONS ========== */}
+            <div className="cp-content container">
+                
+                <section className="cp-section">
+                    <div className="cp-section-header">
+                        <h2>Why Work at Vayunex?</h2>
+                        <p>
+                            At Vayunex, we are more than just a company; we are a community of passionate individuals driven by a common goal: to make a difference. We offer a dynamic work environment where creativity is encouraged, and every voice is heard. If you are looking to challenge yourself and grow with a forward-thinking company, Vayunex is the place for you.
+                        </p>
+                    </div>
                 </section>
 
-                {/* --- Naya Perks & Benefits Section --- */}
-                <section className="content-section">
-                    <h2>Perks & Benefits</h2>
-                    <div className="perks-grid">
+                <section className="cp-section">
+                    <div className="cp-section-header">
+                        <h2>Perks & Benefits</h2>
+                    </div>
+                    <div className="cp-perks-grid">
                         {perks.map((perk, index) => (
-                            <div className="perk-card" key={index}>
-                                <div className="perk-icon"><i className={perk.icon}></i></div>
-                                <h3 className="perk-title">{perk.title}</h3>
+                            <div className="cp-perk-card" key={index}>
+                                <div className="cp-perk-icon"><i className={perk.icon}></i></div>
+                                <h3 className="cp-perk-title">{perk.title}</h3>
                             </div>
                         ))}
                     </div>
                 </section>
 
-                <section className="content-section">
-                    <h2>Open Positions</h2>
-                    <div className="job-listings">
+                <section className="cp-section">
+                    <div className="cp-section-header">
+                        <h2>Open Positions</h2>
+                    </div>
+                    <div className="cp-jobs-list">
                         {openPositions.map((job, index) => (
-                            <div className="job-card" key={index}>
-                                <div className="job-info">
-                                    <h3 className="job-title">{job.title}</h3>
-                                    <p className="job-location">
-                                        <span className="job-department">{job.department}</span> | {job.location}
-                                    </p>
+                            <div className="cp-job-card" key={index}>
+                                <div className="cp-job-info">
+                                    <h3 className="cp-job-title">{job.title}</h3>
+                                    <div className="cp-job-meta">
+                                        <span className="cp-job-department">{job.department}</span>
+                                        <span className="cp-job-location"><i className="fas fa-map-marker-alt" style={{marginRight: '6px'}}></i>{job.location}</span>
+                                    </div>
                                 </div>
-                                <button className="job-apply-btn">Apply Now</button>
+                                <button className="cp-job-apply-btn" onClick={() => handleApplyClick(job)}>Apply Now</button>
                             </div>
                         ))}
                     </div>
                 </section>
+
             </div>
-        </div>
+
+            {/* ========== FINAL CTA ========== */}
+            <FinalCTA />
+
+            {/* ========== CAREER APPLICATION MODAL ========== */}
+            <CareerApplicationModal 
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                selectedJob={selectedJob}
+            />
+        </main>
     );
 };
 
