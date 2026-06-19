@@ -12,7 +12,7 @@ const BlogCategoryPage = () => {
 
     useEffect(() => {
         // Mock fetch based on category
-        fetch(`https://api.vayunexsolution.com/api/blogs?status=published&category=${slug}`)
+        fetch(`https://api.web.vayunexsolution.com/api/blogs?status=published&category=${slug}`)
             .then(res => res.json())
             .then(data => {
                 if (Array.isArray(data)) {

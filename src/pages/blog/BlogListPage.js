@@ -10,7 +10,7 @@ const BlogListPage = () => {
     useEffect(() => {
         // Fetch blogs from our new Node backend
         // Since we are building, we will mock or fetch from /api/blogs
-        fetch('https://api.vayunexsolution.com/api/blogs?status=published')
+        fetch('https://api.web.vayunexsolution.com/api/blogs?status=published')
             .then(res => res.json())
             .then(data => {
                 // mock for now to not break UI if API is down

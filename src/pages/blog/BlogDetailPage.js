@@ -19,7 +19,7 @@ const BlogDetailPage = () => {
             });
         }
 
-        fetch(`https://api.vayunexsolution.com/api/blogs/${slug}`)
+        fetch(`https://api.web.vayunexsolution.com/api/blogs/${slug}`)
             .then(res => res.json())
             .then(data => {
                 if (data && !data.error) {
