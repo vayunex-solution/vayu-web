@@ -8,6 +8,7 @@ import vayunexLogo from '../../../assets/images/vayunex-logo.webp';
 const NAV_LINKS = [
   { label: 'Products', to: '/products' },
   { label: 'Services', to: '/#outcomes' },
+  { label: 'Blog', to: '/blog' },
   { label: 'Company', to: '/about' },
   { label: 'Contact', to: '/contact' },
 ];

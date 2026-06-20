@@ -11,8 +11,21 @@ const app = express();
 
 // Security Middlewares
 app.use(helmet());
+const allowedOrigins = [
+    'https://www.vayunexsolution.com',
+    'https://admin.vayunexsolution.com',
+    'https://adminx.vayunexsolution.com'
+];
+
 app.use(cors({
-    origin: process.env.NODE_ENV === 'production' ? 'https://www.vayunexsolution.com' : '*',
+    origin: function (origin, callback) {
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) !== -1 || process.env.NODE_ENV !== 'production') {
+            return callback(null, true);
+        } else {
+            return callback(new Error('Not allowed by CORS'));
+        }
+    },
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
@@ -39,10 +52,14 @@ app.get('/api/health', (req, res) => {
 // Import Routes
 const blogRoutes = require('./routes/blog.routes');
 const categoryRoutes = require('./routes/category.routes');
+const { router: authRoutes } = require('./routes/auth.routes');
+const tagRoutes = require('./routes/tag.routes');
 
 // Use Routes
 app.use('/api/blogs', blogRoutes);
 app.use('/api/categories', categoryRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/tags', tagRoutes);
 
 // Global Error Handler
 app.use((err, req, res, next) => {

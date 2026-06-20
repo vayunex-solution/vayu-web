@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vayunex Admin - Edit Blog</title>
+    <!-- Quill Rich Text Editor Styles -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .dynamic-faq-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+            align-items: flex-start;
+        }
+        .tags-checklist {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            max-height: 150px;
+            overflow-y: auto;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-glass);
+            border-radius: 8px;
+        }
+        .tag-checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            padding: 4px 8px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 4px;
+            border: 1px solid transparent;
+            transition: var(--transition);
+        }
+        .tag-checkbox-label:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+        .tag-checkbox-label input:checked + span {
+            color: var(--primary);
+        }
+        .tag-checkbox-label input {
+            cursor: pointer;
+        }
+        .quick-add-btn {
+            padding: 4px 8px;
+            font-size: 0.8rem;
+            margin-top: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="layout-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <svg class="brand-logo" viewBox="0 0 24 24" fill="none" stroke="url(#logoGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <defs>
+                        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#00f2fe" />
+                            <stop offset="100%" stop-color="#4facfe" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span class="brand-text">VAYUNEX</span>
+            </div>
+
+            <ul class="nav-menu" style="margin-top: 20px;">
+                <li class="nav-item active">
+                    <a href="index.html" class="nav-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        Blogs
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                        Business BI
+                    </a>
+                </li>
+                <li style="margin: 15px 16px 5px; font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px;">
+                    Core Portal
+                </li>
+                <li class="nav-item" style="opacity: 0.4; cursor: not-allowed;" title="Coming Soon">
+                    <span class="nav-link" style="pointer-events: none;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        Leads & Contacts
+                    </span>
+                </li>
+                <li class="nav-item" style="opacity: 0.4; cursor: not-allowed;" title="Coming Soon">
+                    <span class="nav-link" style="pointer-events: none;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                        Product Configs
+                    </span>
+                </li>
+                <li class="nav-item" style="opacity: 0.4; cursor: not-allowed;" title="Coming Soon">
+                    <span class="nav-link" style="pointer-events: none;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                        System Settings
+                    </span>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px; padding: 0 16px;">
+                    Logged in as: <br><strong id="adminUser" style="color: var(--text-primary);">Admin</strong>
+                </div>
+                <button id="logoutBtn" class="btn btn-secondary btn-full btn-sm">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                    Logout
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Body -->
+        <main class="main-content">
+            <div class="page-header">
+                <div>
+                    <h1 id="pageTitle">Write New Blog</h1>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Configure content, details, and search engine parameters</p>
+                </div>
+                <a href="index.html" class="btn btn-secondary">
+                    Back to List
+                </a>
+            </div>
+
+            <div id="statusAlert" class="alert"></div>
+
+            <form id="editorForm">
+                <div class="editor-grid">
+                    
+                    <!-- Left: Content details -->
+                    <div class="glass-panel" style="padding: 30px; display: flex; flex-direction: column; gap: 20px;">
+                        
+                        <!-- AI Generator Section -->
+                        <div class="glass-panel" style="padding: 20px; border: 1px dashed var(--primary); background: rgba(0, 242, 254, 0.02); border-radius: 12px; margin-bottom: 10px;">
+                            <h3 style="font-size: 0.95rem; margin-bottom: 8px; font-weight: 600; color: var(--primary); display: flex; align-items: center; gap: 8px;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="stroke: var(--primary);"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                                AI SEO Blog Drafter (Gemini Powered)
+                            </h3>
+                            <p style="color: var(--text-muted); font-size: 0.82rem; margin-bottom: 12px;">
+                                Enter a brief topic or focus keywords. Gemini will draft the complete blog post, summary, FAQs, and search metadata for you.
+                            </p>
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <input type="text" id="aiTopic" class="form-control" placeholder="e.g. Benefits of jewelry ERP software for manufacturers" style="background: rgba(255,255,255,0.02);">
+                                <button type="button" id="btnAiGenerate" onclick="generateWithAi()" class="btn btn-primary btn-sm" style="height: 42px; white-space: nowrap;">
+                                    Draft with AI
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="title">Blog Title</label>
+                            <input type="text" id="title" class="form-control" placeholder="e.g. Navigating AI Integrations in ERP Systems" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="excerpt">Excerpt / Summary (Brief intro snippet)</label>
+                            <textarea id="excerpt" class="form-control" rows="3" placeholder="A short 1-2 sentence preview of the blog post..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Blog Content</label>
+                            <!-- Quill editor container -->
+                            <div id="editor-container" style="margin-top: 8px;"></div>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 10px;">
+                            <label for="aiSummary">AI Summary (For quick summaries on page)</label>
+                            <textarea id="aiSummary" class="form-control" rows="3" placeholder="Generate or write a key takeaways bullet point list..."></textarea>
+                        </div>
+
+                        <!-- FAQ JSON Dynamic Rows -->
+                        <div class="form-group">
+                            <label style="display: flex; justify-content: space-between; align-items: center;">
+                                FAQ SECTION (Q&A Schema)
+                                <button type="button" class="btn btn-secondary btn-sm" onclick="addFaqRow()" style="padding: 4px 10px; font-size: 0.75rem;">
+                                    + Add Question
+                                </button>
+                            </label>
+                            <div id="faqContainer" style="margin-top: 10px;">
+                                <!-- FAQ rows added dynamically -->
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right: Metadata parameters -->
+                    <div style="display: flex; flex-direction: column; gap: 24px;">
+                        
+                        <!-- Publishing Panel -->
+                        <div class="glass-panel" style="padding: 24px;">
+                            <h3 style="font-size: 1rem; margin-bottom: 16px; font-weight: 600;">Publish Settings</h3>
+                            
+                            <div class="form-group">
+                                <label for="status">Status</label>
+                                <select id="status" class="form-control">
+                                    <option value="draft">Draft</option>
+                                    <option value="published">Published</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="publishDate">Publish Date</label>
+                                <input type="datetime-local" id="publishDate" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="featuredImage">Featured Image URL</label>
+                                <input type="url" id="featuredImage" class="form-control" placeholder="https://example.com/image.jpg">
+                            </div>
+                        </div>
+
+                        <!-- Categorization Panel -->
+                        <div class="glass-panel" style="padding: 24px;">
+                            <h3 style="font-size: 1rem; margin-bottom: 16px; font-weight: 600;">Categorization</h3>
+
+                            <div class="form-group">
+                                <label for="categoryId">Category</label>
+                                <select id="categoryId" class="form-control">
+                                    <option value="">Select Category</option>
+                                </select>
+                                <button type="button" class="btn btn-secondary btn-sm quick-add-btn" onclick="quickAddCategory()">
+                                    + New Category
+                                </button>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Tags</label>
+                                <div class="tags-checklist" id="tagsContainer">
+                                    <!-- Tags loaded dynamically -->
+                                </div>
+                                <button type="button" class="btn btn-secondary btn-sm quick-add-btn" onclick="quickAddTag()">
+                                    + New Tag
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- SEO Metadata Panel -->
+                        <div class="glass-panel" style="padding: 24px;">
+                            <h3 style="font-size: 1rem; margin-bottom: 16px; font-weight: 600;">SEO Metadata</h3>
+
+                            <div class="form-group">
+                                <label for="seoTitle">SEO Title</label>
+                                <input type="text" id="seoTitle" class="form-control" placeholder="SEO optimized title">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="seoDescription">SEO Description</label>
+                                <textarea id="seoDescription" class="form-control" rows="3" placeholder="Meta description for search engines"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Action Panel -->
+                        <div class="glass-panel" style="padding: 24px; text-align: center;">
+                            <button type="submit" class="btn btn-primary btn-full" style="margin-bottom: 12px;">
+                                Save Blog Post
+                            </button>
+                            <a href="index.html" class="btn btn-secondary btn-full">
+                                Cancel
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <!-- Quill Rich Text Editor JS -->
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="config.js"></script>
+    <script>
+        // Check Auth
+        checkAuth();
+
+        // Set username in UI
+        const username = localStorage.getItem('adminUsername') || 'Admin';
+        document.getElementById('adminUser').textContent = username;
+
+        // Initialize Quill Editor
+        const quill = new Quill('#editor-container', {
+            theme: 'snow',
+            modules: {
+                toolbar: [
+                    [{ 'header': [1, 2, 3, false] }],
+                    ['bold', 'italic', 'underline', 'strike'],
+                    ['blockquote', 'code-block'],
+                    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                    [{ 'color': [] }, { 'background': [] }],
+                    ['link', 'image'],
+                    ['clean']
+                ]
+            }
+        });
+
+        // Track categories, tags and current Blog ID
+        let categories = [];
+        let tags = [];
+        const urlParams = new URLSearchParams(window.location.search);
+        const blogId = urlParams.get('id');
+
+        // Dynamic FAQ Row handling
+        function addFaqRow(question = '', answer = '') {
+            const faqContainer = document.getElementById('faqContainer');
+            const row = document.createElement('div');
+            row.className = 'dynamic-faq-row';
+            row.innerHTML = `
+                <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 8px;">
+                    <input type="text" placeholder="Question" class="form-control faq-q" value="${escapeHtml(question)}" required>
+                    <textarea placeholder="Answer" class="form-control faq-a" rows="2" required>${escapeHtml(answer)}</textarea>
+                </div>
+                <button type="button" class="btn btn-danger btn-sm" onclick="this.parentElement.remove()" style="padding: 10px; margin-top: 2px;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                </button>
+            `;
+            faqContainer.appendChild(row);
+        }
+
+        // Generate SEO Blog using Gemini AI
+        async function generateWithAi() {
+            const topic = document.getElementById('aiTopic').value.trim();
+            const btn = document.getElementById('btnAiGenerate');
+            const alertEl = document.getElementById('statusAlert');
+            
+            if (!topic) {
+                alert('Please enter a topic or focus keyphrase first.');
+                return;
+            }
+
+            alertEl.style.display = 'none';
+            btn.disabled = true;
+            btn.textContent = 'Generating...';
+
+            try {
+                const response = await fetch(`${CONFIG.API_BASE_URL}/blogs/generate`, {
+                    method: 'POST',
+                    headers: getAuthHeaders(),
+                    body: JSON.stringify({ topic })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'Failed to generate blog draft.');
+                }
+
+                // Populate form fields
+                document.getElementById('title').value = data.title || '';
+                document.getElementById('excerpt').value = data.excerpt || '';
+                quill.root.innerHTML = data.content || '';
+                document.getElementById('aiSummary').value = data.aiSummary || '';
+                document.getElementById('seoTitle').value = data.seoTitle || '';
+                document.getElementById('seoDescription').value = data.seoDescription || '';
+
+                // Clear existing FAQs and load generated FAQs
+                const faqContainer = document.getElementById('faqContainer');
+                faqContainer.innerHTML = '';
+                if (data.faq && Array.isArray(data.faq)) {
+                    data.faq.forEach(faq => {
+                        addFaqRow(faq.question, faq.answer);
+                    });
+                } else {
+                    addFaqRow(); // Fallback to one empty row
+                }
+
+                alertEl.textContent = 'AI Draft generated successfully! Review, edit, and click Save Blog Post.';
+                alertEl.className = 'alert alert-success';
+                alertEl.style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            } catch (err) {
+                alertEl.textContent = err.message;
+                alertEl.className = 'alert alert-error';
+                alertEl.style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Draft with AI';
+            }
+        }
+
+        // Quick add Category
+        async function quickAddCategory() {
+            const name = prompt('Enter new Category name:');
+            if (!name) return;
+
+            try {
+                const response = await fetch(`${CONFIG.API_BASE_URL}/categories`, {
+                    method: 'POST',
+                    headers: getAuthHeaders(),
+                    body: JSON.stringify({ name })
+                });
+                const data = await response.json();
+                if (!response.ok) throw new Error(data.error || 'Failed to create category');
+                
+                // Refresh categories list
+                await loadCategories();
+                // Select newly created category
+                document.getElementById('categoryId').value = data.id;
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+
+        // Quick add Tag
+        async function quickAddTag() {
+            const name = prompt('Enter new Tag name:');
+            if (!name) return;
+
+            try {
+                const response = await fetch(`${CONFIG.API_BASE_URL}/tags`, {
+                    method: 'POST',
+                    headers: getAuthHeaders(),
+                    body: JSON.stringify({ name })
+                });
+                const data = await response.json();
+                if (!response.ok) throw new Error(data.error || 'Failed to create tag');
+
+                // Refresh tags checklist
+                await loadTags();
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+
+        // Fetch Categories
+        async function loadCategories() {
+            try {
+                const response = await fetch(`${CONFIG.API_BASE_URL}/categories`);
+                if (!response.ok) throw new Error('Failed to load categories');
+                categories = await response.json();
+
+                const select = document.getElementById('categoryId');
+                const currentValue = select.value;
+                select.innerHTML = '<option value="">Select Category</option>' + categories.map(cat => `
+                    <option value="${cat.id}">${escapeHtml(cat.name)}</option>
+                `).join('');
+                if (currentValue) select.value = currentValue;
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        // Fetch Tags
+        async function loadTags() {
+            try {
+                const response = await fetch(`${CONFIG.API_BASE_URL}/tags`);
+                if (!response.ok) throw new Error('Failed to load tags');
+                tags = await response.json();
+
+                // Get checked tags currently
+                const checkedIds = Array.from(document.querySelectorAll('#tagsContainer input[type="checkbox"]:checked'))
+                    .map(el => parseInt(el.value));
+
+                const container = document.getElementById('tagsContainer');
+                container.innerHTML = tags.map(tag => `
+                    <label class="tag-checkbox-label">
+                        <input type="checkbox" value="${tag.id}" ${checkedIds.includes(tag.id) ? 'checked' : ''}>
+                        <span>${escapeHtml(tag.name)}</span>
+                    </label>
+                `).join('');
+                
+                if (tags.length === 0) {
+                    container.innerHTML = '<span style="font-size: 0.85rem; color: var(--text-muted);">No tags.</span>';
+                }
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        // Initialize editor page values
+        async function initPage() {
+            await Promise.all([loadCategories(), loadTags()]);
+
+            if (blogId) {
+                document.getElementById('pageTitle').textContent = 'Edit Blog Post';
+                const alertEl = document.getElementById('statusAlert');
+                
+                try {
+                    const response = await fetch(`${CONFIG.API_BASE_URL}/blogs/id/${blogId}`, {
+                        headers: getAuthHeaders()
+                    });
+                    if (!response.ok) throw new Error('Failed to load blog data');
+                    const blog = await response.json();
+
+                    // Populate fields
+                    document.getElementById('title').value = blog.title || '';
+                    document.getElementById('excerpt').value = blog.excerpt || '';
+                    quill.root.innerHTML = blog.content || '';
+                    document.getElementById('aiSummary').value = blog.aiSummary || '';
+                    document.getElementById('status').value = blog.status || 'draft';
+                    document.getElementById('featuredImage').value = blog.featuredImage || '';
+                    document.getElementById('seoTitle').value = blog.seoTitle || '';
+                    document.getElementById('seoDescription').value = blog.seoDescription || '';
+                    
+                    if (blog.categoryId) {
+                        document.getElementById('categoryId').value = blog.categoryId;
+                    }
+
+                    if (blog.publishDate) {
+                        // Format to YYYY-MM-DDTHH:MM
+                        const date = new Date(blog.publishDate);
+                        const timezoneOffset = date.getTimezoneOffset() * 60000;
+                        const localISOTime = (new Date(date.getTime() - timezoneOffset)).toISOString().slice(0, 16);
+                        document.getElementById('publishDate').value = localISOTime;
+                    }
+
+                    // Check existing tags
+                    if (blog.tags && blog.tags.length > 0) {
+                        const tagIds = blog.tags.map(t => t.id);
+                        document.querySelectorAll('#tagsContainer input[type="checkbox"]').forEach(box => {
+                            if (tagIds.includes(parseInt(box.value))) {
+                                box.checked = true;
+                            }
+                        });
+                    }
+
+                    // Populate FAQs
+                    if (blog.faqJson) {
+                        try {
+                            const faqs = JSON.parse(blog.faqJson);
+                            if (Array.isArray(faqs)) {
+                                faqs.forEach(faq => addFaqRow(faq.question, faq.answer));
+                            }
+                        } catch (e) {
+                            console.error('FAQ JSON parse error', e);
+                        }
+                    }
+
+                } catch (err) {
+                    alertEl.textContent = err.message;
+                    alertEl.className = 'alert alert-error';
+                    alertEl.style.display = 'block';
+                }
+            } else {
+                // Add one default FAQ row for ease of entry
+                addFaqRow();
+            }
+        }
+
+        // Form Submit
+        document.getElementById('editorForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const alertEl = document.getElementById('statusAlert');
+            alertEl.style.display = 'none';
+
+            // Gather FAQ row data into JSON
+            const faqRows = document.querySelectorAll('.dynamic-faq-row');
+            const faqList = [];
+            faqRows.forEach(row => {
+                const question = row.querySelector('.faq-q').value.trim();
+                const answer = row.querySelector('.faq-a').value.trim();
+                if (question && answer) {
+                    faqList.push({ question, answer });
+                }
+            });
+
+            // Gather Tag IDs
+            const selectedTagIds = Array.from(document.querySelectorAll('#tagsContainer input[type="checkbox"]:checked'))
+                .map(box => parseInt(box.value));
+
+            const categoryVal = document.getElementById('categoryId').value;
+
+            const payload = {
+                title: document.getElementById('title').value.trim(),
+                excerpt: document.getElementById('excerpt').value.trim(),
+                content: quill.root.innerHTML,
+                featuredImage: document.getElementById('featuredImage').value.trim() || null,
+                status: document.getElementById('status').value,
+                categoryId: categoryVal ? parseInt(categoryVal) : null,
+                seoTitle: document.getElementById('seoTitle').value.trim() || null,
+                seoDescription: document.getElementById('seoDescription').value.trim() || null,
+                aiSummary: document.getElementById('aiSummary').value.trim() || null,
+                faqJson: faqList.length > 0 ? JSON.stringify(faqList) : null,
+                publishDate: document.getElementById('publishDate').value || null,
+                tagIds: selectedTagIds
+            };
+
+            try {
+                let response;
+                const headers = getAuthHeaders();
+
+                if (blogId) {
+                    // Update
+                    response = await fetch(`${CONFIG.API_BASE_URL}/blogs/${blogId}`, {
+                        method: 'PUT',
+                        headers,
+                        body: JSON.stringify(payload)
+                    });
+                } else {
+                    // Create
+                    response = await fetch(`${CONFIG.API_BASE_URL}/blogs`, {
+                        method: 'POST',
+                        headers,
+                        body: JSON.stringify(payload)
+                    });
+                }
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'Failed to save blog post');
+                }
+
+                alertEl.textContent = 'Blog post saved successfully! Redirecting...';
+                alertEl.className = 'alert alert-success';
+                alertEl.style.display = 'block';
+
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1000);
+
+            } catch (err) {
+                alertEl.textContent = err.message;
+                alertEl.className = 'alert alert-error';
+                alertEl.style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', async () => {
+            try {
+                await fetch(`${CONFIG.API_BASE_URL}/auth/logout`, {
+                    method: 'POST',
+                    headers: getAuthHeaders()
+                });
+            } catch (e) {}
+            localStorage.removeItem('token');
+            localStorage.removeItem('adminUsername');
+            window.location.href = 'login.html';
+        });
+
+        // Helper to prevent HTML issues
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        // Initialize Page
+        initPage();
+    </script>
+</body>
+</html>

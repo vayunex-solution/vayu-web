@@ -1,6 +1,6 @@
 generator client {
   provider      = "prisma-client-js"
-  binaryTargets = ["native", "debian-openssl-1.1.x"]
+  binaryTargets = ["native", "debian-openssl-1.0.x", "debian-openssl-1.1.x", "debian-openssl-3.0.x"]
 }
 
 datasource db {
@@ -17,6 +17,9 @@ model Blog {
   featuredImage   String?
   author          String    @default("Vayunex Team")
   status          String    @default("draft") // draft, published
+  aiSummary       String?   @db.Text
+  faqJson         String?   @db.LongText
+  publishDate     DateTime?
   seoTitle        String?
   seoDescription  String?
   viewCount       Int       @default(0)

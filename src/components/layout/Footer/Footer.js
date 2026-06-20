@@ -24,6 +24,7 @@ const FOOTER_CAPABILITIES = [
 
 const FOOTER_COMPANY = [
   { label: 'About', to: '/about' },
+  { label: 'Blog', to: '/blog' },
   { label: 'Contact', to: '/contact' },
   { label: 'Careers', to: '/careers' },
 ];
