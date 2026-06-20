@@ -12,5 +12,6 @@ router.get('/geography', analyticsController.getGeographyStats);
 router.get('/live', analyticsController.getLiveStats);
 router.get('/products', analyticsController.getProductStats);
 router.get('/ai', analyticsController.getAiStats);
+router.get('/referrals', analyticsController.getReferralStats);
 
 module.exports = router;

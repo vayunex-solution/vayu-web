@@ -109,6 +109,28 @@ exports.getAiStats = async (req, res) => {
     }
 };
 
+exports.getReferralStats = async (req, res) => {
+    try {
+        const standardSources = ['Google', 'Direct', 'Referral'];
+        const stats = await prisma.session.groupBy({
+            by: ['source'],
+            where: { source: { in: standardSources } },
+            _count: { id: true }
+        });
+
+        const totalSessions = await prisma.session.count();
+
+        const result = { Google: 0, Direct: 0, Referral: 0, total: totalSessions };
+        stats.forEach(s => {
+            result[s.source] = s._count.id;
+        });
+
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
 exports.getGeographyStats = async (req, res) => {
     try {
         const countries = await prisma.visitor.groupBy({

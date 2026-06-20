@@ -210,59 +210,14 @@
                         <h3 class="card-title">Product & Services Interest Breakdown</h3>
                     </div>
                     
-                    <div style="display: flex; flex-direction: column; gap: 16px;">
-                        <div>
-                            <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
-                                <span>Jwelnex ERP (Jewelry Manufacturers)</span>
-                                <strong>42% (119 leads)</strong>
-                            </div>
-                            <div class="progress-container"><div class="progress-bar" style="width: 42%;"></div></div>
-                        </div>
-
-                        <div>
-                            <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
-                                <span>PayNex (FinTech Payments Integration)</span>
-                                <strong>28% (80 leads)</strong>
-                            </div>
-                            <div class="progress-container"><div class="progress-bar" style="width: 28%; background: linear-gradient(90deg, #10b981, #34d399);"></div></div>
-                        </div>
-
-                        <div>
-                            <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
-                                <span>SocialNex (Engagement & Brand Automation)</span>
-                                <strong>18% (51 leads)</strong>
-                            </div>
-                            <div class="progress-container"><div class="progress-bar" style="width: 18%; background: linear-gradient(90deg, #8b5cf6, #a78bfa);"></div></div>
-                        </div>
-
-                        <div>
-                            <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
-                                <span>SchoolDost (Education Management System)</span>
-                                <strong>12% (34 leads)</strong>
-                            </div>
-                            <div class="progress-container"><div class="progress-bar" style="width: 12%; background: linear-gradient(90deg, #f59e0b, #fbbf24);"></div></div>
-                        </div>
+                    <div id="productsBreakdown" style="display: flex; flex-direction: column; gap: 16px;">
+                        Loading product data...
                     </div>
 
                     <div style="margin-top: 30px; border-top: 1px solid var(--border-glass); padding-top: 20px;">
                         <h4 style="font-size: 0.95rem; margin-bottom: 12px; font-weight: 600;">Lead Channel Breakdown</h4>
-                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; gap: 12px;">
-                            <div style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; border: 1px solid var(--border-glass);">
-                                <div style="font-size: 1.2rem; font-weight: bold; color: var(--primary);">142</div>
-                                <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">WhatsApp</div>
-                            </div>
-                            <div style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; border: 1px solid var(--border-glass);">
-                                <div style="font-size: 1.2rem; font-weight: bold; color: var(--success);">85</div>
-                                <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Contact Forms</div>
-                            </div>
-                            <div style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; border: 1px solid var(--border-glass);">
-                                <div style="font-size: 1.2rem; font-weight: bold; color: #a78bfa;">38</div>
-                                <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Career Submissions</div>
-                            </div>
-                            <div style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; border: 1px solid var(--border-glass);">
-                                <div style="font-size: 1.2rem; font-weight: bold; color: #f59e0b;">19</div>
-                                <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Demo Requests</div>
-                            </div>
+                        <div id="leadChannelsBreakdown" style="display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; gap: 12px;">
+                            Loading channel data...
                         </div>
                     </div>
                 </div>
@@ -295,38 +250,15 @@
                     </div>
 
                     <div style="display: flex; flex-direction: column; gap: 16px;">
-                        <div>
-                            <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
-                                <span>Google Organic Search</span>
-                                <strong>5,420 sessions (43.4%)</strong>
-                            </div>
-                            <div class="progress-container"><div class="progress-bar" style="width: 43%; background: #4facfe;"></div></div>
-                        </div>
-
-                        <div>
-                            <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
-                                <span>Direct Traffic</span>
-                                <strong>3,110 sessions (24.9%)</strong>
-                            </div>
-                            <div class="progress-container"><div class="progress-bar" style="width: 25%; background: var(--text-muted);"></div></div>
-                        </div>
-
-                        <div>
-                            <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
-                                <span>LinkedIn Referrals</span>
-                                <strong>1,850 sessions (14.8%)</strong>
-                            </div>
-                            <div class="progress-container"><div class="progress-bar" style="width: 15%; background: #0077b5;"></div></div>
+                        <div id="referralsBreakdown" style="display: flex; flex-direction: column; gap: 16px;">
+                            Loading referral data...
                         </div>
 
                         <!-- AI Visibility referrals -->
                         <div style="margin-top: 10px; padding: 12px; background: rgba(0, 242, 254, 0.03); border-radius: 8px; border: 1px dashed rgba(0, 242, 254, 0.2);">
                             <h4 style="font-size: 0.85rem; color: var(--primary); margin-bottom: 8px; font-weight: 600;">AI Engine Visibility Referrals</h4>
-                            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; font-size: 0.8rem;">
-                                <div>🤖 <strong>ChatGPT Search:</strong> 421 sessions</div>
-                                <div>⚡ <strong>Perplexity AI:</strong> 284 sessions</div>
-                                <div>✨ <strong>Gemini referrals:</strong> 186 sessions</div>
-                                <div>🪐 <strong>Claude answers:</strong> 94 sessions</div>
+                            <div id="aiReferralsGrid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; font-size: 0.8rem;">
+                                Loading AI data...
                             </div>
                         </div>
                     </div>
@@ -400,8 +332,22 @@
                 // Leads
                 const resLeads = await fetch(`${CONFIG.API_BASE_URL}/analytics/leads`, { headers });
                 const leads = await resLeads.json();
-                const totalLeads = Object.values(leads).reduce((a, b) => a + b, 0);
-                document.getElementById('valLeads').textContent = totalLeads.toLocaleString();
+                populateLeadChannels(leads);
+
+                // Products
+                const resProducts = await fetch(`${CONFIG.API_BASE_URL}/analytics/products`, { headers });
+                const products = await resProducts.json();
+                populateProducts(products);
+
+                // Referrals
+                const resRefs = await fetch(`${CONFIG.API_BASE_URL}/analytics/referrals`, { headers });
+                const refs = await resRefs.json();
+                populateReferrals(refs);
+
+                // AI
+                const resAi = await fetch(`${CONFIG.API_BASE_URL}/analytics/ai`, { headers });
+                const ai = await resAi.json();
+                populateAi(ai);
 
                 // Geography
                 const resGeo = await fetch(`${CONFIG.API_BASE_URL}/analytics/geography`, { headers });
@@ -414,6 +360,121 @@
             } catch (err) {
                 console.error("Failed to load analytics data", err);
             }
+        }
+
+        function getPercentage(value, total) {
+            if (total === 0) return 0;
+            return Math.round((value / total) * 100);
+        }
+
+        function populateLeadChannels(leads) {
+            const total = Object.values(leads).reduce((a, b) => a + b, 0);
+            document.getElementById('valLeads').textContent = total.toLocaleString();
+
+            const container = document.getElementById('leadChannelsBreakdown');
+            container.innerHTML = `
+                <div style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; border: 1px solid var(--border-glass);">
+                    <div style="font-size: 1.2rem; font-weight: bold; color: var(--primary);">${leads.WhatsApp || 0}</div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">WhatsApp</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; border: 1px solid var(--border-glass);">
+                    <div style="font-size: 1.2rem; font-weight: bold; color: var(--success);">${leads.ContactForm || 0}</div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Contact Forms</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; border: 1px solid var(--border-glass);">
+                    <div style="font-size: 1.2rem; font-weight: bold; color: #a78bfa;">${leads.Career || 0}</div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Careers</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; border: 1px solid var(--border-glass);">
+                    <div style="font-size: 1.2rem; font-weight: bold; color: #f59e0b;">${leads.Demo || 0}</div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Demos</div>
+                </div>
+            `;
+        }
+
+        function populateProducts(products) {
+            const total = Object.values(products).reduce((a, b) => a + b, 0);
+            const container = document.getElementById('productsBreakdown');
+
+            if (total === 0) {
+                container.innerHTML = '<div style="color: var(--text-muted);">No product data available yet.</div>';
+                return;
+            }
+
+            container.innerHTML = `
+                <div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                        <span>Jwelnex ERP</span>
+                        <strong>${getPercentage(products.Jwelnex || 0, total)}% (${products.Jwelnex || 0} leads)</strong>
+                    </div>
+                    <div class="progress-container"><div class="progress-bar" style="width: ${getPercentage(products.Jwelnex || 0, total)}%;"></div></div>
+                </div>
+                <div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                        <span>PayNex</span>
+                        <strong>${getPercentage(products.PayNex || 0, total)}% (${products.PayNex || 0} leads)</strong>
+                    </div>
+                    <div class="progress-container"><div class="progress-bar" style="width: ${getPercentage(products.PayNex || 0, total)}%; background: linear-gradient(90deg, #10b981, #34d399);"></div></div>
+                </div>
+                <div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                        <span>SocialNex</span>
+                        <strong>${getPercentage(products.SocialNex || 0, total)}% (${products.SocialNex || 0} leads)</strong>
+                    </div>
+                    <div class="progress-container"><div class="progress-bar" style="width: ${getPercentage(products.SocialNex || 0, total)}%; background: linear-gradient(90deg, #8b5cf6, #a78bfa);"></div></div>
+                </div>
+                <div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                        <span>SchoolDost</span>
+                        <strong>${getPercentage(products.SchoolDost || 0, total)}% (${products.SchoolDost || 0} leads)</strong>
+                    </div>
+                    <div class="progress-container"><div class="progress-bar" style="width: ${getPercentage(products.SchoolDost || 0, total)}%; background: linear-gradient(90deg, #f59e0b, #fbbf24);"></div></div>
+                </div>
+            `;
+        }
+
+        function populateReferrals(refs) {
+            const container = document.getElementById('referralsBreakdown');
+            const total = refs.total || 0;
+
+            if (total === 0) {
+                container.innerHTML = '<div style="color: var(--text-muted);">No referral data available yet.</div>';
+                return;
+            }
+
+            container.innerHTML = `
+                <div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                        <span>Google Organic Search</span>
+                        <strong>${getPercentage(refs.Google || 0, total)}% (${refs.Google || 0} sessions)</strong>
+                    </div>
+                    <div class="progress-container"><div class="progress-bar" style="width: ${getPercentage(refs.Google || 0, total)}%; background: #4facfe;"></div></div>
+                </div>
+                <div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                        <span>Direct Traffic</span>
+                        <strong>${getPercentage(refs.Direct || 0, total)}% (${refs.Direct || 0} sessions)</strong>
+                    </div>
+                    <div class="progress-container"><div class="progress-bar" style="width: ${getPercentage(refs.Direct || 0, total)}%; background: var(--text-muted);"></div></div>
+                </div>
+                <div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                        <span>Other Referrals</span>
+                        <strong>${getPercentage(refs.Referral || 0, total)}% (${refs.Referral || 0} sessions)</strong>
+                    </div>
+                    <div class="progress-container"><div class="progress-bar" style="width: ${getPercentage(refs.Referral || 0, total)}%; background: #0077b5;"></div></div>
+                </div>
+            `;
+        }
+
+        function populateAi(ai) {
+            const container = document.getElementById('aiReferralsGrid');
+            container.innerHTML = `
+                <div>🤖 <strong>ChatGPT:</strong> ${ai.ChatGPT || 0} sessions</div>
+                <div>⚡ <strong>Perplexity:</strong> ${ai.Perplexity || 0} sessions</div>
+                <div>✨ <strong>Gemini:</strong> ${ai.Gemini || 0} sessions</div>
+                <div>🪐 <strong>Claude:</strong> ${ai.Claude || 0} sessions</div>
+            `;
         }
 
         function populateGeography(geo) {
