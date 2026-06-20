@@ -164,7 +164,10 @@ exports.generateBlog = async (req, res) => {
             return res.status(400).json({ error: 'Topic parameter is required.' });
         }
 
-        const apiKey = process.env.GEMINI_API_KEY || 'AIzaSyCIa5rM-IEefbgmGAaz5xGf3XbsJRsXx2g';
+        const apiKey = process.env.GEMINI_API_KEY;
+        if (!apiKey) {
+            return res.status(500).json({ error: 'Gemini API key is not configured on the server. Please add GEMINI_API_KEY to your .env file.' });
+        }
         const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
 
         const prompt = `Write a comprehensive, professional, and SEO-optimized blog post for the topic/keywords: "${topic}".
