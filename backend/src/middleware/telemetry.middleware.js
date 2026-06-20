@@ -75,7 +75,14 @@ const telemetryMiddleware = async (req, res, next) => {
         }
 
         // Track Session
-        let sessionId = req.cookies?.sessionId;
+        let cookies = {};
+        if (req.headers.cookie) {
+            req.headers.cookie.split(';').forEach(cookie => {
+                const parts = cookie.split('=');
+                cookies[parts[0].trim()] = parts.slice(1).join('=');
+            });
+        }
+        let sessionId = cookies.sessionId;
         let session;
 
         if (!sessionId) {
