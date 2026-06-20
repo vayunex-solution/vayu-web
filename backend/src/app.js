@@ -42,7 +42,13 @@ app.use('/api', limiter);
 // Basic middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
 app.use(morgan('dev'));
+
+// Telemetry Middleware
+const telemetryMiddleware = require('./middleware/telemetry.middleware');
+app.use(telemetryMiddleware);
 
 // Test Route
 app.get('/api/health', (req, res) => {
@@ -54,12 +60,14 @@ const blogRoutes = require('./routes/blog.routes');
 const categoryRoutes = require('./routes/category.routes');
 const { router: authRoutes } = require('./routes/auth.routes');
 const tagRoutes = require('./routes/tag.routes');
+const analyticsRoutes = require('./routes/analytics.routes');
 
 // Use Routes
 app.use('/api/blogs', blogRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/tags', tagRoutes);
+app.use('/api/analytics', analyticsRoutes);
 
 // Global Error Handler
 app.use((err, req, res, next) => {

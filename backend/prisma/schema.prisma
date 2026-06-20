@@ -44,3 +44,48 @@ model Tag {
   slug      String   @unique
   blogs     Blog[]
 }
+
+model Visitor {
+  id        Int       @id @default(autoincrement())
+  ipAddress String    @unique
+  country   String?
+  state     String?
+  city      String?
+  device    String?
+  browser   String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  sessions  Session[]
+}
+
+model Session {
+  id            Int        @id @default(autoincrement())
+  visitorId     Int
+  visitor       Visitor    @relation(fields: [visitorId], references: [id])
+  sessionId     String     @unique
+  referrer      String?
+  source        String?    // e.g., ChatGPT, Claude, Direct, Google
+  duration      Int        @default(0) // Duration in seconds
+  isActive      Boolean    @default(true)
+  lastActiveAt  DateTime   @default(now())
+  createdAt     DateTime   @default(now())
+  pageViews     PageView[]
+}
+
+model PageView {
+  id        Int      @id @default(autoincrement())
+  sessionId Int
+  session   Session  @relation(fields: [sessionId], references: [id])
+  pageUrl   String
+  isExit    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model Lead {
+  id        Int      @id @default(autoincrement())
+  type      String   // WhatsApp, ContactForm, Career, Demo
+  product   String?  // Jwelnex, PayNex, SocialNex, SchoolDost
+  data      String?  @db.Text // JSON string for flexibility
+  ipAddress String?
+  createdAt DateTime @default(now())
+}

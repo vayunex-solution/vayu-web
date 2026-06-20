@@ -49,7 +49,34 @@
     </style>
 </head>
 <body>
+    <!-- Mobile Overlay -->
+    <div id="mobileOverlay" class="mobile-overlay"></div>
+
     <div class="layout-wrapper">
+        <!-- Mobile Header -->
+        <div class="mobile-header">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <svg class="brand-logo" viewBox="0 0 24 24" fill="none" stroke="url(#logoGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:30px;height:30px;">
+                    <defs>
+                        <linearGradient id="logoGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#00f2fe" />
+                            <stop offset="100%" stop-color="#4facfe" />
+                        </linearGradient>
+                    </defs>
+                    <path stroke="url(#logoGrad2)" d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span class="brand-text" style="font-size: 1.2rem;">VAYUNEX</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 16px;">
+                <button id="themeToggleBtnMobile" onclick="toggleTheme()" class="btn btn-secondary btn-sm" style="padding: 8px;">
+                    <svg id="theme-icon-mobile" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg>
+                </button>
+                <button id="mobileDrawerToggle" class="btn btn-secondary btn-sm" style="padding: 8px;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+            </div>
+        </div>
+
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-logo">
@@ -120,7 +147,10 @@
                     <p style="color: var(--text-muted); font-size: 0.9rem;">Real-time funnel conversion metrics, geographic insights, and product interest metrics</p>
                 </div>
                 <div style="display: flex; gap: 12px;">
-                    <button onclick="refreshMockStats()" class="btn btn-secondary">
+                    <button id="themeToggleBtn" class="btn btn-secondary" style="padding: 10px;">
+                        <svg id="theme-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    </button>
+                    <button onclick="refreshData()" class="btn btn-secondary">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path></svg>
                         Refresh Data
                     </button>
@@ -244,43 +274,13 @@
                     </div>
                     
                     <h4 style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.5px; margin-bottom: 8px;">Top Countries</h4>
-                    <ul class="info-list" style="margin-bottom: 20px;">
-                        <li class="info-item">
-                            <span class="info-label">India</span>
-                            <span class="info-val">74.5% (9,301 visitors)</span>
-                        </li>
-                        <li class="info-item">
-                            <span class="info-label">United States</span>
-                            <span class="info-val">12.2% (1,522 visitors)</span>
-                        </li>
-                        <li class="info-item">
-                            <span class="info-label">United Arab Emirates</span>
-                            <span class="info-val">5.8% (724 visitors)</span>
-                        </li>
-                        <li class="info-item">
-                            <span class="info-label">Singapore</span>
-                            <span class="info-val">3.1% (387 visitors)</span>
-                        </li>
+                    <ul class="info-list" style="margin-bottom: 20px;" id="countriesList">
+                        <li class="info-item">Loading...</li>
                     </ul>
 
-                    <h4 style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.5px; margin-bottom: 8px;">Top Indian Regions</h4>
-                    <ul class="info-list">
-                        <li class="info-item">
-                            <span class="info-label">Haryana / Gurgaon</span>
-                            <span class="info-val">34% (3,162)</span>
-                        </li>
-                        <li class="info-item">
-                            <span class="info-label">Delhi NCR</span>
-                            <span class="info-val">26% (2,418)</span>
-                        </li>
-                        <li class="info-item">
-                            <span class="info-label">Karnataka / Bangalore</span>
-                            <span class="info-val">18% (1,674)</span>
-                        </li>
-                        <li class="info-item">
-                            <span class="info-label">Maharashtra / Mumbai</span>
-                            <span class="info-val">12% (1,116)</span>
-                        </li>
+                    <h4 style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.5px; margin-bottom: 8px;">Top States / Regions</h4>
+                    <ul class="info-list" id="statesList">
+                        <li class="info-item">Loading...</li>
                     </ul>
                 </div>
             </div>
@@ -371,6 +371,7 @@
         </main>
     </div>
 
+    <script src="theme-toggle.js"></script>
     <script src="config.js"></script>
     <script>
         // Check Auth
@@ -380,91 +381,70 @@
         const username = localStorage.getItem('adminUsername') || 'Admin';
         document.getElementById('adminUser').textContent = username;
 
-        // Simulated dynamic live users ticker
-        setInterval(() => {
-            const liveEl = document.getElementById('valLiveUsers');
-            if (liveEl) {
-                const current = parseInt(liveEl.textContent);
-                const change = Math.floor(Math.random() * 5) - 2; // -2 to +2
-                liveEl.textContent = Math.max(15, current + change);
-            }
-        }, 3000);
-
-        // Fetch actual blog views and populate top blogs
-        async function fetchActualBlogStats() {
+        // Fetch actual data
+        async function refreshData() {
             try {
-                const response = await fetch(`${CONFIG.API_BASE_URL}/blogs`, {
-                    headers: getAuthHeaders()
-                });
-                if (!response.ok) throw new Error('API failed');
-                const blogs = await response.json();
-
-                // Sum views
-                const totalViews = blogs.reduce((sum, blog) => sum + (blog.viewCount || 0), 0);
-                document.getElementById('valBlogViews').textContent = totalViews.toLocaleString();
-                document.getElementById('valBlogCount').textContent = blogs.length;
-
-                // Sort and list top 4
-                const sortedBlogs = [...blogs].sort((a,b) => (b.viewCount || 0) - (a.viewCount || 0)).slice(0, 4);
-                const topBlogsList = document.getElementById('topBlogsList');
+                const headers = getAuthHeaders();
                 
-                if (sortedBlogs.length === 0) {
-                    topBlogsList.innerHTML = `<li style="text-align: center; color: var(--text-muted); padding: 20px;">No blogs written yet.</li>`;
-                } else {
-                    topBlogsList.innerHTML = sortedBlogs.map(blog => `
-                        <li class="info-item">
-                            <span class="info-label" style="max-width: 70%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                                ${escapeHtml(blog.title)}
-                            </span>
-                            <span class="info-val">${blog.viewCount || 0} views</span>
-                        </li>
-                    `).join('');
-                }
+                // Traffic
+                const resTraffic = await fetch(`${CONFIG.API_BASE_URL}/analytics/traffic`, { headers });
+                const traffic = await resTraffic.json();
+                document.getElementById('valTotalVisitors').textContent = traffic.totalVisitors.toLocaleString();
+                
+                // Live
+                const resLive = await fetch(`${CONFIG.API_BASE_URL}/analytics/live`, { headers });
+                const live = await resLive.json();
+                document.getElementById('valLiveUsers').textContent = live.activeUsers;
+                populateLeadsLog(live.recentLeads);
+
+                // Leads
+                const resLeads = await fetch(`${CONFIG.API_BASE_URL}/analytics/leads`, { headers });
+                const leads = await resLeads.json();
+                const totalLeads = Object.values(leads).reduce((a, b) => a + b, 0);
+                document.getElementById('valLeads').textContent = totalLeads.toLocaleString();
+
+                // Geography
+                const resGeo = await fetch(`${CONFIG.API_BASE_URL}/analytics/geography`, { headers });
+                const geo = await resGeo.json();
+                populateGeography(geo);
+
+                // Top Blogs
+                fetchActualBlogStats();
+
             } catch (err) {
-                console.error('Error fetching blog stats', err);
-                document.getElementById('valBlogViews').textContent = 'N/A';
-                document.getElementById('topBlogsList').innerHTML = `<li style="color: var(--error); text-align: center; padding: 20px;">Failed to fetch live blog performance data</li>`;
+                console.error("Failed to load analytics data", err);
             }
         }
 
-        // Mock stats refreshing
-        function refreshMockStats() {
-            const randomVisitors = 11000 + Math.floor(Math.random() * 4000);
-            const randomLeads = 250 + Math.floor(Math.random() * 100);
-            document.getElementById('valTotalVisitors').textContent = randomVisitors.toLocaleString();
-            document.getElementById('valLeads').textContent = randomLeads.toString();
-            fetchActualBlogStats();
-            loadMockLeads();
+        function populateGeography(geo) {
+            const countriesList = document.getElementById('countriesList');
+            countriesList.innerHTML = geo.countries.map(c => `
+                <li class="info-item">
+                    <span class="info-label">${c.name}</span>
+                    <span class="info-val">${c.count} visitors</span>
+                </li>
+            `).join('') || '<li class="info-item">No data yet</li>';
+
+            const statesList = document.getElementById('statesList');
+            statesList.innerHTML = geo.states.map(s => `
+                <li class="info-item">
+                    <span class="info-label">${s.name}</span>
+                    <span class="info-val">${s.count} visitors</span>
+                </li>
+            `).join('') || '<li class="info-item">No data yet</li>';
         }
 
-        // Load mock leads log
-        function loadMockLeads() {
-            const mockLeads = [
-                { name: 'Amit Sharma', interest: 'Jwelnex ERP Demo', method: 'WhatsApp', time: '10 mins ago', status: 'Followed Up' },
-                { name: 'Rajesh Gupta', interest: 'PayNex API Integration', method: 'Contact Form', time: '1 hour ago', status: 'Pending Review' },
-                { name: 'Dr. Priya Mehta', interest: 'SchoolDost Multi-Campus', method: 'Demo Request', time: '3 hours ago', status: 'Meeting Scheduled' },
-                { name: 'Vikram Singh', interest: 'Senior React Engineer position', method: 'Careers Upload', time: '5 hours ago', status: 'Resume Screened' },
-                { name: 'Rahul Verma', interest: 'Jwelnex Jewelry Suite', method: 'WhatsApp', time: '1 day ago', status: 'Completed' }
-            ];
-
+        function populateLeadsLog(leads) {
             const tbody = document.getElementById('leadsLogBody');
-            tbody.innerHTML = mockLeads.map(lead => {
-                const statusClass = lead.status === 'Completed' || lead.status === 'Followed Up' || lead.status === 'Meeting Scheduled'
-                    ? 'badge-published' : 'badge-draft';
-                return `
-                    <tr>
-                        <td style="font-weight: 500;">${lead.name}</td>
-                        <td>${lead.interest}</td>
-                        <td>
-                            <span style="font-size: 0.85rem; color: var(--text-muted);">${lead.method}</span>
-                        </td>
-                        <td>${lead.time}</td>
-                        <td>
-                            <span class="badge ${statusClass}">${lead.status}</span>
-                        </td>
-                    </tr>
-                `;
-            }).join('');
+            tbody.innerHTML = leads.map(lead => `
+                <tr>
+                    <td style="font-weight: 500;">Lead #${lead.id}</td>
+                    <td>${lead.product || 'General'}</td>
+                    <td><span style="font-size: 0.85rem; color: var(--text-muted);">${lead.type}</span></td>
+                    <td>${new Date(lead.createdAt).toLocaleString()}</td>
+                    <td><span class="badge badge-published">Captured</span></td>
+                </tr>
+            `).join('') || '<tr><td colspan="5" style="text-align: center; color: var(--text-muted); padding: 20px;">No recent leads.</td></tr>';
         }
 
         // Logout
@@ -491,7 +471,8 @@
         }
 
         // Initial trigger
-        refreshMockStats();
+        // Initial trigger
+        refreshData();
     </script>
 </body>
 </html>
