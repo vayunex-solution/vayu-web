@@ -22,11 +22,7 @@ const TrainingPage = () => {
         { icon: 'fas fa-graduation-cap', title: 'Outdated Curriculum', desc: 'Universities teaching 10-year-old frameworks that companies no longer use in production.' },
         { icon: 'fas fa-briefcase', title: 'Skill Gaps', desc: 'Corporate teams struggling to adopt modern cloud and AI technologies efficiently.' },
         { icon: 'fas fa-users-slash', title: 'Lack of Practical Experience', desc: 'Graduates knowing the theory but unable to build scalable, real-world applications.' },
-        { icon: 'fas fa-chart-line', title: 'High Turnover', desc: 'Companies losing top talent because they fail to invest in continuous technical upskilling.' },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
-        }
+        { icon: 'fas fa-chart-line', title: 'High Turnover', desc: 'Companies losing top talent because they fail to invest in continuous technical upskilling.' }
     ];
 
     const outcomes = [
@@ -53,10 +49,6 @@ const TrainingPage = () => {
             title: 'Future-Proof Skills',
             desc: 'Stay ahead of the curve by mastering AI integration, modern DevOps, and scalable architecture.',
             color: '#ff6b6b'
-        },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
         }
     ];
 
@@ -66,11 +58,7 @@ const TrainingPage = () => {
         { name: 'AI & Data Science', icon: 'fas fa-brain', color: '#3776AB' },
         { name: 'Corporate Bootcamps', icon: 'fas fa-building', color: '#47A248' },
         { name: '1-on-1 Mentorship', icon: 'fas fa-user-tie', color: '#FF9900' },
-        { name: 'Placement Prep', icon: 'fas fa-briefcase', color: '#FFCA28' },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
-        }
+        { name: 'Placement Prep', icon: 'fas fa-briefcase', color: '#FFCA28' }
     ];
 
     const courses = [
@@ -105,10 +93,6 @@ const TrainingPage = () => {
             level: 'Beginner to Intermediate',
             topics: ['React Native', 'Flutter Basics', 'App Publishing', 'Firebase'],
             color: '#00d4ff'
-        },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
         }
     ];
 
@@ -116,11 +100,7 @@ const TrainingPage = () => {
         { icon: 'fas fa-user-graduate', title: 'Students', desc: 'Bridging the gap between academic theory and industry requirements to secure high-paying jobs.', color: '#4facfe' },
         { icon: 'fas fa-sync', title: 'Career Transitioners', desc: 'Non-technical professionals looking to successfully pivot into software engineering.', color: '#9f55ff' },
         { icon: 'fas fa-building', title: 'Enterprise Teams', desc: 'Corporate cohorts requiring intensive upskilling in modern cloud and AI architectures.', color: '#00d4ff' },
-        { icon: 'fas fa-code', title: 'Junior Developers', desc: 'Leveling up to senior roles by mastering system design and advanced full-stack concepts.', color: '#ff6b6b' },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
-        }
+        { icon: 'fas fa-code', title: 'Junior Developers', desc: 'Leveling up to senior roles by mastering system design and advanced full-stack concepts.', color: '#ff6b6b' }
     ];
 
     const techStack = [
@@ -131,11 +111,7 @@ const TrainingPage = () => {
         { name: 'Docker', icon: 'fab fa-docker', color: '#2496ED' },
         { name: 'MongoDB', icon: 'fas fa-database', color: '#47A248' },
         { name: 'TensorFlow', icon: 'fas fa-network-wired', color: '#FF6F00' },
-        { name: 'Figma', icon: 'fab fa-figma', color: '#F24E1E' },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
-        }
+        { name: 'Figma', icon: 'fab fa-figma', color: '#F24E1E' }
     ];
 
     const process = [
@@ -144,11 +120,7 @@ const TrainingPage = () => {
         { step: '03', title: 'Code Reviews', desc: 'Strict peer and mentor code reviews via GitHub pull requests.' },
         { step: '04', title: 'Mentorship', desc: 'Weekly 1-on-1 sessions to unblock progress and discuss system design.' },
         { step: '05', title: 'Certification', desc: 'Earning an industry-recognized certificate upon rigorous project evaluation.' },
-        { step: '06', title: 'Placement', desc: 'Mock interviews, resume building, and direct referrals to our hiring network.' },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
-        }
+        { step: '06', title: 'Placement', desc: 'Mock interviews, resume building, and direct referrals to our hiring network.' }
     ];
 
     const faqData = [

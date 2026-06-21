@@ -23,11 +23,7 @@ const SchoolDostPage = () => {
     const problems = [
         { icon: 'fas fa-user-secret', title: 'Fake Profiles & Bots', desc: 'Mainstream social apps are flooded with strangers, spam, and unverified users, making them unsafe and irrelevant for students.' },
         { icon: 'fas fa-users-slash', title: 'Fragmented Campus Life', desc: 'Seniors, juniors, and alumni are disconnected because campus communication is scattered across dozens of WhatsApp groups.' },
-        { icon: 'fas fa-search', title: 'Hard to Find "Your Tribe"', desc: 'It is incredibly difficult to find students on your campus who share your specific academic interests, hobbies, or career goals.' },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
-        }
+        { icon: 'fas fa-search', title: 'Hard to Find "Your Tribe"', desc: 'It is incredibly difficult to find students on your campus who share your specific academic interests, hobbies, or career goals.' }
     ];
 
     const features = [
@@ -36,31 +32,19 @@ const SchoolDostPage = () => {
         { icon: 'fas fa-newspaper', title: 'Campus Feed', desc: 'Stay updated on what is happening at your specific university—from club events to exam schedules.' },
         { icon: 'fas fa-comments', title: 'Real-Time Chat & Communities', desc: 'Join hyper-local micro-communities (e.g., "Delhi Univ Coders") and chat securely without sharing your phone number.' },
         { icon: 'fas fa-store', title: 'Student Marketplace', desc: 'Buy, sell, or trade textbooks, electronics, and dorm essentials securely with verified peers.' },
-        { icon: 'fas fa-gamepad', title: 'Gamification & Rewards', desc: 'Earn reputation points for helping others, hosting events, or contributing to campus discussions.' },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
-        }
+        { icon: 'fas fa-gamepad', title: 'Gamification & Rewards', desc: 'Earn reputation points for helping others, hosting events, or contributing to campus discussions.' }
     ];
 
     const outcomes = [
         { number: '100%', title: 'Verified Users', desc: 'No bots. No creeps.' },
         { number: '24/7', title: 'Campus Pulse', desc: 'Never miss an event.' },
-        { number: 'Infinite', title: 'Connections', desc: 'Find your lifelong friends.' },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
-        }
+        { number: 'Infinite', title: 'Connections', desc: 'Find your lifelong friends.' }
     ];
 
     const audience = [
         { icon: 'fas fa-user-graduate', title: 'College Students', desc: 'Find study partners, roommates, and friends who actually understand your vibe.' },
         { icon: 'fas fa-university', title: 'Universities & Clubs', desc: 'Broadcast official events and manage student organizations efficiently.' },
-        { icon: 'fas fa-briefcase', title: 'Campus Ambassadors', desc: 'Build your leadership profile and network with peers across India.' },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
-        }
+        { icon: 'fas fa-briefcase', title: 'Campus Ambassadors', desc: 'Build your leadership profile and network with peers across India.' }
     ];
 
     const faqs = [

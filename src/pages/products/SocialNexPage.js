@@ -23,11 +23,7 @@ const SocialNexPage = () => {
     const problems = [
         { icon: 'fas fa-layer-group', title: 'Content Chaos', desc: 'Juggling spreadsheets, messy Google Drives, and scattered chat threads just to plan a single week of content.' },
         { icon: 'fas fa-clock', title: 'Missed Schedules', desc: 'Forgetting to post during peak hours because your team is overwhelmed with manual publishing tasks.' },
-        { icon: 'fas fa-eye-slash', title: 'Zero Visibility', desc: 'No clear understanding of which posts are actually driving engagement and revenue across different platforms.' },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
-        }
+        { icon: 'fas fa-eye-slash', title: 'Zero Visibility', desc: 'No clear understanding of which posts are actually driving engagement and revenue across different platforms.' }
     ];
 
     const features = [
@@ -36,31 +32,19 @@ const SocialNexPage = () => {
         { icon: 'fas fa-paper-plane', title: 'Automated Publishing', desc: 'Schedule posts across Instagram, LinkedIn, X, and Facebook simultaneously without manual intervention.' },
         { icon: 'fas fa-users', title: 'Team Collaboration', desc: 'Assign tasks, leave feedback on drafts, and streamline the approval workflow before anything goes live.' },
         { icon: 'fas fa-chart-line', title: 'Cross-Platform Analytics', desc: 'Track follower growth, engagement rates, and top-performing content across your entire digital footprint.' },
-        { icon: 'fas fa-comments', title: 'Unified Inbox', desc: 'Manage comments and messages from all platforms in a single inbox so you never miss a lead.' },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
-        }
+        { icon: 'fas fa-comments', title: 'Unified Inbox', desc: 'Manage comments and messages from all platforms in a single inbox so you never miss a lead.' }
     ];
 
     const outcomes = [
         { number: '10x', title: 'Content Output', desc: 'Scale your posting frequency.' },
         { number: '15h', title: 'Saved Weekly', desc: 'Eliminate manual publishing.' },
-        { number: '100%', title: 'Brand Consistency', desc: 'Maintain a unified voice.' },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
-        }
+        { number: '100%', title: 'Brand Consistency', desc: 'Maintain a unified voice.' }
     ];
 
     const audience = [
         { icon: 'fas fa-bullhorn', title: 'Marketing Agencies', desc: 'Manage dozens of client accounts from a single dashboard without password sharing.' },
         { icon: 'fas fa-rocket', title: 'Growth Startups', desc: 'Maintain an aggressive posting schedule to build early traction and community.' },
-        { icon: 'fas fa-building', title: 'In-House Teams', desc: 'Streamline the content approval pipeline between creators, managers, and executives.' },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
-        }
+        { icon: 'fas fa-building', title: 'In-House Teams', desc: 'Streamline the content approval pipeline between creators, managers, and executives.' }
     ];
 
     const faqs = [

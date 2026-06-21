@@ -23,11 +23,7 @@ const SEOGrowthPage = () => {
         { icon: 'fas fa-eye-slash', title: 'Low Search Visibility', desc: 'Your target audience is searching for your services, but finding your competitors.' },
         { icon: 'fas fa-arrow-down', title: 'Poor Organic Traffic', desc: 'Relying entirely on expensive paid ads because organic channels produce zero leads.' },
         { icon: 'fas fa-map-marker-alt', title: 'Weak Local Presence', desc: 'Failing to appear in the top 3 Google Maps results for crucial local searches.' },
-        { icon: 'fas fa-cogs', title: 'Technical Penalties', desc: 'Slow site speed, broken links, and poor mobile indexing actively hurting rankings.' },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
-        }
+        { icon: 'fas fa-cogs', title: 'Technical Penalties', desc: 'Slow site speed, broken links, and poor mobile indexing actively hurting rankings.' }
     ];
 
     const outcomes = [
@@ -54,10 +50,6 @@ const SEOGrowthPage = () => {
             title: 'Build Long-Term Visibility',
             desc: 'Establish a moat against competitors with high-authority backlink profiles.',
             color: '#ff6b6b'
-        },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
         }
     ];
 
@@ -67,11 +59,7 @@ const SEOGrowthPage = () => {
         { name: 'Content Optimization', icon: 'fas fa-pen-fancy', color: '#3776AB' },
         { name: 'Link Building', icon: 'fas fa-link', color: '#47A248' },
         { name: 'E-Commerce SEO', icon: 'fas fa-shopping-cart', color: '#FF9900' },
-        { name: 'Programmatic SEO', icon: 'fas fa-sitemap', color: '#FFCA28' },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
-        }
+        { name: 'Programmatic SEO', icon: 'fas fa-sitemap', color: '#FFCA28' }
     ];
 
     const services = [
@@ -98,10 +86,6 @@ const SEOGrowthPage = () => {
             title: 'Analytics & Reporting',
             desc: 'Data-driven insights to measure and optimize performance.',
             color: '#ff6b6b'
-        },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
         }
     ];
 
@@ -109,11 +93,7 @@ const SEOGrowthPage = () => {
         { icon: 'fas fa-rocket', title: 'Startups', desc: 'Capturing early-stage organic traffic and building long-term domain authority.', color: '#4facfe' },
         { icon: 'fas fa-store', title: 'Local Businesses', desc: 'Dominating local search results and capturing high-intent map queries.', color: '#9f55ff' },
         { icon: 'fas fa-shopping-bag', title: 'E-Commerce', desc: 'Optimizing product pages to outrank competitors for transactional keywords.', color: '#00d4ff' },
-        { icon: 'fas fa-building', title: 'Enterprise B2B', desc: 'Executing complex technical SEO and programmatic content strategies.', color: '#ff6b6b' },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
-        }
+        { icon: 'fas fa-building', title: 'Enterprise B2B', desc: 'Executing complex technical SEO and programmatic content strategies.', color: '#ff6b6b' }
     ];
 
     const techStack = [
@@ -124,11 +104,7 @@ const SEOGrowthPage = () => {
         { name: 'Screaming Frog', icon: 'fas fa-spider', color: '#888' },
         { name: 'Surfer SEO', icon: 'fas fa-pen-nib', color: '#00D4FF' },
         { name: 'WordPress', icon: 'fab fa-wordpress', color: '#21759B' },
-        { name: 'Shopify', icon: 'fab fa-shopify', color: '#7AB55C' },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
-        }
+        { name: 'Shopify', icon: 'fab fa-shopify', color: '#7AB55C' }
     ];
 
     const packages = [
@@ -179,10 +155,6 @@ const SEOGrowthPage = () => {
                 { text: 'Social Media Strategy', included: true }
             ],
             best: false
-        },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
         }
     ];
 
@@ -192,11 +164,7 @@ const SEOGrowthPage = () => {
         { step: '03', title: 'Foundation', desc: 'Fixing all core web vitals, mobile usability, and indexation errors first.' },
         { step: '04', title: 'Optimization', desc: 'On-page updates, schema markup implementation, and content restructuring.' },
         { step: '05', title: 'Authority', desc: 'Executing high-quality digital PR and strategic link-building campaigns.' },
-        { step: '06', title: 'Analysis', desc: 'Monthly tracking of rankings, traffic, and conversion metrics.' },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
-        }
+        { step: '06', title: 'Analysis', desc: 'Monthly tracking of rankings, traffic, and conversion metrics.' }
     ];
 
     const faqData = [

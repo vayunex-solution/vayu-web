@@ -23,11 +23,7 @@ const WebDevelopmentPage = () => {
         { icon: 'fas fa-hourglass-half', title: 'Slow Legacy Systems', desc: 'Your current website takes forever to load, causing visitors to abandon before they even see your offer.' },
         { icon: 'fas fa-unlink', title: 'Disconnected Platforms', desc: 'Your CRM, inventory, and website do not talk to each other, forcing manual data entry.' },
         { icon: 'fas fa-mobile-alt', title: 'Poor Mobile Experience', desc: 'Losing 60% of your potential customers because your site breaks on mobile devices.' },
-        { icon: 'fas fa-shield-alt', title: 'Security Vulnerabilities', desc: 'Constant fear of data breaches because you are running on outdated, unpatched software.' },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
-        }
+        { icon: 'fas fa-shield-alt', title: 'Security Vulnerabilities', desc: 'Constant fear of data breaches because you are running on outdated, unpatched software.' }
     ];
 
     const outcomes = [
@@ -54,10 +50,6 @@ const WebDevelopmentPage = () => {
             title: 'Enterprise Security',
             desc: 'Sleep peacefully knowing your customer data is protected by modern security protocols.',
             color: '#ff6b6b'
-        },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
         }
     ];
 
@@ -67,11 +59,7 @@ const WebDevelopmentPage = () => {
         { name: 'SaaS Architecture', icon: 'fas fa-cloud', color: '#3776AB' },
         { name: 'API Development', icon: 'fas fa-network-wired', color: '#47A248' },
         { name: 'UI/UX Design', icon: 'fas fa-paint-brush', color: '#FF9900' },
-        { name: 'Cloud Deployment', icon: 'fas fa-server', color: '#FFCA28' },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
-        }
+        { name: 'Cloud Deployment', icon: 'fas fa-server', color: '#FFCA28' }
     ];
 
     const websiteTypes = [
@@ -102,10 +90,6 @@ const WebDevelopmentPage = () => {
             desc: 'Cross-platform applications that work on all devices seamlessly.',
             examples: ['Progressive Web Apps', 'React Native apps', 'Hybrid solutions'],
             color: '#ff6b6b'
-        },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
         }
     ];
 
@@ -113,11 +97,7 @@ const WebDevelopmentPage = () => {
         { icon: 'fas fa-rocket', title: 'Startups', desc: 'Rapidly launching MVPs to secure funding and acquire early adopters.', color: '#4facfe' },
         { icon: 'fas fa-store', title: 'SMEs', desc: 'Digitizing offline operations and expanding into global e-commerce markets.', color: '#9f55ff' },
         { icon: 'fas fa-building', title: 'Enterprise Teams', desc: 'Modernizing legacy monoliths into scalable microservice architectures.', color: '#00d4ff' },
-        { icon: 'fas fa-shopping-bag', title: 'Retail Brands', desc: 'Building high-converting digital storefronts that handle massive traffic spikes.', color: '#ff6b6b' },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
-        }
+        { icon: 'fas fa-shopping-bag', title: 'Retail Brands', desc: 'Building high-converting digital storefronts that handle massive traffic spikes.', color: '#ff6b6b' }
     ];
 
     const techStack = [
@@ -128,11 +108,7 @@ const WebDevelopmentPage = () => {
         { name: 'AWS', icon: 'fab fa-aws', color: '#FF9900' },
         { name: 'Firebase', icon: 'fas fa-fire', color: '#FFCA28' },
         { name: 'WordPress', icon: 'fab fa-wordpress', color: '#21759B' },
-        { name: 'Shopify', icon: 'fab fa-shopify', color: '#7AB55C' },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
-        }
+        { name: 'Shopify', icon: 'fab fa-shopify', color: '#7AB55C' }
     ];
 
     const packages = [
@@ -189,10 +165,6 @@ const WebDevelopmentPage = () => {
                 { text: '24/7 Priority Support', included: true }
             ],
             best: false
-        },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
         }
     ];
 
@@ -202,11 +174,7 @@ const WebDevelopmentPage = () => {
         { step: '03', title: 'UI/UX Design', desc: 'Creating wireframes and high-fidelity prototypes for your approval.' },
         { step: '04', title: 'Development', desc: 'Writing clean, scalable code following Agile sprints and CI/CD pipelines.' },
         { step: '05', title: 'Testing', desc: 'Rigorous QA, security auditing, and load testing before launch.' },
-        { step: '06', title: 'Deployment', desc: 'Zero-downtime migration to production and continuous post-launch support.' },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
-        }
+        { step: '06', title: 'Deployment', desc: 'Zero-downtime migration to production and continuous post-launch support.' }
     ];
 
     const faqData = [

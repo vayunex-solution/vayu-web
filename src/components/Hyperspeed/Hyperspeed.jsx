@@ -358,18 +358,25 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
         const initW = Math.max(1, container.offsetWidth);
         const initH = Math.max(1, container.offsetHeight);
 
-        this.renderer = new THREE.WebGLRenderer({
-          antialias: false,
-          alpha: true,
-          stencil: true,
-          depth: true,
-          powerPreference: "high-performance"
-        });
-        this.renderer.setSize(initW, initH, false);
-        this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        
-        this.composer = new EffectComposer(this.renderer);
-        container.append(this.renderer.domElement);
+        try {
+          this.renderer = new THREE.WebGLRenderer({
+            antialias: false,
+            alpha: true,
+            stencil: true,
+            depth: true,
+            powerPreference: "high-performance"
+          });
+          this.renderer.setSize(initW, initH, false);
+          this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+          
+          this.composer = new EffectComposer(this.renderer);
+          container.append(this.renderer.domElement);
+          this.webglSupported = true;
+        } catch (e) {
+          console.warn("WebGL or postprocessing not supported, disabling Hyperspeed.", e);
+          this.webglSupported = false;
+          return;
+        }
 
         this.camera = new THREE.PerspectiveCamera(options.fov, initW / initH, 0.1, 10000);
         this.camera.position.z = -5;
@@ -430,6 +437,7 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
       }
 
       onWindowResize() {
+        if (!this.webglSupported) return;
         const width = this.container.offsetWidth;
         const height = this.container.offsetHeight;
 
@@ -446,6 +454,7 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
       }
 
       initPasses() {
+        if (!this.webglSupported) return;
         this.renderPass = new RenderPass(this.scene, this.camera);
         this.bloomPass = new EffectPass(
           this.camera,
@@ -473,6 +482,7 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
       }
 
       loadAssets() {
+        if (!this.webglSupported) return Promise.resolve();
         const assets = this.assets;
         return new Promise(resolve => {
           const manager = new THREE.LoadingManager(resolve);
@@ -498,11 +508,14 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
       }
 
       init() {
+        if (!this.webglSupported) return;
         try {
           this.initPasses();
         } catch (e) {
           console.warn("Postprocessing passes failed to init, falling back to basic render.", e);
-          this.renderPass.renderToScreen = true;
+          if (this.renderPass) {
+            this.renderPass.renderToScreen = true;
+          }
         }
         
         const options = this.options;
@@ -529,24 +542,28 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
       }
 
       onMouseDown(ev) {
+        if (!this.webglSupported) return;
         if (this.options.onSpeedUp) this.options.onSpeedUp(ev);
         this.fovTarget = this.options.fovSpeedUp;
         this.speedUpTarget = this.options.speedUp;
       }
 
       onMouseUp(ev) {
+        if (!this.webglSupported) return;
         if (this.options.onSlowDown) this.options.onSlowDown(ev);
         this.fovTarget = this.options.fov;
         this.speedUpTarget = 0;
       }
 
       onTouchStart(ev) {
+        if (!this.webglSupported) return;
         if (this.options.onSpeedUp) this.options.onSpeedUp(ev);
         this.fovTarget = this.options.fovSpeedUp;
         this.speedUpTarget = this.options.speedUp;
       }
 
       onTouchEnd(ev) {
+        if (!this.webglSupported) return;
         if (this.options.onSlowDown) this.options.onSlowDown(ev);
         this.fovTarget = this.options.fov;
         this.speedUpTarget = 0;
@@ -557,6 +574,7 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
       }
 
       update(delta) {
+        if (!this.webglSupported) return;
         let lerpPercentage = Math.exp(-(-60 * Math.log2(1 - 0.1)) * delta);
         this.speedUp += lerp(this.speedUp, this.speedUpTarget, lerpPercentage, 0.00001);
         this.timeOffset += this.speedUp * delta;
@@ -593,14 +611,16 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
       }
 
       render(delta) {
-        if (this.composer && (this.bloomPass || this.renderPass.renderToScreen)) {
+        if (!this.webglSupported) return;
+        if (this.composer && (this.bloomPass || (this.renderPass && this.renderPass.renderToScreen))) {
             this.composer.render(delta);
-        } else {
+        } else if (this.renderer) {
             this.renderer.render(this.scene, this.camera);
         }
       }
 
       dispose() {
+        if (!this.webglSupported) return;
         this.disposed = true;
 
         if (this.scene) {
@@ -646,6 +666,7 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
       }
 
       setSize(width, height, updateStyles) {
+        if (!this.webglSupported) return;
         if (width <= 0 || height <= 0) {
           this.hasValidSize = false;
           return;
@@ -655,7 +676,7 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
       }
 
       tick() {
-        if (this.disposed) return;
+        if (this.disposed || !this.webglSupported) return;
 
         if (!this.hasValidSize) {
           const w = this.container.offsetWidth;

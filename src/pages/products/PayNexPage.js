@@ -22,11 +22,7 @@ const PayNexPage = () => {
     const problems = [
         { icon: 'fas fa-calculator', title: 'GST Compliance Nightmares', desc: 'Wasting days at the end of every month manually calculating taxes and reconciling mismatched invoices.' },
         { icon: 'fas fa-search-dollar', title: 'Hidden Cash Flow Issues', desc: 'Generating high revenue but struggling to pay bills because outstanding payments are tracked poorly.' },
-        { icon: 'fas fa-file-invoice', title: 'Manual Invoicing Errors', desc: 'Losing credibility with enterprise clients due to spelling mistakes, incorrect calculations, and unprofessional PDFs.' },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
-        }
+        { icon: 'fas fa-file-invoice', title: 'Manual Invoicing Errors', desc: 'Losing credibility with enterprise clients due to spelling mistakes, incorrect calculations, and unprofessional PDFs.' }
     ];
 
     const features = [
@@ -35,31 +31,19 @@ const PayNexPage = () => {
         { icon: 'fas fa-chart-pie', title: 'Financial Insights', desc: 'Visualize your daily cash flow, outstanding receivables, and monthly revenue trends on a live dashboard.' },
         { icon: 'fas fa-users', title: 'Client Management', desc: 'Maintain a centralized directory of all your clients, complete with payment histories and automated reminders.' },
         { icon: 'fas fa-receipt', title: 'Expense Tracking', desc: 'Log operational expenses seamlessly to calculate your true net profit margins in real-time.' },
-        { icon: 'fas fa-file-export', title: 'CA-Ready Exports', desc: 'Export perfectly formatted GST reports that your Chartered Accountant can file immediately.' },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
-        }
+        { icon: 'fas fa-file-export', title: 'CA-Ready Exports', desc: 'Export perfectly formatted GST reports that your Chartered Accountant can file immediately.' }
     ];
 
     const outcomes = [
         { number: '3x', title: 'Faster Payments', desc: 'Get paid instantly via UPI links.' },
         { number: 'Zero', title: 'Tax Errors', desc: 'Automated GST compliance.' },
-        { number: '100%', title: 'Financial Clarity', desc: 'Know your exact cash position.' },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
-        }
+        { number: '100%', title: 'Financial Clarity', desc: 'Know your exact cash position.' }
     ];
 
     const audience = [
         { icon: 'fas fa-laptop-code', title: 'SMEs & Startups', desc: 'Move away from messy Excel sheets and run your finances like a tech company.' },
         { icon: 'fas fa-user-tie', title: 'Service Providers', desc: 'Freelancers and agencies looking to look professional and track recurring retainers.' },
-        { icon: 'fas fa-store', title: 'Retail Businesses', desc: 'Generate quick, compliant bills for daily counter sales and B2B orders.' },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
-        }
+        { icon: 'fas fa-store', title: 'Retail Businesses', desc: 'Generate quick, compliant bills for daily counter sales and B2B orders.' }
     ];
 
     const faqs = [

@@ -23,11 +23,7 @@ const JwelnexPage = () => {
     const problems = [
         { icon: 'fas fa-boxes', title: 'Inventory Shrinkage', desc: 'Losing track of individual pieces across branches due to manual ledger entries and mismanaged stock counts.' },
         { icon: 'fas fa-file-invoice-dollar', title: 'Slow Billing Workflows', desc: 'Making customers wait during peak hours because billing and GST calculations require multiple software systems.' },
-        { icon: 'fas fa-users-slash', title: 'Lost Customer Data', desc: 'Inability to track customer purchase history, preventing personalized marketing and repeat sales.' },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
-        }
+        { icon: 'fas fa-users-slash', title: 'Lost Customer Data', desc: 'Inability to track customer purchase history, preventing personalized marketing and repeat sales.' }
     ];
 
     const features = [
@@ -36,31 +32,19 @@ const JwelnexPage = () => {
         { icon: 'fas fa-id-card', title: 'Customer CRM', desc: 'Maintain detailed customer profiles, purchase histories, and automated anniversary/birthday alerts.' },
         { icon: 'fas fa-store-alt', title: 'Multi-Branch Control', desc: 'Manage stock transfers, branch-wise sales, and consolidated accounting from one central dashboard.' },
         { icon: 'fas fa-chart-pie', title: 'Live Business Intelligence', desc: 'Access real-time reports on top-selling items, dead stock, and daily profit margins.' },
-        { icon: 'fas fa-cogs', title: 'Manufacturing Workflows', desc: 'Track karigar (artisan) issues, receipts, metal losses, and labor charges automatically.' },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
-        }
+        { icon: 'fas fa-cogs', title: 'Manufacturing Workflows', desc: 'Track karigar (artisan) issues, receipts, metal losses, and labor charges automatically.' }
     ];
 
     const outcomes = [
         { number: '100%', title: 'Stock Accuracy', desc: 'Eliminate theft and misplacement.' },
         { number: '3x', title: 'Faster Checkout', desc: 'Never make a customer wait.' },
-        { number: 'Zero', title: 'Compliance Errors', desc: 'Automated, error-free accounting.' },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
-        }
+        { number: 'Zero', title: 'Compliance Errors', desc: 'Automated, error-free accounting.' }
     ];
 
     const audience = [
         { icon: 'fas fa-store', title: 'Retail Showrooms', desc: 'Streamline daily counter sales and customer management.' },
         { icon: 'fas fa-building', title: 'Multi-Branch Chains', desc: 'Centralized control over distributed inventory and staff.' },
-        { icon: 'fas fa-industry', title: 'Wholesalers & Manufacturers', desc: 'Track bulk orders, melting loss, and karigar accounts.' },
-        {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
-        }
+        { icon: 'fas fa-industry', title: 'Wholesalers & Manufacturers', desc: 'Track bulk orders, melting loss, and karigar accounts.' }
     ];
 
     const faqs = [
