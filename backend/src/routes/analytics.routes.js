@@ -3,7 +3,10 @@ const router = express.Router();
 const analyticsController = require('../controllers/analytics.controller');
 const authMiddleware = require('../middleware/auth.middleware');
 
-router.use(authMiddleware); // Protect all analytics routes
+// Public telemetry track endpoint for website visitors
+router.post('/track', analyticsController.trackEvent);
+
+router.use(authMiddleware); // Protect all reporting analytics routes
 
 router.get('/traffic', analyticsController.getTrafficStats);
 router.get('/pages', analyticsController.getPageStats);

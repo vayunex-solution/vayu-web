@@ -1,5 +1,144 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
+const crypto = require('crypto');
+
+// In-memory cache for IP geo info
+const ipGeoCache = new Map();
+
+exports.trackEvent = async (req, res) => {
+    if (req.headers.origin) {
+        res.header('Access-Control-Allow-Origin', req.headers.origin);
+        res.header('Access-Control-Allow-Credentials', 'true');
+    }
+
+    try {
+        const {
+            eventType = 'page_view',
+            pageUrl = '/',
+            referrer = null,
+            sessionId: clientSessionId = null,
+            product = null,
+            leadType = null,
+            leadData = null
+        } = req.body || {};
+
+        const rawIp = req.headers['x-forwarded-for']?.split(',')[0]?.trim() || req.socket.remoteAddress || '127.0.0.1';
+        const ipAddress = rawIp.replace(/^::ffff:/, '');
+
+        // 1. Find or create Visitor
+        let visitor = await prisma.visitor.findUnique({
+            where: { ipAddress }
+        });
+
+        if (!visitor) {
+            let country = 'India', state = 'Haryana', city = 'Yamunanagar';
+            if (ipAddress !== '127.0.0.1' && ipAddress !== '::1') {
+                if (ipGeoCache.has(ipAddress)) {
+                    const cached = ipGeoCache.get(ipAddress);
+                    country = cached.country;
+                    state = cached.state;
+                    city = cached.city;
+                } else {
+                    try {
+                        const geoRes = await fetch(`http://ip-api.com/json/${ipAddress}?fields=status,country,regionName,city`);
+                        if (geoRes.ok) {
+                            const geoData = await geoRes.json();
+                            if (geoData.status === 'success') {
+                                country = geoData.country || country;
+                                state = geoData.regionName || state;
+                                city = geoData.city || city;
+                                ipGeoCache.set(ipAddress, { country, state, city });
+                            }
+                        }
+                    } catch (e) {}
+                }
+            }
+
+            const userAgent = req.headers['user-agent'] || '';
+            let device = 'Desktop';
+            if (/mobile/i.test(userAgent)) device = 'Mobile';
+            else if (/tablet/i.test(userAgent)) device = 'Tablet';
+
+            let browser = 'Chrome';
+            if (/firefox/i.test(userAgent)) browser = 'Firefox';
+            else if (/safari/i.test(userAgent) && !/chrome/i.test(userAgent)) browser = 'Safari';
+            else if (/edge/i.test(userAgent)) browser = 'Edge';
+
+            visitor = await prisma.visitor.create({
+                data: { ipAddress, country, state, city, device, browser }
+            });
+        }
+
+        // 2. Find or create Session
+        const sessionId = clientSessionId || crypto.randomUUID();
+        let session = await prisma.session.findUnique({
+            where: { sessionId }
+        });
+
+        let source = 'Direct';
+        if (referrer) {
+            const r = referrer.toLowerCase();
+            if (r.includes('google')) source = 'Google';
+            else if (r.includes('chatgpt')) source = 'ChatGPT';
+            else if (r.includes('claude')) source = 'Claude';
+            else if (r.includes('perplexity')) source = 'Perplexity';
+            else if (r.includes('gemini')) source = 'Gemini';
+            else if (!r.includes('vayunexsolution.com')) source = 'Referral';
+        }
+
+        const now = new Date();
+        if (!session) {
+            session = await prisma.session.create({
+                data: {
+                    sessionId,
+                    visitorId: visitor.id,
+                    referrer,
+                    source,
+                    lastActiveAt: now,
+                    isActive: true
+                }
+            });
+        } else {
+            const duration = Math.max(0, Math.floor((now - new Date(session.createdAt)) / 1000));
+            await prisma.session.update({
+                where: { id: session.id },
+                data: {
+                    lastActiveAt: now,
+                    isActive: true,
+                    duration
+                }
+            });
+        }
+
+        // 3. Log PageView
+        if (pageUrl && eventType === 'page_view') {
+            await prisma.pageView.create({
+                data: {
+                    sessionId: session.id,
+                    pageUrl
+                }
+            });
+        }
+
+        // 4. Log Lead if event represents lead generation
+        if (eventType === 'generate_lead' || eventType === 'whatsapp_click' || eventType === 'contact_submit' || eventType === 'request_demo' || eventType === 'career_application_submit') {
+            const type = leadType || (eventType.includes('whatsapp') ? 'WhatsApp' : eventType.includes('demo') ? 'Demo' : eventType.includes('career') ? 'Career' : 'ContactForm');
+            await prisma.lead.create({
+                data: {
+                    type,
+                    product: product || 'General',
+                    data: typeof leadData === 'object' ? JSON.stringify(leadData) : (leadData || ''),
+                    ipAddress
+                }
+            });
+        }
+
+        res.status(200).json({ status: 'ok', sessionId });
+    } catch (error) {
+        console.error('Analytics track error:', error.message);
+        res.status(500).json({ error: error.message });
+    }
+};
 
 exports.getTrafficStats = async (req, res) => {
     try {

@@ -22,6 +22,56 @@ const adapters = {
     }
 };
 
+const TRACKING_API = 'https://api.web.vayunexsolution.com/api/analytics/track';
+
+const getSessionId = () => {
+    try {
+        let sid = sessionStorage.getItem('vayunex_session_id');
+        if (!sid) {
+            sid = 'sess_' + Math.random().toString(36).substring(2, 12) + '_' + Date.now();
+            sessionStorage.setItem('vayunex_session_id', sid);
+        }
+        return sid;
+    } catch(e) {
+        return 'sess_fallback_' + Date.now();
+    }
+};
+
+const sendTelemetryToBackend = (eventName, payload) => {
+    try {
+        const body = JSON.stringify({
+            eventType: eventName,
+            pageUrl: window.location.pathname,
+            referrer: document.referrer || null,
+            sessionId: getSessionId(),
+            product: payload?.product_name || payload?.service_name || null,
+            leadType: payload?.capture_type || null,
+            leadData: payload
+        });
+
+        if (navigator.sendBeacon) {
+            const blob = new Blob([body], { type: 'application/json' });
+            navigator.sendBeacon(TRACKING_API, blob);
+        } else {
+            fetch(TRACKING_API, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body,
+                keepalive: true
+            }).catch(() => {});
+        }
+    } catch (e) {}
+};
+
+// 25s Real-time Heartbeat for Live Active Sessions
+if (typeof window !== 'undefined') {
+    setInterval(() => {
+        if (document.visibilityState === 'visible') {
+            sendTelemetryToBackend('heartbeat', {});
+        }
+    }, 25000);
+}
+
 // ==========================================
 // CORE DISPATCHER
 // ==========================================
@@ -41,7 +91,10 @@ const dispatchEvent = (eventName, payload) => {
         console.groupEnd();
     }
 
-    // 3. Dispatch to all adapters (Placeholders)
+    // 3. Send real-time telemetry to Vayunex backend BI
+    sendTelemetryToBackend(eventName, standardPayload);
+
+    // 4. Dispatch to all adapters (Placeholders)
     adapters.ga4(eventName, standardPayload);
     adapters.clarity(eventName, standardPayload);
     adapters.metaPixel(eventName, standardPayload);
