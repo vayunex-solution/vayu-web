@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import SEO from '../../components/common/SEO';
 import Breadcrumbs from '../../components/common/Breadcrumbs';
 import QuickAnswers from '../../components/common/QuickAnswers';
+import FAQAccordion from '../../components/common/FAQAccordion';
 
 const BlogDetailPage = () => {
     const { slug } = useParams();
@@ -85,6 +86,16 @@ const BlogDetailPage = () => {
         return cleaned;
     };
 
+    // Parse FAQs from JSON string if available
+    let faqs = [];
+    if (blog.faqJson) {
+        try {
+            faqs = typeof blog.faqJson === 'string' ? JSON.parse(blog.faqJson) : blog.faqJson;
+        } catch (e) {
+            console.error('Failed to parse FAQ JSON:', e);
+        }
+    }
+
     return (
         <article className="blog-detail-page" style={{ paddingTop: '100px', minHeight: '80vh', maxWidth: '800px', margin: '0 auto', padding: '100px 2rem 50px' }}>
             <SEO 
@@ -92,6 +103,7 @@ const BlogDetailPage = () => {
                 description={blog.seoDescription || blog.excerpt}
                 imageUrl={blog.featuredImage}
                 structuredData={articleSchema}
+                faqData={faqs}
                 type="article"
             />
             
@@ -111,10 +123,10 @@ const BlogDetailPage = () => {
                 <span><i className="fas fa-eye"></i> {blog.viewCount} views</span>
             </div>
 
-            {blog.excerpt && (
+            {(blog.aiSummary || blog.excerpt) && (
                 <QuickAnswers 
-                    title="Article Summary"
-                    answer={blog.excerpt}
+                    title="Key AI Takeaways"
+                    answer={blog.aiSummary || blog.excerpt}
                 />
             )}
 
@@ -127,6 +139,17 @@ const BlogDetailPage = () => {
                 style={{ color: 'var(--text-primary)', lineHeight: '1.8', fontSize: '1.1rem' }}
                 dangerouslySetInnerHTML={{ __html: cleanBlogHtml(blog.content) }} 
             />
+
+            {Array.isArray(faqs) && faqs.length > 0 && (
+                <div style={{ marginTop: '3.5rem', borderTop: '1px solid rgba(255, 255, 255, 0.1)', paddingTop: '2rem' }}>
+                    <FAQAccordion 
+                        faqs={faqs} 
+                        title="Frequently Asked Questions" 
+                        subtitle="Key questions and answers regarding this topic"
+                        style={{ background: 'transparent', padding: '1rem 0' }}
+                    />
+                </div>
+            )}
         </article>
     );
 };

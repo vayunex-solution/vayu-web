@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import useScrollAnimation from '../../hooks/useScrollAnimation';
 import './FAQAccordion.css';
 
-const FAQAccordion = ({ faqs, title = "Frequently Asked Questions", subtitle = "Find answers to common questions about our services." }) => {
+const FAQAccordion = ({ faqs, title = "Frequently Asked Questions", subtitle = "Find answers to common questions about our services.", style = {}, className = "" }) => {
     const [openIndex, setOpenIndex] = useState(null);
     const [headerRef] = useScrollAnimation(0.2);
     const [faqRef, faqVisible] = useScrollAnimation(0.2);
@@ -18,7 +18,7 @@ const FAQAccordion = ({ faqs, title = "Frequently Asked Questions", subtitle = "
     if (!faqs || faqs.length === 0) return null;
 
     return (
-        <section className="faq-section" ref={faqRef}>
+        <section className={`faq-section ${className}`} style={style} ref={faqRef}>
             <div className={`container faq-container fade-up ${faqVisible ? 'is-visible' : ''}`}>
                 <div className="section-header" ref={headerRef}>
                     <span className="section-badge">FAQ</span>
