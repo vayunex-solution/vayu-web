@@ -189,7 +189,7 @@ function ensureHtmlContent(text) {
         .join('');
 }
 
-// Helper to extract JSON safely from LLM output
+// Helper to extract JSON safely from LLM output (including handling unescaped control chars and newlines in strings)
 function extractJson(text) {
     if (!text) throw new Error('Empty AI response.');
     let str = text.trim();
@@ -208,7 +208,43 @@ function extractJson(text) {
     if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
         str = str.substring(firstBrace, lastBrace + 1);
     }
-    return JSON.parse(str);
+
+    try {
+        return JSON.parse(str);
+    } catch (e1) {
+        try {
+            let inString = false;
+            let escaped = false;
+            let fixed = '';
+            for (let i = 0; i < str.length; i++) {
+                const char = str[i];
+                if (char === '"' && !escaped) {
+                    inString = !inString;
+                    fixed += char;
+                } else if (inString) {
+                    if (char === '\n') {
+                        fixed += '\\n';
+                    } else if (char === '\r') {
+                        fixed += '\\r';
+                    } else if (char === '\t') {
+                        fixed += '\\t';
+                    } else {
+                        fixed += char;
+                        if (char === '\\') {
+                            escaped = !escaped;
+                            continue;
+                        }
+                    }
+                } else {
+                    fixed += char;
+                }
+                escaped = false;
+            }
+            return JSON.parse(fixed);
+        } catch (e2) {
+            throw e1;
+        }
+    }
 }
 
 exports.generateBlog = async (req, res) => {
@@ -227,15 +263,15 @@ exports.generateBlog = async (req, res) => {
         const nvidiaKey = process.env.NVIDIA_API_KEY;
         const geminiKey = process.env.GEMINI_API_KEY;
 
-        const prompt = `Write a high-converting, professional, and SEO-optimized blog post (around 400-600 words) for the topic: "${topic}".
+        const prompt = `Write a high-converting, professional, and SEO-optimized blog post for the topic: "${topic}".
 Instructions:
 - Write the blog post content in formatted HTML ready for a rich text editor. Use headings (<h2>, <h3>), paragraphs (<p>), bold text (<strong>), and bullet lists (<ul>, <li>).
-- Create a compelling, clickable Title.
+- Create a compelling, clickable Title (plain text, NO HTML tags).
 - Write a short, engaging Excerpt of 1-2 sentences.
 - Generate an AI Summary containing 3-4 key takeaways.
-- Generate an optimized SEO Title (under 60 chars) and SEO Description (under 160 chars).
+- Generate an optimized SEO Title (plain text, under 60 chars) and SEO Description (under 160 chars).
 - Include 2-3 FAQ items with 'question' and 'answer'.
-- Return strictly a JSON object with schema:
+- Return ONLY a valid JSON object matching this schema:
 {
   "title": "...",
   "content": "...",
@@ -247,13 +283,14 @@ Instructions:
     { "question": "...", "answer": "..." }
   ]
 }
-Output raw JSON only without markdown code fences or commentary.`;
+Output raw JSON only without markdown code fences, backticks, or commentary.`;
 
         // 1. Prioritize NVIDIA NIM LLM API if key exists
         if (nvidiaKey) {
-            const model = process.env.NVIDIA_MODEL || 'minimaxai/minimax-m3';
+            // Default to ultra-fast meta/llama-3.2-11b-vision-instruct (takes ~15-25s vs 100s+ on large models)
+            const model = process.env.NVIDIA_MODEL || 'meta/llama-3.2-11b-vision-instruct';
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 48000); // 48s timeout before proxy 60s limit
+            const timeoutId = setTimeout(() => controller.abort(), 65000); // 65s safe timeout
 
             let response;
             try {
@@ -275,7 +312,7 @@ Output raw JSON only without markdown code fences or commentary.`;
                                 content: prompt
                             }
                         ],
-                        temperature: 0.3,
+                        temperature: 0.2,
                         max_tokens: 1600
                     }),
                     signal: controller.signal
@@ -304,6 +341,29 @@ Output raw JSON only without markdown code fences or commentary.`;
             const parsedBlog = extractJson(rawContent);
             if (parsedBlog.content) {
                 parsedBlog.content = ensureHtmlContent(parsedBlog.content);
+            }
+            // Strip any stray HTML tags in title and SEO fields
+            if (parsedBlog.title) {
+                parsedBlog.title = String(parsedBlog.title).replace(/<[^>]*>/g, '').trim();
+            }
+            if (parsedBlog.seoTitle) {
+                parsedBlog.seoTitle = String(parsedBlog.seoTitle).replace(/<[^>]*>/g, '').trim();
+            }
+            if (parsedBlog.seoDescription) {
+                parsedBlog.seoDescription = String(parsedBlog.seoDescription).replace(/<[^>]*>/g, '').trim();
+            }
+            // Format aiSummary nicely if it is an array or object
+            if (typeof parsedBlog.aiSummary === 'object' && parsedBlog.aiSummary !== null) {
+                if (Array.isArray(parsedBlog.aiSummary)) {
+                    parsedBlog.aiSummary = parsedBlog.aiSummary.map(s => `• ${s}`).join('\n');
+                } else if (parsedBlog.aiSummary.keyTakeaways) {
+                    const takeaways = Array.isArray(parsedBlog.aiSummary.keyTakeaways)
+                        ? parsedBlog.aiSummary.keyTakeaways
+                        : [parsedBlog.aiSummary.keyTakeaways];
+                    parsedBlog.aiSummary = takeaways.map(s => `• ${s}`).join('\n');
+                } else {
+                    parsedBlog.aiSummary = Object.values(parsedBlog.aiSummary).map(s => `• ${s}`).join('\n');
+                }
             }
             return res.status(200).json(parsedBlog);
         }
