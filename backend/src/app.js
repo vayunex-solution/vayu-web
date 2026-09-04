@@ -9,27 +9,33 @@ dotenv.config();
 
 const app = express();
 
-// Security Middlewares
-app.use(helmet());
-const allowedOrigins = [
-    'https://www.vayunexsolution.com',
-    'https://admin.vayunexsolution.com',
-    'https://adminx.vayunexsolution.com'
-];
+// 1. Bulletproof CORS Middleware (Must run before everything else)
+app.use((req, res, next) => {
+    const origin = req.headers.origin;
+    if (origin && (
+        origin.endsWith('vayunexsolution.com') ||
+        origin.includes('localhost') ||
+        origin.includes('127.0.0.1')
+    )) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+        res.setHeader('Access-Control-Allow-Credentials', 'true');
+    } else {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+    }
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS, PATCH');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, Accept, Origin');
 
-app.use(cors({
-    origin: function (origin, callback) {
-        if (!origin) return callback(null, true);
-        if (allowedOrigins.indexOf(origin) !== -1 || origin.endsWith('.vayunexsolution.com') || process.env.NODE_ENV !== 'production') {
-            return callback(null, true);
-        }
-        return callback(null, true);
-    },
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true
+    // Handle preflight OPTIONS immediately
+    if (req.method === 'OPTIONS') {
+        return res.status(204).end();
+    }
+    next();
+});
+
+// 2. Security Middleware (with cross-origin allowed)
+app.use(helmet({
+    crossOriginResourcePolicy: { policy: "cross-origin" }
 }));
-app.options('*', cors());
 
 // Rate limiting to prevent abuse
 const limiter = rateLimit({
