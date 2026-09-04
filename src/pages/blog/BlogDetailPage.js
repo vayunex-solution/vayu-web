@@ -68,6 +68,23 @@ const BlogDetailPage = () => {
         "dateModified": blog.updatedAt
     };
 
+    // Clean stray Markdown formatting or nested bold tags from blog content
+    const cleanBlogHtml = (html) => {
+        if (!html) return '';
+        let cleaned = html.replace(/\*\*/g, '');
+        while (/<strong>\s*<strong>/i.test(cleaned)) {
+            cleaned = cleaned.replace(/<strong>\s*<strong>/gi, '<strong>');
+        }
+        while (/<\/strong>\s*<\/strong>/i.test(cleaned)) {
+            cleaned = cleaned.replace(/<\/strong>\s*<\/strong>/gi, '</strong>');
+        }
+        cleaned = cleaned.replace(/<(h[1-6])>\s*<strong>(.*?)<\/strong>\s*<\/\1>/gi, '<$1>$2</$1>');
+        cleaned = cleaned.replace(/<p>\s*<strong>(.*?)<\/strong>\s*<\/p>/gi, '<p>$1</p>');
+        cleaned = cleaned.replace(/<li>\s*<strong>([^:]+):\s*([^<]+)<\/strong>\s*<\/li>/gi, '<li><strong>$1:</strong> $2</li>');
+        cleaned = cleaned.replace(/<p>\s*<strong>([^:]+):\s*([^<]+)<\/strong>\s*<\/p>/gi, '<p><strong>$1:</strong> $2</p>');
+        return cleaned;
+    };
+
     return (
         <article className="blog-detail-page" style={{ paddingTop: '100px', minHeight: '80vh', maxWidth: '800px', margin: '0 auto', padding: '100px 2rem 50px' }}>
             <SEO 
@@ -108,7 +125,7 @@ const BlogDetailPage = () => {
             <div 
                 className="blog-content" 
                 style={{ color: 'var(--text-primary)', lineHeight: '1.8', fontSize: '1.1rem' }}
-                dangerouslySetInnerHTML={{ __html: blog.content }} 
+                dangerouslySetInnerHTML={{ __html: cleanBlogHtml(blog.content) }} 
             />
         </article>
     );
