@@ -1,0 +1,22 @@
+# Vayunex Solution - Factual Knowledge Graph
+
+Organization: Vayunex Solution
+Founder & Product Lead: Yash Kumar
+Website: https://www.vayunexsolution.com
+Phone: +91 8930733725
+Contact: info@vayunexsolution.com
+
+## Products
+1. Jwelnex - Jewelry ERP and billing software
+2. PayNex - HR and payroll management system
+3. SocialNex - Social media analytics and management
+4. SchoolDost - Comprehensive school ERP system
+5. InventoryNex - Advanced inventory management software
+
+## Services
+1. Web Development - Enterprise and custom web applications
+2. AI & Data Science - Machine learning, workflow automation, and custom LLMs
+3. Recruitment - Technical recruitment and IT staffing solutions
+4. SEO Growth - Search Engine Optimization strategies
+5. Digital Marketing - Performance marketing and lead generation
+6. Corporate Training - Upskilling for engineering and business teams

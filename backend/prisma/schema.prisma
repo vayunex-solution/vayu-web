@@ -1,0 +1,91 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-1.0.x", "debian-openssl-1.1.x", "debian-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Blog {
+  id              Int       @id @default(autoincrement())
+  title           String
+  slug            String    @unique
+  excerpt         String?   @db.Text
+  content         String    @db.LongText
+  featuredImage   String?
+  author          String    @default("Vayunex Team")
+  status          String    @default("draft") // draft, published
+  aiSummary       String?   @db.Text
+  faqJson         String?   @db.LongText
+  publishDate     DateTime?
+  seoTitle        String?
+  seoDescription  String?
+  viewCount       Int       @default(0)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  categoryId      Int?
+  category        Category? @relation(fields: [categoryId], references: [id])
+  tags            Tag[]
+}
+
+model Category {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  slug      String   @unique
+  blogs     Blog[]
+}
+
+model Tag {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  slug      String   @unique
+  blogs     Blog[]
+}
+
+model Visitor {
+  id        Int       @id @default(autoincrement())
+  ipAddress String    @unique
+  country   String?
+  state     String?
+  city      String?
+  device    String?
+  browser   String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  sessions  Session[]
+}
+
+model Session {
+  id            Int        @id @default(autoincrement())
+  visitorId     Int
+  visitor       Visitor    @relation(fields: [visitorId], references: [id])
+  sessionId     String     @unique
+  referrer      String?
+  source        String?    // e.g., ChatGPT, Claude, Direct, Google
+  duration      Int        @default(0) // Duration in seconds
+  isActive      Boolean    @default(true)
+  lastActiveAt  DateTime   @default(now())
+  createdAt     DateTime   @default(now())
+  pageViews     PageView[]
+}
+
+model PageView {
+  id        Int      @id @default(autoincrement())
+  sessionId Int
+  session   Session  @relation(fields: [sessionId], references: [id])
+  pageUrl   String
+  isExit    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model Lead {
+  id        Int      @id @default(autoincrement())
+  type      String   // WhatsApp, ContactForm, Career, Demo
+  product   String?  // Jwelnex, PayNex, SocialNex, SchoolDost
+  data      String?  @db.Text // JSON string for flexibility
+  ipAddress String?
+  createdAt DateTime @default(now())
+}

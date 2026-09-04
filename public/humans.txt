@@ -1,0 +1,9 @@
+/* TEAM */
+Developer: Vayunex Solutions Development Team
+Site: https://www.vayunexsolution.com/
+Location: Chandigarh, India
+
+/* SITE */
+Standards: HTML5, CSS3, ES6, React
+Components: React Router, FontAwesome, Google Fonts
+Software: Visual Studio Code, Git

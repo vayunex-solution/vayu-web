@@ -1,0 +1,413 @@
+.industry-network-section {
+  padding: 80px 0;
+  background: var(--bg-primary);
+  overflow: hidden;
+  position: relative;
+}
+
+.industry-network-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.industry-network-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.industry-network-header h2 {
+  font-size: 2.5rem;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.industry-network-header p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.industry-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.industry-filter-chip {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  color: var(--text-secondary);
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.industry-filter-chip:hover {
+  border-color: var(--text-primary);
+  color: var(--text-primary);
+}
+
+.industry-filter-chip.active {
+  background: linear-gradient(135deg, #00d4ff, #4facfe);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 10px rgba(0, 212, 255, 0.2);
+}
+
+/* Marquee Styles */
+.industry-marquee-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+  /* Add subtle gradient masks for smooth fade in/out at edges */
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.industry-marquee-track {
+  display: flex;
+  gap: 20px;
+  animation: scrollMarquee 40s linear infinite;
+  width: max-content;
+}
+
+.industry-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scrollMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* Scrolls half the track (the duplicated part) */
+}
+
+/* Grid Layout for Filtered View & Mobile */
+.industry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Company Card Styles */
+.company-text-card {
+  background: rgba(255, 255, 255, 0.03); /* Glassmorphism base */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-default);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+  position: relative;
+  transition: all 0.3s ease;
+  filter: grayscale(100%);
+  opacity: 0.8;
+  text-decoration: none;
+}
+
+/* Dark mode specific tweak for glassmorphism */
+[data-theme='dark'] .company-text-card {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme='light'] .company-text-card {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.company-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.company-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+.company-industry-tag {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.website-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 0.8rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  color: inherit;
+}
+
+.company-text-card:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: translateY(-5px);
+  /* Brand color glow applied via inline style in JS */
+  border-color: var(--hover-color);
+}
+
+.company-text-card:hover .company-name {
+  color: var(--hover-color);
+}
+
+.company-text-card:hover .website-icon {
+  opacity: 1;
+  color: var(--hover-color);
+}
+
+/* Trust Statement */
+.industry-trust-statement {
+  margin-top: 60px;
+  text-align: center;
+  padding: 30px;
+  background: var(--bg-surface);
+  border-radius: 12px;
+  border: 1px solid var(--border-default);
+}
+
+.industry-trust-statement p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Smaller version for Recuitment Page */
+.industry-network-section.compact-mode {
+    padding: 40px 0;
+}
+.industry-network-section.compact-mode .industry-network-header h2 {
+    font-size: 2rem;
+}
+.industry-network-section.compact-mode .industry-trust-statement {
+    margin-top: 30px;
+    padding: 20px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .industry-network-header h2 {
+    font-size: 2rem;
+  }
+  
+  .industry-marquee-container {
+    display: none; /* Hide marquee on mobile */
+  }
+
+  .mobile-grid-view {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .company-text-card {
+    width: 100%; /* Fill the grid cell */
+    height: 80px;
+    padding: 10px;
+    filter: none; /* Remove grayscale on mobile for better visibility */
+    opacity: 1;
+  }
+
+  .company-name {
+    font-size: 0.9rem;
+  }
+
+  .company-industry-tag {
+    font-size: 0.65rem;
+  }
+}
+
+/* ----------------------------------- */
+/* HYBRID LOGO SYSTEM & FEATURED BRAND */
+/* ----------------------------------- */
+
+.featured-brands-container {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.featured-brands-title {
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.featured-brands-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+/* Featured cards are slightly larger */
+.company-card.featured-card {
+  width: 240px;
+  height: 120px;
+}
+
+@media (max-width: 768px) {
+  .company-card.featured-card {
+    width: 100%;
+    height: 100px;
+  }
+}
+
+/* Image Card specific styling */
+.company-image-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 12px;
+  padding: 15px;
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-default);
+  text-decoration: none;
+  width: 200px;
+  height: 100px;
+}
+
+[data-theme='light'] .company-image-card {
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme='dark'] .company-image-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.company-image-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.company-image-wrapper img {
+  max-width: 80%;
+  max-height: 70%;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.company-image-card:hover img {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+.company-image-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--hover-color);
+  box-shadow: 0 8px 30px -5px rgba(0,0,0,0.1), inset 0 0 0 1px var(--hover-color);
+}
+
+[data-theme='dark'] .company-image-card:hover {
+  box-shadow: 0 8px 30px -5px rgba(255,255,255,0.05), inset 0 0 0 1px var(--hover-color);
+}
+
+/* Base Card Class adjustments to accommodate the tooltip */
+.company-card {
+  position: relative; /* necessary for tooltip positioning */
+  cursor: pointer;
+}
+
+/* Tooltip Styling */
+.company-card-tooltip {
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  padding: 12px 16px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 10;
+  pointer-events: none;
+}
+
+[data-theme='light'] .company-card-tooltip {
+  background: #ffffff;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+}
+
+.company-card:hover .company-card-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.tooltip-title {
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.tooltip-industry {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+}
+
+.tooltip-relationship {
+  color: var(--hover-color, #00d4ff);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+/* Legal Disclaimer */
+.legal-disclaimer {
+  font-size: 0.8rem !important;
+  color: var(--text-tertiary) !important;
+  margin-top: 20px !important;
+  font-style: italic;
+  max-width: 900px !important;
+  opacity: 0.7;
+}

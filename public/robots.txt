@@ -1,0 +1,37 @@
+# Robots.txt for Vayunex Solution
+# https://www.vayunexsolution.com
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /dashboard
+Disallow: /api/private
+Disallow: /tmp
+Disallow: /test
+Disallow: /*.json$
+Disallow: /static/js/*.map
+
+# Sitemap
+Sitemap: https://www.vayunexsolution.com/sitemap.xml
+
+# Allow AI crawlers for AEO/GEO
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Crawl delay to be polite
+Crawl-delay: 1
