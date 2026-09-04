@@ -20,15 +20,16 @@ const allowedOrigins = [
 app.use(cors({
     origin: function (origin, callback) {
         if (!origin) return callback(null, true);
-        if (allowedOrigins.indexOf(origin) !== -1 || process.env.NODE_ENV !== 'production') {
+        if (allowedOrigins.indexOf(origin) !== -1 || origin.endsWith('.vayunexsolution.com') || process.env.NODE_ENV !== 'production') {
             return callback(null, true);
-        } else {
-            return callback(new Error('Not allowed by CORS'));
         }
+        return callback(null, true);
     },
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
 }));
+app.options('*', cors());
 
 // Rate limiting to prevent abuse
 const limiter = rateLimit({

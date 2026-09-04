@@ -212,6 +212,12 @@ function extractJson(text) {
 }
 
 exports.generateBlog = async (req, res) => {
+    // Explicitly guarantee CORS header on this endpoint
+    if (req.headers.origin) {
+        res.header('Access-Control-Allow-Origin', req.headers.origin);
+        res.header('Access-Control-Allow-Credentials', 'true');
+    }
+
     try {
         const { topic } = req.body;
         if (!topic) {
@@ -221,15 +227,15 @@ exports.generateBlog = async (req, res) => {
         const nvidiaKey = process.env.NVIDIA_API_KEY;
         const geminiKey = process.env.GEMINI_API_KEY;
 
-        const prompt = `Write a comprehensive, professional, and SEO-optimized blog post for the topic/keywords: "${topic}".
+        const prompt = `Write a high-converting, professional, and SEO-optimized blog post (around 400-600 words) for the topic: "${topic}".
 Instructions:
-- Write the full blog post content in formatted HTML ready to be injected into a WYSIWYG editor. Use headings (<h2>, <h3>), paragraphs (<p>), bold text (<strong>), lists (<ul>, <li>), blockquotes, etc. Do not include raw CSS styling.
+- Write the blog post content in formatted HTML ready for a rich text editor. Use headings (<h2>, <h3>), paragraphs (<p>), bold text (<strong>), and bullet lists (<ul>, <li>).
 - Create a compelling, clickable Title.
 - Write a short, engaging Excerpt of 1-2 sentences.
-- Generate an AI Summary containing key takeaways in a clean bulleted list.
-- Generate an optimized SEO Title (maximum 60 characters) and SEO Description (maximum 160 characters).
-- Include a list of 3-4 FAQ items with 'question' and 'answer' properties.
-- Return the response strictly as a JSON object with the following schema:
+- Generate an AI Summary containing 3-4 key takeaways.
+- Generate an optimized SEO Title (under 60 chars) and SEO Description (under 160 chars).
+- Include 2-3 FAQ items with 'question' and 'answer'.
+- Return strictly a JSON object with schema:
 {
   "title": "...",
   "content": "...",
@@ -241,33 +247,47 @@ Instructions:
     { "question": "...", "answer": "..." }
   ]
 }
-Return ONLY this JSON object without any extra conversational text or markdown code fences.`;
+Output raw JSON only without markdown code fences or commentary.`;
 
         // 1. Prioritize NVIDIA NIM LLM API if key exists
         if (nvidiaKey) {
             const model = process.env.NVIDIA_MODEL || 'minimaxai/minimax-m3';
-            const response = await fetch('https://integrate.api.nvidia.com/v1/chat/completions', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${nvidiaKey}`
-                },
-                body: JSON.stringify({
-                    model: model,
-                    messages: [
-                        {
-                            role: 'system',
-                            content: 'You are an expert SEO blog copywriter for the Vayunex platform. You always respond with ONLY a valid, parseable JSON object matching the requested schema. No code fences, no extra text.'
-                        },
-                        {
-                            role: 'user',
-                            content: prompt
-                        }
-                    ],
-                    temperature: 0.3,
-                    max_tokens: 3500
-                })
-            });
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 48000); // 48s timeout before proxy 60s limit
+
+            let response;
+            try {
+                response = await fetch('https://integrate.api.nvidia.com/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${nvidiaKey}`
+                    },
+                    body: JSON.stringify({
+                        model: model,
+                        messages: [
+                            {
+                                role: 'system',
+                                content: 'You are an expert SEO blog copywriter for the Vayunex platform. You always respond with ONLY a valid, parseable JSON object matching the requested schema. No code fences, no extra text.'
+                            },
+                            {
+                                role: 'user',
+                                content: prompt
+                            }
+                        ],
+                        temperature: 0.3,
+                        max_tokens: 1600
+                    }),
+                    signal: controller.signal
+                });
+            } catch (fetchErr) {
+                clearTimeout(timeoutId);
+                if (fetchErr.name === 'AbortError') {
+                    return res.status(504).json({ error: 'NVIDIA AI request timed out. Please try again with a more specific topic.' });
+                }
+                throw fetchErr;
+            }
+            clearTimeout(timeoutId);
 
             const data = await response.json();
             if (!response.ok) {

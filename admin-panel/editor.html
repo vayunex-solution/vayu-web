@@ -341,7 +341,7 @@
 
             alertEl.style.display = 'none';
             btn.disabled = true;
-            btn.textContent = 'Generating...';
+            btn.textContent = 'Generating with AI (~15s)...';
 
             try {
                 const response = await fetch(`${CONFIG.API_BASE_URL}/blogs/generate`, {
