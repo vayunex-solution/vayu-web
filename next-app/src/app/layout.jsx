@@ -1,0 +1,123 @@
+import React from 'react';
+import Script from 'next/script';
+import ClientLayout from '../components/layout/ClientLayout';
+
+import '../styles/variables.css';
+import '../styles/main.css';
+import '../styles/InnerPage.css';
+import '../components/layout/Navbar/Navbar.css';
+import '../components/layout/Footer/Footer.css';
+import '../components/common/WhatsAppButton.css';
+import '../components/common/BackToTop.css';
+import '../components/common/ScrollProgress.css';
+import '../components/common/CookieConsent.css';
+import '../components/common/ProductsPopup.css';
+
+export const metadata = {
+  metadataBase: new URL('https://www.vayunexsolution.com'),
+  title: {
+    default: 'Vayunex Solution | Enterprise AI, Cloud & Software Engineering',
+    template: '%s | Vayunex Solution',
+  },
+  description: 'Leading IT company in Chandigarh & Mohali delivering cutting-edge web development, AI & data science, SaaS products, tech recruitment, and digital marketing.',
+  keywords: [
+    'Vayunex Solution',
+    'web development',
+    'AI solutions',
+    'enterprise software',
+    'SaaS products',
+    'Jwelnex ERP',
+    'PayNex billing',
+    'SocialNex',
+    'SchoolDost LMS',
+    'tech hiring Chandigarh',
+    'SEO growth',
+    'digital marketing Mohali'
+  ],
+  authors: [{ name: 'Vayunex Solution' }],
+  creator: 'Vayunex Solution',
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/logo192.png',
+  },
+  manifest: '/manifest.json',
+  openGraph: {
+    title: 'Vayunex Solution | Enterprise AI, Cloud & Software Engineering',
+    description: 'Transform your business with intelligent software systems, enterprise SaaS products, and custom AI architecture.',
+    url: 'https://www.vayunexsolution.com',
+    siteName: 'Vayunex Solution',
+    images: [
+      {
+        url: '/assets/og-default.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Vayunex Solution Enterprise Engineering',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Vayunex Solution | Enterprise AI, Cloud & Software Engineering',
+    description: 'Transform your business with intelligent software systems and enterprise SaaS products.',
+    images: ['/assets/og-default.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" data-theme="dark">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+          rel="stylesheet"
+        />
+        
+        {/* Google Analytics 4 */}
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-T7WDSBNNRH"
+        />
+        <Script
+          id="google-analytics-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-T7WDSBNNRH', {
+                page_path: window.location.pathname,
+              });
+            `,
+          }}
+        />
+
+        {/* Microsoft Clarity */}
+        <Script
+          id="clarity-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+              })(window, document, "clarity", "script", "clarity_id_placeholder");
+            `,
+          }}
+        />
+      </head>
+      <body>
+        <ClientLayout>{children}</ClientLayout>
+      </body>
+    </html>
+  );
+}

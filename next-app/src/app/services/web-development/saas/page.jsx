@@ -1,0 +1,79 @@
+'use client';
+
+import React from 'react';
+import ServiceSubpageTemplate from '../../../../components/common/ServiceSubpageTemplate';
+
+export default function SaasEngineeringPage() {
+  return (
+    <ServiceSubpageTemplate
+      serviceName="Multi-Tenant SaaS Engineering"
+      parentService="Web Development"
+      parentUrl="/services/web-development"
+      currentUrl="/services/web-development/saas"
+      accentColor="#6366F1"
+      badgeText="B2B SaaS Architecture"
+      headline="End-to-End Multi-Tenant SaaS Development for Global Ventures"
+      subheadline="Turn your software product vision into an enterprise-ready, multi-tenant cloud platform with automated provisioning, subscription tiers, and airtight data isolation."
+      capabilities={[
+        {
+          icon: '🏢',
+          title: 'Multi-Tenant Database Isolation',
+          desc: 'Architectures supporting schema-per-tenant, row-level security (RLS), or hybrid isolated databases ensuring zero cross-customer data leakage.'
+        },
+        {
+          icon: '💳',
+          title: 'Automated Recurring Billing & Tiering',
+          desc: 'Seamless integration with Stripe Billing, PayNex, and Razorpay for seat-based, usage-metered, and custom enterprise invoicing.'
+        },
+        {
+          icon: '👥',
+          title: 'Team Workspaces & Invitation Funnels',
+          desc: 'Built-in organization onboarding, role hierarchy, SSO authentication, and automated team member email invitations.'
+        },
+        {
+          icon: '📊',
+          title: 'Usage Telemetry & Admin Super-Console',
+          desc: 'Central operations console for monitoring MRR, active tenant compute metrics, feature flagging, and automated account suspension.'
+        }
+      ]}
+      techStack={[
+        'Next.js 14 App Router',
+        'PostgreSQL & Supabase',
+        'Prisma ORM',
+        'Stripe Billing / PayNex',
+        'Redis Caching',
+        'Inngest / BullMQ Queues',
+        'AWS ECS / Vercel',
+        'PostHog Analytics'
+      ]}
+      processSteps={[
+        {
+          step: 'Data Tenancy & Security Modeling',
+          desc: 'Decide multi-tenant isolation strategy (shared DB vs isolated schema) based on your target customer compliance needs.'
+        },
+        {
+          step: 'Core Domain Engine Development',
+          desc: 'Build the foundational features, business logic calculators, and API interfaces that power your product.'
+        },
+        {
+          step: 'Billing, Auth & Admin Console',
+          desc: 'Implement subscription paywalls, team management, webhook handlers, and executive operations dashboard.'
+        },
+        {
+          step: 'Pen-testing & Staging Launch',
+          desc: 'Perform SOC2 readiness review, tenant boundary pen-testing, and pilot customer onboarding.'
+        }
+      ]}
+      faqs={[
+        {
+          question: 'Do you help with self-hosted on-premise SaaS enterprise editions?',
+          answer: 'Yes. We can package your SaaS using Docker and Helm charts so enterprise clients can deploy it inside their own private AWS VPC or on-premise Kubernetes clusters.'
+        },
+        {
+          question: 'Can we build custom integrations for Zapier and make.com?',
+          answer: 'Yes. We architect developer API keys, rate-limited REST endpoints, and outgoing webhook engines ready for Zapier and Make integration.'
+        }
+      ]}
+    />
+  );
+}

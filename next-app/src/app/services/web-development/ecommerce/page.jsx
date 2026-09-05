@@ -1,0 +1,79 @@
+'use client';
+
+import React from 'react';
+import ServiceSubpageTemplate from '../../../../components/common/ServiceSubpageTemplate';
+
+export default function EcommercePage() {
+  return (
+    <ServiceSubpageTemplate
+      serviceName="E-Commerce & Digital Storefronts"
+      parentService="Web Development"
+      parentUrl="/services/web-development"
+      currentUrl="/services/web-development/ecommerce"
+      accentColor="#3B82F6"
+      badgeText="High-Conversion Retail"
+      headline="High-Velocity E-Commerce Platforms Engineered for Record GMV"
+      subheadline="From headless Shopify Plus builds to bespoke multi-vendor marketplaces, we engineer blazing-fast shopping experiences with 99.99% flash-sale resilience."
+      capabilities={[
+        {
+          icon: '🛍️',
+          title: 'Headless E-Commerce Frontends',
+          desc: 'Decoupled Next.js storefronts connected to Shopify Plus, Medusa, or custom backends delivering sub-500ms page loads and higher SEO conversion rates.'
+        },
+        {
+          icon: '💳',
+          title: 'Optimized Frictionless Checkout',
+          desc: 'One-click checkout flows with address autocomplete, native UPI payment sheets, Apple Pay, Google Pay, and localized tax calculations.'
+        },
+        {
+          icon: '📦',
+          title: 'ERP & Automated Warehouse Sync',
+          desc: 'Real-time inventory sync across Shopify, Amazon, and ERPs like SAP, Tally, or Unicommerce, preventing duplicate oversells.'
+        },
+        {
+          icon: '⚡',
+          title: 'Flash-Sale & Black Friday Resilience',
+          desc: 'Serverless auto-scaling architecture tested to withstand 100,000 requests per second during peak seasonal promotions.'
+        }
+      ]}
+      techStack={[
+        'Next.js Commerce',
+        'Shopify Plus API',
+        'Medusa.js',
+        'Stripe & Razorpay',
+        'Algolia Search',
+        'Sanity CMS',
+        'Kaviyo API',
+        'AWS CloudFront'
+      ]}
+      processSteps={[
+        {
+          step: 'Catalog & Conversion Audit',
+          desc: 'We analyze checkout abandonment bottlenecks, catalog taxonomy, and mobile conversion friction.'
+        },
+        {
+          step: 'Storefront & UX Development',
+          desc: 'High-speed component engineering with instant search indexing and dynamic product variant pickers.'
+        },
+        {
+          step: 'Payment Gateway & ERP Wiring',
+          desc: 'Secure integration with payment gateways, logistics carriers (Shiprocket, Delhivery), and analytics.'
+        },
+        {
+          step: 'Peak Load Testing & Go-Live',
+          desc: 'Comprehensive stress tests simulating peak traffic spikes to guarantee zero checkout crashes.'
+        }
+      ]}
+      faqs={[
+        {
+          question: 'Can you migrate our store from WooCommerce to Headless Shopify?',
+          answer: 'Yes. We migrate products, historical customer accounts, order history, and SEO URLs with 301 redirects to ensure zero loss in search rankings or revenue.'
+        },
+        {
+          question: 'Do you build B2B wholesale portals with tiered pricing?',
+          answer: 'Yes. We build custom B2B e-commerce platforms with wholesale customer tiers, minimum order quantities (MOQ), GST validation, and credit terms.'
+        }
+      ]}
+    />
+  );
+}

@@ -1,0 +1,21 @@
+{
+  "name": "vayunex-next",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build && node scripts/sync-build.js",
+    "start": "next start -p 3000"
+  },
+  "dependencies": {
+    "emailjs-com": "^3.2.0",
+    "framer-motion": "^11.11.17",
+    "gsap": "^3.15.0",
+    "lucide-react": "^0.454.0",
+    "next": "^14.2.24",
+    "postprocessing": "^6.39.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "three": "^0.185.1"
+  }
+}

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" width="100%" height="100%">
+  <defs>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EF4444" />
+      <stop offset="100%" stop-color="#B91C1C" />
+    </linearGradient>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#18181B" />
+      <stop offset="100%" stop-color="#09090B" />
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" rx="12" fill="url(#bgGrad)" />
+  <g transform="translate(45, 60)">
+    <rect x="-18" y="-18" width="16" height="16" rx="2" fill="url(#redGrad)" />
+    <rect x="2" y="-18" width="16" height="16" rx="2" fill="url(#redGrad)" opacity="0.8" />
+    <rect x="-18" y="2" width="16" height="16" rx="2" fill="url(#redGrad)" opacity="0.6" />
+    <rect x="2" y="2" width="16" height="16" rx="2" fill="none" stroke="url(#redGrad)" stroke-width="2" />
+  </g>
+  <text x="110" y="58" font-family="'Inter', sans-serif" font-size="30" font-weight="900" fill="url(#redGrad)" letter-spacing="2">NTC</text>
+  <text x="112" y="82" font-family="'Inter', sans-serif" font-size="14" font-weight="600" fill="#A1A1AA" letter-spacing="5">TILES LLP</text>
+</svg>

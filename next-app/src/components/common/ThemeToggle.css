@@ -1,0 +1,177 @@
+.theme-toggle-container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  flex-shrink: 0;
+  position: relative;
+  border-radius: 9999px;
+}
+
+.theme-toggle-track {
+  display: flex;
+  align-items: center;
+  width: 44px;
+  height: 24px;
+  background: var(--border-default);
+  border: 1px solid var(--border-strong);
+  border-radius: 9999px;
+  position: relative;
+  transition: background 0.25s ease, border-color 0.25s ease;
+  padding: 2px;
+  z-index: 2;
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.2);
+}
+
+/* Continuous Ambient Glow System */
+.theme-toggle-track::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.8), rgba(59, 130, 246, 0.8));
+  z-index: -1;
+  filter: blur(8px);
+  opacity: 0.6;
+  animation: theme-aura-pulse 2.5s infinite alternate ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes theme-aura-pulse {
+  0% {
+    opacity: 0.4;
+    filter: blur(6px);
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 0.9;
+    filter: blur(12px);
+    transform: scale(1.1);
+  }
+}
+
+[data-theme="dark"] .theme-toggle-track {
+  background: rgba(99, 102, 241, 0.25);
+  border-color: rgba(99, 102, 241, 0.4);
+}
+
+.theme-toggle-thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  position: absolute;
+  left: 3px;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.25s ease;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .theme-toggle-thumb {
+  transform: translateX(20px);
+}
+
+.theme-toggle:hover .theme-toggle-track,
+.theme-toggle:focus-visible .theme-toggle-track {
+  border-color: var(--accent-indigo);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+/* Discovery Tooltip */
+.theme-discovery-tooltip {
+  position: absolute;
+  top: 110%; /* Place below the toggle */
+  right: 50%;
+  transform: translateX(50%) translateY(10px);
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: var(--shadow-md);
+  pointer-events: none;
+  z-index: 100;
+}
+
+.theme-discovery-tooltip.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(50%) translateY(0);
+}
+
+.theme-tooltip-arrow {
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid var(--text-primary);
+}
+
+/* Pulse Animation for Discovery */
+.theme-pulse-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 44px;
+  height: 24px;
+  transform: translate(-50%, -50%);
+  border-radius: 9999px;
+  background: rgba(99, 102, 241, 0.3);
+  animation: theme-pulse 2s infinite ease-out;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.theme-pulse-glow.delay {
+  animation-delay: 1s;
+}
+
+@keyframes theme-pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .theme-discovery-tooltip {
+    /* If right aligned in mobile nav, adjust positioning */
+    right: 0;
+    transform: translateX(0) translateY(10px);
+  }
+  .theme-discovery-tooltip.is-visible {
+    transform: translateX(0) translateY(0);
+  }
+  .theme-tooltip-arrow {
+    left: auto;
+    right: 15px; /* point towards toggle */
+  }
+}

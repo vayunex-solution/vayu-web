@@ -1,0 +1,531 @@
+/* ============================================================
+   ABOUT PAGE - PREMIUM DARK AESTHETIC
+   ============================================================ */
+
+.about-page {
+  background: var(--bg-primary);
+  min-height: 100vh;
+  padding-top: 80px; /* offset nav */
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+/* 1. HERO SECTION */
+.about-hero {
+  position: relative;
+  padding: 8rem 0 6rem;
+  text-align: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-default);
+}
+
+.about-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.about-hero__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.15;
+}
+
+.about-hero__orb--1 {
+  width: 600px;
+  height: 600px;
+  background: #3B82F6;
+  top: -200px;
+  left: -200px;
+}
+
+.about-hero__orb--2 {
+  width: 500px;
+  height: 500px;
+  background: #8B5CF6;
+  bottom: -100px;
+  right: -100px;
+}
+
+.about-hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about-hero .hero-heading {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  margin-bottom: 1.5rem;
+}
+
+.about-hero .hero-subheading {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* 2. WHO WE ARE */
+.who-we-are {
+  padding: 6rem 0;
+  background: var(--bg-secondary);
+}
+
+.who-we-are__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.who-we-are__text .section-heading {
+  margin-bottom: 1.5rem;
+}
+
+.who-we-are__visual {
+  display: flex;
+  justify-content: center;
+}
+
+.wwa-card {
+  width: 100%;
+  max-width: 400px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+
+.wwa-header {
+  display: flex;
+  gap: 0.4rem;
+  padding: 1rem;
+  background: color-mix(in srgb, var(--bg-surface) 50%, #000);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.wwa-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.wwa-body {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.wwa-code-line {
+  height: 8px;
+  background: var(--border-strong);
+  border-radius: 4px;
+  width: 100%;
+  opacity: 0.5;
+}
+
+.wwa-code-line.short { width: 60%; }
+.wwa-code-line.indent { width: 80%; margin-left: 20px; background: var(--accent-indigo); opacity: 0.8;}
+
+
+/* 3. LEADERSHIP */
+.leadership-section {
+  padding: 8rem 0;
+  background: var(--bg-primary);
+}
+
+.leadership__header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 4rem;
+}
+
+.leadership__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+
+.leader-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.leader-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-indigo);
+}
+
+.leader-card__header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 2rem;
+}
+
+.leader-card__avatar-wrap {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  padding: 3px;
+  background: linear-gradient(135deg, var(--accent-indigo), var(--accent-cyan));
+}
+
+.leader-card__avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--bg-surface);
+}
+
+.leader-card__name {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 0.25rem;
+}
+
+.leader-card__title {
+  font-size: 0.9rem;
+  color: var(--accent-indigo);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.leader-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.leader-card__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-tertiary);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.leader-card__focus-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.leader-card__focus-list li {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.leader-card__focus-list svg {
+  color: var(--accent-cyan);
+}
+
+.leader-card__philosophy p {
+  font-size: 1rem;
+  color: var(--text-primary);
+  line-height: 1.6;
+  font-style: italic;
+  background: color-mix(in srgb, var(--bg-surface) 60%, transparent);
+  padding: 1.25rem;
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--accent-indigo);
+}
+
+
+/* 4. OUR JOURNEY */
+.journey-section {
+  padding: 6rem 0 8rem;
+  background: var(--bg-secondary);
+}
+
+.journey__header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.journey__timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.journey-node {
+  display: flex;
+  gap: 2rem;
+}
+
+.journey-node__marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.journey-node__dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--bg-surface);
+  border: 4px solid var(--accent-indigo);
+  z-index: 2;
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+}
+
+.journey-node__line {
+  flex: 1;
+  width: 2px;
+  background: var(--border-strong);
+  margin-top: 8px;
+  margin-bottom: 8px;
+  min-height: 60px;
+}
+
+.journey-node__content {
+  padding-bottom: 3rem;
+  flex: 1;
+}
+
+.journey-node:last-child .journey-node__content {
+  padding-bottom: 0;
+}
+
+.journey-node__year {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.journey-node__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.journey-node__desc {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+
+/* 5. ECOSYSTEM STRATEGIC OVERVIEW */
+.eco-strategic-section {
+  padding: 8rem 0;
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border-default);
+}
+
+.eco-strategic__header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 4rem;
+}
+
+.eco-strategic__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.eco-stat-card {
+  padding: 2.5rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.eco-stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  border-color: var(--border-strong);
+}
+
+.eco-stat-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1.5rem;
+  background: color-mix(in srgb, var(--accent-indigo) 10%, transparent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-indigo);
+}
+
+.eco-stat-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.eco-stat-card p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+
+/* 6. WHY WE BUILD */
+.why-we-build {
+  padding: 6rem 0;
+  background: var(--bg-secondary);
+}
+
+.why-build__box {
+  background: linear-gradient(135deg, var(--bg-surface), #0f1123);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-xl);
+  padding: 5rem 4rem;
+  text-align: center;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+}
+
+.why-build__content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.why-build__content .section-desc {
+  font-size: 1.15rem;
+  margin-bottom: 1.5rem;
+}
+
+
+/* 7. ENGINEERING PRINCIPLES */
+.principles-section {
+  padding: 8rem 0;
+  background: var(--bg-primary);
+}
+
+.principles__header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.principles__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.principle-card {
+  padding: 2.5rem;
+  background: var(--bg-surface);
+  border-left: 4px solid var(--accent-indigo);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  transition: transform 0.3s ease;
+}
+
+.principle-card:hover {
+  transform: translateX(5px);
+  background: var(--bg-surface-hover);
+}
+
+.principle-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.principle-card p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+
+/* 8. MISSION & VISION */
+.mission-vision-section {
+  padding: 6rem 0 8rem;
+  background: var(--bg-primary);
+}
+
+.mv-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.mv-card {
+  padding: 4rem 3rem;
+  background: color-mix(in srgb, var(--accent-indigo) 5%, var(--bg-surface));
+  border: 1px solid color-mix(in srgb, var(--accent-indigo) 15%, transparent);
+  border-radius: var(--radius-xl);
+  text-align: center;
+}
+
+.mv-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-cyan);
+  margin-bottom: 1rem;
+}
+
+.mv-card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.mv-card p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1024px) {
+  .who-we-are__grid,
+  .leadership__grid,
+  .mv-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .eco-strategic__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .why-build__box {
+    padding: 3rem 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .eco-strategic__grid,
+  .principles__grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .journey-node {
+    gap: 1.25rem;
+  }
+}

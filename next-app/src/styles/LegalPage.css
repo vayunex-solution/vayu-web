@@ -1,0 +1,284 @@
+/* ==========================================
+   LEGAL CENTER SHARED UI
+   ========================================== */
+
+   .legal-page {
+    position: relative;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    overflow: hidden;
+  }
+  
+  /* ========== PROGRESS BAR ========== */
+  .legal-progress-bar {
+    position: fixed;
+    top: 0; /* Or below navbar if navbar is sticky. Usually 70px */
+    left: 0;
+    height: 4px;
+    background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+    z-index: 1000;
+    transition: width 0.1s ease;
+  }
+  
+  /* ========== HERO SECTION ========== */
+  .legal-hero {
+    position: relative;
+    padding: 160px 0 80px;
+    overflow: hidden;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .legal-hero__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background: radial-gradient(ellipse at top, rgba(0, 212, 255, 0.05) 0%, transparent 70%);
+  }
+  
+  .legal-hero__content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  
+  .legal-eyebrow {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(0, 212, 255, 0.1);
+    color: var(--accent-blue);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  
+  .legal-hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .legal-hero p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+  }
+  
+  /* ========== LAYOUT ========== */
+  .legal-layout {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 24px;
+    gap: 60px;
+  }
+  
+  /* ========== SIDEBAR (TOC) ========== */
+  .legal-sidebar {
+    width: 300px;
+    flex-shrink: 0;
+  }
+  
+  .legal-toc {
+    position: sticky;
+    top: 100px; /* Adjust based on navbar height */
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 24px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  
+  .legal-toc h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .legal-toc ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .legal-toc a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    display: block;
+    line-height: 1.4;
+  }
+  
+  .legal-toc a:hover {
+    color: var(--accent-blue);
+  }
+  
+  .legal-toc a.active {
+    color: var(--accent-blue);
+    font-weight: 600;
+  }
+  
+  /* ========== MAIN CONTENT (GLASS CONTAINER) ========== */
+  .legal-content-wrapper {
+    flex-grow: 1;
+    min-width: 0; /* Prevents flex blowout */
+  }
+  
+  .legal-glass-container {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 40px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  
+  [data-theme="light"] .legal-glass-container {
+    background: rgba(0, 0, 0, 0.01);
+  }
+  
+  /* Premium Typography Scale */
+  .legal-typography {
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--text-primary);
+  }
+  
+  .legal-typography p.last-updated {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 32px;
+  }
+  
+  .legal-typography p.legal-notice {
+    background: rgba(0, 212, 255, 0.05);
+    border-left: 4px solid var(--accent-blue);
+    padding: 16px 20px;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 40px;
+  }
+  
+  .legal-typography h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 48px 0 24px;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 12px;
+  }
+  
+  .legal-typography h2:first-child {
+    margin-top: 0;
+  }
+  
+  .legal-typography h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 32px 0 16px;
+    color: var(--text-primary);
+  }
+  
+  .legal-typography p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+  }
+  
+  .legal-typography ul {
+    margin-bottom: 24px;
+    padding-left: 24px;
+  }
+  
+  .legal-typography li {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+  }
+  
+  .legal-typography strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+  
+  .legal-contact-box {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 24px;
+    margin: 24px 0;
+  }
+  
+  .legal-contact-box p {
+    margin-bottom: 8px;
+    font-size: 1rem;
+  }
+  
+  .legal-contact-box p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .legal-footer {
+    margin-top: 60px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+  }
+  
+  /* ========== MOBILE RESPONSIVENESS ========== */
+  @media (max-width: 992px) {
+    .legal-layout {
+      flex-direction: column;
+      padding: 40px 24px;
+      gap: 40px;
+    }
+  
+    .legal-sidebar {
+      width: 100%;
+    }
+  
+    .legal-toc {
+      position: relative;
+      top: 0;
+      /* Optional: Make TOC horizontally scrollable or a dropdown on mobile */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .legal-hero {
+      padding: 120px 0 60px;
+    }
+  
+    .legal-hero h1 {
+      font-size: 2.2rem;
+    }
+  
+    .legal-glass-container {
+      padding: 24px;
+    }
+  
+    .legal-typography h2 {
+      font-size: 1.5rem;
+    }
+  }

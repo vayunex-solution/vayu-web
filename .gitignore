@@ -36,3 +36,8 @@ backend/dist/
 /vayunex-next-app/
 .agent/
 
+# Next.js build artifacts
+next-app/node_modules/
+next-app/.next/
+next-app/out/
+

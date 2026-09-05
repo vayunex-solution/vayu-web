@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" width="100%" height="100%">
+  <defs>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E1B4B" />
+      <stop offset="100%" stop-color="#111030" />
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" rx="12" fill="url(#bgGrad)" />
+  <g transform="translate(45, 60)">
+    <path d="M -20,15 L -20,-5 L 0,-20 L 20,-5 L 20,15 Z" fill="none" stroke="url(#orangeGrad)" stroke-width="2" />
+    <rect x="-8" y="0" width="16" height="15" fill="none" stroke="url(#orangeGrad)" stroke-width="1.5" />
+    <line x1="-25" y1="-5" x2="25" y2="-5" stroke="url(#orangeGrad)" stroke-width="2" />
+  </g>
+  <text x="110" y="58" font-family="'Montserrat', sans-serif" font-size="30" font-weight="800" fill="url(#orangeGrad)" letter-spacing="2">DH</text>
+  <text x="112" y="82" font-family="'Inter', sans-serif" font-size="14" font-weight="600" fill="#93C5FD" letter-spacing="6">REALTORS</text>
+</svg>

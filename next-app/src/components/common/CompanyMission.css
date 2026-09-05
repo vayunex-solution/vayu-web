@@ -1,0 +1,219 @@
+/* ============================================================
+   COMPANY MISSION SECTION
+   ============================================================ */
+
+.company-mission {
+  padding: 8rem 0;
+  background: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .company-mission {
+  background: #07070e;
+}
+
+.company-mission::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-default), transparent);
+}
+
+/* ---- Layout ---- */
+.mission-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .mission-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+/* ---- Text Side ---- */
+.mission-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.mission-heading {
+  margin-bottom: 1.5rem;
+}
+
+.mission-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.mission-body p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.mission-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ---- Buttons ---- */
+.mission-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--gradient-brand);
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.35);
+}
+
+.mission-btn-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(99, 102, 241, 0.45);
+}
+
+.mission-btn-primary svg {
+  transition: transform 0.2s ease;
+}
+.mission-btn-primary:hover svg {
+  transform: translateX(3px);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.btn-ghost:hover {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .mission-btn-primary {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #6366F1 0%, #3B82F6 100%) !important;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4) !important;
+}
+
+[data-theme="light"] .section-eyebrow {
+  color: #6366F1 !important;
+  background: rgba(99, 102, 241, 0.1) !important;
+  border: 1px solid rgba(99, 102, 241, 0.2) !important;
+}
+
+
+/* ---- Stats Card ---- */
+.mission-stats {
+  position: relative;
+}
+
+.stats-card {
+  position: relative;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .stats-card {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.stats-card__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.stat-value {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.stat-label {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-tertiary);
+  line-height: 1.4;
+}
+
+/* Decorations */
+.stats-card__decoration {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.deco-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid var(--border-subtle);
+}
+
+.deco-ring--1 {
+  width: 180px;
+  height: 180px;
+  bottom: -60px;
+  right: -60px;
+}
+
+.deco-ring--2 {
+  width: 280px;
+  height: 280px;
+  bottom: -120px;
+  right: -120px;
+}
+
+.deco-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-indigo);
+  bottom: 60px;
+  right: 40px;
+  opacity: 0.6;
+}
