@@ -5,15 +5,19 @@ import { trackThemeToggle } from '../../utils/analytics';
 import './ThemeToggle.css';
 
 const ThemeToggle = () => {
-  const [isDark, setIsDark] = useState(true);
-  const [showTooltip, setShowTooltip] = useState(false);
+  const [isDark, setIsDark] = useState(false);
+  const [showPrompt, setShowPrompt] = useState(false);
   const toggleRef = useRef(null);
 
+  // Initial theme check
   useEffect(() => {
     try {
       const saved = localStorage.getItem('vayunex-theme');
       if (saved) {
         setIsDark(saved === 'dark');
+      } else {
+        setIsDark(false);
+        document.documentElement.setAttribute('data-theme', 'light');
       }
     } catch (e) {}
   }, []);
@@ -32,31 +36,48 @@ const ThemeToggle = () => {
     } catch (e) {}
   }, [isDark]);
 
-  // Tooltip Discovery Logic
+  // "Try Dark Mode" Discovery Prompt for new visitors
   useEffect(() => {
     try {
-      const hasSeenTooltip = localStorage.getItem('vayunex-theme-discovery');
-      if (!hasSeenTooltip && !isDark) {
-        const showTimer = setTimeout(() => {
-          setShowTooltip(true);
-          localStorage.setItem('vayunex-theme-discovery', 'true');
-          
-          const dismissTimer = setTimeout(() => {
-            setShowTooltip(false);
-          }, 8000);
-          return () => clearTimeout(dismissTimer);
-        }, 1500);
+      const isDismissed = localStorage.getItem('vayunex-theme-discovery');
+      if (!isDismissed && !isDark) {
+        const timer = setTimeout(() => {
+          setShowPrompt(true);
+        }, 900);
 
-        return () => clearTimeout(showTimer);
+        const autoDismissTimer = setTimeout(() => {
+          setShowPrompt(false);
+        }, 16000);
+
+        return () => {
+          clearTimeout(timer);
+          clearTimeout(autoDismissTimer);
+        };
+      } else if (isDark) {
+        setShowPrompt(false);
       }
     } catch (e) {}
   }, [isDark]);
 
+  const dismissPrompt = () => {
+    setShowPrompt(false);
+    try {
+      localStorage.setItem('vayunex-theme-discovery', 'dismissed');
+    } catch (e) {}
+  };
+
   const handleToggle = () => {
     const nextState = !isDark;
     setIsDark(nextState);
-    setShowTooltip(false);
+    dismissPrompt();
     trackThemeToggle(nextState ? 'dark' : 'light');
+  };
+
+  const handleActivateDark = (e) => {
+    e.stopPropagation();
+    setIsDark(true);
+    dismissPrompt();
+    trackThemeToggle('dark', true);
   };
 
   return (
@@ -71,8 +92,26 @@ const ThemeToggle = () => {
         <span className="theme-toggle-track">
           <span className="theme-toggle-aura" aria-hidden="true" />
           <span className="theme-toggle-icons">
-            <span className="track-sun-icon" aria-hidden="true">☀️</span>
-            <span className="track-moon-icon" aria-hidden="true">🌙</span>
+            {/* 2D Sun icon in track */}
+            <span className="track-icon track-sun-icon" aria-hidden="true">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="4" fill="currentColor" />
+                <line x1="12" y1="1" x2="12" y2="3" />
+                <line x1="12" y1="21" x2="12" y2="23" />
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                <line x1="1" y1="12" x2="3" y2="12" />
+                <line x1="21" y1="12" x2="23" y2="12" />
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+              </svg>
+            </span>
+            {/* 2D Moon icon in track */}
+            <span className="track-icon track-moon-icon" aria-hidden="true">
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              </svg>
+            </span>
           </span>
           <span className="theme-toggle-thumb">
             {isDark ? (
@@ -96,17 +135,31 @@ const ThemeToggle = () => {
         </span>
       </button>
 
-      {showTooltip && (
-        <div className="theme-tooltip" role="tooltip">
-          <div className="theme-tooltip__arrow" />
-          <span className="theme-tooltip__text">Switch between Dark & Light mode! ⚡</span>
+      {/* "Try Dark Mode" discovery prompt for new visitors */}
+      {showPrompt && !isDark && (
+        <div className="theme-discovery-tooltip" role="tooltip">
+          <div className="theme-tooltip-arrow" />
           <button
             type="button"
-            className="theme-tooltip__close"
-            onClick={() => setShowTooltip(false)}
-            aria-label="Close tooltip"
+            className="theme-tooltip-btn"
+            onClick={handleActivateDark}
+            title="Switch to Dark Mode"
           >
-            ×
+            <span className="theme-tooltip-pulse" aria-hidden="true" />
+            <svg className="theme-tooltip-icon" width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+            <span className="theme-tooltip-text">Try Dark Mode</span>
+            <span className="theme-tooltip-cta">Switch</span>
+          </button>
+          <button
+            type="button"
+            className="theme-tooltip-close"
+            onClick={dismissPrompt}
+            aria-label="Dismiss theme hint"
+            title="Dismiss"
+          >
+            &times;
           </button>
         </div>
       )}

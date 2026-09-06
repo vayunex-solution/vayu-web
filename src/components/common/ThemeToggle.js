@@ -29,94 +29,145 @@ const ThemeToggle = () => {
     // Only show if user is in light mode, as Dark Mode is the default/preferred state we want them to explore
     // Or we can just show it regardless. The instruction says "Explore Dark Mode".
     // We'll show it if they are not in dark mode.
-    const hasSeenTooltip = localStorage.getItem('vayunex-theme-discovery');
-    
-    if (!hasSeenTooltip && !isDark) {
-      // Small delay so it doesn't pop instantly on page load
-      const showTimer = setTimeout(() => {
-        setShowTooltip(true);
-        localStorage.setItem('vayunex-theme-discovery', 'true');
-        
-        // Auto-dismiss after 8 seconds
-        const dismissTimer = setTimeout(() => {
-          setShowTooltip(false);
-        }, 8000);
-        
-        return () => clearTimeout(dismissTimer);
-      }, 2000);
-      
-      return () => clearTimeout(showTimer);
-    }
+    try {
+      const root = document.documentElement;
+      if (isDark) {
+        root.setAttribute('data-theme', 'dark');
+        localStorage.setItem('vayunex-theme', 'dark');
+      } else {
+        root.setAttribute('data-theme', 'light');
+        localStorage.setItem('vayunex-theme', 'light');
+      }
+    } catch (e) {}
   }, [isDark]);
 
-  // Dismiss on outside click or scroll
+  // "Try Dark Mode" Discovery Prompt for new visitors
   useEffect(() => {
-    const handleInteraction = (e) => {
-      if (showTooltip) {
-        setShowTooltip(false);
-      }
-    };
+    try {
+      const isDismissed = localStorage.getItem('vayunex-theme-discovery');
+      if (!isDismissed && !isDark) {
+        const timer = setTimeout(() => {
+          setShowPrompt(true);
+        }, 900);
 
-    if (showTooltip) {
-      document.addEventListener('mousedown', handleInteraction);
-      document.addEventListener('scroll', handleInteraction, { passive: true });
-    }
-    return () => {
-      document.removeEventListener('mousedown', handleInteraction);
-      document.removeEventListener('scroll', handleInteraction);
-    };
-  }, [showTooltip]);
+        const autoDismissTimer = setTimeout(() => {
+          setShowPrompt(false);
+        }, 16000);
+
+        return () => {
+          clearTimeout(timer);
+          clearTimeout(autoDismissTimer);
+        };
+      } else if (isDark) {
+        setShowPrompt(false);
+      }
+    } catch (e) {}
+  }, [isDark]);
+
+  const dismissPrompt = () => {
+    setShowPrompt(false);
+    try {
+      localStorage.setItem('vayunex-theme-discovery', 'dismissed');
+    } catch (e) {}
+  };
 
   const handleToggle = () => {
-    trackThemeToggle(!isDark ? 'dark' : 'light', showTooltip);
-    setShowTooltip(false); // Dismiss on interaction
-    setIsDark((prev) => !prev);
+    const nextState = !isDark;
+    setIsDark(nextState);
+    dismissPrompt();
+    trackThemeToggle(nextState ? 'dark' : 'light');
+  };
+
+  const handleActivateDark = (e) => {
+    e.stopPropagation();
+    setIsDark(true);
+    dismissPrompt();
+    trackThemeToggle('dark', true);
   };
 
   return (
-    <div className="theme-toggle-container" ref={toggleRef}>
-      {/* Discovery Tooltip */}
-      <div className={`theme-discovery-tooltip ${showTooltip ? 'is-visible' : ''}`} aria-hidden={!showTooltip}>
-        ✨ Explore Dark Mode
-        <span className="theme-tooltip-arrow"></span>
-      </div>
-
+    <div className="theme-toggle-wrapper" ref={toggleRef}>
       <button
-        className={`theme-toggle ${showTooltip ? 'has-pulse' : ''}`}
+        type="button"
+        className={`theme-toggle ${isDark ? 'theme-toggle--dark' : 'theme-toggle--light'}`}
         onClick={handleToggle}
-        aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-        title={isDark ? 'Light Mode' : 'Dark Mode'}
+        aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
+        title={`Switch to ${isDark ? 'light' : 'dark'} mode`}
       >
-        {/* Pulse glow elements */}
-        {showTooltip && (
-          <>
-            <span className="theme-pulse-glow"></span>
-            <span className="theme-pulse-glow delay"></span>
-          </>
-        )}
-        
         <span className="theme-toggle-track">
+          <span className="theme-toggle-aura" aria-hidden="true" />
+          <span className="theme-toggle-icons">
+            {/* 2D Sun icon in track */}
+            <span className="track-icon track-sun-icon" aria-hidden="true">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="4" fill="currentColor" />
+                <line x1="12" y1="1" x2="12" y2="3" />
+                <line x1="12" y1="21" x2="12" y2="23" />
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                <line x1="1" y1="12" x2="3" y2="12" />
+                <line x1="21" y1="12" x2="23" y2="12" />
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+              </svg>
+            </span>
+            {/* 2D Moon icon in track */}
+            <span className="track-icon track-moon-icon" aria-hidden="true">
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              </svg>
+            </span>
+          </span>
           <span className="theme-toggle-thumb">
             {isDark ? (
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+              <svg className="theme-icon moon-icon" width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
               </svg>
             ) : (
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="5"/>
-                <line x1="12" y1="1" x2="12" y2="3"/>
-                <line x1="12" y1="21" x2="12" y2="23"/>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-                <line x1="1" y1="12" x2="3" y2="12"/>
-                <line x1="21" y1="12" x2="23" y2="12"/>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+              <svg className="theme-icon sun-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="4" fill="currentColor" />
+                <line x1="12" y1="1" x2="12" y2="3" />
+                <line x1="12" y1="21" x2="12" y2="23" />
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                <line x1="1" y1="12" x2="3" y2="12" />
+                <line x1="21" y1="12" x2="23" y2="12" />
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
               </svg>
             )}
           </span>
         </span>
       </button>
+
+      {/* "Try Dark Mode" discovery prompt for new visitors */}
+      {showPrompt && !isDark && (
+        <div className="theme-discovery-tooltip" role="tooltip">
+          <div className="theme-tooltip-arrow" />
+          <button
+            type="button"
+            className="theme-tooltip-btn"
+            onClick={handleActivateDark}
+            title="Switch to Dark Mode"
+          >
+            <span className="theme-tooltip-pulse" aria-hidden="true" />
+            <svg className="theme-tooltip-icon" width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+            <span className="theme-tooltip-text">Try Dark Mode</span>
+            <span className="theme-tooltip-cta">Switch</span>
+          </button>
+          <button
+            type="button"
+            className="theme-tooltip-close"
+            onClick={dismissPrompt}
+            aria-label="Dismiss theme hint"
+            title="Dismiss"
+          >
+            &times;
+          </button>
+        </div>
+      )}
     </div>
   );
 };

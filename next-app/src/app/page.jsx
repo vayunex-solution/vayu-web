@@ -101,7 +101,7 @@ export default function HomePage() {
   useEffect(() => {
     const saved = localStorage.getItem('vayunex-theme');
     if (!saved) {
-      document.documentElement.setAttribute('data-theme', 'dark');
+      document.documentElement.setAttribute('data-theme', 'light');
     }
   }, []);
 
