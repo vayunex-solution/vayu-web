@@ -13,13 +13,97 @@
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://www.vayunexsolution.com/products</loc>
+        <loc>https://www.vayunexsolution.com/ai-knowledge-base</loc>
         <lastmod>2026-06-13T19:09:38.472Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://www.vayunexsolution.com/blog</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/blog/category/ai-saas</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/blog/category/enterprise-tech</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/blog/category/seo-growth</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/blog/category/web-development</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/blog/unlocking-business-efficiency-the-benefits-of-ai-saas</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
         <loc>https://www.vayunexsolution.com/careers</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/city/bangalore</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/city/chandigarh</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/city/delhi-ncr</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/city/gurugram</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/city/mohali</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/city/mumbai</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/city/noida</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/city/panchkula</loc>
         <lastmod>2026-06-13T19:09:38.472Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -31,85 +115,271 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://www.vayunexsolution.com/industries/automobile</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/industries/education</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/industries/fintech</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/industries/healthcare</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/industries/jewellery</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/industries/real-estate</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/industries/retail</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/industries/technology</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://www.vayunexsolution.com/privacy-policy</loc>
         <lastmod>2026-06-13T19:09:38.472Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://www.vayunexsolution.com/terms</loc>
-        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.vayunexsolution.com/ai-knowledge-base</loc>
-        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.vayunexsolution.com/blog</loc>
+        <loc>https://www.vayunexsolution.com/products</loc>
         <lastmod>2026-06-13T19:09:38.472Z</lastmod>
         <changefreq>daily</changefreq>
-        <priority>0.8</priority>
+        <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://www.vayunexsolution.com/services/web-development</loc>
+        <loc>https://www.vayunexsolution.com/products/inventorynex</loc>
         <lastmod>2026-06-13T19:09:38.472Z</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.vayunexsolution.com/services/ai-data-science</loc>
-        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.vayunexsolution.com/services/recruitment</loc>
-        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.vayunexsolution.com/services/seo-growth</loc>
-        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.vayunexsolution.com/services/training</loc>
-        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.vayunexsolution.com/services/digital-marketing</loc>
-        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
+        <priority>0.9</priority>
     </url>
     <url>
         <loc>https://www.vayunexsolution.com/products/jwelnex</loc>
         <lastmod>2026-06-13T19:09:38.472Z</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/products/jwelnex/features</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/products/jwelnex/pricing</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
     </url>
     <url>
         <loc>https://www.vayunexsolution.com/products/paynex</loc>
         <lastmod>2026-06-13T19:09:38.472Z</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/products/paynex/features</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/products/paynex/pricing</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/products/schooldost</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/products/schooldost/demo</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/products/schooldost/features</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
     </url>
     <url>
         <loc>https://www.vayunexsolution.com/products/socialnex</loc>
         <lastmod>2026-06-13T19:09:38.472Z</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
+        <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://www.vayunexsolution.com/products/schooldost</loc>
+        <loc>https://www.vayunexsolution.com/products/socialnex/features</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/products/socialnex/pricing</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/services/ai-data-science</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/services/ai-data-science/computer-vision</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/services/ai-data-science/machine-learning</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/services/ai-data-science/nlp-llm</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/services/digital-marketing</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/services/digital-marketing/performance-marketing</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/services/digital-marketing/social-media</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/services/recruitment</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/services/recruitment/executive-search</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/services/recruitment/tech-hiring</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/services/seo-growth</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/services/seo-growth/aeo-geo</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/services/seo-growth/programmatic-seo</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/services/seo-growth/technical-seo</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/services/training</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/services/training/corporate-training</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/services/training/internship-program</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/services/web-development</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/services/web-development/custom-web-apps</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/services/web-development/ecommerce</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/services/web-development/saas</loc>
+        <lastmod>2026-06-13T19:09:38.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.vayunexsolution.com/terms</loc>
         <lastmod>2026-06-13T19:09:38.472Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>

@@ -118,3 +118,10 @@ button {
 .stagger-4 { transition-delay: 0.2s; }
 .stagger-5 { transition-delay: 0.25s; }
 .stagger-6 { transition-delay: 0.3s; }
+
+.App {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+  position: relative;
+}
