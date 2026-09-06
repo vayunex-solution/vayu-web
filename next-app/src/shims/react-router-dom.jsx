@@ -15,12 +15,12 @@ export const Link = React.forwardRef(function Link({ to, href, children, ...prop
 
 export const useLocation = () => {
   const pathname = usePathname() || '/';
-  return {
+  return React.useMemo(() => ({
     pathname,
     search: typeof window !== 'undefined' ? window.location.search : '',
     hash: typeof window !== 'undefined' ? window.location.hash : '',
     state: null,
-  };
+  }), [pathname]);
 };
 
 export const useNavigate = () => {

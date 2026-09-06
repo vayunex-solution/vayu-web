@@ -6,6 +6,7 @@ import FAQAccordion from '../../components/common/FAQAccordion';
 import ServiceTrustLayer from '../../components/common/ServiceTrustLayer';
 import Breadcrumbs from '../../components/common/Breadcrumbs';
 import QuickAnswers from '../../components/common/QuickAnswers';
+import SmartIcon from '../../components/common/SmartIcon';
 import './ServicesPage.css';
 
 const TrainingPage = () => {
@@ -208,7 +209,7 @@ const TrainingPage = () => {
                     <div className="tech-grid">
                         {problemsSolved.map((problem, index) => (
                             <div key={index} className="tech-item" style={{ '--tech-color': '#ff6b6b', flexBasis: '250px', flexGrow: 1, alignItems: 'flex-start', textAlign: 'left' }}>
-                                <i className={problem.icon} style={{ marginBottom: '10px' }}></i>
+                                <SmartIcon icon={problem.icon} size={26} color="#ff6b6b" style={{ marginBottom: '10px' }} />
                                 <span style={{ fontSize: '1.1rem', color: 'var(--text-primary)', marginBottom: '5px' }}><strong>{problem.title}</strong></span>
                                 <small style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: '1.5' }}>{problem.desc}</small>
                             </div>
@@ -232,7 +233,7 @@ const TrainingPage = () => {
                                 style={{ '--card-color': outcome.color, '--delay': `${index * 0.1}s` }}
                             >
                                 <div className="type-icon">
-                                    <i className={outcome.icon}></i>
+                                    <SmartIcon icon={outcome.icon} size={28} color={outcome.color} />
                                 </div>
                                 <h3>{outcome.title}</h3>
                                 <p>{outcome.desc}</p>
@@ -256,7 +257,7 @@ const TrainingPage = () => {
                                 className="tech-item"
                                 style={{ '--tech-color': cap.color, minWidth: '180px' }}
                             >
-                                <i className={cap.icon}></i>
+                                <SmartIcon icon={cap.icon} size={24} color={cap.color} style={{ marginBottom: '8px' }} />
                                 <span>{cap.name}</span>
                             </div>
                         ))}
@@ -279,7 +280,7 @@ const TrainingPage = () => {
                                 style={{ '--card-color': course.color, '--delay': `${index * 0.1}s` }}
                             >
                                 <div className="type-icon">
-                                    <i className={course.icon}></i>
+                                    <SmartIcon icon={course.icon} size={28} color={course.color} />
                                 </div>
                                 <h3>{course.title}</h3>
                                 <p style={{ fontSize: '0.85rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>

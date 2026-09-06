@@ -6,6 +6,7 @@ import FAQAccordion from '../../components/common/FAQAccordion';
 import ServiceTrustLayer from '../../components/common/ServiceTrustLayer';
 import Breadcrumbs from '../../components/common/Breadcrumbs';
 import QuickAnswers from '../../components/common/QuickAnswers';
+import SmartIcon from '../../components/common/SmartIcon';
 import './ServicesPage.css';
 
 const AIDataPage = () => {
@@ -228,16 +229,16 @@ const AIDataPage = () => {
                 </div>
                 <div className={`service-hero-content ${heroVisible ? 'visible' : ''}`}>
                     <span className="service-badge">
-                        <i className="fas fa-robot"></i> AI & Automation
+                        <SmartIcon icon="fas fa-robot" size={16} color="currentColor" style={{ marginRight: '8px' }} /> AI & Automation
                     </span>
                     <h1>Eliminate Inefficiency With <span className="text-gradient">Intelligent Automation</span></h1>
                     <p>Stop paying humans to do bot work. We integrate custom AI solutions that automate your workflows, reduce operational costs, and 10x your team's productivity.</p>
                     <div className="hero-cta-group">
                         <Link to="/contact?intent=ai-automation" className="cta-primary">
-                            <i className="fas fa-paper-plane"></i> Explore AI Solutions
+                            <SmartIcon icon="fas fa-paper-plane" size={16} color="#fff" style={{ marginRight: '8px' }} /> Explore AI Solutions
                         </Link>
                         <a href="#packages" className="cta-secondary">
-                            <i className="fas fa-tags"></i> View Packages
+                            <SmartIcon icon="fas fa-tags" size={16} color="currentColor" style={{ marginRight: '8px' }} /> View Packages
                         </a>
                     </div>
                 </div>
@@ -253,7 +254,7 @@ const AIDataPage = () => {
                     <div className="tech-grid">
                         {problemsSolved.map((problem, index) => (
                             <div key={index} className="tech-item" style={{ '--tech-color': '#ff6b6b', flexBasis: '250px', flexGrow: 1, alignItems: 'flex-start', textAlign: 'left' }}>
-                                <i className={problem.icon} style={{ marginBottom: '10px' }}></i>
+                                <SmartIcon icon={problem.icon} size={26} color="#ff6b6b" style={{ marginBottom: '10px' }} />
                                 <span style={{ fontSize: '1.1rem', color: 'var(--text-primary)', marginBottom: '5px' }}><strong>{problem.title}</strong></span>
                                 <small style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: '1.5' }}>{problem.desc}</small>
                             </div>
@@ -277,7 +278,7 @@ const AIDataPage = () => {
                                 style={{ '--card-color': outcome.color, '--delay': `${index * 0.1}s` }}
                             >
                                 <div className="type-icon">
-                                    <i className={outcome.icon}></i>
+                                    <SmartIcon icon={outcome.icon} size={28} color={outcome.color} />
                                 </div>
                                 <h3>{outcome.title}</h3>
                                 <p>{outcome.desc}</p>
@@ -301,7 +302,7 @@ const AIDataPage = () => {
                                 className="tech-item"
                                 style={{ '--tech-color': cap.color, minWidth: '180px' }}
                             >
-                                <i className={cap.icon}></i>
+                                <SmartIcon icon={cap.icon} size={24} color={cap.color} style={{ marginBottom: '8px' }} />
                                 <span>{cap.name}</span>
                             </div>
                         ))}
@@ -324,7 +325,7 @@ const AIDataPage = () => {
                                 style={{ '--card-color': service.color, '--delay': `${index * 0.1}s` }}
                             >
                                 <div className="type-icon">
-                                    <i className={service.icon}></i>
+                                    <SmartIcon icon={service.icon} size={28} color={service.color} />
                                 </div>
                                 <h3>{service.title}</h3>
                                 <p>{service.desc}</p>
@@ -344,7 +345,7 @@ const AIDataPage = () => {
                     <div className="tech-grid">
                         {useCases.map((ind, index) => (
                             <div key={index} className="tech-item" style={{ '--tech-color': '#00d4ff', flexBasis: '250px', flexGrow: 1, alignItems: 'flex-start', textAlign: 'left' }}>
-                                <i className={ind.icon} style={{ marginBottom: '10px' }}></i>
+                                <SmartIcon icon={ind.icon} size={24} color="#00d4ff" style={{ marginBottom: '10px' }} />
                                 <span style={{ fontSize: '1.1rem', color: 'var(--text-primary)', marginBottom: '5px' }}><strong>{ind.industry}</strong></span>
                                 <small style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: '1.5' }}>{ind.use}</small>
                             </div>
@@ -398,15 +399,15 @@ const AIDataPage = () => {
                                 </div>
                                 <ul className="package-features">
                                     {pkg.features.map((feature, i) => (
-                                        <li key={i} className={feature.included ? 'included' : 'not-included'}>
-                                            <i className={feature.included ? 'fas fa-check-circle' : 'fas fa-times-circle'}></i>
-                                            {feature.text}
-                                        </li>
-                                    ))}
-                                </ul>
-                                <Link to="/contact?intent=ai-automation" className="package-cta">
-                                    Get Started <i className="fas fa-arrow-right"></i>
-                                </Link>
+                                         <li key={i} className={feature.included ? 'included' : 'not-included'}>
+                                             <SmartIcon icon={feature.included ? 'fas fa-check-circle' : 'fas fa-times-circle'} size={14} color={feature.included ? '#10B981' : '#6B7280'} style={{ marginRight: '8px' }} />
+                                             {feature.text}
+                                         </li>
+                                     ))}
+                                 </ul>
+                                 <Link to="/contact?intent=ai-automation" className="package-cta">
+                                     Get Started <SmartIcon icon="fas fa-arrow-right" size={14} color="currentColor" style={{ marginLeft: '6px' }} />
+                                 </Link>
                             </div>
                         ))}
                     </div>

@@ -143,17 +143,11 @@ export default function RootLayout({ children }) {
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
-        {/* Font Awesome — non-blocking async load */}
+        {/* Font Awesome */}
         <link 
           rel="stylesheet" 
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-          media="print"
-          // @ts-ignore
-          onLoad="this.media='all'"
         />
-        <noscript>
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-        </noscript>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
@@ -175,21 +169,6 @@ export default function RootLayout({ children }) {
               gtag('config', 'G-T7WDSBNNRH', {
                 page_path: window.location.pathname,
               });
-            `,
-          }}
-        />
-
-        {/* Microsoft Clarity */}
-        <Script
-          id="clarity-init"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(c,l,a,r,i,t,y){
-                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-              })(window, document, "clarity", "script", "clarity_id_placeholder");
             `,
           }}
         />

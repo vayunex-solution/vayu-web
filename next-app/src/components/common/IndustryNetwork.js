@@ -171,8 +171,8 @@ const IndustryNetwork = ({ isCompact = false }) => {
           ))}
         </div>
 
-        {/* Featured Brands Row */}
-        {activeFilter === 'All' && featuredCompanies.length > 0 && (
+        {/* Featured Brands Row (Desktop Only) */}
+        {!isMobile && activeFilter === 'All' && featuredCompanies.length > 0 && (
           <div className={`featured-brands-container fade-up ${isVisible ? 'is-visible' : ''}`} style={{ animationDelay: '0.15s' }}>
             <h3 className="featured-brands-title">Featured Brands</h3>
             <div className="featured-brands-row">
@@ -183,8 +183,8 @@ const IndustryNetwork = ({ isCompact = false }) => {
           </div>
         )}
 
-        {/* Desktop Marquee (Hidden on mobile via CSS) */}
-        {!isMobile && activeFilter === 'All' && (
+        {/* Continuous Moving Marquee Line (Both Desktop & Mobile) */}
+        {activeFilter === 'All' && (
           <div className={`industry-marquee-container fade-up ${isVisible ? 'is-visible' : ''}`} style={{ animationDelay: '0.2s' }}>
             <div className="industry-marquee-track">
               {marqueeItems.map((company, index) => (
@@ -194,20 +194,11 @@ const IndustryNetwork = ({ isCompact = false }) => {
           </div>
         )}
 
-        {/* Desktop Grid (Shown when filtered) */}
-        {!isMobile && activeFilter !== 'All' && (
+        {/* Filtered Grid (When a specific industry filter is selected) */}
+        {activeFilter !== 'All' && (
           <div className="industry-grid">
             {filteredCompanies.map((company, index) => (
               <CompanyCard key={`grid-${index}`} company={company} />
-            ))}
-          </div>
-        )}
-
-        {/* Mobile Grid (Always shown on mobile) */}
-        {isMobile && (
-          <div className={`mobile-grid-view fade-up ${isVisible ? 'is-visible' : ''}`} style={{ animationDelay: '0.2s' }}>
-             {filteredCompanies.map((company, index) => (
-              <CompanyCard key={`mobile-${index}`} company={company} />
             ))}
           </div>
         )}

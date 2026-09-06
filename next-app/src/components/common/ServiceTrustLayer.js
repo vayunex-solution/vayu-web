@@ -1,5 +1,6 @@
 import React from 'react';
 import useScrollAnimation from '../../hooks/useScrollAnimation';
+import SmartIcon from './SmartIcon';
 import './ServiceTrustLayer.css';
 
 const ServiceTrustLayer = () => {
@@ -55,7 +56,7 @@ const ServiceTrustLayer = () => {
                             style={{ '--delay': `${index * 0.1}s` }}
                         >
                             <div className="pillar-icon">
-                                <i className={pillar.icon}></i>
+                                <SmartIcon icon={pillar.icon} size={28} color="#6366F1" />
                             </div>
                             <div className="pillar-content">
                                 <h3>{pillar.title}</h3>

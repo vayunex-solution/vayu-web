@@ -302,7 +302,18 @@
 
 /* ---- Backdrop ---- */
 .navbar__backdrop {
-  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 998;
+  animation: backdropFadeIn 0.3s ease forwards;
+}
+
+@keyframes backdropFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 /* ---- Responsive ---- */
@@ -321,14 +332,16 @@
     display: flex;
   }
 
-  /* Hide desktop theme toggle on mobile (it's inside the drawer) */
-  .navbar__actions > .theme-toggle {
-    display: none;
+  .navbar__actions {
+    gap: 0.6rem;
   }
 }
 
 @media (min-width: 769px) {
   .navbar__drawer {
+    display: none;
+  }
+  .navbar__backdrop {
     display: none;
   }
 }

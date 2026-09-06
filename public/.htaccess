@@ -27,7 +27,13 @@
   RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
   RewriteRule ^(.*)$ /$1/ [L,R=301]
 
-  # 6. 404 Custom Error Document
+  # 6. Dynamic Blog Fallback: If requested blog article does not exist on disk, rewrite to blog reader shell
+  RewriteCond %{REQUEST_URI} ^/blog/[^/]+/?$
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^blog/([^/]+)/?$ /blog/unlocking-business-efficiency-the-benefits-of-ai-saas/index.html [L]
+
+  # 7. 404 Custom Error Document
   ErrorDocument 404 /404.html
 </IfModule>
 

@@ -68,15 +68,20 @@ const ThemeToggle = () => {
         aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
         title={`Switch to ${isDark ? 'light' : 'dark'} mode`}
       >
-        <span className="theme-toggle__track">
-          <span className="theme-toggle__thumb">
+        <span className="theme-toggle-track">
+          <span className="theme-toggle-aura" aria-hidden="true" />
+          <span className="theme-toggle-icons">
+            <span className="track-sun-icon" aria-hidden="true">☀️</span>
+            <span className="track-moon-icon" aria-hidden="true">🌙</span>
+          </span>
+          <span className="theme-toggle-thumb">
             {isDark ? (
-              <svg className="theme-toggle__icon theme-toggle__icon--moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg className="theme-icon moon-icon" width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
               </svg>
             ) : (
-              <svg className="theme-toggle__icon theme-toggle__icon--sun" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="5" />
+              <svg className="theme-icon sun-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="4" fill="currentColor" />
                 <line x1="12" y1="1" x2="12" y2="3" />
                 <line x1="12" y1="21" x2="12" y2="23" />
                 <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
@@ -94,7 +99,7 @@ const ThemeToggle = () => {
       {showTooltip && (
         <div className="theme-tooltip" role="tooltip">
           <div className="theme-tooltip__arrow" />
-          <span className="theme-tooltip__text">Try Dark Mode for the full engineering vibe! ⚡</span>
+          <span className="theme-tooltip__text">Switch between Dark & Light mode! ⚡</span>
           <button
             type="button"
             className="theme-tooltip__close"

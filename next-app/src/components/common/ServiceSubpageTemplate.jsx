@@ -7,6 +7,7 @@ import Breadcrumbs from './Breadcrumbs';
 import LeadCaptureModal from './LeadCaptureModal';
 import ServiceTrustLayer from './ServiceTrustLayer';
 import FAQAccordion from './FAQAccordion';
+import SmartIcon from './SmartIcon';
 import '../../styles/InnerPage.css';
 import '../../styles/ServicesPage.css';
 
@@ -160,7 +161,20 @@ export default function ServiceSubpageTemplate({
                     transition: 'transform 0.3s ease, border-color 0.3s ease'
                   }}
                 >
-                  <span style={{ fontSize: '2.5rem', display: 'block', marginBottom: '1rem' }}>{cap.icon || '⚡'}</span>
+                  <div style={{
+                    width: '54px',
+                    height: '54px',
+                    borderRadius: '14px',
+                    background: `rgba(99, 102, 241, 0.12)`,
+                    border: `1px solid rgba(99, 102, 241, 0.25)`,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginBottom: '1.25rem',
+                    color: accentColor
+                  }}>
+                    <SmartIcon icon={cap.icon || '⚡'} size={26} color={accentColor} />
+                  </div>
                   <h3 style={{ fontSize: '1.35rem', color: '#F9FAFB', marginBottom: '0.75rem' }}>{cap.title}</h3>
                   <p style={{ fontSize: '0.94rem', color: '#9CA3AF', lineHeight: 1.6, margin: 0 }}>{cap.desc}</p>
                 </div>

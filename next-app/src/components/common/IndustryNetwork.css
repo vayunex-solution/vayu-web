@@ -221,26 +221,44 @@
     font-size: 2rem;
   }
   
+  .featured-brands-container {
+    display: none;
+  }
+  
   .industry-marquee-container {
-    display: none; /* Hide marquee on mobile */
+    display: flex;
+    padding: 16px 0;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
   }
 
-  .mobile-grid-view {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+  .industry-marquee-track {
+    gap: 14px;
+    animation: scrollMarquee 26s linear infinite;
+  }
+
+  .industry-marquee-track .company-card {
+    flex-shrink: 0;
+    width: 170px;
+    height: 80px;
+    padding: 12px 14px;
+    filter: none;
+    opacity: 1;
   }
 
   .company-text-card {
-    width: 100%; /* Fill the grid cell */
+    width: 170px;
     height: 80px;
-    padding: 10px;
-    filter: none; /* Remove grayscale on mobile for better visibility */
+    padding: 12px 14px;
+    filter: none;
     opacity: 1;
   }
 
   .company-name {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
   }
 
   .company-industry-tag {

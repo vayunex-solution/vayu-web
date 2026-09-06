@@ -29,13 +29,14 @@ const Navbar = () => {
   // Close mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false);
-  }, [location]);
+  }, [location?.pathname]);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? 'hidden' : 'auto';
     return () => { document.body.style.overflow = 'auto'; };
   }, [isMobileMenuOpen]);
+
 
   const handleServicesClick = (e) => {
     if (location.pathname === '/') {
@@ -101,7 +102,7 @@ const Navbar = () => {
           {/* Hamburger */}
           <button
             className={`navbar__hamburger ${isMobileMenuOpen ? 'navbar__hamburger--open' : ''}`}
-            onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
+            onClick={() => setMobileMenuOpen(prev => !prev)}
             aria-expanded={isMobileMenuOpen}
             aria-label="Toggle navigation menu"
             id="hamburger-btn"
