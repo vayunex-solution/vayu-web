@@ -28,6 +28,7 @@ const BlogDetailPage = ({ slug: propSlug }) => {
     const [loading, setLoading] = useState(true);
     const [readingProgress, setReadingProgress] = useState(0);
     const [copied, setCopied] = useState(false);
+    const [pageUrl, setPageUrl] = useState('');
 
     useEffect(() => {
         const handleScroll = () => {
@@ -38,6 +39,12 @@ const BlogDetailPage = ({ slug: propSlug }) => {
         };
         window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            setPageUrl(window.location.href);
+        }
     }, []);
 
     useEffect(() => {
@@ -138,7 +145,7 @@ const BlogDetailPage = ({ slug: propSlug }) => {
         "dateModified": blog.updatedAt || blog.createdAt,
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": typeof window !== 'undefined' ? window.location.href : `https://www.vayunexsolution.com/blog/${slug}`
+            "@id": pageUrl || `https://www.vayunexsolution.com/blog/${slug}`
         }
     };
 
@@ -165,8 +172,8 @@ const BlogDetailPage = ({ slug: propSlug }) => {
         }
     };
 
-    const currentUrl = typeof window !== 'undefined' ? encodeURIComponent(window.location.href) : '';
-    const encodedTitle = encodeURIComponent(blog.title);
+    const currentUrl = encodeURIComponent(pageUrl || `https://www.vayunexsolution.com/blog/${slug}`);
+    const encodedTitle = encodeURIComponent(blog.title || '');
 
     return (
         <>
