@@ -3,11 +3,41 @@
 import React from 'react';
 import NextLink from 'next/link';
 import { usePathname, useRouter, useParams as useNextParams } from 'next/navigation';
+import { startNavigationProgress } from '../components/common/NavigationLoader';
 
-export const Link = React.forwardRef(function Link({ to, href, children, ...props }, ref) {
+export const Link = React.forwardRef(function Link({ to, href, children, onClick, onMouseEnter, prefetch = true, ...props }, ref) {
   const destination = to || href || '#';
+  const router = useRouter();
+
+  const handleMouseEnter = (e) => {
+    if (typeof destination === 'string' && destination.startsWith('/') && !destination.startsWith('/#')) {
+      try {
+        router.prefetch(destination);
+      } catch {
+        // Safe fallback
+      }
+    }
+    if (onMouseEnter) onMouseEnter(e);
+  };
+
+  const handleClick = (e) => {
+    if (typeof destination === 'string' && destination.startsWith('/') && !destination.startsWith('/#') && !destination.startsWith('#')) {
+      if (typeof window !== 'undefined' && destination !== window.location.pathname) {
+        startNavigationProgress();
+      }
+    }
+    if (onClick) onClick(e);
+  };
+
   return (
-    <NextLink href={destination} ref={ref} {...props}>
+    <NextLink
+      href={destination}
+      ref={ref}
+      prefetch={prefetch}
+      onClick={handleClick}
+      onMouseEnter={handleMouseEnter}
+      {...props}
+    >
       {children}
     </NextLink>
   );
@@ -29,6 +59,9 @@ export const useNavigate = () => {
     if (path === -1) {
       router.back();
     } else {
+      if (typeof path === 'string' && path.startsWith('/') && typeof window !== 'undefined' && path !== window.location.pathname) {
+        startNavigationProgress();
+      }
       router.push(path);
     }
   };

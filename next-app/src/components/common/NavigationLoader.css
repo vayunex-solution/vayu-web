@@ -1,0 +1,73 @@
+/* ==========================================================================
+   Vayunex Smart Navigation Loader & Page Transitions
+   Ultra-premium top progress bar with glowing shimmer and neon pulse
+   ========================================================================== */
+
+.v-nav-loader-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, #00f2fe 0%, #4facfe 45%, #7928ca 85%, #00f2fe 100%);
+  background-size: 200% 100%;
+  z-index: 999999;
+  pointer-events: none;
+  opacity: 0;
+  transition: width 0.22s cubic-bezier(0.1, 0.9, 0.2, 1), opacity 0.25s ease;
+  box-shadow: 0 0 10px rgba(0, 242, 254, 0.7), 0 0 4px rgba(79, 172, 254, 0.9);
+}
+
+.v-nav-loader-bar.active {
+  opacity: 1;
+  animation: vNavShimmer 1.5s infinite linear;
+}
+
+.v-nav-loader-bar.finished {
+  opacity: 0;
+  transition: width 0.15s ease, opacity 0.35s ease 0.1s;
+}
+
+/* Glowing pulse tip head */
+.v-nav-loader-peg {
+  position: absolute;
+  right: 0;
+  top: -1px;
+  width: 100px;
+  height: 5px;
+  box-shadow: 0 0 14px #00f2fe, 0 0 8px #4facfe;
+  border-radius: 50%;
+  opacity: 1;
+  transform: rotate(3deg) translate(0px, -2px);
+}
+
+@keyframes vNavShimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Page Transition Entrance Animation */
+.vayunex-page-viewport {
+  animation: vayunexPageIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: opacity, transform;
+}
+
+@keyframes vayunexPageIn {
+  0% {
+    opacity: 0.85;
+    transform: translateY(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Quick interactive link tap feedback */
+a, button {
+  -webkit-tap-highlight-color: transparent;
+}

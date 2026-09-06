@@ -1,9 +1,12 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense } from 'react';
 import Navbar from './Navbar/Navbar';
 import Footer from './Footer/Footer';
 import dynamic from 'next/dynamic';
+import { usePathname } from 'next/navigation';
+import NavigationLoader from '../common/NavigationLoader';
+import '../common/NavigationLoader.css';
 
 // Non-critical UI — lazy loaded after paint
 const WhatsAppButton = dynamic(() => import('../common/WhatsAppButton'), { ssr: false });
@@ -12,7 +15,6 @@ const ScrollProgress = dynamic(() => import('../common/ScrollProgress'), { ssr: 
 const CookieConsent = dynamic(() => import('../common/CookieConsent'), { ssr: false });
 const ProductsPopup = dynamic(() => import('../common/ProductsPopup'), { ssr: false });
 import { usePageTracking, useScrollTracking } from '../../hooks/useAnalyticsTracking';
-
 
 const AnalyticsTracker = () => {
   usePageTracking();
@@ -28,13 +30,20 @@ const AnalyticsTracker = () => {
 };
 
 export default function ClientLayout({ children }) {
+  const pathname = usePathname();
+
   return (
     <div className="App">
+      <Suspense fallback={null}>
+        <NavigationLoader />
+      </Suspense>
       <AnalyticsTracker />
       <ScrollProgress />
       <Navbar />
       <main id="main-content" style={{ minHeight: '80vh' }}>
-        {children}
+        <div key={pathname} className="vayunex-page-viewport">
+          {children}
+        </div>
       </main>
       <Footer />
       <WhatsAppButton />
