@@ -2,10 +2,9 @@ const fs = require('fs');
 const path = require('path');
 const sharp = require('sharp');
 
-const srcImg = 'C:/Users/Admin/.gemini/antigravity-ide/brain/0f523408-7935-47e9-b1c3-21471ed94511/.user_uploaded/media_1788667268206.jpg';
+const srcImg = 'C:/Users/Admin/.gemini/antigravity-ide/brain/0f523408-7935-47e9-b1c3-21471ed94511/.user_uploaded/media_1788669148326.png';
 
 async function createIco(pngBuffers) {
-  // pngBuffers: array of { width, height, buffer }
   const count = pngBuffers.length;
   const header = Buffer.alloc(6);
   header.writeUInt16LE(0, 0); // reserved
@@ -33,9 +32,9 @@ async function createIco(pngBuffers) {
 }
 
 async function run() {
-  console.log('Generating favicon assets from:', srcImg);
+  console.log('Generating favicon & brand icon assets from:', srcImg);
 
-  // Generate PNG buffers for ICO
+  // Favicon PNG buffers
   const p16 = await sharp(srcImg).resize(16, 16).png().toBuffer();
   const p32 = await sharp(srcImg).resize(32, 32).png().toBuffer();
   const p48 = await sharp(srcImg).resize(48, 48).png().toBuffer();
@@ -51,13 +50,16 @@ async function run() {
   const p192 = await sharp(srcImg).resize(192, 192).png().toBuffer();
   const p512 = await sharp(srcImg).resize(512, 512).png().toBuffer();
 
-  const targetDirs = [
+  // WebP for Navbar & Footer logo
+  const webpLogo = await sharp(srcImg).resize(512, 512).webp({ quality: 95 }).toBuffer();
+
+  const publicDirs = [
     'next-app/public',
     'public',
     'build'
   ];
 
-  for (const dir of targetDirs) {
+  for (const dir of publicDirs) {
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 
     fs.writeFileSync(path.join(dir, 'favicon.ico'), icoBuffer);
@@ -67,9 +69,30 @@ async function run() {
     fs.writeFileSync(path.join(dir, 'apple-touch-icon.png'), p180);
     fs.writeFileSync(path.join(dir, 'logo192.png'), p192);
     fs.writeFileSync(path.join(dir, 'logo512.png'), p512);
+    fs.writeFileSync(path.join(dir, 'logo.png'), p512);
 
-    console.log('Successfully saved favicon suite to:', dir);
+    // Also update images/vayunex-logo.webp if images folder exists or create it
+    const imagesDir = path.join(dir, 'images');
+    if (!fs.existsSync(imagesDir)) fs.mkdirSync(imagesDir, { recursive: true });
+    fs.writeFileSync(path.join(imagesDir, 'vayunex-logo.webp'), webpLogo);
+
+    console.log('Successfully saved favicon & logo suite to:', dir);
   }
+
+  // Update src/assets/images for React / Next.js Webpack imports
+  const assetDirs = [
+    'next-app/src/assets/images',
+    'src/assets/images'
+  ];
+
+  for (const dir of assetDirs) {
+    if (fs.existsSync(dir)) {
+      fs.writeFileSync(path.join(dir, 'vayunex-logo.webp'), webpLogo);
+      console.log('Updated brand logo in:', dir);
+    }
+  }
+
+  console.log('All icons and brand marks successfully replaced everywhere!');
 }
 
 run().catch(console.error);
