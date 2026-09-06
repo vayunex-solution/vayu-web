@@ -3,12 +3,16 @@
 import React, { useEffect } from 'react';
 import Navbar from './Navbar/Navbar';
 import Footer from './Footer/Footer';
-import WhatsAppButton from '../common/WhatsAppButton';
-import BackToTop from '../common/BackToTop';
-import ScrollProgress from '../common/ScrollProgress';
-import CookieConsent from '../common/CookieConsent';
-import ProductsPopup from '../common/ProductsPopup';
+import dynamic from 'next/dynamic';
+
+// Non-critical UI — lazy loaded after paint
+const WhatsAppButton = dynamic(() => import('../common/WhatsAppButton'), { ssr: false });
+const BackToTop = dynamic(() => import('../common/BackToTop'), { ssr: false });
+const ScrollProgress = dynamic(() => import('../common/ScrollProgress'), { ssr: false });
+const CookieConsent = dynamic(() => import('../common/CookieConsent'), { ssr: false });
+const ProductsPopup = dynamic(() => import('../common/ProductsPopup'), { ssr: false });
 import { usePageTracking, useScrollTracking } from '../../hooks/useAnalyticsTracking';
+
 
 const AnalyticsTracker = () => {
   usePageTracking();

@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useMemo, useEffect } from 'react';
+import React, { useMemo, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
-// Dynamic import for Hyperspeed 3D Canvas
+// Dynamic import for Hyperspeed 3D Canvas (SSR=false, heavy Three.js)
 const Hyperspeed = dynamic(() => import('../components/Hyperspeed/Hyperspeed'), {
   ssr: false,
   loading: () => <div className="hyperspeed-canvas-placeholder" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.15), transparent 70%)' }} />
@@ -13,20 +13,21 @@ const Hyperspeed = dynamic(() => import('../components/Hyperspeed/Hyperspeed'), 
 import BlurText from '../components/common/BlurText';
 import SEO from '../components/common/SEO';
 
-// Core Sections
-import DualEngine from '../components/common/DualEngine';
-import ProductEcosystem from '../components/common/ProductEcosystem';
-import CoreServices from '../components/common/CoreServices';
-import TrustSection from '../components/common/TrustSection';
-import IndustryNetwork from '../components/common/IndustryNetwork';
-import CompanyMission from '../components/common/CompanyMission';
-import FinalCTA from '../components/common/FinalCTA';
+// Lazy-load all below-the-fold sections (code-split for faster initial load)
+const DualEngine = dynamic(() => import('../components/common/DualEngine'), { ssr: false });
+const ProductEcosystem = dynamic(() => import('../components/common/ProductEcosystem'), { ssr: false });
+const CoreServices = dynamic(() => import('../components/common/CoreServices'), { ssr: false });
+const TrustSection = dynamic(() => import('../components/common/TrustSection'), { ssr: false });
+const IndustryNetwork = dynamic(() => import('../components/common/IndustryNetwork'), { ssr: false });
+const CompanyMission = dynamic(() => import('../components/common/CompanyMission'), { ssr: false });
+const FinalCTA = dynamic(() => import('../components/common/FinalCTA'), { ssr: false });
 
 // Analytics
 import { trackCTA } from '../utils/analytics';
 
 // Styles
 import '../styles/HomePage.css';
+
 
 // ---- Hero Visual: Premium Floating Dashboard Panels ----
 const HeroVisual = () => (
