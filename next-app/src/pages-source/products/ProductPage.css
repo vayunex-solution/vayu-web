@@ -4,18 +4,19 @@
     background: var(--bg-primary);
     min-height: 100vh;
     color: var(--text-primary);
+    padding-top: calc(var(--navbar-height, 72px) + 20px);
 }
 
 /* ============================================
    1. HERO SECTION
    ============================================ */
 .product-hero {
-    min-height: 80vh;
+    min-height: 70vh;
     display: flex;
     align-items: center;
     position: relative;
     overflow: hidden;
-    padding: 160px 5% 100px;
+    padding: 40px 5% 80px;
 }
 
 .product-hero-bg {

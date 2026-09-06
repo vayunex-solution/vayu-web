@@ -29,4 +29,13 @@ function copyRecursive(source, target) {
 
 console.log(`Syncing Next.js export from ${src} to ${dest}...`);
 copyRecursive(src, dest);
+
+// Guarantee .htaccess is in sync
+const publicHtaccess = path.resolve(__dirname, '../public/.htaccess');
+if (fs.existsSync(publicHtaccess)) {
+  fs.copyFileSync(publicHtaccess, path.join(dest, '.htaccess'));
+  fs.copyFileSync(publicHtaccess, path.join(src, '.htaccess'));
+  console.log('Synchronized .htaccess to build and out directories.');
+}
+
 console.log('Successfully synced Next.js build to ../build for cPanel deployment!');

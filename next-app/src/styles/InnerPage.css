@@ -1,7 +1,8 @@
 /* src/styles/InnerPage.css */
 
-.inner-page {
-    padding-top: 80px; /* Navbar ki height ke liye jagah */
+.inner-page,
+.services-page {
+    padding-top: calc(var(--navbar-height, 72px) + 24px); /* Navbar ki height ke liye jagah */
     color: #fff;
     overflow-x: hidden; /* Prevent horizontal scroll from animations */
     /* --- Next Level Background --- */
