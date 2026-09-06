@@ -60,7 +60,14 @@
   color: var(--text-primary);
 }
 
-.not-found-icon { font-size: 3.5rem; }
+.not-found-icon {
+  width: 64px;
+  height: 64px;
+  color: var(--accent-indigo);
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+
 
 .back-to-blog-btn {
   display: inline-flex;
@@ -73,9 +80,10 @@
   font-weight: 600;
   text-decoration: none;
   margin-top: 0.5rem;
-  transition: opacity 0.2s;
+  transition: opacity 0.2s, transform 0.2s;
 }
-.back-to-blog-btn:hover { opacity: 0.88; }
+.back-to-blog-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+
 
 /* ── Wrapper ── */
 .blog-detail-wrapper {
@@ -723,6 +731,18 @@
 .sidebar-nav-link:hover {
   background: var(--bg-surface-hover);
   color: var(--accent-indigo);
+}
+
+.nav-arrow {
+  color: var(--accent-indigo);
+  font-style: normal;
+  margin-right: 0.25rem;
+  display: inline-block;
+  transition: transform 0.2s;
+}
+
+.sidebar-nav-link:hover .nav-arrow {
+  transform: translateX(3px);
 }
 
 /* AI Card */
