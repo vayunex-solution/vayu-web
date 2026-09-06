@@ -1,5 +1,5 @@
 'use client';
-import { BloomEffect, EffectComposer, EffectPass, RenderPass, SMAAEffect, SMAAPreset } from 'postprocessing';
+import { BloomEffect, EffectComposer, EffectPass, RenderPass } from 'postprocessing';
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
@@ -355,26 +355,29 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
         }
         this.container = container;
         this.hasValidSize = false;
+        this.disposed = false;
 
-        const initW = Math.max(1, container.offsetWidth);
-        const initH = Math.max(1, container.offsetHeight);
+        const initW = Math.max(1, container.offsetWidth || (typeof window !== 'undefined' ? window.innerWidth : 800));
+        const initH = Math.max(1, container.offsetHeight || (typeof window !== 'undefined' ? window.innerHeight : 600));
 
         try {
           this.renderer = new THREE.WebGLRenderer({
             antialias: false,
-            alpha: true,
-            stencil: true,
-            depth: true,
-            powerPreference: "high-performance"
+            alpha: false,
+            powerPreference: 'high-performance',
+            preserveDrawingBuffer: false,
+            failIfMajorPerformanceCaveat: false
           });
-          this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+          const bg = (options.colors && options.colors.background != null) ? options.colors.background : 0x050505;
+          this.renderer.setClearColor(bg, 1.0);
+          this.renderer.setPixelRatio(Math.min(typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1, 2));
           this.renderer.setSize(initW, initH, false);
-          
+
           this.composer = new EffectComposer(this.renderer);
           container.append(this.renderer.domElement);
           this.webglSupported = true;
         } catch (e) {
-          console.warn("WebGL or postprocessing not supported, disabling Hyperspeed.", e);
+          console.warn('WebGL or postprocessing not supported, disabling Hyperspeed.', e);
           this.webglSupported = false;
           return;
         }
@@ -384,9 +387,11 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
         this.camera.position.y = 8;
         this.camera.position.x = 0;
         this.scene = new THREE.Scene();
-        this.scene.background = null;
 
-        let fog = new THREE.Fog(options.colors.background, options.length * 0.2, options.length * 500);
+        const bgColor = (options.colors && options.colors.background != null) ? options.colors.background : 0x050505;
+        this.scene.background = new THREE.Color(bgColor);
+
+        let fog = new THREE.Fog(bgColor, options.length * 0.2, options.length * 500);
         this.scene.fog = fog;
         this.fogUniforms = {
           fogColor: { value: fog.color },
@@ -395,7 +400,6 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
         };
         this.clock = new THREE.Clock();
         this.assets = {};
-        this.disposed = false;
 
         this.road = new Road(this, options);
         this.leftCarLights = new CarLights(
@@ -421,7 +425,7 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
 
         this.tick = this.tick.bind(this);
         this.init = this.init.bind(this);
-        this.setSize = this.setSize.bind(this);
+        this.onWindowResize = this.onWindowResize.bind(this);
         this.onMouseDown = this.onMouseDown.bind(this);
         this.onMouseUp = this.onMouseUp.bind(this);
 
@@ -429,28 +433,38 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
         this.onTouchEnd = this.onTouchEnd.bind(this);
         this.onContextMenu = this.onContextMenu.bind(this);
 
-        this.onWindowResize = this.onWindowResize.bind(this);
-        window.addEventListener('resize', this.onWindowResize);
+        if (typeof window !== 'undefined') {
+          window.addEventListener('resize', this.onWindowResize, { passive: true });
+        }
 
-        if (container.offsetWidth > 0 && container.offsetHeight > 0) {
+        if (typeof ResizeObserver !== 'undefined' && this.container) {
+          this.resizeObserver = new ResizeObserver(() => {
+            this.onWindowResize();
+          });
+          this.resizeObserver.observe(this.container);
+        }
+
+        if (initW > 0 && initH > 0) {
           this.hasValidSize = true;
         }
       }
 
       onWindowResize() {
-        if (!this.webglSupported) return;
+        if (!this.webglSupported || this.disposed || !this.container) return;
         const width = this.container.offsetWidth;
         const height = this.container.offsetHeight;
 
-        if (width <= 0 || height <= 0) {
-          this.hasValidSize = false;
-          return;
-        }
+        if (width <= 0 || height <= 0) return;
+        if (this.currentWidth === width && this.currentHeight === height) return;
+        this.currentWidth = width;
+        this.currentHeight = height;
 
-        this.renderer.setSize(width, height);
+        this.renderer.setSize(width, height, false);
         this.camera.aspect = width / height;
         this.camera.updateProjectionMatrix();
-        this.composer.setSize(width, height);
+        if (this.composer) {
+          this.composer.setSize(width, height, false);
+        }
         this.hasValidSize = true;
       }
 
@@ -460,60 +474,24 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
         this.bloomPass = new EffectPass(
           this.camera,
           new BloomEffect({
-            luminanceThreshold: 0.2,
-            luminanceSmoothing: 0,
-            resolutionScale: 1
+            luminanceThreshold: 0.25,
+            luminanceSmoothing: 0.35,
+            resolutionScale: 0.5
           })
         );
 
-        const smaaPass = new EffectPass(
-          this.camera,
-          new SMAAEffect({
-            preset: SMAAPreset.MEDIUM,
-            searchImage: SMAAEffect.searchImageDataURL,
-            areaImage: SMAAEffect.areaImageDataURL
-          })
-        );
         this.renderPass.renderToScreen = false;
-        this.bloomPass.renderToScreen = false;
-        smaaPass.renderToScreen = true;
+        this.bloomPass.renderToScreen = true;
         this.composer.addPass(this.renderPass);
         this.composer.addPass(this.bloomPass);
-        this.composer.addPass(smaaPass);
-      }
-
-      loadAssets() {
-        if (!this.webglSupported) return Promise.resolve();
-        const assets = this.assets;
-        return new Promise(resolve => {
-          const manager = new THREE.LoadingManager(resolve);
-
-          const searchImage = new Image();
-          const areaImage = new Image();
-          assets.smaa = {};
-          searchImage.addEventListener('load', function () {
-            assets.smaa.search = this;
-            manager.itemEnd('smaa-search');
-          });
-
-          areaImage.addEventListener('load', function () {
-            assets.smaa.area = this;
-            manager.itemEnd('smaa-area');
-          });
-          manager.itemStart('smaa-search');
-          manager.itemStart('smaa-area');
-
-          searchImage.src = SMAAEffect.searchImageDataURL;
-          areaImage.src = SMAAEffect.areaImageDataURL;
-        });
       }
 
       init() {
-        if (!this.webglSupported) return;
+        if (!this.webglSupported || this.disposed) return;
         try {
           this.initPasses();
         } catch (e) {
-          console.warn("Postprocessing passes failed to init, falling back to basic render.", e);
+          console.warn('Postprocessing passes failed to init, falling back to basic render.', e);
           if (this.renderPass) {
             this.renderPass.renderToScreen = true;
           }
@@ -539,6 +517,7 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
 
         this.container.addEventListener('contextmenu', this.onContextMenu);
 
+        this.onWindowResize();
         this.tick();
       }
 
@@ -575,7 +554,7 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
       }
 
       update(delta) {
-        if (!this.webglSupported) return;
+        if (!this.webglSupported || this.disposed) return;
         let lerpPercentage = Math.exp(-(-60 * Math.log2(1 - 0.1)) * delta);
         this.speedUp += lerp(this.speedUp, this.speedUpTarget, lerpPercentage, 0.00001);
         this.timeOffset += this.speedUp * delta;
@@ -612,17 +591,42 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
       }
 
       render(delta) {
-        if (!this.webglSupported) return;
-        if (this.composer && (this.bloomPass || (this.renderPass && this.renderPass.renderToScreen))) {
-            this.composer.render(delta);
+        if (!this.webglSupported || this.disposed) return;
+        if (this.composer && this.bloomPass) {
+          this.composer.render(delta);
         } else if (this.renderer) {
-            this.renderer.render(this.scene, this.camera);
+          this.renderer.render(this.scene, this.camera);
         }
       }
 
       dispose() {
         if (!this.webglSupported) return;
         this.disposed = true;
+
+        if (this.animationFrameId) {
+          cancelAnimationFrame(this.animationFrameId);
+          this.animationFrameId = null;
+        }
+
+        if (this.resizeObserver) {
+          this.resizeObserver.disconnect();
+          this.resizeObserver = null;
+        }
+
+        if (typeof window !== 'undefined') {
+          window.removeEventListener('resize', this.onWindowResize);
+        }
+
+        if (this.container) {
+          this.container.removeEventListener('mousedown', this.onMouseDown);
+          this.container.removeEventListener('mouseup', this.onMouseUp);
+          this.container.removeEventListener('mouseout', this.onMouseUp);
+
+          this.container.removeEventListener('touchstart', this.onTouchStart);
+          this.container.removeEventListener('touchend', this.onTouchEnd);
+          this.container.removeEventListener('touchcancel', this.onTouchEnd);
+          this.container.removeEventListener('contextmenu', this.onContextMenu);
+        }
 
         if (this.scene) {
           this.scene.traverse(object => {
@@ -642,73 +646,42 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
           this.scene.clear();
         }
 
-        if (this.renderer) {
-          this.renderer.dispose();
-          this.renderer.forceContextLoss();
-          if (this.renderer.domElement && this.renderer.domElement.parentNode) {
-            this.renderer.domElement.parentNode.removeChild(this.renderer.domElement);
-          }
-        }
         if (this.composer) {
-          this.composer.dispose();
+          try {
+            this.composer.dispose();
+          } catch (e) {}
         }
 
-        window.removeEventListener('resize', this.onWindowResize);
-        if (this.container) {
-          this.container.removeEventListener('mousedown', this.onMouseDown);
-          this.container.removeEventListener('mouseup', this.onMouseUp);
-          this.container.removeEventListener('mouseout', this.onMouseUp);
-
-          this.container.removeEventListener('touchstart', this.onTouchStart);
-          this.container.removeEventListener('touchend', this.onTouchEnd);
-          this.container.removeEventListener('touchcancel', this.onTouchEnd);
-          this.container.removeEventListener('contextmenu', this.onContextMenu);
+        if (this.renderer) {
+          try {
+            this.renderer.dispose();
+            this.renderer.forceContextLoss();
+            if (this.renderer.domElement && this.renderer.domElement.parentNode) {
+              this.renderer.domElement.parentNode.removeChild(this.renderer.domElement);
+            }
+          } catch (e) {}
         }
-      }
-
-      setSize(width, height, updateStyles) {
-        if (!this.webglSupported) return;
-        if (width <= 0 || height <= 0) {
-          this.hasValidSize = false;
-          return;
-        }
-        this.composer.setSize(width, height, updateStyles);
-        this.hasValidSize = true;
       }
 
       tick() {
         if (this.disposed || !this.webglSupported) return;
 
         if (!this.hasValidSize) {
-          const w = this.container.offsetWidth;
-          const h = this.container.offsetHeight;
+          const w = this.container ? this.container.offsetWidth : 0;
+          const h = this.container ? this.container.offsetHeight : 0;
           if (w > 0 && h > 0) {
-            this.renderer.setSize(w, h, false);
-            this.camera.aspect = w / h;
-            this.camera.updateProjectionMatrix();
-            this.composer.setSize(w, h);
-            this.hasValidSize = true;
+            this.onWindowResize();
           } else {
-            requestAnimationFrame(this.tick);
+            this.animationFrameId = requestAnimationFrame(this.tick);
             return;
           }
         }
 
-        if (resizeRendererToDisplaySize(this.renderer, this.setSize)) {
-          const canvas = this.renderer.domElement;
-          if (this.hasValidSize) {
-            this.camera.aspect = canvas.clientWidth / canvas.clientHeight;
-            this.camera.updateProjectionMatrix();
-          }
-        }
+        const delta = Math.min(this.clock.getDelta(), 0.1);
+        this.render(delta);
+        this.update(delta);
 
-        if (this.hasValidSize) {
-          const delta = this.clock.getDelta();
-          this.render(delta);
-          this.update(delta);
-        }
-
-        requestAnimationFrame(this.tick);
+        this.animationFrameId = requestAnimationFrame(this.tick);
       }
     }
 
@@ -1181,21 +1154,6 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
       }
     `;
 
-    function resizeRendererToDisplaySize(renderer, setSize) {
-      const canvas = renderer.domElement;
-      if (!canvas) return false;
-      const pr = renderer.getPixelRatio ? renderer.getPixelRatio() : 1;
-      const targetWidth = Math.floor(canvas.clientWidth * pr);
-      const targetHeight = Math.floor(canvas.clientHeight * pr);
-      if (targetWidth <= 0 || targetHeight <= 0) return false;
-      const needResize = canvas.width !== targetWidth || canvas.height !== targetHeight;
-      if (needResize) {
-        renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
-        setSize(canvas.clientWidth, canvas.clientHeight, false);
-      }
-      return needResize;
-    }
-
     const container = hyperspeed.current;
     if (!container) return;
 
@@ -1208,11 +1166,7 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
 
     const myApp = new App(container, options);
     appRef.current = myApp;
-    myApp.loadAssets().then(() => {
-        if(!appRef.current.disposed) {
-            myApp.init();
-        }
-    });
+    myApp.init();
 
     return () => {
       if (appRef.current) {
