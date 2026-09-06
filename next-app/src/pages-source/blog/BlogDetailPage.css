@@ -787,6 +787,150 @@
   font-weight: 600;
 }
 
+/* ── Share Article Sidebar Card ── */
+.sidebar-share-card {
+  background: var(--bg-secondary);
+}
+
+.sidebar-share-subtitle {
+  font-size: 0.82rem;
+  color: var(--text-tertiary);
+  margin: 0 0 1rem;
+  line-height: 1.5;
+}
+
+.sidebar-share-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.sidebar-share-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.6rem 0.5rem;
+  border-radius: var(--radius-md);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+  color: #fff;
+}
+
+.sidebar-share-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.92;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+
+.sidebar-share-linkedin { background: #0A66C2; }
+.sidebar-share-twitter  { background: #111; }
+.sidebar-share-facebook { background: #1877F2; }
+.sidebar-share-whatsapp { background: #25D366; }
+
+.sidebar-copy-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 100%;
+  padding: 0.6rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--font-primary);
+}
+
+.sidebar-copy-link:hover {
+  border-color: var(--accent-indigo);
+  color: var(--accent-indigo);
+}
+
+.sidebar-copy-link.copied {
+  background: rgba(16,185,129,0.1);
+  border-color: var(--accent-emerald);
+  color: var(--accent-emerald);
+}
+
+/* ── Vayunex Sidebar Card ── */
+.sidebar-vayunex-card {
+  border-color: rgba(99,102,241,0.15);
+}
+
+.sidebar-vayunex-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--accent-indigo);
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+}
+
+.sidebar-vayunex-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin: 0 0 1rem;
+}
+
+.sidebar-vayunex-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.1rem;
+}
+
+.sidebar-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  color: var(--text-tertiary);
+}
+
+.sidebar-detail-item svg {
+  flex-shrink: 0;
+  color: var(--accent-indigo);
+  opacity: 0.7;
+}
+
+/* ── Social Links (Vayunex profiles) ── */
+.sidebar-social-links {
+  display: flex;
+  gap: 0.5rem;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 1rem;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-default);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  background: var(--bg-surface);
+}
+
+.social-link:hover { transform: translateY(-2px); border-color: transparent; color: #fff; }
+.social-linkedin:hover  { background: #0A66C2; }
+.social-instagram:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+.social-facebook:hover  { background: #1877F2; }
+.social-twitter:hover   { background: #111; }
+
 /* ================================================================
    LIGHT MODE OVERRIDES
    ================================================================ */
