@@ -367,8 +367,8 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
             depth: true,
             powerPreference: "high-performance"
           });
+          this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
           this.renderer.setSize(initW, initH, false);
-          this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
           
           this.composer = new EffectComposer(this.renderer);
           container.append(this.renderer.domElement);
@@ -1184,12 +1184,14 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
     function resizeRendererToDisplaySize(renderer, setSize) {
       const canvas = renderer.domElement;
       if (!canvas) return false;
-      const width = canvas.clientWidth;
-      const height = canvas.clientHeight;
-      if (width <= 0 || height <= 0) return false;
-      const needResize = canvas.width !== width || canvas.height !== height;
+      const pr = renderer.getPixelRatio ? renderer.getPixelRatio() : 1;
+      const targetWidth = Math.floor(canvas.clientWidth * pr);
+      const targetHeight = Math.floor(canvas.clientHeight * pr);
+      if (targetWidth <= 0 || targetHeight <= 0) return false;
+      const needResize = canvas.width !== targetWidth || canvas.height !== targetHeight;
       if (needResize) {
-        setSize(width, height, false);
+        renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
+        setSize(canvas.clientWidth, canvas.clientHeight, false);
       }
       return needResize;
     }
