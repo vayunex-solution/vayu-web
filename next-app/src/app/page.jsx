@@ -22,12 +22,16 @@ import IndustryNetwork from '../components/common/IndustryNetwork';
 import CompanyMission from '../components/common/CompanyMission';
 import FinalCTA from '../components/common/FinalCTA';
 
+// Analytics
 import { trackCTA } from '../utils/analytics';
+
+// Styles
 import '../styles/HomePage.css';
 
-// ---- Hero Visual: Floating Dashboard Panels ----
+// ---- Hero Visual: Premium Floating Dashboard Panels ----
 const HeroVisual = () => (
   <div className="hero-visual" aria-hidden="true">
+    {/* Main product preview card */}
     <div className="hv-card hv-card--main">
       <div className="hv-card-header">
         <div className="hv-dots">
@@ -91,6 +95,7 @@ const HeroVisual = () => (
   </div>
 );
 
+// ---- Main HomePage ----
 export default function HomePage() {
   useEffect(() => {
     const saved = localStorage.getItem('vayunex-theme');
@@ -133,8 +138,8 @@ export default function HomePage() {
       brokenLines: 0x1e1e4f,
       leftCars: [0x6366F1, 0x3B82F6, 0x8B5CF6],
       rightCars: [0x3B82F6, 0x6366F1, 0x14B8A6],
-      sticks: 0x3B82F6,
-    }
+      sticks: 0x6366F1,
+    },
   }), []);
 
   const homeStructuredData = useMemo(() => ({
@@ -150,112 +155,124 @@ export default function HomePage() {
   }), []);
 
   return (
-    <div className="home-page">
+    <main className="home-page">
       <SEO
-        title="Vayunex Solution | Enterprise AI, Cloud & Software Engineering"
-        description="Vayunex Solution delivers intelligent software systems, SaaS products (Jwelnex, PayNex, SocialNex, SchoolDost), and enterprise engineering."
-        keywords="Vayunex Solution, web development, AI software, SaaS, Jwelnex, PayNex, SocialNex, SchoolDost, Mohali, Chandigarh"
+        title="Vayunex Solution — Enterprise SaaS & Custom Software Development"
+        description="Vayunex Solution builds enterprise-grade SaaS products, AI-powered systems, and custom software for modern businesses. Products include Jwelnex ERP, PayNex, SocialNex, SchoolDost, and InventoryNex."
+        keywords="enterprise software development, SaaS development India, custom software company, ERP software, AI development, Jwelnex ERP, PayNex, Vayunex Solution, business automation, web application development"
         canonicalUrl="https://www.vayunexsolution.com"
         structuredData={homeStructuredData}
       />
 
-      {/* Hero Section */}
-      <header className="hero">
-        <div className="hero__hyperspeed" aria-hidden="true">
+      {/* ========== SECTION 1: HERO ========== */}
+      <section className="hero-section" aria-label="Hero">
+        {/* Hyperspeed background — dark mode only */}
+        <div className="hero-canvas-container" aria-hidden="true">
           <Hyperspeed effectOptions={hyperspeedOptions} />
         </div>
-        <div className="hero__overlay" aria-hidden="true" />
 
-        <div className="hero__container">
-          <div className="hero__content">
-            <div className="hero__badge">
-              <span className="hero__badge-dot" />
-              <span>Next-Gen Enterprise Engineering &amp; SaaS Suite</span>
+        {/* Overlay */}
+        <div className="hero-overlay" aria-hidden="true" />
+
+        {/* Hero Content */}
+        <div className="hero-inner">
+          <div className="hero-content">
+            {/* Badge pill */}
+            <div className="hero-pill">
+              <span className="hero-pill-badge">
+                <span className="hero-pill-dot" aria-hidden="true" />
+                Product-Led Engineering
+              </span>
+              <span>We build technology for ourselves, and for select enterprise partners.</span>
             </div>
 
-            <h1 className="hero__title">
+            {/* H1 */}
+            <h1 className="hero-title">
               <BlurText
-                text="Engineering Intelligent"
-                delay={40}
+                text="Building High-Performance Software Ecosystems"
+                delay={200}
                 animateBy="words"
                 direction="top"
-                className="hero__title-line hero__title-line--1"
               />
-              <span className="hero__title-line hero__title-line--2">
-                Digital Systems
-              </span>
             </h1>
 
-            <p className="hero__subtitle">
-              We design and deploy high-performance SaaS platforms, mission-critical cloud infrastructure, and custom AI solutions that scale with global enterprise demands.
-            </p>
+            {/* Sub */}
+            <div className="hero-subtitle">
+              <BlurText
+                text="Vayunex is an enterprise software company. We actively build and scale our own suite of SaaS products, and apply those same engineering standards to deliver exceptional technology for our partners."
+                delay={900}
+                animateBy="words"
+                direction="bottom"
+              />
+            </div>
 
-            <div className="hero__actions">
-              <Link
-                href="/contact"
-                className="hero__btn hero__btn--primary"
-                onClick={() => trackCTA('hero_consultation', 'hero')}
+            {/* CTAs */}
+            <div className="hero-cta-group">
+              <Link 
+                href="/products" 
+                className="hero-cta-primary" 
+                id="hero-cta-products"
+                onClick={() => trackCTA('Explore Products', 'Homepage Hero', '/products')}
               >
-                Schedule Architecture Review
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="12 5 19 12 12 19" />
+                Explore Products
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
               </Link>
-              <Link
-                href="/products"
-                className="hero__btn hero__btn--secondary"
-                onClick={() => trackCTA('hero_products', 'hero')}
+              <Link 
+                href="/contact" 
+                className="hero-cta-secondary" 
+                id="hero-cta-contact"
+                onClick={() => trackCTA('Talk to Engineering', 'Homepage Hero', '/contact')}
               >
-                Explore Product Suite
+                Talk to Engineering
               </Link>
             </div>
 
-            {/* Micro proof points */}
-            <div className="hero__proof">
-              <div className="hero__proof-item">
-                <span className="hero__proof-num">99.98%</span>
-                <span className="hero__proof-label">Uptime SLA</span>
+            {/* Product count indicator */}
+            <div className="hero-proof">
+              <div className="hero-proof-stack">
+                {['J', 'P', 'S', 'S', 'I'].map((letter, i) => (
+                  <span key={i} className="hero-proof-avatar" style={{ zIndex: 5 - i }}>
+                    {letter}
+                  </span>
+                ))}
               </div>
-              <div className="hero__proof-divider" />
-              <div className="hero__proof-item">
-                <span className="hero__proof-num">5+</span>
-                <span className="hero__proof-label">Proprietary Products</span>
-              </div>
-              <div className="hero__proof-divider" />
-              <div className="hero__proof-item">
-                <span className="hero__proof-num">24/7</span>
-                <span className="hero__proof-label">Mission Control</span>
-              </div>
+              <span className="hero-proof-text">
+                5 products in active development
+              </span>
             </div>
           </div>
 
-          <HeroVisual />
+          {/* Hero Visual */}
+          <div className="hero-visual-wrapper" aria-hidden="true">
+            <HeroVisual />
+          </div>
         </div>
-      </header>
+      </section>
 
-      {/* Dual Engine: Products + Custom Solutions */}
+      {/* ========== SECTION 2: THE DUAL ENGINE ========== */}
       <DualEngine />
 
-      {/* Product Ecosystem */}
+      {/* ========== SECTION 3: PRODUCT ECOSYSTEM ========== */}
       <ProductEcosystem />
 
-      {/* Core Engineering Services */}
+      {/* ========== SECTION 4: CORE SERVICES ========== */}
       <div id="outcomes">
         <CoreServices />
       </div>
 
-      {/* Trust & Architecture Standards */}
+      {/* ========== SECTION 5: TRUST & PROOF ========== */}
       <TrustSection />
 
-      {/* Industry Network */}
+      {/* ========== SECTION 6: INDUSTRY NETWORK ========== */}
       <IndustryNetwork />
 
-      {/* Company Mission & Leadership */}
+      {/* ========== SECTION 7: COMPANY MISSION ========== */}
       <CompanyMission />
 
-      {/* Final Call to Action */}
+      {/* ========== SECTION 8: FINAL CTA ========== */}
       <FinalCTA />
-    </div>
+    </main>
   );
 }
