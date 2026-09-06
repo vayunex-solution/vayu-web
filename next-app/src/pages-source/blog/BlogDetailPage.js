@@ -71,13 +71,13 @@ const BlogDetailPage = ({ slug: propSlug }) => {
                 if (data && !data.error && data.title) {
                     setBlog(data);
                 } else {
-                    // Blog not found — show not found state, no fake content
+                    // Blog not found â€” show not found state, no fake content
                     setBlog(null);
                 }
                 setLoading(false);
             })
             .catch(() => {
-                // API unreachable — show not found state
+                // API unreachable â€” show not found state
                 setBlog(null);
                 setLoading(false);
             });
@@ -107,6 +107,20 @@ const BlogDetailPage = ({ slug: propSlug }) => {
         );
     }
 
+    // â”€â”€ Safe field extractors (API may return objects instead of strings) â”€â”€
+    const getStr = (val, fallback = '') => {
+        if (!val) return fallback;
+        if (typeof val === 'string') return val;
+        if (typeof val === 'object') return val.name || val.title || val.label || String(val) || fallback;
+        return String(val) || fallback;
+    };
+
+    const authorName  = getStr(blog.author,   'Vayunex Engineering Team');
+    const categoryStr = getStr(blog.category, '');
+    const tagsArr     = Array.isArray(blog.tags)
+        ? blog.tags.map(t => getStr(t))
+        : (blog.tags ? [getStr(blog.tags)] : []);
+
     const cleanBlogHtml = (html) => {
         if (!html) return '';
         let cleaned = html.replace(/\*\*/g, '');
@@ -133,7 +147,7 @@ const BlogDetailPage = ({ slug: propSlug }) => {
         "image": blog.featuredImage || "https://www.vayunexsolution.com/assets/og-default.jpg",
         "author": {
             "@type": "Person",
-            "name": blog.author,
+            "name": authorName,
             "worksFor": { "@type": "Organization", "name": "Vayunex Solution" }
         },
         "publisher": {
@@ -189,7 +203,7 @@ const BlogDetailPage = ({ slug: propSlug }) => {
                     type="article"
                 />
 
-                {/* â”€â”€ Hero â”€â”€ */}
+                {/* ── Hero ── */}
                 <div className="blog-hero">
                     <div className="blog-hero-bg">
                         <div className="blog-hero-orb blog-hero-orb-1" />
@@ -203,8 +217,8 @@ const BlogDetailPage = ({ slug: propSlug }) => {
                             { name: blog.title, path: `/blog/${blog.slug || slug}` }
                         ]} />
 
-                        {blog.category && (
-                            <span className="blog-category-badge">{blog.category}</span>
+                        {categoryStr && (
+                            <span className="blog-category-badge">{categoryStr}</span>
                         )}
 
                         <h1 className="blog-hero-title">{blog.title}</h1>
@@ -216,10 +230,10 @@ const BlogDetailPage = ({ slug: propSlug }) => {
                         <div className="blog-meta-row">
                             <div className="blog-meta-author">
                                 <div className="blog-author-avatar">
-                                    {(blog.author || 'V').charAt(0).toUpperCase()}
+                                    {authorName.charAt(0).toUpperCase()}
                                 </div>
                                 <div className="blog-author-info">
-                                    <span className="blog-author-name">{blog.author || 'Vayunex Engineering Team'}</span>
+                                    <span className="blog-author-name">{authorName}</span>
                                     <span className="blog-author-role">Vayunex Solution</span>
                                 </div>
                             </div>
@@ -228,14 +242,14 @@ const BlogDetailPage = ({ slug: propSlug }) => {
                                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                                     {publishDate.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
                                 </span>
-                                <span className="blog-meta-sep">Â·</span>
+                                <span className="blog-meta-sep">&middot;</span>
                                 <span className="blog-meta-item">
                                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                                     {readTime} min read
                                 </span>
                                 {blog.viewCount > 0 && (
                                     <>
-                                        <span className="blog-meta-sep">Â·</span>
+                                        <span className="blog-meta-sep">&middot;</span>
                                         <span className="blog-meta-item">
                                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                                             {blog.viewCount.toLocaleString()} views
@@ -247,7 +261,7 @@ const BlogDetailPage = ({ slug: propSlug }) => {
                     </div>
                 </div>
 
-                {/* â”€â”€ Body â”€â”€ */}
+                {/* ── Body ── */}
                 <div className="blog-body">
                     <div className="blog-content-grid">
 
@@ -269,10 +283,10 @@ const BlogDetailPage = ({ slug: propSlug }) => {
                                 dangerouslySetInnerHTML={{ __html: cleanBlogHtml(blog.content) }}
                             />
 
-                            {blog.tags && blog.tags.length > 0 && (
+                            {tagsArr.length > 0 && (
                                 <div className="blog-tags">
                                     <span className="blog-tags-label">Tags:</span>
-                                    {blog.tags.map((tag, i) => (
+                                    {tagsArr.map((tag, i) => (
                                         <span key={i} className="blog-tag">{tag}</span>
                                     ))}
                                 </div>
@@ -310,7 +324,7 @@ const BlogDetailPage = ({ slug: propSlug }) => {
                                             FAQ
                                         </div>
                                         <h2 className="blog-faq-title">Frequently Asked <span className="text-gradient">Questions</span></h2>
-                                        <p className="blog-faq-subtitle">Everything you need to know â€” answered by the Vayunex engineering team.</p>
+                                        <p className="blog-faq-subtitle">Everything you need to know &mdash; answered by the Vayunex engineering team.</p>
                                     </div>
                                     <FAQAccordion
                                         faqs={faqs}
@@ -344,10 +358,10 @@ const BlogDetailPage = ({ slug: propSlug }) => {
                                     <h4 className="sidebar-card-title">About the Author</h4>
                                     <div className="sidebar-author">
                                         <div className="sidebar-author-avatar">
-                                            {(blog.author || 'V').charAt(0).toUpperCase()}
+                                            {authorName.charAt(0).toUpperCase()}
                                         </div>
                                         <div>
-                                            <p className="sidebar-author-name">{blog.author || 'Vayunex Engineering Team'}</p>
+                                            <p className="sidebar-author-name">{authorName}</p>
                                             <p className="sidebar-author-role">Engineering &amp; AI at Vayunex</p>
                                         </div>
                                     </div>
@@ -477,5 +491,6 @@ const BlogDetailPage = ({ slug: propSlug }) => {
 };
 
 export default BlogDetailPage;
+
 
 
