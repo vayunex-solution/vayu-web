@@ -41,6 +41,9 @@ export const metadata = {
     apple: '/logo192.png',
   },
   manifest: '/manifest.json',
+  alternates: {
+    canonical: './',
+  },
   openGraph: {
     title: 'Vayunex Solution | Enterprise AI, Cloud & Software Engineering',
     description: 'Transform your business with intelligent software systems, enterprise SaaS products, and custom AI architecture.',
@@ -66,7 +69,56 @@ export const metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
+};
+
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://www.vayunexsolution.com/#organization',
+      'name': 'Vayunex Solution',
+      'url': 'https://www.vayunexsolution.com',
+      'logo': 'https://www.vayunexsolution.com/images/vayunex-logo.webp',
+      'founder': {
+        '@type': 'Person',
+        'name': 'Yash Kumar',
+      },
+      'contactPoint': {
+        '@type': 'ContactPoint',
+        'telephone': '+91-8930733725',
+        'contactType': 'customer service',
+        'availableLanguage': ['English', 'Hindi'],
+      },
+      'sameAs': [
+        'https://www.linkedin.com/company/vayunex-solution/',
+        'https://www.instagram.com/vayunexsolution',
+        'https://www.facebook.com/share/1B52ioXjqw/',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://www.vayunexsolution.com/#website',
+      'url': 'https://www.vayunexsolution.com',
+      'name': 'Vayunex Solution',
+      'publisher': {
+        '@id': 'https://www.vayunexsolution.com/#organization',
+      },
+      'potentialAction': {
+        '@type': 'SearchAction',
+        'target': 'https://www.vayunexsolution.com/blog?search={search_term_string}',
+        'query-input': 'required name=search_term_string',
+      },
+    },
+  ],
 };
 
 export default function RootLayout({ children }) {
@@ -78,6 +130,10 @@ export default function RootLayout({ children }) {
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
           rel="stylesheet"
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
         />
         
         {/* Google Analytics 4 */}

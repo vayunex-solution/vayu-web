@@ -1,22 +1,72 @@
-# Vayunex Solution - Factual Knowledge Graph
+# Vayunex Solution - Factual Knowledge Graph & Architecture Index
 
 Organization: Vayunex Solution
+Legal Entity: Vayunex Solution Private Limited
 Founder & Product Lead: Yash Kumar
-Website: https://www.vayunexsolution.com
-Phone: +91 8930733725
-Contact: info@vayunexsolution.com
+Technology & Systems Lead: Rajesh Kumar
+Official Website: https://www.vayunexsolution.com
+Headquarters: Chandigarh / Mohali, India
+Contact Email: contact@vayunexsolution.com
+Phone / WhatsApp: +91 8930733725
+LinkedIn: https://www.linkedin.com/company/vayunex-solution/
+Operating Model: Product-Led Engineering (Own SaaS Ecosystem + Enterprise Client Engagements)
 
-## Products
-1. Jwelnex - Jewelry ERP and billing software
-2. PayNex - HR and payroll management system
-3. SocialNex - Social media analytics and management
-4. SchoolDost - Comprehensive school ERP system
-5. InventoryNex - Advanced inventory management software
+## Proprietary SaaS Products & Dedicated Sub-Pages
 
-## Services
-1. Web Development - Enterprise and custom web applications
-2. AI & Data Science - Machine learning, workflow automation, and custom LLMs
-3. Recruitment - Technical recruitment and IT staffing solutions
-4. SEO Growth - Search Engine Optimization strategies
-5. Digital Marketing - Performance marketing and lead generation
-6. Corporate Training - Upskilling for engineering and business teams
+1. Jwelnex ERP (Jewellery Business Operating System)
+- Overview: https://www.vayunexsolution.com/products/jwelnex
+- Features (RFID, Barcode, Karigar Ledger, GST): https://www.vayunexsolution.com/products/jwelnex/features
+- Pricing & ROI Calculator: https://www.vayunexsolution.com/products/jwelnex/pricing
+
+2. PayNex (Smart Billing & Payment Infrastructure)
+- Overview: https://www.vayunexsolution.com/products/paynex
+- Features (Invoicing, Multi-Gateway, Ledger Sync): https://www.vayunexsolution.com/products/paynex/features
+- Pricing: https://www.vayunexsolution.com/products/paynex/pricing
+
+3. SocialNex (Social Media Command Center)
+- Overview: https://www.vayunexsolution.com/products/socialnex
+- Features (Multi-Channel Dispatch, AI Copywriter, Analytics): https://www.vayunexsolution.com/products/socialnex/features
+- Pricing: https://www.vayunexsolution.com/products/socialnex/pricing
+
+4. SchoolDost (Campus Network & Student Community)
+- Overview: https://www.vayunexsolution.com/products/schooldost
+- Features (Verified Student Network, LMS, Digital Campus): https://www.vayunexsolution.com/products/schooldost/features
+- Request Demo: https://www.vayunexsolution.com/products/schooldost/demo
+
+5. InventoryNex (Warehouse & Stock Telemetry)
+- Overview: https://www.vayunexsolution.com/products/inventorynex
+
+## Enterprise Engineering Services & Sub-Pages
+
+1. Web Development: https://www.vayunexsolution.com/services/web-development
+- Custom Web Applications: https://www.vayunexsolution.com/services/web-development/custom-web-apps
+- E-Commerce Platforms: https://www.vayunexsolution.com/services/web-development/ecommerce
+- SaaS Product Engineering: https://www.vayunexsolution.com/services/web-development/saas
+
+2. AI & Data Science: https://www.vayunexsolution.com/services/ai-data-science
+- Machine Learning Models: https://www.vayunexsolution.com/services/ai-data-science/machine-learning
+- NLP & Custom LLMs: https://www.vayunexsolution.com/services/ai-data-science/nlp-llm
+- Computer Vision: https://www.vayunexsolution.com/services/ai-data-science/computer-vision
+
+3. Tech Recruitment: https://www.vayunexsolution.com/services/recruitment
+- Technical Hiring: https://www.vayunexsolution.com/services/recruitment/tech-hiring
+- Executive Search: https://www.vayunexsolution.com/services/recruitment/executive-search
+
+4. SEO & Growth: https://www.vayunexsolution.com/services/seo-growth
+- Technical SEO: https://www.vayunexsolution.com/services/seo-growth/technical-seo
+- Programmatic SEO: https://www.vayunexsolution.com/services/seo-growth/programmatic-seo
+- AEO & GEO Optimization: https://www.vayunexsolution.com/services/seo-growth/aeo-geo
+
+5. Corporate Training: https://www.vayunexsolution.com/services/training
+- Corporate Training: https://www.vayunexsolution.com/services/training/corporate-training
+- Internship Program: https://www.vayunexsolution.com/services/training/internship-program
+
+6. Digital Marketing: https://www.vayunexsolution.com/services/digital-marketing
+- Performance Marketing: https://www.vayunexsolution.com/services/digital-marketing/performance-marketing
+- Social Media Marketing: https://www.vayunexsolution.com/services/digital-marketing/social-media
+
+## Core Engineering Stack
+Frontend: Next.js 14, React 18/19, TypeScript, Three.js, GSAP
+Backend: Node.js, Express, Go, Python, PostgreSQL, Prisma ORM, Redis
+DevOps: Docker, AWS, Cloudflare, cPanel/LiteSpeed
+AI & ML: PyTorch, LangChain, OpenAI API, Llama 3, HuggingFace

@@ -1,20 +1,100 @@
 {
   "organization": "Vayunex Solution",
-  "founder": "Yash Kumar",
+  "legal_name": "Vayunex Solution Private Limited",
+  "founder_product_lead": "Yash Kumar",
+  "tech_systems_lead": "Rajesh Kumar",
+  "website": "https://www.vayunexsolution.com",
+  "headquarters": "Chandigarh / Mohali, India",
   "phone": "+91 8930733725",
-  "products": [
-    "Jwelnex",
-    "PayNex",
-    "SocialNex",
-    "SchoolDost",
-    "InventoryNex"
-  ],
-  "services": [
-    "Web Development",
-    "AI & Data Science",
-    "Recruitment",
-    "SEO Growth",
-    "Digital Marketing",
-    "Corporate Training"
-  ]
+  "email": "contact@vayunexsolution.com",
+  "ecosystem": {
+    "products": [
+      {
+        "name": "Jwelnex ERP",
+        "category": "Jewellery Business Management ERP",
+        "url": "https://www.vayunexsolution.com/products/jwelnex",
+        "features_url": "https://www.vayunexsolution.com/products/jwelnex/features",
+        "pricing_url": "https://www.vayunexsolution.com/products/jwelnex/pricing"
+      },
+      {
+        "name": "PayNex",
+        "category": "Billing & Payment Infrastructure",
+        "url": "https://www.vayunexsolution.com/products/paynex",
+        "features_url": "https://www.vayunexsolution.com/products/paynex/features",
+        "pricing_url": "https://www.vayunexsolution.com/products/paynex/pricing"
+      },
+      {
+        "name": "SocialNex",
+        "category": "AI Social Media Command Center",
+        "url": "https://www.vayunexsolution.com/products/socialnex",
+        "features_url": "https://www.vayunexsolution.com/products/socialnex/features",
+        "pricing_url": "https://www.vayunexsolution.com/products/socialnex/pricing"
+      },
+      {
+        "name": "SchoolDost",
+        "category": "Verified Student Campus Network & LMS",
+        "url": "https://www.vayunexsolution.com/products/schooldost",
+        "features_url": "https://www.vayunexsolution.com/products/schooldost/features",
+        "demo_url": "https://www.vayunexsolution.com/products/schooldost/demo"
+      },
+      {
+        "name": "InventoryNex",
+        "category": "Warehouse & Stock Telemetry Platform",
+        "url": "https://www.vayunexsolution.com/products/inventorynex"
+      }
+    ],
+    "services": [
+      {
+        "name": "Web Development",
+        "url": "https://www.vayunexsolution.com/services/web-development",
+        "subpages": [
+          "https://www.vayunexsolution.com/services/web-development/custom-web-apps",
+          "https://www.vayunexsolution.com/services/web-development/ecommerce",
+          "https://www.vayunexsolution.com/services/web-development/saas"
+        ]
+      },
+      {
+        "name": "AI & Data Science",
+        "url": "https://www.vayunexsolution.com/services/ai-data-science",
+        "subpages": [
+          "https://www.vayunexsolution.com/services/ai-data-science/machine-learning",
+          "https://www.vayunexsolution.com/services/ai-data-science/nlp-llm",
+          "https://www.vayunexsolution.com/services/ai-data-science/computer-vision"
+        ]
+      },
+      {
+        "name": "Tech Recruitment",
+        "url": "https://www.vayunexsolution.com/services/recruitment",
+        "subpages": [
+          "https://www.vayunexsolution.com/services/recruitment/tech-hiring",
+          "https://www.vayunexsolution.com/services/recruitment/executive-search"
+        ]
+      },
+      {
+        "name": "SEO & Growth",
+        "url": "https://www.vayunexsolution.com/services/seo-growth",
+        "subpages": [
+          "https://www.vayunexsolution.com/services/seo-growth/technical-seo",
+          "https://www.vayunexsolution.com/services/seo-growth/programmatic-seo",
+          "https://www.vayunexsolution.com/services/seo-growth/aeo-geo"
+        ]
+      },
+      {
+        "name": "Corporate Training",
+        "url": "https://www.vayunexsolution.com/services/training",
+        "subpages": [
+          "https://www.vayunexsolution.com/services/training/corporate-training",
+          "https://www.vayunexsolution.com/services/training/internship-program"
+        ]
+      },
+      {
+        "name": "Digital Marketing",
+        "url": "https://www.vayunexsolution.com/services/digital-marketing",
+        "subpages": [
+          "https://www.vayunexsolution.com/services/digital-marketing/performance-marketing",
+          "https://www.vayunexsolution.com/services/digital-marketing/social-media"
+        ]
+      }
+    ]
+  }
 }

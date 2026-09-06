@@ -1,0 +1,7 @@
+Contact: mailto:security@vayunexsolution.com
+Contact: mailto:contact@vayunexsolution.com
+Contact: https://www.vayunexsolution.com/contact
+Preferred-Languages: en, hi
+Canonical: https://www.vayunexsolution.com/.well-known/security.txt
+Policy: https://www.vayunexsolution.com/terms
+Hiring: https://www.vayunexsolution.com/careers

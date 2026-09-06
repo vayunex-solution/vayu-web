@@ -3,18 +3,20 @@
 
 User-agent: *
 Allow: /
-Disallow: /admin
-Disallow: /dashboard
-Disallow: /api/private
-Disallow: /tmp
-Disallow: /test
-Disallow: /*.json$
-Disallow: /static/js/*.map
+Allow: /ai-facts.json
+Allow: /manifest.json
+Allow: /llms.txt
+Allow: /ai-knowledge-layer.txt
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /api/private/
+Disallow: /tmp/
+Disallow: /test/
 
 # Sitemap
 Sitemap: https://www.vayunexsolution.com/sitemap.xml
 
-# Allow AI crawlers for AEO/GEO
+# Generative AI & LLM Search Engine Crawlers (Full Access for AEO & GEO)
 User-agent: GPTBot
 Allow: /
 
@@ -33,5 +35,23 @@ Allow: /
 User-agent: anthropic-ai
 Allow: /
 
-# Crawl delay to be polite
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Omgilibot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+# Crawl delay to ensure optimal server performance
 Crawl-delay: 1
