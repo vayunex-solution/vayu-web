@@ -233,7 +233,7 @@ const TrainingPage = () => {
                                 style={{ '--card-color': outcome.color, '--delay': `${index * 0.1}s` }}
                             >
                                 <div className="type-icon">
-                                    <SmartIcon icon={outcome.icon} size={28} color={outcome.color} />
+                                    <SmartIcon icon={outcome.icon} size={28} color="currentColor" />
                                 </div>
                                 <h3>{outcome.title}</h3>
                                 <p>{outcome.desc}</p>
@@ -280,7 +280,7 @@ const TrainingPage = () => {
                                 style={{ '--card-color': course.color, '--delay': `${index * 0.1}s` }}
                             >
                                 <div className="type-icon">
-                                    <SmartIcon icon={course.icon} size={28} color={course.color} />
+                                    <SmartIcon icon={course.icon} size={28} color="currentColor" />
                                 </div>
                                 <h3>{course.title}</h3>
                                 <p style={{ fontSize: '0.85rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>

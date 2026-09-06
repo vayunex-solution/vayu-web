@@ -290,7 +290,7 @@ const WebDevelopmentPage = () => {
                                 style={{ '--card-color': outcome.color, '--delay': `${index * 0.1}s` }}
                             >
                                 <div className="type-icon">
-                                    <SmartIcon icon={outcome.icon} size={28} color={outcome.color} />
+                                    <SmartIcon icon={outcome.icon} size={28} color="currentColor" />
                                 </div>
                                 <h3>{outcome.title}</h3>
                                 <p>{outcome.desc}</p>
@@ -337,7 +337,7 @@ const WebDevelopmentPage = () => {
                                 style={{ '--card-color': type.color, '--delay': `${index * 0.1}s` }}
                             >
                                 <div className="type-icon">
-                                    <SmartIcon icon={type.icon} size={28} color={type.color} />
+                                    <SmartIcon icon={type.icon} size={28} color="currentColor" />
                                 </div>
                                 <h3>{type.title}</h3>
                                 <p>{type.desc}</p>
@@ -367,7 +367,7 @@ const WebDevelopmentPage = () => {
                                 style={{ '--card-color': audience.color, '--delay': `${index * 0.1}s` }}
                             >
                                 <div className="type-icon">
-                                    <SmartIcon icon={audience.icon} size={28} color={audience.color} />
+                                    <SmartIcon icon={audience.icon} size={28} color="currentColor" />
                                 </div>
                                 <h3>{audience.title}</h3>
                                 <p>{audience.desc}</p>

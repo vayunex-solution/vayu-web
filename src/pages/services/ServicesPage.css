@@ -273,7 +273,14 @@
 
 .type-card:hover .type-icon {
     background: var(--card-color);
-    color: #fff;
+    color: #ffffff;
+}
+
+.type-card:hover .type-icon svg,
+.type-card:hover .type-icon .smart-icon,
+.type-card:hover .type-icon svg * {
+    stroke: #ffffff !important;
+    color: #ffffff !important;
 }
 
 .type-card h3 {

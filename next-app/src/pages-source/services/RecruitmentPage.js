@@ -211,7 +211,7 @@ const RecruitmentPage = () => {
                                 style={{ '--card-color': outcome.color, '--delay': `${index * 0.1}s` }}
                             >
                                 <div className="type-icon">
-                                    <SmartIcon icon={outcome.icon} size={28} color={outcome.color} />
+                                    <SmartIcon icon={outcome.icon} size={28} color="currentColor" />
                                 </div>
                                 <h3>{outcome.title}</h3>
                                 <p>{outcome.desc}</p>
@@ -258,7 +258,7 @@ const RecruitmentPage = () => {
                                 style={{ '--card-color': service.color, '--delay': `${index * 0.1}s` }}
                             >
                                 <div className="type-icon">
-                                    <SmartIcon icon={service.icon} size={28} color={service.color} />
+                                    <SmartIcon icon={service.icon} size={28} color="currentColor" />
                                 </div>
                                 <h3>{service.title}</h3>
                                 <p>{service.desc}</p>

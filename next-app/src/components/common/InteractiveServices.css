@@ -228,18 +228,24 @@
     transform: scale(1.1);
 }
 
-.service-icon-wrapper i {
+.service-icon-wrapper i,
+.service-icon-wrapper svg,
+.service-icon-wrapper .smart-icon {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 1.8rem;
     color: var(--card-color);
+    stroke: currentColor;
     transition: all 0.4s ease;
 }
 
-.service-card:hover .service-icon-wrapper i {
-    color: #fff;
+.service-card:hover .service-icon-wrapper i,
+.service-card:hover .service-icon-wrapper svg,
+.service-card:hover .service-icon-wrapper .smart-icon {
+    color: #fff !important;
+    stroke: #ffffff !important;
     transform: translate(-50%, -50%) scale(1.1);
 }
 

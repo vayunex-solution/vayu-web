@@ -272,9 +272,23 @@
     transition: all 0.3s ease;
 }
 
+.type-icon svg,
+.type-icon .smart-icon {
+    stroke: currentColor;
+    color: currentColor;
+    transition: stroke 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
 .type-card:hover .type-icon {
     background: var(--card-color);
-    color: #fff;
+    color: #ffffff;
+}
+
+.type-card:hover .type-icon svg,
+.type-card:hover .type-icon .smart-icon,
+.type-card:hover .type-icon svg * {
+    stroke: #ffffff !important;
+    color: #ffffff !important;
 }
 
 .type-card h3 {
