@@ -1,7 +1,6 @@
 /* ============================================================
    VAYUNEX SOLUTION — GLOBAL STYLESHEET v5.0
    ============================================================ */
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@400;500;600;700&display=swap');
 @import './variables.css';
 
 *, *::before, *::after {
@@ -26,7 +25,7 @@ body {
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  text-rendering: optimizeLegibility;
   width: 100%;
   max-width: 100vw;
 }

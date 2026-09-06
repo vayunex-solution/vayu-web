@@ -5,7 +5,8 @@ import gsap from 'gsap';
 
 /**
  * BlurText - ReactBits Style Animated Text Component
- * Animates text word-by-word or letter-by-letter with a blur-in effect.
+ * Animates text word-by-word or letter-by-letter with a blur-in effect,
+ * and clears filters upon completion for maximum rendering performance.
  */
 const BlurText = ({
   text,
@@ -25,30 +26,29 @@ const BlurText = ({
     const elements = containerRef.current.querySelectorAll('.blur-part');
     const yOffset = direction === 'top' ? -20 : 20;
 
-    // Reset properties to initial state just in case of re-renders
-    gsap.set(elements, { filter: 'blur(15px)', opacity: 0, y: yOffset });
+    // Reset properties to initial state
+    gsap.set(elements, { filter: 'blur(12px)', opacity: 0, y: yOffset });
 
     gsap.to(elements, {
       filter: 'blur(0px)',
       opacity: 1,
       y: 0,
-      duration: 1.2,
-      stagger: 0.1, // Delay between each word
-      delay: delay / 1000, // Convert ms to seconds
+      duration: 0.9,
+      stagger: 0.06,
+      delay: delay / 1000,
       ease: 'power3.out',
+      clearProps: 'filter,transform', // Frees GPU memory after animation
       onComplete: () => {
         if (onAnimationComplete) onAnimationComplete();
       }
     });
 
-    // Cleanup not strictly necessary here, but good practice
     return () => gsap.killTweensOf(elements);
   }, [text, delay, direction, onAnimationComplete]);
 
   // Parse text into tokens: keep newlines and spaces intact
   let parts = [];
   if (animateBy === 'words') {
-    // Split by whitespace but keep the whitespace tokens
     parts = text.split(/(\s+)/);
   } else {
     parts = text.split('');
@@ -57,23 +57,20 @@ const BlurText = ({
   return (
     <div ref={containerRef} className={`blur-text ${className}`} style={{ ...style, display: 'block', maxWidth: '100%', overflow: 'hidden' }}>
       {parts.map((part, index) => {
-        // Handle explicit newlines
         if (part === '\n') return <br key={index} />;
         
-        // Handle pure whitespace (spaces, tabs)
         if (part.trim() === '') {
           return <span key={index} style={{ whiteSpace: 'pre' }}>{part}</span>;
         }
         
-        // Animatable text
         return (
           <span 
             key={index} 
             className="blur-part"
             style={{ 
               display: 'inline-block', 
-              opacity: 0, // Hidden until GSAP fires
-              filter: 'blur(15px)' 
+              opacity: 0, 
+              filter: 'blur(12px)' 
             }}
           >
             {part}

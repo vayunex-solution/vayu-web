@@ -1,28 +1,41 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import './ScrollProgress.css';
 
 const ScrollProgress = () => {
-    const [scrollProgress, setScrollProgress] = useState(0);
+    const barRef = useRef(null);
 
     useEffect(() => {
+        let ticking = false;
+
         const updateScrollProgress = () => {
-            const scrollTop = window.pageYOffset;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const progress = (scrollTop / docHeight) * 100;
-            setScrollProgress(progress);
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    if (barRef.current) {
+                        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+                        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+                        barRef.current.style.width = `${progress}%`;
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
         };
 
-        window.addEventListener('scroll', updateScrollProgress);
+        window.addEventListener('scroll', updateScrollProgress, { passive: true });
+        updateScrollProgress();
+
         return () => window.removeEventListener('scroll', updateScrollProgress);
     }, []);
 
     return (
-        <div className="scroll-progress-container">
+        <div className="scroll-progress-container" aria-hidden="true">
             <div
+                ref={barRef}
                 className="scroll-progress-bar"
-                style={{ width: `${scrollProgress}%` }}
+                style={{ width: '0%' }}
             />
         </div>
     );

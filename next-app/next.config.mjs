@@ -12,6 +12,9 @@ const nextConfig = {
     unoptimized: true,
   },
   reactStrictMode: false,
+  swcMinify: true,
+  compress: true,
+  poweredByHeader: false,
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,

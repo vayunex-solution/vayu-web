@@ -369,7 +369,8 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
             powerPreference: "high-performance"
           });
           this.renderer.setSize(initW, initH, false);
-          this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+          this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.25));
+          this.isVisible = true;
           
           this.composer = new EffectComposer(this.renderer);
           container.append(this.renderer.domElement);
@@ -461,9 +462,9 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
         this.bloomPass = new EffectPass(
           this.camera,
           new BloomEffect({
-            luminanceThreshold: 0.2,
-            luminanceSmoothing: 0,
-            resolutionScale: 1
+            luminanceThreshold: 0.25,
+            luminanceSmoothing: 0.1,
+            resolutionScale: 0.75
           })
         );
 
@@ -679,6 +680,12 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
 
       tick() {
         if (this.disposed || !this.webglSupported) return;
+
+        // Skip rendering when scrolled out of viewport (saves 100% CPU/GPU)
+        if (!this.isVisible) {
+          requestAnimationFrame(this.tick);
+          return;
+        }
 
         if (!this.hasValidSize) {
           const w = this.container.offsetWidth;
@@ -1213,7 +1220,16 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
         }
     });
 
+    // Pause WebGL render loop when hero is scrolled out of view
+    const observer = new IntersectionObserver(([entry]) => {
+      if (appRef.current) {
+        appRef.current.isVisible = entry.isIntersecting;
+      }
+    }, { threshold: 0.05 });
+    observer.observe(container);
+
     return () => {
+      observer.disconnect();
       if (appRef.current) {
         appRef.current.dispose();
         appRef.current = null;

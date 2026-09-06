@@ -6,29 +6,36 @@ import './BackToTop.css';
 const BackToTop = () => {
     const [isVisible, setIsVisible] = useState(false);
 
-    // Show button when page is scrolled down 300px
-    const toggleVisibility = () => {
-        if (window.pageYOffset > 300) {
-            setIsVisible(true);
-        } else {
-            setIsVisible(false);
-        }
-    };
+    useEffect(() => {
+        let ticking = false;
+        let lastVisible = false;
 
-    // Smooth scroll to top
+        const toggleVisibility = () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const shouldShow = (window.scrollY || document.documentElement.scrollTop) > 300;
+                    if (shouldShow !== lastVisible) {
+                        lastVisible = shouldShow;
+                        setIsVisible(shouldShow);
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        };
+
+        window.addEventListener('scroll', toggleVisibility, { passive: true });
+        return () => {
+            window.removeEventListener('scroll', toggleVisibility);
+        };
+    }, []);
+
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
         });
     };
-
-    useEffect(() => {
-        window.addEventListener('scroll', toggleVisibility);
-        return () => {
-            window.removeEventListener('scroll', toggleVisibility);
-        };
-    }, []);
 
     return (
         <button
