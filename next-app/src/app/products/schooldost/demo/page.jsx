@@ -6,6 +6,7 @@ import SEO from '../../../../components/common/SEO';
 import Breadcrumbs from '../../../../components/common/Breadcrumbs';
 import emailjs from 'emailjs-com';
 import { trackDemoRequest } from '../../../../utils/analytics';
+import { submitContactLead } from '../../../../services/contactService';
 import '../../../../styles/InnerPage.css';
 import '../../../../styles/ProductPage.css';
 
@@ -69,31 +70,22 @@ Tracking:
 source=schooldost_demo_page
 product=schooldost`;
 
-    emailjs.send(serviceID, templateID, {
+    submitContactLead({
       name: formData.contactName,
       email: formData.email,
+      phone: formData.phone,
+      company: formData.institutionName,
+      studentCount: formData.studentCount,
+      preferredDate: formData.preferredDate,
+      interestedModules: formData.interestedModules,
       subject: `[INSTITUTIONAL DEMO] ${formData.institutionName} - SchoolDost`,
-      message: message
-    }, userID).then(() => {
+      message: message,
+      formType: 'SchoolDost Institutional Demo'
+    }).then(() => {
       setStatus('success');
       trackDemoRequest('SchoolDost Enterprise Demo');
-
-      // Dispatch to database for admin telemetry
-      try {
-        fetch('https://api.web.vayunexsolution.com/api/analytics/track', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            eventType: 'lead_captured',
-            pageUrl: '/products/schooldost/demo',
-            sessionId: sessionStorage.getItem('vayunex_session_id') || 'sess_direct',
-            product: 'SchoolDost',
-            leadType: 'institutional_demo',
-            leadData: formData
-          })
-        }).catch(() => {});
-      } catch (err) {}
-    }).catch(() => {
+    }).catch((error) => {
+      console.error('Demo request error:', error);
       setStatus('error');
     });
   };

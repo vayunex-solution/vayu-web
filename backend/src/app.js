@@ -66,6 +66,8 @@ const categoryRoutes = require('./routes/category.routes');
 const { router: authRoutes } = require('./routes/auth.routes');
 const tagRoutes = require('./routes/tag.routes');
 const analyticsRoutes = require('./routes/analytics.routes');
+const contactRoutes = require('./routes/contact.routes');
+const settingsRoutes = require('./routes/settings.routes');
 
 // Use Routes
 app.use('/api/blogs', blogRoutes);
@@ -73,6 +75,8 @@ app.use('/api/categories', categoryRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/tags', tagRoutes);
 app.use('/api/analytics', analyticsRoutes);
+app.use('/api/contact', contactRoutes);
+app.use('/api/settings', settingsRoutes);
 
 // Global Error Handler
 app.use((err, req, res, next) => {

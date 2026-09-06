@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import emailjs from 'emailjs-com';
 import { trackLead, trackDemoRequest, trackWaitlistJoin } from '../../utils/analytics';
+import { submitContactLead } from '../../services/contactService';
 import './LeadCaptureModal.css';
 
 const LeadCaptureModal = ({ isOpen, onClose, mode, productName, productId }) => {
@@ -86,14 +87,16 @@ product=${productId}
 capture_type=early_access`;
     }
 
-    const templateParams = {
+    submitContactLead({
       name: formData.name,
       email: formData.email,
+      phone: formData.phone,
+      company: formData.company,
+      branches: formData.branches,
       subject: subject,
-      message: messageBody
-    };
-
-    emailjs.send(serviceID, templateID, templateParams, userID)
+      message: messageBody,
+      formType: mode === 'demo' ? `Demo Request: ${productName}` : `Early Access: ${productName}`
+    })
       .then(() => {
         setStatus('success');
         
@@ -106,7 +109,7 @@ capture_type=early_access`;
         }
       })
       .catch((error) => {
-        console.error('EmailJS Error:', error);
+        console.error('Lead Capture Error:', error);
         setStatus('error');
       });
   };

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import emailjs from 'emailjs-com';
 import { trackCareerApplicationSubmit } from '../../utils/analytics';
+import { submitContactLead } from '../../services/contactService';
 import './CareerApplicationModal.css';
 
 const CareerApplicationModal = ({ isOpen, onClose, selectedJob }) => {
@@ -83,15 +84,14 @@ Tracking Metadata:
 source=careers_page
 capture_type=career_application`;
 
-    const templateParams = {
+    submitContactLead({
       name: formData.name,
       email: formData.email,
       phone: formData.phone,
       subject: subject,
-      message: messageBody
-    };
-
-    emailjs.send(serviceID, templateID, templateParams, userID)
+      message: messageBody,
+      formType: `Career Application: ${selectedJob?.title || 'General'}`
+    })
       .then(() => {
         setStatus('success');
         
@@ -104,7 +104,7 @@ capture_type=career_application`;
         });
       })
       .catch((error) => {
-        console.error('EmailJS Error:', error);
+        console.error('Career Application Error:', error);
         setStatus('error');
       });
   };

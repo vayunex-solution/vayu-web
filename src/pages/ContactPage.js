@@ -4,6 +4,7 @@ import SEO from '../components/common/SEO';
 import useScrollAnimation from '../hooks/useScrollAnimation';
 import emailjs from 'emailjs-com';
 import { trackLead } from '../utils/analytics';
+import { submitContactLead } from '../services/contactService';
 import '../styles/InnerPage.css';
 import './ContactPage.css';
 
@@ -121,20 +122,24 @@ Budget: ${uiData.budget || 'Not specified'}
 Timeline: ${uiData.timeline}
 Preferred Contact: ${uiData.contactMethod}`;
 
-        // Send using emailjs.send (Requires no DOM form element)
-        const templateParams = {
+        submitContactLead({
             name: formData.name,
             email: formData.email,
             subject: smartSubject,
-            message: appendedMessage
-        };
-
-        emailjs.send(serviceID, templateID, templateParams, userID)
+            message: appendedMessage,
+            company: uiData.companyName,
+            projectType: uiData.projectType,
+            budget: uiData.budget,
+            timeline: uiData.timeline,
+            preferredContact: uiData.contactMethod,
+            formType: 'Website Contact Form'
+        })
             .then((result) => {
                 setStatus('success');
                 trackLead('contact_page', null, uiData.projectType, intentParam);
-            }, (error) => {
-                console.error('EmailJS Error:', error);
+            })
+            .catch((error) => {
+                console.error('Submission Error:', error);
                 setStatus('');
                 setErrors({ submit: 'Failed to send message. Please try again later.' });
             });
