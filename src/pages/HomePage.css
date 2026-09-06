@@ -101,51 +101,71 @@
   }
 }
 
-/* ---- Hero Pill ---- */
+/* ---- Hero Pill (Interactive Moving Headline Ticker) ---- */
 .hero-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.35rem 1rem 0.35rem 0.5rem;
-  background: rgba(255, 255, 255, 0.06);
+  gap: 0.65rem;
+  padding: 0.35rem 0.85rem 0.35rem 0.45rem;
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 9999px;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.85);
   font-size: 0.82rem;
   font-weight: 500;
   margin-bottom: 2rem;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  /* Prevent overflow */
-  max-width: 100%;
-  white-space: nowrap;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  max-width: 560px;
+  width: auto;
   overflow: hidden;
-  text-overflow: ellipsis;
-  flex-shrink: 0;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  transition: border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+  position: relative;
+}
+
+.hero-pill:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(99, 102, 241, 0.45);
+  box-shadow: 0 0 24px rgba(99, 102, 241, 0.25);
+  transform: translateY(-1px);
 }
 
 [data-theme="light"] .hero-pill {
-  background: rgba(99, 102, 241, 0.08);
-  border-color: rgba(99, 102, 241, 0.2);
-  color: var(--accent-indigo);
+  background: rgba(99, 102, 241, 0.06);
+  border-color: rgba(99, 102, 241, 0.18);
+  color: var(--text-secondary);
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.06);
+}
+
+[data-theme="light"] .hero-pill:hover {
+  background: rgba(99, 102, 241, 0.1);
+  border-color: rgba(99, 102, 241, 0.35);
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.15);
 }
 
 .hero-pill-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.375rem;
-  background: rgba(99, 102, 241, 0.3);
+  gap: 0.4rem;
+  background: rgba(99, 102, 241, 0.25);
   color: #a5b4fc;
-  padding: 0.2rem 0.6rem;
+  padding: 0.22rem 0.65rem;
   border-radius: 9999px;
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
+  flex-shrink: 0;
+  white-space: nowrap;
+  border: 1px solid rgba(99, 102, 241, 0.3);
 }
 
 [data-theme="light"] .hero-pill-badge {
-  background: rgba(99, 102, 241, 0.15);
+  background: rgba(99, 102, 241, 0.12);
   color: var(--accent-indigo);
+  border-color: rgba(99, 102, 241, 0.25);
 }
 
 .hero-pill-dot {
@@ -154,7 +174,74 @@
   height: 6px;
   border-radius: 50%;
   background: #10B981;
+  box-shadow: 0 0 8px #10B981;
   animation: livePulse 2s ease-in-out infinite;
+}
+
+/* Moving Headline Ticker Track */
+.hero-pill-ticker-wrapper {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 12px, #000 calc(100% - 16px), transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 12px, #000 calc(100% - 16px), transparent 100%);
+  flex: 1;
+  min-width: 0;
+}
+
+.hero-pill-ticker {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  animation: heroPillScroll 24s linear infinite;
+  will-change: transform;
+}
+
+.hero-pill:hover .hero-pill-ticker {
+  animation-play-state: paused;
+}
+
+@keyframes heroPillScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.hero-pill-item {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 0.5rem;
+  font-size: 0.81rem;
+  letter-spacing: 0.01em;
+  color: inherit;
+  white-space: nowrap;
+}
+
+.hero-pill-separator {
+  opacity: 0.4;
+  padding: 0 0.35rem;
+  font-size: 0.7rem;
+}
+
+.hero-pill-arrow {
+  flex-shrink: 0;
+  margin-left: 0.25rem;
+  opacity: 0.5;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  color: #a5b4fc;
+}
+
+[data-theme="light"] .hero-pill-arrow {
+  color: var(--accent-indigo);
+}
+
+.hero-pill:hover .hero-pill-arrow {
+  opacity: 1;
+  transform: translateX(2px);
 }
 
 /* ---- Hero Title ---- */

@@ -161,14 +161,38 @@ const HomePage = () => {
         {/* Hero Content */}
         <div className="hero-inner">
           <div className="hero-content">
-            {/* Badge pill */}
-            <div className="hero-pill">
+            {/* Badge pill - Interactive Moving Headline Ticker */}
+            <Link to="/products" className="hero-pill" id="hero-pill-announcement" aria-label="Explore Vayunex Products">
               <span className="hero-pill-badge">
                 <span className="hero-pill-dot" aria-hidden="true" />
                 Product-Led Engineering
               </span>
-              <span>We build technology for ourselves, and for select enterprise partners.</span>
-            </div>
+              <div className="hero-pill-ticker-wrapper" aria-label="Live updates">
+                <div className="hero-pill-ticker">
+                  <span className="hero-pill-item">⚡ Next-Gen Enterprise SaaS &amp; Custom AI Architecture</span>
+                  <span className="hero-pill-separator" aria-hidden="true">•</span>
+                  <span className="hero-pill-item">💎 Jwelnex ERP &amp; PayNex Active in Production</span>
+                  <span className="hero-pill-separator" aria-hidden="true">•</span>
+                  <span className="hero-pill-item">🚀 99.98% Uptime SLA • Mission-Critical Cloud</span>
+                  <span className="hero-pill-separator" aria-hidden="true">•</span>
+                  <span className="hero-pill-item">🌐 Modern Digital Solutions Built for Global Scale</span>
+                  <span className="hero-pill-separator" aria-hidden="true">•</span>
+                </div>
+                <div className="hero-pill-ticker" aria-hidden="true">
+                  <span className="hero-pill-item">⚡ Next-Gen Enterprise SaaS &amp; Custom AI Architecture</span>
+                  <span className="hero-pill-separator" aria-hidden="true">•</span>
+                  <span className="hero-pill-item">💎 Jwelnex ERP &amp; PayNex Active in Production</span>
+                  <span className="hero-pill-separator" aria-hidden="true">•</span>
+                  <span className="hero-pill-item">🚀 99.98% Uptime SLA • Mission-Critical Cloud</span>
+                  <span className="hero-pill-separator" aria-hidden="true">•</span>
+                  <span className="hero-pill-item">🌐 Modern Digital Solutions Built for Global Scale</span>
+                  <span className="hero-pill-separator" aria-hidden="true">•</span>
+                </div>
+              </div>
+              <svg className="hero-pill-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </Link>
 
             {/* H1 */}
             <h1 className="hero-title">

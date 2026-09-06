@@ -53,7 +53,14 @@ const Navbar = () => {
 
         {/* Logo */}
         <Link to="/" className="navbar__logo" aria-label="Vayunex Solution Home">
-          <img src={vayunexLogo?.src || vayunexLogo || '/images/vayunex-logo.webp'} alt="Vayunex" className="navbar__logo-img" />
+          <img 
+            src={vayunexLogo?.src || vayunexLogo || '/images/vayunex-logo.webp'} 
+            alt="Vayunex" 
+            className="navbar__logo-img" 
+            width={36} 
+            height={36} 
+            style={{ width: '36px', height: '36px', objectFit: 'contain' }} 
+          />
           <div className="navbar__logo-text">
             <span className="navbar__logo-main">VAYUNEX</span>
             <span className="navbar__logo-sub">SOLUTION</span>
