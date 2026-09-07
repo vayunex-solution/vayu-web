@@ -341,6 +341,13 @@
                         </div>
                     </div>
 
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; align-items: center;">
+                        <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">Server Presets:</span>
+                        <button type="button" class="btn btn-secondary btn-sm" onclick="applyPreset('cpanel-ssl')" style="padding: 4px 10px; font-size: 0.78rem; border-color: rgba(99,102,241,0.4); color: #c7d2fe;">cPanel Loopback (127.0.0.1:465)</button>
+                        <button type="button" class="btn btn-secondary btn-sm" onclick="applyPreset('cpanel-sub')" style="padding: 4px 10px; font-size: 0.78rem; border-color: rgba(16,185,129,0.4); color: #6ee7b7;">cPanel Port 587 (127.0.0.1:587)</button>
+                        <button type="button" class="btn btn-secondary btn-sm" onclick="applyPreset('cpanel-domain')" style="padding: 4px 10px; font-size: 0.78rem;">Domain Host (mail...:465)</button>
+                    </div>
+
                     <div class="form-grid-2">
                         <div class="form-group">
                             <label class="form-label">SMTP Host</label>
@@ -594,6 +601,24 @@
             }
         }
 
+        // Apply Server Presets
+        function applyPreset(type) {
+            if (type === 'cpanel-ssl') {
+                document.getElementById('smtpHost').value = '127.0.0.1';
+                document.getElementById('smtpPort').value = 465;
+                document.getElementById('smtpSecure').checked = true;
+            } else if (type === 'cpanel-sub') {
+                document.getElementById('smtpHost').value = '127.0.0.1';
+                document.getElementById('smtpPort').value = 587;
+                document.getElementById('smtpSecure').checked = false;
+            } else if (type === 'cpanel-domain') {
+                document.getElementById('smtpHost').value = 'mail.vayunexsolution.com';
+                document.getElementById('smtpPort').value = 465;
+                document.getElementById('smtpSecure').checked = true;
+            }
+            showAlert('Preset applied! Click "Save Settings" or run the live test below.', 'info');
+        }
+
         // Diagnostic Test SMTP
         async function runSmtpTest() {
             const btn = document.getElementById('testSmtpBtn');
@@ -623,10 +648,10 @@
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                         <div>
                             <strong>Test Passed!</strong> ${data.message}<br>
-                            <span style="font-size:0.8rem; opacity:0.85;">Server response: ${data.response || 'Accepted for delivery'}</span>
+                            <span style="font-size:0.8rem; opacity:0.85;">Connected via: <strong>${data.connectedHost || 'Mail Server'}</strong> &bull; Server: ${data.response || '250 OK'}</span>
                         </div>
                     `;
-                    logBox.textContent += `[SUCCESS] ${data.message}\nServer Response: ${data.response || '250 OK'}\n`;
+                    logBox.textContent += `[SUCCESS] ${data.message}\nConnected via: ${data.connectedHost || 'Mail Server'}\nServer Response: ${data.response || '250 OK'}\n`;
                 } else {
                     throw new Error(data.error || 'SMTP Connection rejected by mail server');
                 }

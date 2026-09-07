@@ -64,7 +64,8 @@ exports.testSmtpConnection = async (req, res) => {
             success: true,
             message: `Test email successfully dispatched! Message ID: ${result.messageId}`,
             accepted: result.accepted,
-            response: result.response
+            response: result.response,
+            connectedHost: result.connectedHost || 'cPanel Mail Server'
         });
     } catch (err) {
         console.error('SMTP Diagnostic Test Failed:', err.message);

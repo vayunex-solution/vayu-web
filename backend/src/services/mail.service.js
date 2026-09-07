@@ -1,24 +1,100 @@
 const nodemailer = require('nodemailer');
-const { getSettings } = require('./settings.service');
+const { getSettings, saveSettings } = require('./settings.service');
 
-// Create Nodemailer Transporter based on current settings
-const createTransporter = () => {
-    const settings = getSettings();
-    const { smtp } = settings;
-
+// Build a transporter with timeout resilience
+const buildTransporter = (config) => {
     return nodemailer.createTransport({
-        host: smtp.host,
-        port: smtp.port,
-        secure: smtp.secure, // true for port 465, false for other ports
+        host: config.host,
+        port: config.port,
+        secure: config.secure,
         auth: {
-            user: smtp.user,
-            pass: smtp.pass
+            user: config.user,
+            pass: config.pass
         },
         tls: {
-            // Reject unauthorized certificates if available
             rejectUnauthorized: false
-        }
+        },
+        connectionTimeout: 8000,
+        greetingTimeout: 8000,
+        socketTimeout: 12000
     });
+};
+
+// Smart sender that tries primary, then auto-heals via local loopback if public NAT fails
+const dispatchWithAutoHeal = async (mailOptions, smtpConfig) => {
+    const attempts = [];
+    
+    // 1. Primary configured settings
+    attempts.push({
+        host: smtpConfig.host || 'mail.vayunexsolution.com',
+        port: parseInt(smtpConfig.port || 465, 10),
+        secure: typeof smtpConfig.secure === 'boolean' ? smtpConfig.secure : parseInt(smtpConfig.port, 10) === 465,
+        user: smtpConfig.user,
+        pass: smtpConfig.pass
+    });
+
+    // 2. If host is domain or public, add local loopback candidates (essential on cPanel servers)
+    const localCandidates = [
+        { host: '127.0.0.1', port: 465, secure: true },
+        { host: '127.0.0.1', port: 587, secure: false },
+        { host: '127.0.0.1', port: 25, secure: false },
+        { host: 'localhost', port: 465, secure: true },
+        { host: 'localhost', port: 587, secure: false }
+    ];
+
+    for (const cand of localCandidates) {
+        if (cand.host !== smtpConfig.host || cand.port !== smtpConfig.port) {
+            attempts.push({
+                ...cand,
+                user: smtpConfig.user,
+                pass: smtpConfig.pass
+            });
+        }
+    }
+
+    let lastError = null;
+    for (let i = 0; i < attempts.length; i++) {
+        const target = attempts[i];
+        try {
+            console.log(`[SMTP] Attempt ${i + 1}/${attempts.length}: Connecting to ${target.host}:${target.port} (secure=${target.secure})...`);
+            const transporter = buildTransporter(target);
+            const result = await transporter.sendMail(mailOptions);
+            console.log(`[SMTP] SUCCESS via ${target.host}:${target.port}! Message ID: ${result.messageId}`);
+            
+            // If an auto-heal configuration succeeded, persist it so future sends are instant
+            if (target.host !== smtpConfig.host || target.port !== smtpConfig.port || target.secure !== smtpConfig.secure) {
+                try {
+                    const current = getSettings();
+                    saveSettings({
+                        ...current,
+                        smtp: {
+                            ...current.smtp,
+                            host: target.host,
+                            port: target.port,
+                            secure: target.secure
+                        }
+                    });
+                    console.log(`[SMTP Auto-Heal] Persisted working configuration: ${target.host}:${target.port}`);
+                } catch (saveErr) {
+                    console.warn('[SMTP Auto-Heal] Could not save updated config:', saveErr.message);
+                }
+            }
+
+            return {
+                ...result,
+                connectedHost: `${target.host}:${target.port}`
+            };
+        } catch (err) {
+            console.warn(`[SMTP] Attempt ${i + 1} (${target.host}:${target.port}) failed: ${err.message}`);
+            lastError = err;
+            // If authentication failed with 535, do not keep brute-forcing ports with wrong password
+            if (err.message && err.message.includes('535 Incorrect authentication data')) {
+                throw err;
+            }
+        }
+    }
+
+    throw lastError || new Error('All SMTP connection attempts failed.');
 };
 
 // Send Lead Notification Email
@@ -32,8 +108,6 @@ const sendLeadNotification = async (leadData) => {
         return { success: false, reason: 'SMTP credentials missing' };
     }
 
-    const transporter = createTransporter();
-
     const formType = leadData.formType || leadData.type || 'Website Contact Form';
     const clientName = leadData.name || 'Anonymous Prospect';
     const clientEmail = leadData.email || 'Not provided';
@@ -41,7 +115,6 @@ const sendLeadNotification = async (leadData) => {
     const subjectTitle = leadData.subject || `New Lead Submission: ${clientName} (${formType})`;
     const messageBody = leadData.message || leadData.notes || 'No message provided.';
 
-    // Additional structured details
     const company = leadData.company || leadData.companyName || null;
     const projectType = leadData.projectType || null;
     const budget = leadData.budget || null;
@@ -50,7 +123,6 @@ const sendLeadNotification = async (leadData) => {
     const pageUrl = leadData.pageUrl || leadData.url || 'https://www.vayunexsolution.com';
     const submittedAt = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
 
-    // HTML Email Template
     const htmlContent = `
     <!DOCTYPE html>
     <html>
@@ -134,14 +206,13 @@ const sendLeadNotification = async (leadData) => {
         html: htmlContent
     };
 
-    return await transporter.sendMail(mailOptions);
+    return await dispatchWithAutoHeal(mailOptions, smtp);
 };
 
 // Send Test Email to Verify Configuration Live
 const sendTestEmail = async (targetEmail) => {
     const settings = getSettings();
     const { smtp } = settings;
-    const transporter = createTransporter();
 
     const recipients = targetEmail || settings.recipientEmails || ['yashkr4748@gmail.com'];
     const toList = Array.isArray(recipients) ? recipients.join(', ') : recipients;
@@ -154,7 +225,7 @@ const sendTestEmail = async (targetEmail) => {
             <div style="font-size: 12px; text-transform: uppercase; color: #818cf8; font-weight: 700;">Vayunex Solution</div>
             <h2 style="color: #10b981; margin: 10px 0;">SMTP Test Successful!</h2>
             <p style="color: #cbd5e1; font-size: 14px; line-height: 1.6;">
-                Your Vayunex SMTP server <strong>${smtp.host}:${smtp.port}</strong> is successfully connected and authenticating as <strong>${smtp.user}</strong>.
+                Your Vayunex SMTP server is successfully connected and authenticating as <strong>${smtp.user}</strong>.
             </p>
             <div style="background: rgba(255,255,255,0.05); padding: 12px 16px; border-radius: 6px; font-size: 13px; color: #94a3b8;">
                 Sent at: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} (IST)<br>
@@ -172,7 +243,7 @@ const sendTestEmail = async (targetEmail) => {
         html: htmlContent
     };
 
-    return await transporter.sendMail(mailOptions);
+    return await dispatchWithAutoHeal(mailOptions, smtp);
 };
 
 module.exports = {
