@@ -7,168 +7,412 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
+        /* ==========================================================================
+           Ultra-Premium System Settings & SMTP Styles
+           ========================================================================== */
+        
         .settings-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
+            grid-template-columns: 1fr 1.15fr;
+            gap: 28px;
             margin-top: 24px;
+            align-items: stretch;
         }
-        @media (max-width: 1024px) {
+
+        @media (max-width: 1120px) {
             .settings-grid {
                 grid-template-columns: 1fr;
             }
         }
+
         .settings-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-lg);
-            padding: 28px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            background: rgba(15, 19, 29, 0.82);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 30px;
+            box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.03);
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 24px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
+
+        .settings-card:hover {
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
         .card-header-flex {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            padding-bottom: 20px;
         }
+
         .card-title-group {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
         }
+
         .card-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: rgba(0, 242, 254, 0.1);
-            color: #00f2fe;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
         }
+
         .card-title-group h3 {
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: var(--text-primary);
             margin: 0;
+            letter-spacing: -0.2px;
         }
+
         .card-subtitle {
-            font-size: 0.85rem;
+            font-size: 0.84rem;
             color: var(--text-muted);
-            margin-top: 2px;
+            margin-top: 3px;
         }
-        .email-pill-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            min-height: 48px;
-            padding: 12px;
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px dashed var(--border-color);
-            border-radius: var(--radius-md);
-            margin-bottom: 12px;
-        }
-        .email-pill {
+
+        /* Recipient Capsule Badge */
+        .recipient-capsule {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(99, 102, 241, 0.18);
-            border: 1px solid rgba(99, 102, 241, 0.35);
-            color: #c7d2fe;
-            padding: 6px 12px;
+            padding: 6px 14px;
             border-radius: 9999px;
-            font-size: 0.85rem;
-            font-weight: 500;
+            font-size: 0.82rem;
+            font-weight: 600;
+            background: rgba(0, 242, 254, 0.08);
+            border: 1px solid rgba(0, 242, 254, 0.25);
+            color: #00f2fe;
+            white-space: nowrap;
+            letter-spacing: 0.2px;
         }
-        .email-pill.primary {
-            background: rgba(16, 185, 129, 0.18);
-            border-color: rgba(16, 185, 129, 0.35);
-            color: #6ee7b7;
+
+        .pulse-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #00f2fe;
+            box-shadow: 0 0 8px #00f2fe;
+            display: inline-block;
+            animation: pulseGlow 2s infinite ease-in-out;
         }
-        .email-pill button {
-            background: none;
-            border: none;
-            color: currentColor;
-            cursor: pointer;
-            padding: 0;
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.85); }
+        }
+
+        /* Email Pills */
+        .email-pill-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .email-row-item {
             display: flex;
             align-items: center;
-            opacity: 0.7;
-            transition: opacity 0.2s;
+            justify-content: space-between;
+            padding: 12px 16px;
+            background: rgba(22, 28, 43, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            transition: all 0.2s ease;
         }
-        .email-pill button:hover {
-            opacity: 1;
+
+        .email-row-item:hover {
+            background: rgba(22, 28, 43, 0.8);
+            border-color: rgba(255, 255, 255, 0.14);
         }
-        .input-row-flex {
+
+        .email-row-item.primary {
+            background: rgba(16, 185, 129, 0.06);
+            border-color: rgba(16, 185, 129, 0.28);
+        }
+
+        .email-meta-left {
             display: flex;
+            align-items: center;
             gap: 12px;
         }
-        .input-row-flex input {
-            flex: 1;
+
+        .email-meta-left .tag-icon {
+            color: #10b981;
+            display: flex;
         }
-        .helper-text {
-            font-size: 0.8rem;
+
+        .email-address-text {
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .primary-pill-tag {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            padding: 3px 8px;
+            background: rgba(16, 185, 129, 0.18);
+            color: #34d399;
+            border-radius: 6px;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-remove-email {
+            background: none;
+            border: none;
             color: var(--text-muted);
-            line-height: 1.4;
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
         }
+
+        .btn-remove-email:hover {
+            color: #f43f5e;
+            background: rgba(244, 63, 94, 0.12);
+        }
+
+        /* Preset Chips Selector */
+        .preset-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 640px) {
+            .preset-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .preset-chip {
+            background: rgba(22, 28, 43, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 12px 14px;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.22s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .preset-chip:hover {
+            background: rgba(30, 41, 59, 0.7);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .preset-chip.active {
+            background: rgba(0, 242, 254, 0.08);
+            border-color: #00f2fe;
+            box-shadow: 0 0 16px rgba(0, 242, 254, 0.15);
+        }
+
+        .preset-chip-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .preset-name {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .preset-chip.active .preset-name {
+            color: #00f2fe;
+        }
+
+        .preset-badge {
+            font-size: 0.68rem;
+            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: rgba(0, 242, 254, 0.15);
+            color: #00f2fe;
+        }
+
+        .preset-details {
+            font-size: 0.76rem;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Form Inputs Customization */
         .form-grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 16px;
+            gap: 18px;
         }
-        .status-box {
-            padding: 14px 18px;
-            border-radius: var(--radius-md);
-            font-size: 0.88rem;
+
+        @media (max-width: 600px) {
+            .form-grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-control-custom {
+            width: 100%;
+            height: 46px;
+            padding: 0 16px;
+            background: rgba(22, 28, 43, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-size: 0.92rem;
+            font-family: inherit;
+            transition: all 0.2s ease;
+        }
+
+        .form-control-custom:focus {
+            outline: none;
+            border-color: #00f2fe;
+            box-shadow: 0 0 0 3px rgba(0, 242, 254, 0.15);
+            background: rgba(22, 28, 43, 0.95);
+        }
+
+        /* Floating Toast Alert */
+        .toast-notification {
+            position: fixed;
+            top: 24px;
+            right: 28px;
+            z-index: 999999;
+            min-width: 340px;
+            max-width: 480px;
+            padding: 16px 20px;
+            border-radius: 14px;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 0, 0, 0.4);
             display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            line-height: 1.5;
+            align-items: center;
+            gap: 14px;
+            color: #f8fafc;
+            transform: translateY(-80px);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .status-box.info {
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            color: #93c5fd;
+
+        .toast-notification.show {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
         }
-        .status-box.success {
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            color: #6ee7b7;
+
+        .toast-notification.success {
+            border-color: rgba(16, 185, 129, 0.4);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 24px rgba(16, 185, 129, 0.15);
         }
-        .status-box.warning {
-            background: rgba(245, 158, 11, 0.1);
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            color: #fcd34d;
+
+        .toast-notification.error {
+            border-color: rgba(244, 63, 94, 0.4);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 24px rgba(244, 63, 94, 0.15);
         }
-        .status-box.error {
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            color: #fca5a5;
+
+        .toast-notification.info {
+            border-color: rgba(0, 242, 254, 0.4);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 24px rgba(0, 242, 254, 0.15);
         }
-        .terminal-log {
-            background: #090d16;
-            border: 1px solid #1e293b;
-            border-radius: var(--radius-md);
-            padding: 14px 16px;
+
+        /* IDE Terminal Diagnostic Window */
+        .terminal-window {
+            background: #06090f;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        .terminal-header {
+            background: #0d121d;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .terminal-dots {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .terminal-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .terminal-body {
+            padding: 16px 20px;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
+            font-size: 0.82rem;
             color: #94a3b8;
-            max-height: 160px;
+            max-height: 200px;
             overflow-y: auto;
             white-space: pre-wrap;
-            line-height: 1.5;
+            line-height: 1.6;
+        }
+
+        .terminal-body .line-success {
+            color: #34d399;
+            font-weight: 600;
+        }
+
+        .terminal-body .line-error {
+            color: #f87171;
+            font-weight: 600;
+        }
+
+        .terminal-body .line-info {
+            color: #38bdf8;
         }
     </style>
 </head>
 <body>
     <!-- Mobile Overlay -->
     <div id="mobileOverlay" class="mobile-overlay"></div>
+
+    <!-- Floating Sleek Toast Notification -->
+    <div id="toastNotification" class="toast-notification">
+        <div id="toastIcon" style="flex-shrink: 0;"></div>
+        <div style="flex: 1;">
+            <div id="toastTitle" style="font-weight: 700; font-size: 0.92rem;">Notification</div>
+            <div id="toastMessage" style="font-size: 0.84rem; color: var(--text-secondary); margin-top: 2px;"></div>
+        </div>
+        <button type="button" onclick="hideToast()" style="background:none;border:none;color:var(--text-muted);cursor:pointer;padding:4px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+    </div>
 
     <div class="layout-wrapper">
         <!-- Mobile Header -->
@@ -198,14 +442,14 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-logo">
-                <svg class="brand-logo" viewBox="0 0 24 24" fill="none" stroke="url(#logoGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="brand-logo" viewBox="0 0 24 24" fill="none" stroke="url(#logoGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:32px;height:32px;">
                     <defs>
                         <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                             <stop offset="0%" stop-color="#00f2fe" />
                             <stop offset="100%" stop-color="#4facfe" />
                         </linearGradient>
                     </defs>
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    <path stroke="url(#logoGrad)" d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
                 </svg>
                 <span class="brand-text">VAYUNEX</span>
             </div>
@@ -213,6 +457,17 @@
             <ul class="nav-menu">
                 <li class="nav-item">
                     <a href="index.html" class="nav-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        <span>Leads Intelligence</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="blogs.html" class="nav-link">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                             <polyline points="14 2 14 8 20 8"></polyline>
@@ -264,128 +519,158 @@
 
         <!-- Main Body -->
         <main class="main-body">
-            <header class="top-nav">
+            <header class="top-nav" style="margin-bottom: 8px;">
                 <div>
                     <h1 class="page-title">System Settings & SMTP Configuration</h1>
-                    <p class="page-subtitle">Configure lead notification recipient emails (up to 5) and manage secure SMTP outbound delivery.</p>
+                    <p class="page-subtitle">Configure lead alert recipients (up to 5) and manage enterprise outbound SMTP delivery.</p>
                 </div>
                 <div class="nav-actions">
                     <button id="themeToggleBtn" onclick="toggleTheme()" class="btn btn-secondary btn-sm" title="Toggle theme">
                         <svg id="theme-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg>
                     </button>
-                    <button id="saveAllBtn" onclick="saveSettings()" class="btn btn-primary">
+                    <button id="saveAllBtn" onclick="saveSettings()" class="btn btn-primary" style="box-shadow: 0 4px 16px rgba(0, 242, 254, 0.3);">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
-                        Save Settings
+                        Save Configuration
                     </button>
                 </div>
             </header>
 
-            <div id="alertBox" style="display: none; margin-top: 20px;" class="status-box"></div>
-
             <div class="settings-grid">
                 <!-- Card 1: Notification Recipients -->
                 <div class="settings-card">
-                    <div class="card-header-flex">
-                        <div class="card-title-group">
-                            <div class="card-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                            </div>
-                            <div>
-                                <h3>Lead Alert Recipients</h3>
-                                <div class="card-subtitle">Configure up to 5 email addresses to receive form leads</div>
-                            </div>
-                        </div>
-                        <span id="recipientCountBadge" class="badge" style="background: rgba(0, 242, 254, 0.15); color: #00f2fe; padding: 4px 10px; border-radius: 999px; font-size: 0.8rem; font-weight: 600;">1 / 5</span>
-                    </div>
-
                     <div>
-                        <label class="form-label" style="display: block; margin-bottom: 8px; font-weight: 600;">Active Recipient Emails</label>
-                        <div id="emailPills" class="email-pill-container">
-                            <!-- Injected by JS -->
+                        <div class="card-header-flex">
+                            <div class="card-title-group">
+                                <div class="card-icon" style="background: rgba(0, 242, 254, 0.1); color: #00f2fe;">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                                </div>
+                                <div>
+                                    <h3>Lead Alert Recipients</h3>
+                                    <div class="card-subtitle">Dispatch incoming web leads instantly to key team members</div>
+                                </div>
+                            </div>
+                            <div class="recipient-capsule">
+                                <span class="pulse-dot"></span>
+                                <span id="recipientCountBadge">1 of 5 Configured</span>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 22px;">
+                            <label style="display: block; margin-bottom: 10px; font-weight: 600; font-size: 0.88rem; color: var(--text-primary);">
+                                Active Notification Addresses
+                            </label>
+                            <div id="emailPills" class="email-pill-container">
+                                <!-- Injected by JS -->
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 20px;">
+                            <label style="display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.88rem; color: var(--text-primary);">
+                                Add New Recipient
+                            </label>
+                            <div style="display: flex; gap: 10px;">
+                                <input type="email" id="newEmailInput" class="form-control-custom" placeholder="founder@company.com" onkeydown="if(event.key==='Enter'){event.preventDefault();addEmail();}">
+                                <button type="button" onclick="addEmail()" class="btn btn-secondary" style="padding: 0 20px; white-space: nowrap; height: 46px; border-radius: 10px;">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                                    Add Email
+                                </button>
+                            </div>
+                            <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 8px; line-height: 1.5;">
+                                Every lead submitted across Vayunex (Contact, SchoolDost, Services) sends an alert here with direct customer <code>Reply-To</code> headers.
+                            </div>
                         </div>
                     </div>
 
-                    <div>
-                        <label class="form-label" style="display: block; margin-bottom: 6px; font-weight: 600;">Add Email Address</label>
-                        <div class="input-row-flex">
-                            <input type="email" id="newEmailInput" class="form-control" placeholder="partner@company.com" onkeydown="if(event.key==='Enter'){event.preventDefault();addEmail();}">
-                            <button type="button" onclick="addEmail()" class="btn btn-secondary">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                                Add
-                            </button>
-                        </div>
-                        <div class="helper-text" style="margin-top: 8px;">
-                            Every time a visitor fills Contact Us, SchoolDost Demo, Early Access, or Career forms, a branded notification is instantly dispatched to all active emails.
-                        </div>
-                    </div>
-
-                    <div class="status-box info">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top: 2px;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-                        <div>
-                            <strong>Primary Notification:</strong> Default address is <code>yashkr4748@gmail.com</code>. Leads also include client's direct email in <code>Reply-To</code>, allowing one-click reply directly to the customer.
+                    <div style="padding: 14px 18px; border-radius: 12px; background: rgba(0, 242, 254, 0.04); border: 1px solid rgba(0, 242, 254, 0.15); display: flex; align-items: flex-start; gap: 12px; margin-top: 16px;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top: 2px;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                        <div style="font-size: 0.84rem; color: var(--text-secondary); line-height: 1.5;">
+                            <strong>Primary Contact:</strong> Leads are delivered with full prospect details, requested project budget, timeline, and WhatsApp links.
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 2: SMTP Outbound Server Settings -->
                 <div class="settings-card">
-                    <div class="card-header-flex">
-                        <div class="card-title-group">
-                            <div class="card-icon" style="background: rgba(168, 85, 247, 0.1); color: #a855f7;">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
-                            </div>
-                            <div>
-                                <h3>SMTP Server Configuration</h3>
-                                <div class="card-subtitle">Outbound mail server credentials (stored securely server-side)</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; align-items: center;">
-                        <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">Server Presets:</span>
-                        <button type="button" class="btn btn-secondary btn-sm" onclick="applyPreset('cpanel-ssl')" style="padding: 4px 10px; font-size: 0.78rem; border-color: rgba(99,102,241,0.4); color: #c7d2fe;">cPanel Loopback (127.0.0.1:465)</button>
-                        <button type="button" class="btn btn-secondary btn-sm" onclick="applyPreset('cpanel-sub')" style="padding: 4px 10px; font-size: 0.78rem; border-color: rgba(16,185,129,0.4); color: #6ee7b7;">cPanel Port 587 (127.0.0.1:587)</button>
-                        <button type="button" class="btn btn-secondary btn-sm" onclick="applyPreset('cpanel-domain')" style="padding: 4px 10px; font-size: 0.78rem;">Domain Host (mail...:465)</button>
-                    </div>
-
-                    <div class="form-grid-2">
-                        <div class="form-group">
-                            <label class="form-label">SMTP Host</label>
-                            <input type="text" id="smtpHost" class="form-control" value="mail.vayunexsolution.com" placeholder="mail.vayunexsolution.com">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">SMTP Port</label>
-                            <input type="number" id="smtpPort" class="form-control" value="465" placeholder="465">
-                        </div>
-                    </div>
-
-                    <div class="form-grid-2">
-                        <div class="form-group">
-                            <label class="form-label">SMTP Username</label>
-                            <input type="text" id="smtpUser" class="form-control" value="no-reply@vayunexsolution.com" placeholder="no-reply@vayunexsolution.com">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">SMTP Password</label>
-                            <div style="position: relative;">
-                                <input type="password" id="smtpPass" class="form-control" placeholder="••••••••" style="padding-right: 40px;">
-                                <button type="button" onclick="togglePassVisibility()" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--text-muted); cursor: pointer;">
-                                    <svg id="eyeIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-                                </button>
+                    <div>
+                        <div class="card-header-flex">
+                            <div class="card-title-group">
+                                <div class="card-icon" style="background: rgba(139, 92, 246, 0.1); color: #a78bfa;">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+                                </div>
+                                <div>
+                                    <h3>SMTP Server Configuration</h3>
+                                    <div class="card-subtitle">Encrypted transport credentials for outbound lead notifications</div>
+                                </div>
                             </div>
                         </div>
+
+                        <!-- 1-Click Server Presets -->
+                        <div style="margin-top: 20px;">
+                            <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-muted); font-weight: 700; margin-bottom: 10px;">
+                                Server Route Presets
+                            </div>
+                            <div class="preset-grid">
+                                <div class="preset-chip active" id="chip-cpanel-ssl" onclick="applyPreset('cpanel-ssl')">
+                                    <div class="preset-chip-header">
+                                        <span class="preset-name">⚡ cPanel Loopback</span>
+                                        <span class="preset-badge">Recommended</span>
+                                    </div>
+                                    <span class="preset-details">127.0.0.1 : 465 (SSL)</span>
+                                </div>
+                                <div class="preset-chip" id="chip-cpanel-sub" onclick="applyPreset('cpanel-sub')">
+                                    <div class="preset-chip-header">
+                                        <span class="preset-name">🔒 Port 587</span>
+                                    </div>
+                                    <span class="preset-details">127.0.0.1 : 587 (TLS)</span>
+                                </div>
+                                <div class="preset-chip" id="chip-cpanel-domain" onclick="applyPreset('cpanel-domain')">
+                                    <div class="preset-chip-header">
+                                        <span class="preset-name">🌐 Domain Host</span>
+                                    </div>
+                                    <span class="preset-details">mail... : 465</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label class="form-label" style="font-size:0.84rem; font-weight:600; color:var(--text-muted); margin-bottom:6px; display:block;">SMTP HOST</label>
+                                <input type="text" id="smtpHost" class="form-control-custom" value="127.0.0.1" placeholder="127.0.0.1">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" style="font-size:0.84rem; font-weight:600; color:var(--text-muted); margin-bottom:6px; display:block;">SMTP PORT</label>
+                                <input type="number" id="smtpPort" class="form-control-custom" value="465" placeholder="465">
+                            </div>
+                        </div>
+
+                        <div class="form-grid-2" style="margin-top: 14px;">
+                            <div class="form-group">
+                                <label class="form-label" style="font-size:0.84rem; font-weight:600; color:var(--text-muted); margin-bottom:6px; display:block;">SMTP USERNAME</label>
+                                <input type="text" id="smtpUser" class="form-control-custom" value="no-reply@vayunexsolution.com" placeholder="no-reply@vayunexsolution.com">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" style="font-size:0.84rem; font-weight:600; color:var(--text-muted); margin-bottom:6px; display:block;">SMTP PASSWORD</label>
+                                <div style="position: relative;">
+                                    <input type="password" id="smtpPass" class="form-control-custom" placeholder="••••••••" style="padding-right: 42px;">
+                                    <button type="button" onclick="togglePassVisibility()" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--text-muted); cursor: pointer; display: flex;">
+                                        <svg id="eyeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 14px;">
+                            <label class="form-label" style="font-size:0.84rem; font-weight:600; color:var(--text-muted); margin-bottom:6px; display:block;">FROM HEADER (SENDER NAME & EMAIL)</label>
+                            <input type="text" id="fromEmail" class="form-control-custom" value="VayuNex Web Leads <no-reply@vayunexsolution.com>" placeholder="VayuNex Web Leads <no-reply@vayunexsolution.com>">
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="form-label">From Header (Sender Name & Email)</label>
-                        <input type="text" id="fromEmail" class="form-control" value="VayuNex Web Leads <no-reply@vayunexsolution.com>" placeholder="VayuNex Web Leads <no-reply@vayunexsolution.com>">
-                    </div>
-
-                    <div class="form-group" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-md);">
+                    <div style="display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: rgba(22, 28, 43, 0.6); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; margin-top: 14px;">
                         <div>
-                            <div style="font-weight: 600; font-size: 0.9rem; color: var(--text-primary);">SSL/TLS Encryption</div>
-                            <div style="font-size: 0.78rem; color: var(--text-muted);">Required for Port 465 (SSL). Toggle off for Port 587 (STARTTLS).</div>
+                            <div style="font-weight: 600; font-size: 0.9rem; color: var(--text-primary);">SSL / TLS Transport Encryption</div>
+                            <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 2px;">Enforces secure SSL socket for Port 465. Turn off for Port 587 (STARTTLS).</div>
                         </div>
-                        <label class="switch" style="position: relative; display: inline-block; width: 44px; height: 24px; margin: 0;">
+                        <label class="switch" style="position: relative; display: inline-block; width: 44px; height: 24px; margin: 0; flex-shrink: 0;">
                             <input type="checkbox" id="smtpSecure" checked style="opacity: 0; width: 0; height: 0;">
                             <span class="slider round" style="position: absolute; cursor: pointer; inset: 0; background-color: #334155; transition: .3s; border-radius: 24px;"></span>
                         </label>
@@ -394,31 +679,42 @@
             </div>
 
             <!-- Diagnostic Test Section -->
-            <div class="settings-card" style="margin-top: 24px;">
+            <div class="settings-card" style="margin-top: 28px;">
                 <div class="card-header-flex">
                     <div class="card-title-group">
                         <div class="card-icon" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
                         </div>
                         <div>
                             <h3>Live SMTP Diagnostic & Connection Test</h3>
-                            <div class="card-subtitle">Verify that your mail server can connect, authenticate, and deliver messages</div>
+                            <div class="card-subtitle">Perform real-time socket handshake and deliver a test message to your inbox</div>
                         </div>
                     </div>
                 </div>
 
-                <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
-                    <div style="flex: 1; min-width: 260px;">
-                        <input type="email" id="testEmailTarget" class="form-control" placeholder="Test recipient (defaults to yashkr4748@gmail.com)" value="yashkr4748@gmail.com">
+                <div style="display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin-top: 4px;">
+                    <div style="flex: 1; min-width: 280px;">
+                        <input type="email" id="testEmailTarget" class="form-control-custom" placeholder="Test recipient (defaults to yashkr4748@gmail.com)" value="yashkr4748@gmail.com">
                     </div>
-                    <button type="button" id="testSmtpBtn" onclick="runSmtpTest()" class="btn btn-primary" style="background: linear-gradient(135deg, #10b981, #059669); border: none;">
+                    <button type="button" id="testSmtpBtn" onclick="runSmtpTest()" class="btn btn-primary" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border: none; height: 46px; padding: 0 24px; font-weight: 600; box-shadow: 0 4px 18px rgba(16, 185, 129, 0.3);">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                         Send Diagnostic Test Email
                     </button>
                 </div>
 
-                <div id="testResultBox" style="display: none;" class="status-box"></div>
-                <div id="testLogTerminal" style="display: none;" class="terminal-log"></div>
+                <!-- Terminal Log Window -->
+                <div id="terminalContainer" style="display: none; margin-top: 14px;" class="terminal-window">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <div class="terminal-dot" style="background: #ef4444;"></div>
+                            <div class="terminal-dot" style="background: #f59e0b;"></div>
+                            <div class="terminal-dot" style="background: #10b981;"></div>
+                            <span style="font-size: 0.76rem; color: #64748b; margin-left: 8px; font-family: 'JetBrains Mono', monospace;">smtp-handshake-diagnostic</span>
+                        </div>
+                        <span id="terminalStatusBadge" style="font-size: 0.74rem; font-weight: 600; padding: 2px 8px; border-radius: 4px; background: rgba(59, 130, 246, 0.15); color: #60a5fa;">RUNNING</span>
+                    </div>
+                    <div id="testLogTerminal" class="terminal-body"></div>
+                </div>
             </div>
         </main>
     </div>
@@ -427,48 +723,77 @@
     <script src="config.js"></script>
     <script src="theme-toggle.js"></script>
     <script>
-        // Check auth on load
         checkAuth();
 
         let recipientEmails = ['yashkr4748@gmail.com'];
+        let toastTimeout = null;
+
+        // Modern Toast Notification
+        function showToast(title, message, type = 'success') {
+            const toast = document.getElementById('toastNotification');
+            const iconEl = document.getElementById('toastIcon');
+            const titleEl = document.getElementById('toastTitle');
+            const msgEl = document.getElementById('toastMessage');
+
+            toast.className = `toast-notification ${type} show`;
+            titleEl.textContent = title;
+            msgEl.textContent = message;
+
+            if (type === 'success') {
+                iconEl.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`;
+            } else if (type === 'error') {
+                iconEl.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`;
+            } else {
+                iconEl.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>`;
+            }
+
+            if (toastTimeout) clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                hideToast();
+            }, 4000);
+        }
+
+        function hideToast() {
+            const toast = document.getElementById('toastNotification');
+            toast.classList.remove('show');
+        }
 
         // Toggle Password Visibility
         function togglePassVisibility() {
             const passInput = document.getElementById('smtpPass');
-            if (passInput.type === 'password') {
-                passInput.type = 'text';
-            } else {
-                passInput.type = 'password';
-            }
+            passInput.type = passInput.type === 'password' ? 'text' : 'password';
         }
 
-        // Render Email Pills
+        // Render Email Recipient Rows
         function renderPills() {
             const container = document.getElementById('emailPills');
             const badge = document.getElementById('recipientCountBadge');
             container.innerHTML = '';
 
             recipientEmails.forEach((email, index) => {
-                const pill = document.createElement('div');
-                pill.className = index === 0 ? 'email-pill primary' : 'email-pill';
-                pill.innerHTML = `
-                    <span>${email}</span>
-                    ${index === 0 ? '<span style="font-size:0.7rem;opacity:0.8;font-weight:700;">[PRIMARY]</span>' : ''}
-                    <button type="button" onclick="removeEmail(${index})" title="Remove email">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                const row = document.createElement('div');
+                row.className = index === 0 ? 'email-row-item primary' : 'email-row-item';
+                row.innerHTML = `
+                    <div class="email-meta-left">
+                        <div class="tag-icon">
+                            ${index === 0 
+                                ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>' 
+                                : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>'
+                            }
+                        </div>
+                        <span class="email-address-text">${email}</span>
+                        ${index === 0 ? '<span class="primary-pill-tag">Primary</span>' : ''}
+                    </div>
+                    ${recipientEmails.length > 1 ? `
+                    <button type="button" class="btn-remove-email" onclick="removeEmail(${index})" title="Remove recipient">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                     </button>
+                    ` : '<span style="font-size:0.75rem;color:#64748b;">Default</span>'}
                 `;
-                container.appendChild(pill);
+                container.appendChild(row);
             });
 
-            badge.textContent = `${recipientEmails.length} / 5`;
-            if (recipientEmails.length >= 5) {
-                badge.style.background = 'rgba(239, 68, 68, 0.2)';
-                badge.style.color = '#ef4444';
-            } else {
-                badge.style.background = 'rgba(0, 242, 254, 0.15)';
-                badge.style.color = '#00f2fe';
-            }
+            badge.textContent = `${recipientEmails.length} of 5 Configured`;
         }
 
         // Add Email
@@ -480,49 +805,60 @@
             if (!email) return;
 
             if (!emailRegex.test(email)) {
-                showAlert('Please enter a valid email address format.', 'error');
+                showToast('Invalid Email', 'Please enter a valid email address format.', 'error');
                 return;
             }
 
             if (recipientEmails.includes(email)) {
-                showAlert('This email is already in the recipient list.', 'warning');
+                showToast('Already Exists', 'This email is already in the recipient list.', 'info');
                 return;
             }
 
             if (recipientEmails.length >= 5) {
-                showAlert('Maximum 5 recipient emails can be configured.', 'error');
+                showToast('Limit Reached', 'Maximum 5 recipient emails can be configured.', 'error');
                 return;
             }
 
             recipientEmails.push(email);
             input.value = '';
             renderPills();
-            showAlert('Email added to list. Click "Save Settings" to persist changes.', 'info');
+            showToast('Email Added', 'Click "Save Configuration" to persist changes.', 'info');
         }
 
         // Remove Email
         function removeEmail(index) {
             if (recipientEmails.length <= 1) {
-                showAlert('At least one recipient email address is required.', 'error');
+                showToast('Minimum Required', 'At least one recipient email address is required.', 'error');
                 return;
             }
             recipientEmails.splice(index, 1);
             renderPills();
-            showAlert('Email removed. Click "Save Settings" to apply changes.', 'info');
+            showToast('Email Removed', 'Click "Save Configuration" to apply changes.', 'info');
         }
 
-        // Show Alert Helper
-        function showAlert(message, type = 'info') {
-            const box = document.getElementById('alertBox');
-            box.className = `status-box ${type}`;
-            box.style.display = 'flex';
-            box.innerHTML = `
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top: 2px;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-                <div>${message}</div>
-            `;
-            setTimeout(() => {
-                box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }, 50);
+        // Apply Server Presets
+        function applyPreset(type) {
+            document.querySelectorAll('.preset-chip').forEach(c => c.classList.remove('active'));
+
+            if (type === 'cpanel-ssl') {
+                document.getElementById('chip-cpanel-ssl').classList.add('active');
+                document.getElementById('smtpHost').value = '127.0.0.1';
+                document.getElementById('smtpPort').value = 465;
+                document.getElementById('smtpSecure').checked = true;
+                showToast('Preset Selected', 'cPanel Loopback (127.0.0.1:465 SSL) activated.', 'info');
+            } else if (type === 'cpanel-sub') {
+                document.getElementById('chip-cpanel-sub').classList.add('active');
+                document.getElementById('smtpHost').value = '127.0.0.1';
+                document.getElementById('smtpPort').value = 587;
+                document.getElementById('smtpSecure').checked = false;
+                showToast('Preset Selected', 'Submission Port (127.0.0.1:587 STARTTLS) activated.', 'info');
+            } else if (type === 'cpanel-domain') {
+                document.getElementById('chip-cpanel-domain').classList.add('active');
+                document.getElementById('smtpHost').value = 'mail.vayunexsolution.com';
+                document.getElementById('smtpPort').value = 465;
+                document.getElementById('smtpSecure').checked = true;
+                showToast('Preset Selected', 'Domain Host (mail.vayunexsolution.com:465) activated.', 'info');
+            }
         }
 
         // Load Settings
@@ -544,13 +880,26 @@
                 }
 
                 if (data.smtp) {
-                    document.getElementById('smtpHost').value = data.smtp.host || 'mail.vayunexsolution.com';
-                    document.getElementById('smtpPort').value = data.smtp.port || 465;
+                    const host = data.smtp.host || '127.0.0.1';
+                    const port = data.smtp.port || 465;
+                    document.getElementById('smtpHost').value = host;
+                    document.getElementById('smtpPort').value = port;
                     document.getElementById('smtpUser').value = data.smtp.user || 'no-reply@vayunexsolution.com';
                     document.getElementById('fromEmail').value = data.smtp.fromEmail || 'VayuNex Web Leads <no-reply@vayunexsolution.com>';
-                    document.getElementById('smtpSecure').checked = !!data.smtp.secure;
+                    document.getElementById('smtpSecure').checked = typeof data.smtp.secure === 'boolean' ? data.smtp.secure : port === 465;
+                    
                     if (data.smtp.pass) {
                         document.getElementById('smtpPass').placeholder = data.smtp.pass;
+                    }
+
+                    // Highlight active chip
+                    document.querySelectorAll('.preset-chip').forEach(c => c.classList.remove('active'));
+                    if (host === '127.0.0.1' && port === 465) {
+                        document.getElementById('chip-cpanel-ssl')?.classList.add('active');
+                    } else if (host === '127.0.0.1' && port === 587) {
+                        document.getElementById('chip-cpanel-sub')?.classList.add('active');
+                    } else if (host.includes('vayunexsolution.com')) {
+                        document.getElementById('chip-cpanel-domain')?.classList.add('active');
                     }
                 }
             } catch (err) {
@@ -564,7 +913,10 @@
             const btn = document.getElementById('saveAllBtn');
             const originalContent = btn.innerHTML;
             btn.disabled = true;
-            btn.innerHTML = 'Saving...';
+            btn.innerHTML = `
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="animation: spin 1s linear infinite;"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+                Saving...
+            `;
 
             const payload = {
                 recipientEmails,
@@ -588,49 +940,44 @@
                 const data = await res.json();
                 if (!res.ok) throw new Error(data.error || 'Failed to update settings');
 
-                showAlert('System Settings & SMTP Configuration saved successfully!', 'success');
+                showToast('Saved Successfully', 'System Settings & SMTP Configuration updated.', 'success');
                 if (payload.smtp.pass) {
                     document.getElementById('smtpPass').value = '';
                     document.getElementById('smtpPass').placeholder = '••••••••';
                 }
             } catch (err) {
-                showAlert(err.message, 'error');
+                showToast('Save Failed', err.message, 'error');
             } finally {
                 btn.disabled = false;
                 btn.innerHTML = originalContent;
             }
         }
 
-        // Apply Server Presets
-        function applyPreset(type) {
-            if (type === 'cpanel-ssl') {
-                document.getElementById('smtpHost').value = '127.0.0.1';
-                document.getElementById('smtpPort').value = 465;
-                document.getElementById('smtpSecure').checked = true;
-            } else if (type === 'cpanel-sub') {
-                document.getElementById('smtpHost').value = '127.0.0.1';
-                document.getElementById('smtpPort').value = 587;
-                document.getElementById('smtpSecure').checked = false;
-            } else if (type === 'cpanel-domain') {
-                document.getElementById('smtpHost').value = 'mail.vayunexsolution.com';
-                document.getElementById('smtpPort').value = 465;
-                document.getElementById('smtpSecure').checked = true;
-            }
-            showAlert('Preset applied! Click "Save Settings" or run the live test below.', 'info');
-        }
-
         // Diagnostic Test SMTP
         async function runSmtpTest() {
             const btn = document.getElementById('testSmtpBtn');
-            const resultBox = document.getElementById('testResultBox');
+            const terminalContainer = document.getElementById('terminalContainer');
             const logBox = document.getElementById('testLogTerminal');
+            const badge = document.getElementById('terminalStatusBadge');
             const targetEmail = document.getElementById('testEmailTarget').value.trim() || 'yashkr4748@gmail.com';
 
             btn.disabled = true;
-            btn.innerHTML = 'Connecting to Mail Server...';
-            resultBox.style.display = 'none';
-            logBox.style.display = 'block';
-            logBox.textContent = `[DIAGNOSTIC] Initializing SMTP test connection...\nTarget recipient: ${targetEmail}\nConnecting to host: ${document.getElementById('smtpHost').value}:${document.getElementById('smtpPort').value}...\n`;
+            btn.innerHTML = `
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="animation: spin 1s linear infinite;"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+                Testing Handshake...
+            `;
+            
+            terminalContainer.style.display = 'block';
+            badge.textContent = 'RUNNING';
+            badge.style.background = 'rgba(59, 130, 246, 0.15)';
+            badge.style.color = '#60a5fa';
+
+            const host = document.getElementById('smtpHost').value.trim();
+            const port = document.getElementById('smtpPort').value.trim();
+
+            logBox.innerHTML = `<span class="line-info">[DIAGNOSTIC]</span> Initializing SMTP test connection...\n`;
+            logBox.innerHTML += `<span class="line-info">[INFO]</span> Target Recipient: ${targetEmail}\n`;
+            logBox.innerHTML += `<span class="line-info">[INFO]</span> Connecting to host: ${host}:${port}...\n`;
 
             try {
                 const res = await fetch(`${CONFIG.API_BASE_URL}/settings/smtp/test`, {
@@ -642,30 +989,27 @@
                 const data = await res.json();
 
                 if (res.ok && data.success) {
-                    resultBox.className = 'status-box success';
-                    resultBox.style.display = 'flex';
-                    resultBox.innerHTML = `
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                        <div>
-                            <strong>Test Passed!</strong> ${data.message}<br>
-                            <span style="font-size:0.8rem; opacity:0.85;">Connected via: <strong>${data.connectedHost || 'Mail Server'}</strong> &bull; Server: ${data.response || '250 OK'}</span>
-                        </div>
-                    `;
-                    logBox.textContent += `[SUCCESS] ${data.message}\nConnected via: ${data.connectedHost || 'Mail Server'}\nServer Response: ${data.response || '250 OK'}\n`;
+                    badge.textContent = 'PASSED';
+                    badge.style.background = 'rgba(16, 185, 129, 0.15)';
+                    badge.style.color = '#34d399';
+
+                    logBox.innerHTML += `<span class="line-success">[SUCCESS]</span> ${data.message}\n`;
+                    logBox.innerHTML += `<span class="line-success">[CONNECTED]</span> Connected via: ${data.connectedHost || host}\n`;
+                    logBox.innerHTML += `<span class="line-success">[RESPONSE]</span> Mail Server: ${data.response || '250 OK Message Accepted'}\n`;
+                    
+                    showToast('SMTP Test Passed!', `Verification mail received at ${targetEmail}`, 'success');
                 } else {
                     throw new Error(data.error || 'SMTP Connection rejected by mail server');
                 }
             } catch (err) {
-                resultBox.className = 'status-box error';
-                resultBox.style.display = 'flex';
-                resultBox.innerHTML = `
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
-                    <div>
-                        <strong>SMTP Test Failed:</strong> ${err.message}<br>
-                        <span style="font-size:0.8rem; opacity:0.85;">Check if email account exists in cPanel or if cPanel Email Routing is set to "Local Mail Exchanger".</span>
-                    </div>
-                `;
-                logBox.textContent += `[ERROR] ${err.message}\n`;
+                badge.textContent = 'FAILED';
+                badge.style.background = 'rgba(239, 68, 68, 0.15)';
+                badge.style.color = '#f87171';
+
+                logBox.innerHTML += `<span class="line-error">[ERROR]</span> ${err.message}\n`;
+                logBox.innerHTML += `<span style="color:#64748b;">[TIP] Ensure cPanel Email Routing is set to "Local Mail Exchanger" and password is saved.</span>\n`;
+                
+                showToast('SMTP Test Failed', err.message, 'error');
             } finally {
                 btn.disabled = false;
                 btn.innerHTML = `
