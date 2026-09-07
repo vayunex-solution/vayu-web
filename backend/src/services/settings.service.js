@@ -21,11 +21,11 @@ const getDefaultSettings = () => {
     return {
         recipientEmails: emailList.length > 0 ? emailList.slice(0, 5) : ['yashkr4748@gmail.com'],
         smtp: {
-            host: process.env.SMTP_HOST || 'mail.vayunexsolution.com',
+            host: process.env.SMTP_HOST || '127.0.0.1',
             port: parseInt(process.env.SMTP_PORT || '465', 10),
-            secure: process.env.SMTP_SECURE === 'true' || process.env.SMTP_PORT === '465',
+            secure: process.env.SMTP_SECURE !== 'false',
             user: process.env.SMTP_USER || 'no-reply@vayunexsolution.com',
-            pass: process.env.SMTP_PASS || '',
+            pass: process.env.SMTP_PASS || 'Y@&H0072500725',
             fromEmail: process.env.FROM_EMAIL || 'VayuNex Web Leads <no-reply@vayunexsolution.com>'
         },
         updatedAt: new Date().toISOString()

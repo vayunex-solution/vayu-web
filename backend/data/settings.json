@@ -1,0 +1,14 @@
+{
+  "recipientEmails": [
+    "yashkr4748@gmail.com"
+  ],
+  "smtp": {
+    "host": "127.0.0.1",
+    "port": 465,
+    "secure": true,
+    "user": "no-reply@vayunexsolution.com",
+    "pass": "Y@&H0072500725",
+    "fromEmail": "VayuNex Web Leads <no-reply@vayunexsolution.com>"
+  },
+  "updatedAt": "2026-09-07T12:12:00.000Z"
+}
