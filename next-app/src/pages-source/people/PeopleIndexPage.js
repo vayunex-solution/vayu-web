@@ -47,7 +47,7 @@ const LeaderRow = ({ person, index }) => {
 
         {/* Expertise chips — top 4 */}
         <div className="leader-row__chips" aria-label="Areas of expertise">
-          {person.expertise.slice(0, 4).map((tag) => (
+          {(person.expertise || []).slice(0, 4).map((tag) => (
             <span key={tag} className="leader-row__chip">{tag}</span>
           ))}
         </div>

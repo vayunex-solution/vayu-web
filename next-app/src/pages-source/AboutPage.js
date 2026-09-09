@@ -95,6 +95,18 @@ const LeadershipSection = () => {
       focus: ['Technical Architecture', 'Systems Engineering', 'Engineering Standards', 'Backend Systems'],
       hasProfile: true,
     },
+    {
+      name: 'Rajesh Kumar',
+      title: 'AI/ML Engineer & Researcher',
+      slug: 'rajesh-kumar',
+      image: '/images/people/rajesh-kumar.jpg',
+      imageAlt: 'Rajesh Kumar — AI/ML Engineer & Researcher at Vayunex Solution',
+      experience: 'AI & Neural Systems',
+      education: 'Applied Machine Learning & Neural Systems',
+      bio: 'Specializing in applied machine learning, neural architectures, retrieval-augmented generation (RAG) pipelines, and autonomous agent orchestration across Vayunex platforms and enterprise systems.',
+      focus: ['Applied Machine Learning', 'Neural Architectures', 'Enterprise RAG Pipelines', 'Autonomous Agent Systems'],
+      hasProfile: true,
+    },
   ];
 
   const companyLeaders = [
@@ -105,13 +117,6 @@ const LeadershipSection = () => {
       focus: ['Product Strategy', 'Ecosystem Architecture', 'Market Positioning'],
       philosophy: "Great software isn't just about writing code; it's about solving real operational problems with systems that scale gracefully over time.",
     },
-    {
-      name: 'Rajesh Kumar',
-      title: 'AI/ML Engineer & Researcher',
-      avatar: ronitAvatar,
-      focus: ['Applied Machine Learning', 'Neural Architectures', 'Autonomous Agent Research'],
-      philosophy: "Building intelligent systems that move beyond prediction to autonomous reasoning and production-grade reliability.",
-    },
   ];
 
   return (
@@ -120,21 +125,21 @@ const LeadershipSection = () => {
 
         {/* Section Header: Executive Leadership */}
         <div className="leadership__header">
-          <span className="section-eyebrow">COMPANY LEADERSHIP</span>
-          <h2 className="section-heading">Leadership & Engineering</h2>
+          <span className="section-eyebrow">FOUNDER & PRODUCT LEAD</span>
+          <h2 className="section-heading">Vision & Product Strategy</h2>
           <p className="section-desc" style={{ maxWidth: '620px', margin: '0.75rem auto 0' }}>
-            Vayunex is driven by product-led software builders, AI researchers, and engineering heads dedicated to scalable digital architecture.
+            Vayunex is driven by product-first software builders creating proprietary platforms and scalable digital systems.
           </p>
         </div>
 
-        {/* Executive Leaders (Yash & Rajesh) */}
-        <div className="leadership__grid" style={{ marginBottom: '4.5rem' }}>
+        {/* Executive Leader (Yash Kumar) */}
+        <div className="leadership__grid" style={{ maxWidth: '720px', margin: '0 auto 4.5rem', gridTemplateColumns: '1fr' }}>
           {companyLeaders.map((leader, i) => (
             <div key={i} className="leader-card">
               <div className="leader-card__header">
                 <div className="leader-card__avatar-wrap">
                   <img
-                    src={leader.avatar?.src || leader.avatar || (leader.name === 'Yash Kumar' ? '/images/yash.webp' : '/images/ronit.webp')}
+                    src={leader.avatar?.src || leader.avatar || '/images/yash.webp'}
                     alt={leader.name}
                     className="leader-card__avatar"
                   />
@@ -169,13 +174,13 @@ const LeadershipSection = () => {
         {/* Divider & Header: Engineering Practice Leadership */}
         <div className="leadership__divider">
           <span className="section-eyebrow">
-            ENGINEERING & DELIVERY HEADS
+            ENGINEERING & AI LEADERSHIP
           </span>
           <h3 className="section-heading" style={{ fontSize: 'clamp(1.8rem, 3.2vw, 2.4rem)', marginTop: '0.75rem' }}>
-            Decades of Engineering Experience
+            Engineering Experience & Applied AI Innovation
           </h3>
           <p className="section-desc" style={{ maxWidth: '620px', margin: '0.5rem auto 0' }}>
-            Our project and technical heads bring decades of software delivery and systems architecture expertise to every client engagement.
+            Our project heads, technical architects, and AI researchers bring decades of software delivery, distributed systems engineering, and neural network research.
           </p>
         </div>
 

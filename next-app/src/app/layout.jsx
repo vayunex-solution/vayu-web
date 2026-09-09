@@ -118,11 +118,6 @@ const orgSchema = {
           'name': 'Yash Kumar',
           'jobTitle': 'Founder & Product Lead',
         },
-        {
-          '@type': 'Person',
-          'name': 'Rajesh Kumar',
-          'jobTitle': 'Technology & Systems Lead',
-        },
       ],
       'employee': [
         {
@@ -140,6 +135,13 @@ const orgSchema = {
           'url': 'https://www.vayunexsolution.com/people/sandeep-kumar/',
           'alumniOf': 'Punjab University',
           'description': 'Over 17 years of distributed backend systems architecture, database optimization, and AI inference engineering.',
+        },
+        {
+          '@type': 'Person',
+          'name': 'Rajesh Kumar',
+          'jobTitle': 'AI/ML Engineer & Researcher',
+          'url': 'https://www.vayunexsolution.com/people/rajesh-kumar/',
+          'description': 'Specializing in applied machine learning, neural architectures, enterprise RAG pipelines, and autonomous agent systems.',
         },
       ],
       'knowsAbout': [

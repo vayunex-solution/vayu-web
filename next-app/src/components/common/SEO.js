@@ -49,11 +49,6 @@ const SEO = ({
         "@type": "Person",
         "name": "Yash Kumar",
         "jobTitle": "Founder & Product Lead"
-      },
-      {
-        "@type": "Person",
-        "name": "Rajesh Kumar",
-        "jobTitle": "Technology & Systems Lead"
       }
     ],
     "employee": [
@@ -72,6 +67,13 @@ const SEO = ({
         "url": `${siteUrl}/people/sandeep-kumar/`,
         "alumniOf": "Punjab University",
         "description": "Over 17 years of distributed backend systems architecture, database optimization, and AI inference engineering."
+      },
+      {
+        "@type": "Person",
+        "name": "Rajesh Kumar",
+        "jobTitle": "AI/ML Engineer & Researcher",
+        "url": `${siteUrl}/people/rajesh-kumar/`,
+        "description": "Specializing in applied machine learning, neural architectures, enterprise RAG pipelines, and autonomous agent systems."
       }
     ],
     "knowsAbout": [

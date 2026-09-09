@@ -60,19 +60,40 @@ const WhoWeAreSection = () => {
 
 const LeadershipSection = () => {
   const [ref, isVisible] = useScrollAnimation(0.2);
-  const leaders = [
+  const founder = {
+    name: "Yash Kumar",
+    title: "Founder & Product Lead",
+    avatar: yashAvatar,
+    focus: ["Product Strategy", "Ecosystem Architecture", "Market Positioning"],
+    philosophy: "Great software isn't just about writing code; it's about solving real operational problems with systems that scale gracefully over time."
+  };
+
+  const engineeringLeaders = [
     {
-      name: "Yash Kumar",
-      title: "Founder & Product Lead",
-      avatar: yashAvatar,
-      focus: ["Product Strategy", "Ecosystem Architecture", "Market Positioning"],
-      philosophy: "Great software isn't just about writing code; it's about solving real operational problems with systems that scale gracefully over time."
+      name: "Ved Prakash",
+      title: "Project Head",
+      avatar: '/images/people/ved-prakash.jpg',
+      experience: "20+ Years Experience",
+      education: "MCA — Punjab University",
+      focus: ["ERP Implementation", "CRM Automation", "Project Leadership", "Full-Stack Delivery"],
+      philosophy: "Precision execution, bulletproof data architectures, and disciplined enterprise delivery standards."
+    },
+    {
+      name: "Sandeep Kumar",
+      title: "Technical Head",
+      avatar: '/images/people/sandeep-kumar.jpg',
+      experience: "17+ Years Experience",
+      education: "MCA — Punjab University",
+      focus: ["Technical Architecture", "Systems Engineering", "Engineering Standards", "Backend Systems"],
+      philosophy: "Designing resilient, distributed systems that maintain ultra-low latency and fault tolerance under load."
     },
     {
       name: "Rajesh Kumar",
       title: "AI/ML Engineer & Researcher",
       avatar: ronitAvatar,
-      focus: ["Applied Machine Learning", "Neural Architectures", "Autonomous Agent Research"],
+      experience: "AI & Neural Systems",
+      education: "Applied Machine Learning & Neural Systems",
+      focus: ["Applied Machine Learning", "Neural Architectures", "Enterprise RAG", "Autonomous Agents"],
       philosophy: "Building intelligent systems that move beyond prediction to autonomous reasoning and production-grade reliability."
     }
   ];
@@ -81,11 +102,47 @@ const LeadershipSection = () => {
     <section className="leadership-section" ref={ref}>
       <div className={`container fade-up ${isVisible ? 'is-visible' : ''}`}>
         <div className="leadership__header">
-          <span className="section-eyebrow">Leadership</span>
-          <h2 className="section-heading">Engineering Leadership</h2>
+          <span className="section-eyebrow">FOUNDER & PRODUCT LEAD</span>
+          <h2 className="section-heading">Vision & Product Strategy</h2>
         </div>
-        <div className="leadership__grid">
-          {leaders.map((leader, i) => (
+        <div className="leadership__grid" style={{ maxWidth: '720px', margin: '0 auto 4rem', gridTemplateColumns: '1fr' }}>
+          <div className="leader-card">
+            <div className="leader-card__header">
+              <div className="leader-card__avatar-wrap">
+                <img src={founder.avatar} alt={founder.name} className="leader-card__avatar" />
+                <div className="leader-card__avatar-glow" />
+              </div>
+              <div className="leader-card__title-area">
+                <h3 className="leader-card__name">{founder.name}</h3>
+                <span className="leader-card__title">{founder.title}</span>
+              </div>
+            </div>
+            <div className="leader-card__body">
+              <div className="leader-card__focus">
+                <span className="leader-card__label">Focus Areas</span>
+                <ul className="leader-card__focus-list">
+                  {founder.focus.map((f, idx) => (
+                    <li key={idx}>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="leader-card__philosophy">
+                <span className="leader-card__label">Philosophy</span>
+                <p>"{founder.philosophy}"</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="leadership__header" style={{ marginTop: '2rem' }}>
+          <span className="section-eyebrow">ENGINEERING & AI LEADERSHIP</span>
+          <h2 className="section-heading">Engineering Experience & Technical Innovation</h2>
+        </div>
+        <div className="leadership__grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}>
+          {engineeringLeaders.map((leader, i) => (
             <div key={i} className="leader-card">
               <div className="leader-card__header">
                 <div className="leader-card__avatar-wrap">

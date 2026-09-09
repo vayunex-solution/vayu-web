@@ -367,7 +367,7 @@ const PersonDetailPage = ({ slug }) => {
             <h2 className="section-heading">Professional Focus</h2>
           </div>
           <div className="person-expertise__grid">
-            {person.expertise.map((item, i) => (
+            {(person.expertise || []).map((item, i) => (
               <div key={item} className="person-expertise__card">
                 <div className="person-expertise__icon" aria-hidden="true">
                   {expertiseIcons[i % expertiseIcons.length]}
@@ -387,11 +387,11 @@ const PersonDetailPage = ({ slug }) => {
             <h2 className="section-heading">Experience & Leadership</h2>
           </div>
           <div className="person-timeline" role="list">
-            {person.careerTimeline.map((node, i) => (
+            {(person.careerTimeline || []).map((node, i) => (
               <div key={i} className="person-timeline__node" role="listitem">
                 <div className="person-timeline__marker" aria-hidden="true">
                   <div className="person-timeline__dot" />
-                  {i < person.careerTimeline.length - 1 && (
+                  {i < (person.careerTimeline || []).length - 1 && (
                     <div className="person-timeline__line" />
                   )}
                 </div>
