@@ -38,6 +38,8 @@ export const people = [
       'End-to-End CRM Automation',
       'Project Leadership & Delivery Governance',
       'Full-Stack Software Development',
+      'AI Project Governance & Delivery',
+      'Enterprise AI & Workflow Integration',
       'Material Requirement Planning (MRP/MPP)',
       'Legacy Data Migration (Siebel to ERP)',
       'Supply & Service Billing Systems',
@@ -183,18 +185,24 @@ export const people = [
         answer:
           'Throughout his career, Ved Prakash has engineered and coordinated large-scale ERP and CRM implementations for organizations including AGROSAW Industries, Kapson Industries (KIND), Farm Fresh Foods, Synergy Telecommunications, Malwa Automobile (Tata Motors dealership Siebel-to-ERP migration), Osaw Agro Industries, and NCCMS Chandigarh.',
       },
+      {
+        question: 'Does Ved Prakash oversee AI and Machine Learning projects at Vayunex Solution?',
+        answer:
+          'Yes. Alongside enterprise ERP and business systems, Ved Prakash directs project delivery and governance for Vayunex Solution\'s active AI/ML teams, ensuring that machine learning pipelines and AI agent workflows integrate reliably into enterprise operational environments.',
+      },
     ],
 
     relatedServices: [
       { label: 'Web Development', href: '/services/web-development/' },
       { label: 'Enterprise Software', href: '/services/web-development/custom-web-apps/' },
+      { label: 'AI & Data Science', href: '/services/ai-data-science/' },
       { label: 'SaaS Product Engineering', href: '/services/web-development/saas/' },
     ],
 
     seo: {
       title: 'Ved Prakash — Project Head | Vayunex Solution',
       description:
-        'Ved Prakash is the Project Head at Vayunex Solution with 20+ years of experience in ERP implementation, CRM automation, and enterprise software delivery. MCA from Punjab University.',
+        'Ved Prakash is the Project Head at Vayunex Solution with 20+ years of experience in ERP implementation, CRM automation, enterprise software delivery, and AI project governance. MCA from Punjab University.',
       canonical: 'https://www.vayunexsolution.com/people/ved-prakash/',
     },
 
@@ -206,6 +214,7 @@ export const people = [
         'CRM Process Automation',
         'Full-Stack Software Development',
         'Project Leadership & Governance',
+        'AI & Machine Learning Project Delivery',
         'Material Requirement Planning (MRP)',
         'Data Conversion & Migration',
         'Manufacturing & Telecom Systems',
@@ -245,11 +254,11 @@ export const people = [
       'Technical Leadership',
       'Software Architecture',
       'Systems Engineering',
+      'AI/ML Systems Architecture',
+      'Custom LLM & Neural Inference',
+      'AI Engineering Mentorship',
       'Backend Architecture',
-      'Technical Planning',
       'Engineering Standards',
-      'Systems Design',
-      'Technical Consulting',
     ],
 
     careerTimeline: [
@@ -299,6 +308,11 @@ export const people = [
         answer:
           'He focuses on technical architecture, systems engineering, engineering standards governance, and providing technical leadership across both Vayunex Solution\'s proprietary software platforms and enterprise client projects.',
       },
+      {
+        question: 'What is Sandeep Kumar\'s role in Vayunex Solution\'s AI and ML initiatives?',
+        answer:
+          'Sandeep Kumar leads the technical architecture for all AI and machine learning initiatives at Vayunex Solution, overseeing model deployment, high-throughput inference, and mentoring junior AI engineers and freshers working on live production systems.',
+      },
     ],
 
     relatedServices: [
@@ -309,7 +323,7 @@ export const people = [
     seo: {
       title: 'Sandeep Kumar — Technical Head | Vayunex Solution',
       description:
-        'Sandeep Kumar is the Technical Head at Vayunex Solution with 17+ years of experience in software engineering, technical architecture, and systems design. MCA from Punjab University.',
+        'Sandeep Kumar is the Technical Head at Vayunex Solution with 17+ years of experience in software engineering, technical architecture, systems design, and AI/ML pipelines. MCA from Punjab University.',
       canonical: 'https://www.vayunexsolution.com/people/sandeep-kumar/',
     },
 
@@ -320,6 +334,8 @@ export const people = [
         'Software Architecture',
         'Technical Leadership',
         'Systems Engineering',
+        'AI/ML Systems Architecture',
+        'Custom LLM & Neural Inference',
         'Backend Architecture',
         'Engineering Standards',
       ],

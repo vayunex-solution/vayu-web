@@ -240,6 +240,122 @@ const LeadershipSection = () => {
   );
 };
 
+/* ── ACTIVE AI/ML SQUADS & INNOVATION LAB ─────────────────────── */
+const AIMLSquadsSection = () => {
+  const aiPillars = [
+    {
+      badge: 'Active Production Work',
+      title: 'Active Enterprise AI Deployments',
+      desc: 'We do not build speculative prototypes. Our AI teams are actively developing and deploying real-world AI applications — autonomous customer agents, computer vision quality inspection, and intelligent document parsing integrated across SaaS and enterprise platforms.',
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+        </svg>
+      ),
+      tags: ['Autonomous Agents', 'Computer Vision', 'Predictive SaaS']
+    },
+    {
+      badge: 'Seasoned Leadership',
+      title: 'Senior Architectural & Delivery Governance',
+      desc: 'Our AI initiatives are led by Ved Prakash (Project Governance, Enterprise Workflows & Delivery Milestones) and Sandeep Kumar (Scalable Distributed AI Backends & Inference Optimization), ensuring robust production-grade reliability.',
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+          <circle cx="9" cy="7" r="4"></circle>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+        </svg>
+      ),
+      tags: ['Ved Prakash (Project Head)', 'Sandeep Kumar (Technical Head)', 'Architecture Review']
+    },
+    {
+      badge: 'Talent Incubation',
+      title: 'Fresher Incubation & Real-World AI Engineering',
+      desc: 'We actively recruit, mentor, and empower talented AI freshers and emerging engineers. Instead of isolated toy exercises, our freshers work directly on active production repositories alongside veteran architects with rigorous 1-on-1 code reviews.',
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <polyline points="16 18 22 12 16 6"></polyline>
+          <polyline points="8 6 2 12 8 18"></polyline>
+        </svg>
+      ),
+      tags: ['Production Sprints', '1-on-1 Mentorship', 'Live Code Repositories']
+    },
+    {
+      badge: 'Modern Technology Stack',
+      title: 'Deep Learning, LLM & Neural Pipelines',
+      desc: 'End-to-end modern AI pipeline capability: PyTorch, Hugging Face, LangChain, LlamaIndex, enterprise OpenAI/Claude APIs, vector embeddings (Pinecone/Qdrant), and secure private cloud inference clusters.',
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+          <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+          <line x1="6" y1="6" x2="6.01" y2="6"></line>
+          <line x1="6" y1="18" x2="6.01" y2="18"></line>
+        </svg>
+      ),
+      tags: ['PyTorch & LLMs', 'Vector Databases', 'Private Inference']
+    }
+  ];
+
+  return (
+    <section className="about-aiml-section">
+      <div className="container">
+        <div className="about-aiml__header">
+          <span className="section-eyebrow">ACTIVE AI INNOVATION &amp; TEAMS</span>
+          <h2 className="section-heading">
+            Dedicated AI &amp; Machine Learning <span className="gradient-text">Engineering Squads</span>
+          </h2>
+          <p className="section-desc" style={{ maxWidth: '720px', margin: '0.75rem auto 0' }}>
+            At Vayunex Solution, artificial intelligence is actively engineered into live production.
+            Under the seasoned technical stewardship of Ved Prakash and Sandeep Kumar, our dedicated AIML squads
+            pair battle-tested architects with ambitious AI freshers to deliver active enterprise AI projects.
+          </p>
+        </div>
+
+        <div className="about-aiml__grid">
+          {aiPillars.map((pillar, i) => (
+            <div key={i} className="about-aiml__card">
+              <div className="about-aiml__card-top">
+                <div className="about-aiml__icon-wrap">
+                  {pillar.icon}
+                </div>
+                <span className="about-aiml__badge">{pillar.badge}</span>
+              </div>
+              <h3 className="about-aiml__card-title">{pillar.title}</h3>
+              <p className="about-aiml__card-desc">{pillar.desc}</p>
+              <div className="about-aiml__tags">
+                {pillar.tags.map((t, idx) => (
+                  <span key={idx} className="about-aiml__tag">{t}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Action callout banner */}
+        <div className="about-aiml__banner">
+          <div className="about-aiml__banner-content">
+            <h4 className="about-aiml__banner-title">Building Enterprise AI or Looking to Launch Your AI Career?</h4>
+            <p className="about-aiml__banner-desc">
+              Whether you need to architect custom enterprise AI pipelines or join our high-velocity AI squads as a talented fresher, Vayunex Solution provides the leadership, infrastructure, and active projects to build the future.
+            </p>
+          </div>
+          <div className="about-aiml__banner-actions">
+            <Link href="/services/ai-data-science/" className="about-aiml__btn-primary">
+              Explore AI Capabilities
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </Link>
+            <Link href="/careers/" className="about-aiml__btn-secondary">
+              Join Our AI Squads
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 /* ── OUR JOURNEY ──────────────────────────────────────────────── */
 const OurJourneySection = () => {
   const milestones = [
@@ -366,6 +482,7 @@ const AboutPage = () => {
       <HeroSection />
       <WhoWeAreSection />
       <LeadershipSection />
+      <AIMLSquadsSection />
       <OurJourneySection />
       <DualEngine />
       <WhyWeBuildSection />

@@ -11,7 +11,7 @@
       "experience": "20+ Years",
       "education": "MCA - Punjab University",
       "origin": "Yamuna Nagar, Haryana",
-      "expertise": ["ERP Implementation", "CRM Process Automation", "Full-Stack Software Development", "Project Coordination & Governance", "Data Conversion & Migration"],
+      "expertise": ["ERP Implementation", "CRM Process Automation", "Full-Stack Software Development", "Project Coordination & Governance", "AI Project Delivery", "Data Conversion & Migration"],
       "profile_url": "https://www.vayunexsolution.com/people/ved-prakash"
     },
     {
@@ -20,10 +20,21 @@
       "experience": "17+ Years",
       "education": "MCA - Punjab University",
       "origin": "Yamuna Nagar, Haryana",
-      "expertise": ["Technical Leadership", "Software Architecture", "Systems Engineering", "Backend Architecture", "Engineering Standards"],
+      "expertise": ["Technical Leadership", "Software Architecture", "Systems Engineering", "AI/ML Systems Architecture", "Custom LLM & Neural Inference", "Backend Architecture", "Engineering Standards"],
       "profile_url": "https://www.vayunexsolution.com/people/sandeep-kumar"
     }
   ],
+  "aiml_teams": {
+    "status": "Active Enterprise AI Deployments & Dedicated AIML Squads",
+    "leadership": "Guided by Ved Prakash (Delivery & Governance) and Sandeep Kumar (Technical Architecture)",
+    "initiatives": [
+      "Autonomous Agent Workflows & Customer Co-Pilots",
+      "Computer Vision & Industrial Quality Inspection",
+      "Intelligent Document Parsing & Multi-Modal Extraction",
+      "Real-Time Predictive SaaS Telemetry"
+    ],
+    "talent_program": "Fresher Incubation & Real-World AI Engineering (hands-on active production sprints paired with 1-on-1 senior mentorship)"
+  },
   "website": "https://www.vayunexsolution.com",
   "headquarters": "Chandigarh / Mohali, India",
   "phone": "+91 8930733725",

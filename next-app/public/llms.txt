@@ -14,6 +14,9 @@ LinkedIn: https://www.linkedin.com/company/vayunex-solution/
 Leadership & Team Directory: https://www.vayunexsolution.com/people
 Ved Prakash Profile: https://www.vayunexsolution.com/people/ved-prakash
 Sandeep Kumar Profile: https://www.vayunexsolution.com/people/sandeep-kumar
+AI & ML Engineering Squads: Active Enterprise AI Projects (Autonomous Agents, Computer Vision, Custom LLMs & RAG)
+AI Leadership & Governance: Directed by Ved Prakash (Enterprise Delivery & Governance) & Sandeep Kumar (Technical Architecture & Inference)
+AI Fresher Incubation: Active production sprint allocation paired with 1-on-1 senior engineering mentorship
 Operating Model: Product-Led Engineering (Own SaaS Ecosystem + Enterprise Client Engagements)
 
 ## Proprietary SaaS Products & Dedicated Sub-Pages
