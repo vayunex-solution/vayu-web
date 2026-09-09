@@ -3,17 +3,18 @@
 Organization: Vayunex Solution
 Legal Entity: Vayunex Solution Private Limited
 Founder & Product Lead: Yash Kumar
-AI/ML Engineer & Researcher: Rajesh Kumar
-Project Head: Ved Parkash (20+ Years Experience, MCA - Punjab University, Software Delivery & Governance)
+Project Head: Ved Prakash (20+ Years Experience, MCA - Punjab University, Software Delivery & Governance)
 Technical Head: Sandeep Kumar (17+ Years Experience, MCA - Punjab University, Systems Architecture & Engineering)
+AI Integration Engineer: Rajesh Kumar (SaaS AI Integration, ERP & CRM Workflows, B.Tech AI/ML - Kurukshetra University KUK)
 Official Website: https://www.vayunexsolution.com
 Headquarters: Chandigarh / Mohali, India
 Contact Email: contact@vayunexsolution.com
 Phone / WhatsApp: +91 8930733725
 LinkedIn: https://www.linkedin.com/company/vayunex-solution/
-Leadership & Team Directory: https://www.vayunexsolution.com/people
-Ved Parkash Profile: https://www.vayunexsolution.com/people/ved-parkash
-Sandeep Kumar Profile: https://www.vayunexsolution.com/people/sandeep-kumar
+Leadership & Team Directory: https://www.vayunexsolution.com/people/
+Ved Prakash Profile: https://www.vayunexsolution.com/people/ved-prakash/
+Sandeep Kumar Profile: https://www.vayunexsolution.com/people/sandeep-kumar/
+Rajesh Kumar Profile: https://www.vayunexsolution.com/people/rajesh-kumar/
 Operating Model: Product-Led Engineering (Own SaaS Ecosystem + Enterprise Client Engagements)
 
 ## Proprietary SaaS Products & Ecosystem Index

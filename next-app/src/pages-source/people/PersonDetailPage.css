@@ -53,8 +53,8 @@
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 1fr 420px;
-  gap: 5rem;
+  grid-template-columns: 1fr 320px;
+  gap: 4rem;
   align-items: end;
 }
 
@@ -122,7 +122,9 @@
 .person-hero__portrait-wrap {
   position: relative;
   width: 100%;
+  max-width: 320px;
   align-self: end;
+  justify-self: end;
 }
 
 .person-hero__portrait-frame {
@@ -743,7 +745,7 @@
   .person-hero__portrait-frame {
     border-radius: var(--radius-xl);
     border: 1px solid var(--border-default);
-    max-width: 420px;
+    max-width: 300px;
     margin: 0 auto;
   }
   .person-hero__portrait {

@@ -139,9 +139,10 @@ const orgSchema = {
         {
           '@type': 'Person',
           'name': 'Rajesh Kumar',
-          'jobTitle': 'AI/ML Engineer & Researcher',
+          'jobTitle': 'AI Integration Engineer',
           'url': 'https://www.vayunexsolution.com/people/rajesh-kumar/',
-          'description': 'Specializing in applied machine learning, neural architectures, enterprise RAG pipelines, and autonomous agent systems.',
+          'alumniOf': 'Kurukshetra University (KUK)',
+          'description': 'Specializing in integrating AI capabilities, intelligent workflow automation, and copilot modules across ERP, CRM, and SaaS platforms.',
         },
       ],
       'knowsAbout': [

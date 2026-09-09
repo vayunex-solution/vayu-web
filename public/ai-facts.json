@@ -2,7 +2,7 @@
   "organization": "Vayunex Solution",
   "legal_name": "Vayunex Solution Private Limited",
   "founder_product_lead": "Yash Kumar",
-  "aiml_engineer_researcher": "Rajesh Kumar",
+  "ai_integration_engineer": "Rajesh Kumar",
   "leadership": [
     {
       "name": "Ved Prakash",
@@ -22,6 +22,16 @@
       "origin": "Yamuna Nagar, Haryana",
       "expertise": ["Technical Leadership", "Software Architecture", "Systems Engineering", "AI/ML Systems Architecture", "Custom LLM & Neural Inference", "Backend Architecture", "Engineering Standards"],
       "profile_url": "https://www.vayunexsolution.com/people/sandeep-kumar"
+    },
+    {
+      "name": "Rajesh Kumar",
+      "role": "AI Integration Engineer",
+      "sub_role": "SaaS AI Integration | ERP & CRM Intelligent Workflows | Applied AI Systems",
+      "experience": "5+ Years",
+      "education": "B.Tech (Specialization in AI/ML) - Kurukshetra University (KUK)",
+      "origin": "Haryana / Chandigarh Tricity, India",
+      "expertise": ["SaaS AI Integration", "ERP AI Workflows", "CRM AI Automation", "AI Copilot Embedding", "Invoice & Document Parsing", "LLM Integration"],
+      "profile_url": "https://www.vayunexsolution.com/people/rajesh-kumar"
     }
   ],
   "aiml_teams": {

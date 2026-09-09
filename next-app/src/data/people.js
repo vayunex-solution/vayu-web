@@ -346,117 +346,117 @@ export const people = [
     id: 'rajesh-kumar',
     slug: 'rajesh-kumar',
     name: 'Rajesh Kumar',
-    role: 'AI/ML Engineer & Researcher',
-    subRole: 'Machine Learning Systems | Neural Network Architectures | Autonomous Agent Research',
+    role: 'AI Integration Engineer',
+    subRole: 'SaaS AI Integration | ERP & CRM Intelligent Workflows | Applied AI Systems',
     company: 'Vayunex Solution',
     companyUrl: 'https://www.vayunexsolution.com',
-    experience: 6,
-    experienceLabel: 'AI & Neural Systems Specialist',
-    education: 'Applied AI & ML Systems',
-    university: 'Computer Science & Intelligence Engineering',
-    origin: 'Chandigarh Tricity, India',
+    experience: 5,
+    experienceLabel: 'SaaS & ERP AI Specialist',
+    education: 'B.Tech (Specialization in AI & ML)',
+    university: 'Kurukshetra University (KUK)',
+    origin: 'Haryana / Chandigarh Tricity, India',
     image: '/images/people/rajesh-kumar.jpg',
-    imageAlt: 'Rajesh Kumar — AI/ML Engineer & Researcher at Vayunex Solution',
+    imageAlt: 'Rajesh Kumar — AI Integration Engineer at Vayunex Solution',
 
     shortBio:
-      'Rajesh Kumar is an AI/ML Engineer and Researcher at Vayunex Solution, specializing in applied machine learning, neural architectures, retrieval-augmented generation (RAG) pipelines, and autonomous agent orchestration.',
+      'Rajesh Kumar is the AI Integration Engineer at Vayunex Solution, specializing in integrating AI capabilities, intelligent workflow automation, and copilot modules across ERP, CRM, and enterprise SaaS platforms.',
 
     fullBio: [
-      'Rajesh Kumar serves as AI/ML Engineer & Researcher at Vayunex Solution, where he spearheads research and production engineering of intelligent systems, deep learning workflows, and neural inference infrastructure across the company\'s SaaS platforms and enterprise engagements.',
-      'His technical work focuses on applied machine learning, deterministic agent orchestration, hybrid vector retrieval, and custom fine-tuning of large language models. He works closely with engineering leadership to transform theoretical AI advancements into high-throughput, fault-tolerant business software.',
-      'At Vayunex Solution, he contributes to core architectural initiatives including SocialNex generative copilot pipelines, automated customer telemetry models, and robust multi-agent systems designed for long-term production dependability.',
+      'Rajesh Kumar serves as AI Integration Engineer at Vayunex Solution, where he spearheads the practical embedding of artificial intelligence into enterprise ERP, customer CRM workflows, and proprietary SaaS platforms.',
+      'With a B.Tech specialized in Artificial Intelligence & Machine Learning from Kurukshetra University (KUK), his engineering work centers on bridging business systems with modern AI. He transforms operational processes across sales, customer management, inventory, and billing by embedding intelligent automation, predictive copilot engines, and smart document parsing directly into active business software.',
+      'At Vayunex Solution, he directs AI integration across our proprietary products—including SocialNex AI copilot automation, SchoolDost student verification models, PayNex automated reconciliation, and Jwelnex ERP catalogue intelligence—ensuring that enterprise AI delivers tangible business outcomes rather than speculative experiments.',
     ],
 
     expertise: [
-      'Applied Machine Learning',
-      'Neural Network Architectures',
-      'Autonomous Agent Swarms',
-      'RAG & Vector Retrieval',
-      'LLM Fine-Tuning & Inference',
-      'Computer Vision & NLP',
-      'Deterministic Agent Guardrails',
-      'High-Throughput Model Serving',
-      'Semantic Search & Embeddings',
-      'AI Workflow Orchestration',
+      'SaaS AI Integration',
+      'ERP AI Workflows & Automation',
+      'CRM Lead & Process AI Automation',
+      'AI Copilot & Assistant Embedding',
+      'Intelligent Document & Invoice Parsing',
+      'LLM & Vector API Integration',
+      'Predictive Inventory & Sales Scoring',
+      'Autonomous Workflow Automation',
+      'Multi-Tenant SaaS AI Architecture',
+      'Webhook & Business Data AI Triggers',
     ],
 
     highlights: [
       {
-        title: 'Neural & Agent Architectures',
-        description: 'Designs structured, guardrailed multi-agent swarms utilizing LangGraph and hybrid vector embedding architectures.',
+        title: 'ERP AI Automation',
+        description: 'Embeds smart automation, automated ledger anomaly detection, and predictive inventory telemetry directly into enterprise ERP workflows.',
       },
       {
-        title: 'Applied Machine Learning',
-        description: 'Researches and deploys production-grade ML inference pipelines for automated document intelligence, classification, and predictive analytics.',
+        title: 'CRM AI Copilot Integration',
+        description: 'Integrates automated lead classification, customer sentiment analysis, and intelligent conversation responders into CRM pipelines.',
       },
       {
-        title: 'Production RAG Systems',
-        description: 'Implements zero-hallucination enterprise retrieval systems combining semantic dense vectors with deterministic keyword search.',
+        title: 'SaaS Product AI Capabilities',
+        description: 'Builds and connects production AI microservices into Vayunex SaaS platforms including SocialNex, SchoolDost, PayNex, and Jwelnex.',
       },
       {
-        title: 'AI Engineering Standards',
-        description: 'Enforces rigorous latency benchmarking, token optimization, and deterministic safety guardrails across all AI/ML microservices.',
+        title: 'Academic & Technical Foundations',
+        description: 'B.Tech with Specialization in AI/ML from Kurukshetra University (KUK), focusing on applied machine intelligence in commercial software.',
       },
     ],
 
     functionalMatrix: [
       {
-        area: 'Autonomous Agent Orchestration',
-        details: 'Multi-agent state machines, LangGraph workflows, and tool-calling validation for deterministic reasoning.',
+        area: 'ERP AI Integration',
+        details: 'Intelligent inventory telemetry, automated purchase order parsing, invoice OCR extraction, and real-time ledger classification.',
       },
       {
-        area: 'Vector Retrieval & Hybrid Search',
-        details: 'Dense and sparse vector embeddings, Qdrant/Pinecone vector databases, rerankers, and chunking strategies.',
+        area: 'CRM AI Automation',
+        details: 'Lead qualification copilots, customer interaction scoring, automated follow-up scheduling, and CRM chatbot integration.',
       },
       {
-        area: 'Computer Vision & Document Intelligence',
-        details: 'OCR inference pipelines, automated entity extraction, layout parsing, and visual document understanding.',
+        area: 'SaaS Copilot Workflows',
+        details: 'SocialNex generative caption & engagement intelligence, automated moderation, and personalized user triggers.',
       },
       {
-        area: 'LLM Fine-Tuning & Model Optimization',
-        details: 'LoRA/QLoRA adaptation, quantized model serving (vLLM/Ollama), and low-latency API inference gateways.',
+        area: 'Business API & LLM Orchestration',
+        details: 'Secure multi-tenant OpenAI/Anthropic/open-source model integration, token cost optimization, and structured JSON output guardrails.',
       },
     ],
 
     industryPortfolio: [
       {
-        client: 'SocialNex AI Copilot Engine',
+        client: 'SocialNex AI Automation Engine',
         location: 'Vayunex Proprietary Ecosystem',
-        industry: 'Autonomous Social Intelligence & Content Generation',
-        description: 'Engineered core AI generation and predictive engagement algorithms powering automated brand scheduling, caption generation, and multi-channel analytics.',
+        industry: 'SaaS AI Integration',
+        description: 'Integrated generative copilots and automated scheduling intelligence directly into SocialNex social operations platform.',
       },
       {
-        client: 'Enterprise RAG Knowledge Base',
-        location: 'Enterprise Client Engagements',
-        industry: 'Zero-Hallucination Enterprise Search',
-        description: 'Architected high-precision retrieval-augmented generation pipelines enabling internal business teams to query thousands of technical and compliance documents securely.',
+        client: 'Jwelnex ERP Intelligent Telemetry',
+        location: 'Enterprise Retail & Bullion',
+        industry: 'ERP AI Workflows',
+        description: 'Engineered smart stock pattern detection, catalogue auto-tagging, and automated valuation alerts for jewellery retail ERP.',
       },
       {
-        client: 'SchoolDost Verification & Moderation',
-        location: 'Vayunex Proprietary Ecosystem',
-        industry: 'Verified Academic Network Security',
-        description: 'Designed automated student verification pipelines and content moderation models to keep academic communication verified and free from spam.',
+        client: 'Enterprise CRM Automation Pipelines',
+        location: 'Enterprise Engagements',
+        industry: 'CRM AI Integration',
+        description: 'Integrated intelligent lead scoring, follow-up notifications, and CRM data enrichment pipelines across client customer operations.',
       },
     ],
 
     careerTimeline: [
       {
-        phase: 'Foundations',
-        heading: 'Machine Learning & Neural Architecture Research',
+        phase: 'Education & Foundations',
+        heading: 'B.Tech (Specialization in AI/ML) — Kurukshetra University (KUK)',
         description:
-          'Conducted in-depth practical research in deep learning, transformer architectures, vector embeddings, and computer vision classification.',
+          'Completed B.Tech with focused specialization in Artificial Intelligence, Machine Learning, algorithm optimization, and data-driven systems.',
       },
       {
-        phase: 'Systems Engineering',
-        heading: 'Production AI Inference & RAG Pipelines',
+        phase: 'Applied Engineering',
+        heading: 'Enterprise SaaS & AI Integrations',
         description:
-          'Built high-performance model serving microservices, optimized token usage, and developed semantic search systems for production web platforms.',
+          'Engineered and deployed AI microservices, webhook pipelines, and document intelligence workflows integrated with commercial database systems.',
       },
       {
         phase: 'Current',
-        heading: 'AI/ML Engineer & Researcher — Vayunex Solution',
+        heading: 'AI Integration Engineer — Vayunex Solution',
         description:
-          'Leading applied AI research, agent orchestration frameworks, and neural capabilities across Vayunex Solution’s SaaS products and enterprise software solutions.',
+          'Directing AI integration across Vayunex SaaS platforms, ERP environments, and CRM systems, embedding intelligent automation into daily enterprise operations.',
       },
     ],
 
@@ -464,17 +464,17 @@ export const people = [
       {
         question: 'What is Rajesh Kumar\'s role at Vayunex Solution?',
         answer:
-          'Rajesh Kumar is the AI/ML Engineer & Researcher at Vayunex Solution, focusing on applied machine learning, neural architectures, and autonomous AI system research.',
+          'Rajesh Kumar is the AI Integration Engineer at Vayunex Solution, focusing on integrating AI capabilities and intelligent automation into ERP, CRM, and SaaS software.',
       },
       {
-        question: 'What AI/ML domains does Rajesh Kumar specialize in?',
+        question: 'What are Rajesh Kumar\'s educational qualifications?',
         answer:
-          'His primary domains include retrieval-augmented generation (RAG), multi-agent autonomous workflows, deep learning inference optimization, and natural language processing for enterprise SaaS products.',
+          'Rajesh Kumar holds a B.Tech degree with specialization in Artificial Intelligence & Machine Learning from Kurukshetra University (KUK), Haryana.',
       },
       {
-        question: 'How does Rajesh Kumar contribute to Vayunex products?',
+        question: 'How does Rajesh Kumar integrate AI into ERP and CRM systems?',
         answer:
-          'Rajesh works on core intelligence layers across Vayunex SaaS platforms, including AI copilot capabilities in SocialNex, automated classification engines, and deterministic workflow agents.',
+          'He embeds intelligent features into ERP and CRM systems—such as automated invoice parsing, smart lead scoring, customer sentiment classification, predictive inventory telemetry, and AI copilot assistants.',
       },
     ],
 
@@ -486,22 +486,22 @@ export const people = [
     ],
 
     seo: {
-      title: 'Rajesh Kumar — AI/ML Engineer & Researcher | Vayunex Solution',
+      title: 'Rajesh Kumar — AI Integration Engineer | Vayunex Solution',
       description:
-        'Rajesh Kumar is an AI/ML Engineer and Researcher at Vayunex Solution, specializing in applied machine learning, neural architectures, enterprise RAG, and autonomous agents.',
+        'Rajesh Kumar is the AI Integration Engineer at Vayunex Solution (B.Tech in AI/ML from KUK), specializing in integrating AI into ERP, CRM, and enterprise SaaS platforms.',
       canonical: 'https://www.vayunexsolution.com/people/rajesh-kumar/',
     },
 
     schema: {
       id: 'https://www.vayunexsolution.com/people/rajesh-kumar/#person',
       knowsAbout: [
-        'Applied Machine Learning',
-        'Neural Network Architecture',
-        'Autonomous Agent Workflows',
+        'SaaS AI Integration',
+        'ERP AI Workflows',
+        'CRM AI Automation',
+        'AI Copilot Systems',
+        'Intelligent Business Automation',
+        'Machine Learning Integration',
         'Retrieval-Augmented Generation (RAG)',
-        'Natural Language Processing (NLP)',
-        'Vector Embeddings & Semantic Search',
-        'Deep Learning Inference',
       ],
     },
   },

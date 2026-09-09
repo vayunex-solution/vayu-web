@@ -97,15 +97,25 @@ const structuredDataGraph = {
           '@type': 'Person',
           '@id': 'https://www.vayunexsolution.com/people/rajesh-kumar/#person',
           'name': 'Rajesh Kumar',
-          'jobTitle': 'AI/ML Engineer & Researcher',
+          'jobTitle': 'AI Integration Engineer',
           'url': 'https://www.vayunexsolution.com/people/rajesh-kumar/',
           'worksFor': { '@id': 'https://www.vayunexsolution.com/#organization' },
+          'alumniOf': {
+            '@type': 'EducationalOrganization',
+            'name': 'Kurukshetra University (KUK)'
+          },
+          'hasCredential': {
+            '@type': 'EducationalOccupationalCredential',
+            'credentialCategory': 'degree',
+            'name': 'B.Tech with Specialization in AI & ML — Kurukshetra University (KUK)'
+          },
           'knowsAbout': [
-            'Applied Machine Learning',
-            'Neural Network Architectures',
-            'Autonomous Agent Systems',
-            'RAG & Vector Retrieval',
-            'AI Inference Optimization'
+            'SaaS AI Integration',
+            'ERP AI Workflows',
+            'CRM AI Automation',
+            'AI Copilot Systems',
+            'Intelligent Business Automation',
+            'RAG & Vector Retrieval'
           ]
         }
       ],
@@ -172,7 +182,7 @@ const structuredDataGraph = {
           'name': 'Who leads Vayunex Solution?',
           'acceptedAnswer': {
             '@type': 'Answer',
-            'text': 'Vayunex Solution was founded by Yash Kumar (Chief Executive Officer & Founder). Engineering and delivery practices are directed by seasoned practice heads: Ved Prakash serves as Project Head (20+ years experience, MCA Punjab University), Sandeep Kumar serves as Technical Head (17+ years experience, MCA Punjab University), and Rajesh Kumar serves as AI/ML Engineer & Researcher.'
+            'text': 'Vayunex Solution was founded by Yash Kumar (Chief Executive Officer & Founder). Engineering and delivery practices are directed by seasoned practice heads: Ved Prakash serves as Project Head (20+ years experience, MCA Punjab University), Sandeep Kumar serves as Technical Head (17+ years experience, MCA Punjab University), and Rajesh Kumar serves as AI Integration Engineer (B.Tech in AI/ML from Kurukshetra University).'
           }
         },
         {

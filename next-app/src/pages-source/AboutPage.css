@@ -223,13 +223,13 @@
 
 .eng-leader-row {
   display: grid;
-  grid-template-columns: 360px 1fr;
+  grid-template-columns: 280px 1fr;
   background: var(--bg-surface);
   border: 1px solid var(--border-default);
   border-radius: var(--radius-xl);
   overflow: hidden;
-  min-height: 380px;
-  max-height: 450px;
+  min-height: 320px;
+  max-height: 400px;
   transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
   box-shadow: var(--shadow-sm);
 }
@@ -250,9 +250,9 @@
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
 }
 
-/* Reverse alternating row: flips columns so the image is STILL EXACTLY 360px! */
+/* Reverse alternating row: flips columns so the image is STILL EXACTLY 280px! */
 .eng-leader-row--reverse {
-  grid-template-columns: 1fr 360px;
+  grid-template-columns: 1fr 280px;
 }
 
 .eng-leader-row--reverse .eng-leader-row__image-panel {
@@ -857,8 +857,8 @@
   }
 
   .eng-leader-row__image-panel {
-    height: 340px;
-    min-height: 340px;
+    height: 260px;
+    min-height: 260px;
   }
 
   .eng-leader-row__content-panel {

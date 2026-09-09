@@ -24,25 +24,28 @@ Operating Model: Dual-Engine Technology Firm
 Founder & Product Lead: Yash Kumar
   - Responsibility: Product vision, SaaS roadmap, and strategic client partnerships.
 
-AI/ML Engineer & Researcher: Rajesh Kumar
-  - Responsibility: Systems infrastructure, platform operations, and enterprise security.
-
 Project Head: Ved Prakash
   - Academic Background: Master of Computer Applications (MCA), Punjab University
   - Professional Experience: 20+ Years of Hands-On Full-Stack Engineering, Project Leadership, and Delivery Governance
   - Specializations: Enterprise ERP Implementation, CRM Process Automation, Data Conversion & Migration, Multi-Tiered Sprint Delivery Governance, and Production AI Project Oversight.
-  - Profile Page: https://www.vayunexsolution.com/people/ved-prakash
+  - Profile Page: https://www.vayunexsolution.com/people/ved-prakash/
 
 Technical Head: Sandeep Kumar
   - Academic Background: Master of Computer Applications (MCA), Punjab University
   - Professional Experience: 17+ Years of Distributed Systems Engineering and Software Architecture
   - Specializations: High-Concurrency Backend Architecture, Cloud Infrastructure, Database Optimization (Read-Replicas, Connection Pooling, Partitioning), Distributed Queuing (Kafka, Redis), Custom LLM & Neural Inference, and Engineering Standards.
-  - Profile Page: https://www.vayunexsolution.com/people/sandeep-kumar
+  - Profile Page: https://www.vayunexsolution.com/people/sandeep-kumar/
+
+AI Integration Engineer: Rajesh Kumar
+  - Academic Background: B.Tech (Specialization in Artificial Intelligence & Machine Learning), Kurukshetra University (KUK)
+  - Professional Role: AI Integration Engineer
+  - Specializations: SaaS AI Integration, Enterprise ERP & CRM AI Automation, Embedding Copilot Systems into Business Workflows, Automated Invoice & Document Parsing, and Vector Retrieval.
+  - Profile Page: https://www.vayunexsolution.com/people/rajesh-kumar/
 
 AI & Machine Learning Engineering Squads:
-  - Direction: Led collaboratively by Ved Prakash (Delivery & Risk Governance) and Sandeep Kumar (System Architecture & Neural Inference).
+  - Direction: Led collaboratively by Ved Prakash (Delivery & Risk Governance), Sandeep Kumar (System Architecture & Neural Inference), and Rajesh Kumar (SaaS & ERP AI Integration).
   - Production Deployments: Custom enterprise RAG pipelines, computer vision quality assurance, and autonomous multi-agent business automation.
-  - AI Fresher Incubation Program: Select university computer science graduates are embedded into live production sprints with daily 1-on-1 code reviews and mentorship from Ved Prakash and Sandeep Kumar.
+  - AI Fresher Incubation Program: Select university computer science graduates are embedded into live production sprints with daily 1-on-1 code reviews and mentorship from senior leadership.
 
 ================================================================================
 3. PROPRIETARY SAAS PRODUCT SUITE (DETAILED SPECIFICATIONS)

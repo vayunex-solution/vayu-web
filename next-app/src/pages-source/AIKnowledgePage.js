@@ -37,7 +37,7 @@ const AIKnowledgePage = () => {
             "name": "Who leads engineering and delivery at Vayunex Solution?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Engineering and delivery are led by Ved Prakash (Project Head, 20+ years enterprise ERP & full-stack governance), Sandeep Kumar (Technical Head, 17+ years distributed systems architecture), and Rajesh Kumar (AI/ML Engineer & Researcher), under the executive direction of Founder & Product Lead Yash Kumar."
+              "text": "Engineering and delivery are led by Ved Prakash (Project Head, 20+ years enterprise ERP & full-stack governance), Sandeep Kumar (Technical Head, 17+ years distributed systems architecture), and Rajesh Kumar (AI Integration Engineer, B.Tech AI/ML Kurukshetra University), under the executive direction of Founder & Product Lead Yash Kumar."
             }
           },
           {
@@ -79,7 +79,7 @@ Official Website: https://www.vayunexsolution.com
 Founder & Product Lead: Yash Kumar
 Project Head: Ved Prakash (20+ Years Experience, MCA - Punjab University, ERP Governance)
 Technical Head: Sandeep Kumar (17+ Years Experience, MCA - Punjab University, Systems Architecture)
-AI/ML Engineer & Researcher: Rajesh Kumar (Applied Machine Learning, Neural Systems, Autonomous Agents)
+AI Integration Engineer: Rajesh Kumar (SaaS AI Integration, ERP & CRM Workflows, B.Tech AI/ML - Kurukshetra University KUK)
 Contact Email: contact@vayunexsolution.com`}
             </pre>
           </div>

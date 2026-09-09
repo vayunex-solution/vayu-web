@@ -89,12 +89,12 @@ const LeadershipSection = () => {
     },
     {
       name: "Rajesh Kumar",
-      title: "AI/ML Engineer & Researcher",
+      title: "AI Integration Engineer",
       avatar: ronitAvatar,
-      experience: "AI & Neural Systems",
-      education: "Applied Machine Learning & Neural Systems",
-      focus: ["Applied Machine Learning", "Neural Architectures", "Enterprise RAG", "Autonomous Agents"],
-      philosophy: "Building intelligent systems that move beyond prediction to autonomous reasoning and production-grade reliability."
+      experience: "SaaS & ERP AI Integration",
+      education: "B.Tech (Specialization in AI/ML) — Kurukshetra University (KUK)",
+      focus: ["SaaS AI Integration", "ERP & CRM AI Automation", "AI Copilot Workflows", "Intelligent Business Automation"],
+      philosophy: "Embedding intelligent automation and AI copilots directly into everyday ERP, CRM, and SaaS workflows to deliver measurable operational outcomes."
     }
   ];
 
