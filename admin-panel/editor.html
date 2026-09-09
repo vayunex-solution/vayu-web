@@ -217,6 +217,18 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="author">Author</label>
+                                <input list="authorOptions" id="author" class="form-control" placeholder="Select or type author name">
+                                <datalist id="authorOptions">
+                                    <option value="Ved Parkash">Ved Parkash (Project Head)</option>
+                                    <option value="Sandeep Kumar">Sandeep Kumar (Technical Head)</option>
+                                    <option value="Yash Kumar">Yash Kumar (CEO & Founder)</option>
+                                    <option value="Rajesh Kumar">Rajesh Kumar (Director & Co-Founder)</option>
+                                    <option value="Vayunex Team">Vayunex Team</option>
+                                </datalist>
+                            </div>
+
+                            <div class="form-group">
                                 <label for="featuredImage">Featured Image URL</label>
                                 <input type="url" id="featuredImage" class="form-control" placeholder="https://example.com/image.jpg">
                             </div>
@@ -498,6 +510,7 @@
                     // Populate fields
                     document.getElementById('title').value = blog.title || '';
                     document.getElementById('excerpt').value = blog.excerpt || '';
+                    document.getElementById('author').value = blog.author || '';
                     quill.root.innerHTML = blog.content || '';
                     document.getElementById('aiSummary').value = blog.aiSummary || '';
                     document.getElementById('status').value = blog.status || 'draft';
@@ -576,6 +589,7 @@
             const payload = {
                 title: document.getElementById('title').value.trim(),
                 excerpt: document.getElementById('excerpt').value.trim(),
+                author: document.getElementById('author').value.trim() || 'Vayunex Team',
                 content: quill.root.innerHTML,
                 featuredImage: document.getElementById('featuredImage').value.trim() || null,
                 status: document.getElementById('status').value,

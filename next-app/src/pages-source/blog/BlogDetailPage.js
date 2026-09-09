@@ -6,9 +6,11 @@ import SEO from '../../components/common/SEO';
 import Breadcrumbs from '../../components/common/Breadcrumbs';
 import QuickAnswers from '../../components/common/QuickAnswers';
 import FAQAccordion from '../../components/common/FAQAccordion';
+import { resolveAuthorToPerson } from '../../data/people';
+import { getFallbackLeadershipBlog } from '../../data/leadershipBlogsData';
 import './BlogDetailPage.css';
 
-const BlogDetailPage = ({ slug: propSlug }) => {
+const BlogDetailPage = ({ slug: propSlug, initialBlog }) => {
     let slug = propSlug;
     try {
         const params = useParams();
@@ -24,8 +26,9 @@ const BlogDetailPage = ({ slug: propSlug }) => {
     }
     slug = slug || '';
 
-    const [blog, setBlog] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const initialData = initialBlog || getFallbackLeadershipBlog(slug);
+    const [blog, setBlog] = useState(initialData || null);
+    const [loading, setLoading] = useState(!initialData);
     const [readingProgress, setReadingProgress] = useState(0);
     const [copied, setCopied] = useState(false);
     const [pageUrl, setPageUrl] = useState('');
@@ -71,14 +74,14 @@ const BlogDetailPage = ({ slug: propSlug }) => {
                 if (data && !data.error && data.title) {
                     setBlog(data);
                 } else {
-                    // Blog not found â€” show not found state, no fake content
-                    setBlog(null);
+                    const fallback = getFallbackLeadershipBlog(activeSlug);
+                    setBlog(fallback || null);
                 }
                 setLoading(false);
             })
             .catch(() => {
-                // API unreachable â€” show not found state
-                setBlog(null);
+                const fallback = getFallbackLeadershipBlog(activeSlug);
+                setBlog(fallback || null);
                 setLoading(false);
             });
     }, [slug]);
@@ -116,6 +119,7 @@ const BlogDetailPage = ({ slug: propSlug }) => {
     };
 
     const authorName  = getStr(blog.author,   'Vayunex Engineering Team');
+    const authorPerson = resolveAuthorToPerson(authorName); // null for unknown authors
     const categoryStr = getStr(blog.category, '');
     const tagsArr     = Array.isArray(blog.tags)
         ? blog.tags.map(t => getStr(t))
@@ -139,19 +143,32 @@ const BlogDetailPage = ({ slug: propSlug }) => {
         catch (e) { console.error('FAQ parse error:', e); }
     }
 
+    // Build author schema — use connected Person entity for known people
+    const authorSchemaEntity = authorPerson
+        ? {
+            "@type": "Person",
+            "@id": authorPerson.schema.id,
+            "name": authorPerson.name,
+            "jobTitle": authorPerson.role,
+            "url": `https://www.vayunexsolution.com/people/${authorPerson.slug}/`,
+            "worksFor": { "@id": "https://www.vayunexsolution.com/#organization" }
+          }
+        : {
+            "@type": "Person",
+            "name": authorName,
+            "worksFor": { "@id": "https://www.vayunexsolution.com/#organization" }
+          };
+
     const articleSchema = {
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": blog.seoTitle || blog.title,
         "description": blog.seoDescription || blog.excerpt,
         "image": blog.featuredImage || "https://www.vayunexsolution.com/assets/og-default.jpg",
-        "author": {
-            "@type": "Person",
-            "name": authorName,
-            "worksFor": { "@type": "Organization", "name": "Vayunex Solution" }
-        },
+        "author": authorSchemaEntity,
         "publisher": {
             "@type": "Organization",
+            "@id": "https://www.vayunexsolution.com/#organization",
             "name": "Vayunex Solution",
             "logo": { "@type": "ImageObject", "url": "https://www.vayunexsolution.com/logo.png" }
         },
@@ -229,13 +246,33 @@ const BlogDetailPage = ({ slug: propSlug }) => {
 
                         <div className="blog-meta-row">
                             <div className="blog-meta-author">
-                                <div className="blog-author-avatar">
-                                    {authorName.charAt(0).toUpperCase()}
-                                </div>
-                                <div className="blog-author-info">
-                                    <span className="blog-author-name">{authorName}</span>
-                                    <span className="blog-author-role">Vayunex Solution</span>
-                                </div>
+                                {authorPerson ? (
+                                    // Known person — link to their profile
+                                    <Link
+                                        to={`/people/${authorPerson.slug}/`}
+                                        className="blog-author-link"
+                                        aria-label={`View profile of ${authorPerson.name}`}
+                                    >
+                                        <div className="blog-author-avatar">
+                                            {authorPerson.name.charAt(0).toUpperCase()}
+                                        </div>
+                                        <div className="blog-author-info">
+                                            <span className="blog-author-name">{authorPerson.name}</span>
+                                            <span className="blog-author-role">{authorPerson.role} · Vayunex Solution</span>
+                                        </div>
+                                    </Link>
+                                ) : (
+                                    // Legacy / unknown author — plain display, no broken link
+                                    <div className="blog-author-plain">
+                                        <div className="blog-author-avatar">
+                                            {authorName.charAt(0).toUpperCase()}
+                                        </div>
+                                        <div className="blog-author-info">
+                                            <span className="blog-author-name">{authorName}</span>
+                                            <span className="blog-author-role">Vayunex Solution</span>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                             <div className="blog-meta-stats">
                                 <span className="blog-meta-item">

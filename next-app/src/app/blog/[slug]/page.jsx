@@ -1,8 +1,11 @@
 import React from 'react';
 import BlogDetailPage from '../../../pages-source/blog/BlogDetailPage';
+import { getFallbackLeadershipBlog } from '../../../data/leadershipBlogsData';
 
 export async function generateStaticParams() {
   const defaultSlugs = [
+    { slug: 'enterprise-software-delivery-and-project-governance' },
+    { slug: 'modern-saas-systems-architecture-scalable-backends' },
     { slug: 'unlocking-business-efficiency-the-benefits-of-ai-saas' },
     { slug: 'how-to-scale-enterprise-web-applications' },
     { slug: 'future-of-ai-workflow-automation' },
@@ -30,6 +33,36 @@ export async function generateStaticParams() {
   return defaultSlugs;
 }
 
+export async function generateMetadata({ params }) {
+  const slug = params?.slug;
+  const fallback = getFallbackLeadershipBlog(slug);
+  const siteUrl = 'https://www.vayunexsolution.com';
+  const pageUrl = `${siteUrl}/blog/${slug}/`;
+
+  if (fallback) {
+    return {
+      title: { absolute: fallback.seoTitle || `${fallback.title} | Vayunex Solution` },
+      description: fallback.seoDescription || fallback.excerpt,
+      alternates: { canonical: pageUrl },
+      openGraph: {
+        title: fallback.seoTitle || fallback.title,
+        description: fallback.seoDescription || fallback.excerpt,
+        url: pageUrl,
+        type: 'article',
+        publishedTime: fallback.publishDate || fallback.createdAt,
+        authors: [fallback.author],
+      },
+    };
+  }
+
+  return {
+    title: 'Vayunex Engineering & Tech Insights',
+    description: 'Read the latest technical insights and enterprise architecture analysis from Vayunex Solution.',
+    alternates: { canonical: pageUrl },
+  };
+}
+
 export default function Page({ params }) {
-  return <BlogDetailPage slug={params?.slug} />;
+  const fallbackBlog = getFallbackLeadershipBlog(params?.slug);
+  return <BlogDetailPage slug={params?.slug} initialBlog={fallbackBlog} />;
 }

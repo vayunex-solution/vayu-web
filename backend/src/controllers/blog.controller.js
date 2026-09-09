@@ -53,7 +53,7 @@ exports.getBlogById = async (req, res) => {
 exports.createBlog = async (req, res) => {
     try {
         const {
-            title, excerpt, content, featuredImage, status,
+            title, excerpt, content, featuredImage, author, status,
             categoryId, seoTitle, seoDescription,
             aiSummary, faqJson, publishDate, tagIds
         } = req.body;
@@ -68,6 +68,7 @@ exports.createBlog = async (req, res) => {
                 excerpt,
                 content: sanitizedContent,
                 featuredImage,
+                author: author || 'Vayunex Team',
                 status: status || 'draft',
                 categoryId: categoryId ? parseInt(categoryId) : null,
                 seoTitle,
@@ -92,7 +93,7 @@ exports.updateBlog = async (req, res) => {
     try {
         const { id } = req.params;
         const {
-            title, excerpt, content, featuredImage, status,
+            title, excerpt, content, featuredImage, author, status,
             categoryId, seoTitle, seoDescription,
             aiSummary, faqJson, publishDate, tagIds
         } = req.body;
@@ -105,6 +106,7 @@ exports.updateBlog = async (req, res) => {
         if (excerpt !== undefined) updateData.excerpt = excerpt;
         if (content !== undefined) updateData.content = cleanHtmlContent(content);
         if (featuredImage !== undefined) updateData.featuredImage = featuredImage;
+        if (author !== undefined) updateData.author = author;
         if (status !== undefined) updateData.status = status;
         if (categoryId !== undefined) updateData.categoryId = categoryId ? parseInt(categoryId) : null;
         if (seoTitle !== undefined) updateData.seoTitle = seoTitle;

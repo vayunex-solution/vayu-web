@@ -21,8 +21,9 @@ const SEO = ({
   if (rawUrl.startsWith('https://vayunexsolution.com')) {
     rawUrl = rawUrl.replace('https://vayunexsolution.com', 'https://www.vayunexsolution.com');
   }
-  if (rawUrl.endsWith('/') && rawUrl !== 'https://www.vayunexsolution.com/') {
-    rawUrl = rawUrl.slice(0, -1);
+  // Ensure trailing slash (consistent with next.config.mjs trailingSlash: true)
+  if (!rawUrl.endsWith('/')) {
+    rawUrl = rawUrl + '/';
   }
   const canonical = rawUrl;
 

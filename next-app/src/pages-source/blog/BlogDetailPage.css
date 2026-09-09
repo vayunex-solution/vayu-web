@@ -226,6 +226,37 @@
   color: var(--text-tertiary);
 }
 
+/* Author linked to a profile page */
+.blog-author-link {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s ease;
+}
+
+.blog-author-link:hover {
+  opacity: 0.85;
+}
+
+.blog-author-link:hover .blog-author-name {
+  color: var(--accent-indigo, #6366f1);
+}
+
+.blog-author-link:focus-visible {
+  outline: 2px solid var(--accent-cyan, #00e5ff);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Legacy / unknown author \u2014 plain display */
+.blog-author-plain {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+}
+
 .blog-meta-stats {
   display: flex;
   align-items: center;

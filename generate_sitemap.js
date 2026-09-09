@@ -31,8 +31,19 @@ const productRoutes = [
     '/products/schooldost'
 ];
 
+const peopleRoutes = [
+    '/people',
+    '/people/ved-parkash',
+    '/people/sandeep-kumar'
+];
+
+const leadershipBlogRoutes = [
+    '/blog/enterprise-software-delivery-and-project-governance',
+    '/blog/modern-saas-systems-architecture-scalable-backends'
+];
+
 // Combine all manual routes
-const allRoutes = [...staticRoutes, ...serviceRoutes, ...productRoutes];
+const allRoutes = [...staticRoutes, ...serviceRoutes, ...productRoutes, ...peopleRoutes, ...leadershipBlogRoutes];
 
 const generateSitemap = () => {
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -41,13 +52,21 @@ ${allRoutes.map(route => `    <url>
         <loc>${baseUrl}${route}</loc>
         <lastmod>${new Date().toISOString()}</lastmod>
         <changefreq>${route === '/' || route === '/blog' ? 'daily' : 'weekly'}</changefreq>
-        <priority>${route === '/' ? '1.0' : '0.8'}</priority>
+        <priority>${route === '/' ? '1.0' : route.startsWith('/people') ? '0.9' : '0.8'}</priority>
     </url>`).join('\n')}
 </urlset>`;
 
-    const sitemapPath = path.join(__dirname, 'public', 'sitemap.xml');
-    fs.writeFileSync(sitemapPath, sitemap, 'utf8');
-    console.log(`✅ Sitemap successfully generated at ${sitemapPath}`);
+    const targets = [
+        path.join(__dirname, 'public', 'sitemap.xml'),
+        path.join(__dirname, 'next-app', 'public', 'sitemap.xml')
+    ];
+
+    targets.forEach(sitemapPath => {
+        const dir = path.dirname(sitemapPath);
+        if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+        fs.writeFileSync(sitemapPath, sitemap, 'utf8');
+        console.log(`✅ Sitemap successfully generated at ${sitemapPath}`);
+    });
 };
 
 generateSitemap();

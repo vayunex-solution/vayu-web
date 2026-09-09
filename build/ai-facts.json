@@ -3,6 +3,26 @@
   "legal_name": "Vayunex Solution Private Limited",
   "founder_product_lead": "Yash Kumar",
   "tech_systems_lead": "Rajesh Kumar",
+  "leadership": [
+    {
+      "name": "Ved Parkash",
+      "role": "Project Head",
+      "experience": "20+ Years",
+      "education": "MCA - Punjab University",
+      "origin": "Yamuna Nagar, Haryana",
+      "expertise": ["Full-Stack Software Development", "Project Leadership", "Software Delivery Management", "Engineering Governance"],
+      "profile_url": "https://www.vayunexsolution.com/people/ved-parkash"
+    },
+    {
+      "name": "Sandeep Kumar",
+      "role": "Technical Head",
+      "experience": "17+ Years",
+      "education": "MCA - Punjab University",
+      "origin": "Yamuna Nagar, Haryana",
+      "expertise": ["Technical Leadership", "Software Architecture", "Systems Engineering", "Backend Architecture", "Engineering Standards"],
+      "profile_url": "https://www.vayunexsolution.com/people/sandeep-kumar"
+    }
+  ],
   "website": "https://www.vayunexsolution.com",
   "headquarters": "Chandigarh / Mohali, India",
   "phone": "+91 8930733725",
