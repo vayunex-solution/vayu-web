@@ -62,11 +62,17 @@ const PersonFAQ = ({ faqs }) => {
   );
 };
 
-/* ── Related Articles (fetched from API) ──────────────────── */
+/* ── Related Articles (fetched from API or fallback) ───────── */
 const PersonArticles = ({ personName }) => {
-  const [articles, setArticles] = useState([]);
-  const [loaded, setLoaded] = useState(false);
-  const [ref, isVisible] = useScrollAnimation(0.1);
+  const [articles, setArticles] = useState(() => {
+    if (!personName) return [];
+    return fallbackLeadershipBlogs.filter(
+      (b) =>
+        b.author &&
+        b.author.trim().toLowerCase() === personName.trim().toLowerCase()
+    ).slice(0, 3);
+  });
+  const [loaded, setLoaded] = useState(true);
 
   useEffect(() => {
     let cancelled = false;
@@ -104,12 +110,12 @@ const PersonArticles = ({ personName }) => {
     return () => { cancelled = true; };
   }, [personName]);
 
-  // Don't render section at all if no articles found or not loaded
+  // Don't render section at all if no articles found
   if (!loaded || articles.length === 0) return null;
 
   return (
-    <section className="person-articles-section" ref={ref}>
-      <div className={`container fade-up ${isVisible ? 'is-visible' : ''}`}>
+    <section className="person-articles-section">
+      <div className="container">
         <div className="person-articles__header">
           <span className="section-eyebrow">PUBLISHED WRITING</span>
           <h2 className="section-heading">Articles by {personName}</h2>
