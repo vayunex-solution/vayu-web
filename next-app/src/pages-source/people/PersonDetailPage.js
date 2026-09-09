@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { getPersonBySlug } from '../../data/people';
 import useScrollAnimation from '../../hooks/useScrollAnimation';
 import Breadcrumbs from '../../components/common/Breadcrumbs';
+import { fallbackLeadershipBlogs } from '../../data/leadershipBlogsData';
 import './PersonDetailPage.css';
 
 /* ── Internal FAQ Accordion ────────────────────────────────── */
@@ -69,19 +70,37 @@ const PersonArticles = ({ personName }) => {
 
   useEffect(() => {
     let cancelled = false;
+    const fallbacks = fallbackLeadershipBlogs.filter(
+      (b) =>
+        b.author &&
+        b.author.trim().toLowerCase() === personName.trim().toLowerCase()
+    );
+
     fetch('https://api.web.vayunexsolution.com/api/blogs?status=published')
       .then((r) => r.json())
       .then((data) => {
-        if (cancelled || !Array.isArray(data)) return;
-        const matched = data.filter(
-          (b) =>
-            b.author &&
-            b.author.trim().toLowerCase() === personName.trim().toLowerCase()
-        );
-        setArticles(matched.slice(0, 3));
+        if (cancelled) return;
+        if (Array.isArray(data)) {
+          const matched = data.filter(
+            (b) =>
+              b.author &&
+              b.author.trim().toLowerCase() === personName.trim().toLowerCase()
+          );
+          if (matched.length > 0) {
+            setArticles(matched.slice(0, 3));
+            setLoaded(true);
+            return;
+          }
+        }
+        setArticles(fallbacks.slice(0, 3));
         setLoaded(true);
       })
-      .catch(() => setLoaded(true));
+      .catch(() => {
+        if (!cancelled) {
+          setArticles(fallbacks.slice(0, 3));
+          setLoaded(true);
+        }
+      });
     return () => { cancelled = true; };
   }, [personName]);
 
@@ -414,12 +433,16 @@ const PersonDetailPage = ({ slug }) => {
             <div className="person-portfolio__grid">
               {person.industryPortfolio.map((proj, i) => (
                 <div key={i} className="person-portfolio__card">
-                  <div className="person-portfolio__top">
-                    <div>
-                      <h3 className="person-portfolio__client">{proj.client}</h3>
-                      <span className="person-portfolio__location">{proj.location}</span>
-                    </div>
+                  <div className="person-portfolio__header-group">
                     <span className="person-portfolio__badge">{proj.industry}</span>
+                    <h3 className="person-portfolio__client">{proj.client}</h3>
+                    <span className="person-portfolio__location">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                      </svg>
+                      {proj.location}
+                    </span>
                   </div>
                   <p className="person-portfolio__desc-text">{proj.description}</p>
                 </div>
