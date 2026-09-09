@@ -1,7 +1,8 @@
 /**
  * leadershipBlogsData.js
- * Ground-truth fallback articles for Ved Prakash (Project Head) & Sandeep Kumar (Technical Head).
- * Provides full content, SEO metadata, FAQs, and author resolution if the remote API is unavailable during build or offline.
+ * Ground-truth technical and product articles for Vayunex Solution.
+ * Authored by Ved Prakash (Project Head) & Sandeep Kumar (Technical Head).
+ * Provides full content, SEO metadata, FAQs, and author resolution offline and during static generation.
  */
 
 export const fallbackLeadershipBlogs = [
@@ -121,6 +122,323 @@ export const fallbackLeadershipBlogs = [
 
       <h2>5. Technical Leadership & Long-Term System Health</h2>
       <p>True technical leadership is not about choosing the newest technology stack; it is about building dependable, elegant architectures that teams can maintain and scale for years without accumulating crippling technical debt. Discover our technical philosophy on <a href="/people/sandeep-kumar/">Sandeep Kumar's leadership profile</a> or explore our <a href="/services/ai-data-science">AI & data engineering capabilities</a>.</p>
+    `
+  },
+  {
+    id: 103,
+    title: 'Scaling Multi-Channel Social Content Operations with AI Co-Pilots: Architecture, Automation, and Cross-Platform Analytics',
+    slug: 'scaling-multi-channel-social-content-operations-ai-copilots',
+    author: 'Ved Prakash',
+    category: { name: 'AI & SaaS Operations', slug: 'ai-saas-operations' },
+    tags: ['SocialNex', 'AI Co-Pilot', 'Social Media Automation', 'Content Operations', 'Marketing Technology'],
+    featuredImage: '/images/socialnex-hero.webp',
+    status: 'published',
+    createdAt: '2026-03-03T11:00:00.000Z',
+    updatedAt: '2026-03-03T11:00:00.000Z',
+    publishDate: '2026-03-03T11:00:00.000Z',
+    seoTitle: 'Scaling Multi-Channel Social Content Operations with AI Co-Pilots | SocialNex',
+    seoDescription: 'How SocialNex leverages fine-tuned generative AI co-pilots and event-driven schedulers to eliminate manual friction across multi-platform social media distribution.',
+    aiSummary: 'Key takeaways on SocialNex AI Social Media Operations:\n• Fine-tuned prompt chains generate native-format copy adapted to LinkedIn, Instagram, and X algorithms.\n• Automated multi-tenant queue workers manage scheduled dispatch with token-bucket rate limiting.\n• Unified webhook ingestion ingests incoming comments into a single command center.\n• Cross-channel telemetry normalizes disparate platform metrics for true campaign ROI.',
+    faqJson: JSON.stringify([
+      {
+        question: 'What core operational problem does SocialNex solve for marketing teams?',
+        answer: 'Marketing teams waste up to 25 hours weekly switching between disparate social platform dashboards, manually rewriting copy, and assembling disjointed analytics. SocialNex centralizes content drafting, scheduled publishing, unified community management, and cross-channel telemetry in one interface.'
+      },
+      {
+        question: 'How does SocialNex incorporate AI without producing generic or hallucinated content?',
+        answer: 'SocialNex uses structured prompt templates conditioned on company brand voice, audience personas, and historical top-performing posts, generating highly contextual, platform-native drafts with human-in-the-loop review.'
+      },
+      {
+        question: 'Where is SocialNex currently deployed and how can users access it?',
+        answer: 'SocialNex is live in Beta at https://socialnex.vayunexsolution.com/ with product documentation available at /products/socialnex.'
+      },
+      {
+        question: 'How does SocialNex handle API rate limits across LinkedIn, X, and Meta?',
+        answer: 'Our distributed backend incorporates token-bucket rate-limiting algorithms, asynchronous worker queues, and exponential backoff retry policies to prevent API throttling during high-volume scheduled distribution.'
+      }
+    ]),
+    content: `
+      <p class="lead">Managing enterprise brand presence across LinkedIn, X, Instagram, and YouTube has historically required either an oversized agency retainer or dozens of disconnected tools. <a href="/products/socialnex">SocialNex</a> was engineered to unify content generation, distribution, and performance telemetry into a single intelligent command center.</p>
+
+      <h2>1. The Fragmented Social Distribution Dilemma</h2>
+      <p>Modern growth teams face a compounding workflow crisis: every social network operates with unique aspect ratios, character limits, caption styles, and engagement algorithms. Manually tailoring creative assets and scheduling them across separate native portals creates severe operational bottlenecks and timing inconsistencies.</p>
+      <p>SocialNex introduces an orchestrated publishing engine where marketing teams compose a core brand narrative once. Our integrated <strong>AI Content Co-Pilot</strong> instantly adapts the messaging into platform-native variants: structured thought leadership for LinkedIn, punchy threads for X, and visually driven captions with targeted hashtags for Instagram.</p>
+
+      <h2>2. Event-Driven Distributed Scheduling Architecture</h2>
+      <p>Reliable scheduled distribution requires zero-miss delivery guarantees. SocialNex utilizes an event-driven worker pipeline built with Redis Streams and Node.js micro-workers. Every post is validated against destination platform API constraints prior to queue insertion.</p>
+      <ul>
+        <li><strong>Smart Time-Zone Optimization:</strong> Dynamic scheduling based on historical audience activity telemetry.</li>
+        <li><strong>Token-Bucket Rate Limiting:</strong> Automatic request pacing to ensure compliance with third-party social API quotas.</li>
+        <li><strong>Webhook Ingestion & Unified Social Inbox:</strong> Inbound mentions, comments, and direct inquiries stream into a centralized inbox for rapid customer engagement.</li>
+      </ul>
+
+      <h2>3. Actionable Telemetry vs. Vanity Metrics</h2>
+      <p>Rather than presenting disconnected like counts, SocialNex normalizes cross-platform telemetry into unified engagement scoring. Marketing leaders can view blended cost-per-engagement, conversion attribution, and audience sentiment trends across campaigns.</p>
+      <p>To experience the platform firsthand, launch our live beta at <a href="https://socialnex.vayunexsolution.com/" target="_blank" rel="noopener noreferrer">SocialNex Beta</a> or explore architectural details on the <a href="/products/socialnex">SocialNex product overview</a>.</p>
+    `
+  },
+  {
+    id: 104,
+    title: 'Building India’s Verified Academic & Student Network: Zero-Trust ID Verification, Micro-Communities, and Campus Collaboration',
+    slug: 'building-indias-verified-academic-student-network',
+    author: 'Sandeep Kumar',
+    category: { name: 'EdTech & Identity Systems', slug: 'edtech-identity' },
+    tags: ['SchoolDost', 'Student Network', 'Academic Verification', 'Campus Communities', 'Zero-Trust Identity'],
+    featuredImage: '/images/schooldost-hero.webp',
+    status: 'published',
+    createdAt: '2026-03-04T12:00:00.000Z',
+    updatedAt: '2026-03-04T12:00:00.000Z',
+    publishDate: '2026-03-04T12:00:00.000Z',
+    seoTitle: 'Building India’s Verified Student Network | SchoolDost Architecture',
+    seoDescription: 'Sandeep Kumar explores the zero-trust identity architecture, encrypted peer messaging, and campus micro-community mesh powering the SchoolDost student network.',
+    aiSummary: 'Key architectural insights on SchoolDost Verified Student Network:\n• Strict academic verification via institutional email domain authentication and student ID OCR prevents bots and unverified actors.\n• Campus-isolated micro-communities provide safe spaces for peer study groups, departmental notices, and alumni mentorship.\n• End-to-end encrypted messaging channels protect student privacy.\n• The network serves college students, university clubs, and educators across India.',
+    faqJson: JSON.stringify([
+      {
+        question: 'What is SchoolDost and how does it differ from traditional social networks?',
+        answer: 'SchoolDost (https://schooldost.com/) is India’s dedicated verified student and academic community network. Unlike open social media where anyone can create unverified accounts, SchoolDost enforces strict academic identity verification to guarantee that all members are genuine college students, educators, or alumni.'
+      },
+      {
+        question: 'Is SchoolDost a school management ERP software?',
+        answer: 'No. While early industry terminology often grouped educational software together, SchoolDost is explicitly a verified campus social network and student collaboration platform, designed for peer learning, college clubs, and academic discovery.'
+      },
+      {
+        question: 'How does SchoolDost verify student identities safely?',
+        answer: 'SchoolDost combines institutional .edu/.ac.in email verification with automated, encrypted student ID verification, ensuring zero-trust identity validation without exposing private student records.'
+      },
+      {
+        question: 'Where can students and university administrators join SchoolDost?',
+        answer: 'Visit the live platform at https://schooldost.com/ or learn more on our official product page at /products/schooldost.'
+      }
+    ]),
+    content: `
+      <p class="lead">College students in India have long been caught between chaotic, unverified public social media and rigid, outdated university administrative portals. <a href="/products/schooldost">SchoolDost</a> was created to deliver a modern, secure, verified academic network built specifically around genuine student identity.</p>
+
+      <h2>1. The Epidemic of Unverified Noise in Campus Communications</h2>
+      <p>Public social networks are inherently open, making campus groups vulnerable to spam, unverified outsiders, and privacy risks. Conversely, college students demand a trusted digital community where they can discover peers in their exact batch, join university clubs, share study resources, and connect with working alumni.</p>
+      <p>SchoolDost solves this by applying <strong>Zero-Trust Identity Verification</strong> at onboarding. Every user must verify their student status through institutional academic email domains (.ac.in / .edu.in) or automated document verification, creating a 100% verified campus ecosystem.</p>
+
+      <h2>2. Campus Micro-Communities & Collaborative Workspaces</h2>
+      <p>Once verified, students unlock access to tailored, compartmentalized micro-communities:</p>
+      <ul>
+        <li><strong>Departmental Cohorts:</strong> Verified channels for course syllabus discussions, lecture notes, and lab assignments.</li>
+        <li><strong>University Societies & Clubs:</strong> Digital hubs for robotics clubs, cultural fests, debating societies, and sports tournaments.</li>
+        <li><strong>Alumni Career Bridge:</strong> Secure mentorship pathways connecting senior alumni working in top tech and business firms with current undergraduates.</li>
+      </ul>
+
+      <h2>3. Privacy-First Architecture & Safety Guardrails</h2>
+      <p>At Vayunex Solution, user security is non-negotiable. SchoolDost implements fine-grained privacy controls allowing students to conceal personal contact numbers while engaging actively in campus forums. Automated moderation algorithms flag inappropriate content, preserving a constructive academic environment.</p>
+      <p>Explore the live network at <a href="https://schooldost.com/" target="_blank" rel="noopener noreferrer">SchoolDost.com</a> or view platform capabilities at <a href="/products/schooldost">SchoolDost Overview</a>.</p>
+    `
+  },
+  {
+    id: 105,
+    title: 'Architecting GST-Compliant Multi-Mode Billing & Automated UPI Payment Infrastructure for Modern Indian Enterprises',
+    slug: 'architecting-gst-compliant-billing-automated-upi-infrastructure',
+    author: 'Sandeep Kumar',
+    category: { name: 'FinTech & Billing Infrastructure', slug: 'fintech-billing' },
+    tags: ['PayNex', 'GST Invoicing', 'UPI Payments', 'Financial Telemetry', 'FinTech Architecture'],
+    featuredImage: '/images/paynex-hero.webp',
+    status: 'published',
+    createdAt: '2026-03-05T09:30:00.000Z',
+    updatedAt: '2026-03-05T09:30:00.000Z',
+    publishDate: '2026-03-05T09:30:00.000Z',
+    seoTitle: 'GST Invoicing & UPI Payment Infrastructure | PayNex Architecture',
+    seoDescription: 'Sandeep Kumar details the financial engineering, dynamic UPI QR generation, and real-time GST tax calculation engine powering the PayNex enterprise platform.',
+    aiSummary: 'Key architectural insights on PayNex Invoicing & Billing Infrastructure:\n• Dynamic UPI payment links and instant webhook reconciliation eliminate manual bank transaction matching.\n• Automated multi-slab GST calculation (CGST, SGST, IGST) with CA-ready JSON/Excel tax return exports.\n• Multi-mode invoice generation supporting recurring subscriptions, milestone retainers, and counter retail.\n• Real-time cash flow telemetry provides founders with instant receivables visibility.',
+    faqJson: JSON.stringify([
+      {
+        question: 'What is PayNex and who is it designed for?',
+        answer: 'PayNex (https://paynex.vayunexsolution.com/) is an intelligent payment and billing platform engineered for Indian SaaS companies, retail businesses, service agencies, and digital merchants requiring automated GST invoicing and instant UPI reconciliation.'
+      },
+      {
+        question: 'How does PayNex automate GST compliance?',
+        answer: 'PayNex dynamically computes multi-slab GST (0%, 5%, 12%, 18%, 28%) based on HSN/SAC codes and customer state (inter-state IGST vs. intra-state CGST+SGST), automatically generating government-compliant tax invoices and one-click return filing exports.'
+      },
+      {
+        question: 'Does PayNex support dynamic UPI payments?',
+        answer: 'Yes. PayNex generates dynamic, transaction-specific UPI QR codes and payment links that automatically verify settlement via real-time webhooks, eliminating manual screenshot verification.'
+      },
+      {
+        question: 'Is PayNex a payroll management system?',
+        answer: 'No. PayNex is strictly an intelligent invoicing, payment infrastructure, and GST accounting platform built for revenue collection and financial compliance.'
+      }
+    ]),
+    content: `
+      <p class="lead">Indian digital enterprises face continuous friction managing customer invoicing, chasing overdue receivables, and reconciling multi-mode payments against intricate Goods and Services Tax (GST) mandates. <a href="/products/paynex">PayNex</a> was designed to turn financial operations into a fully automated competitive advantage.</p>
+
+      <h2>1. The Operational Bottleneck of Fragmented Invoicing</h2>
+      <p>Scaling businesses frequently cobble together spreadsheet templates, standalone payment gateway dashboards, and external accounting tools. This fragmentation causes delayed invoice dispatch, reconciliation errors between bank statements and ledgers, and painful month-end tax filing scrambles.</p>
+      <p>PayNex unifies these workflows into an integrated financial infrastructure pipeline. From initial quote generation to automated payment receipt issuance, every step occurs within a tamper-proof digital ledger.</p>
+
+      <h2>2. Dynamic UPI Infrastructure & Instant Reconciliation</h2>
+      <p>With UPI commanding over 80% of digital retail transactions across India, static QR codes create severe reconciliation chaos. PayNex introduces <strong>Dynamic Transaction-Specific UPI Links &amp; QRs</strong>:</p>
+      <ul>
+        <li><strong>Automated Payload Binding:</strong> Every QR code encodes the precise invoice number, customer ID, and exact payable amount down to the paisa.</li>
+        <li><strong>Real-Time Webhook Confirmation:</strong> Instant callback notifications confirm fund credit and mark invoices as paid in sub-second latency.</li>
+        <li><strong>Zero-Touch Ledger Updating:</strong> Automated reconciliation eliminates the need for finance teams to match bank SMS alerts manually.</li>
+      </ul>
+
+      <h2>3. Enterprise GST Compliance Engine</h2>
+      <p>Tax compliance is embedded directly into the transaction path. PayNex validates buyer GSTINs via official government APIs, determines tax applicability (IGST vs. CGST/SGST), and compiles CA-ready GSTR-1 and GSTR-3B summary reports.</p>
+      <p>Launch PayNex in Public Beta at <a href="https://paynex.vayunexsolution.com/" target="_blank" rel="noopener noreferrer">PayNex Public Beta</a> or explore features at <a href="/products/paynex">PayNex Product Details</a>.</p>
+    `
+  },
+  {
+    id: 106,
+    title: 'Modernizing Jewellery Retail: Precision RFID Tracking, Real-Time MCX Bullion Sync, and Karigar Manufacturing Ledgers',
+    slug: 'modernizing-jewellery-retail-rfid-mcx-bullion-sync',
+    author: 'Ved Prakash',
+    category: { name: 'Retail ERP Engineering', slug: 'retail-erp' },
+    tags: ['Jwelnex ERP', 'Jewellery Software', 'RFID Tagging', 'MCX Bullion Sync', 'Karigar Ledger', 'Retail Technology'],
+    featuredImage: '/images/jwelnex-hero.webp',
+    status: 'published',
+    createdAt: '2026-03-06T10:00:00.000Z',
+    updatedAt: '2026-03-06T10:00:00.000Z',
+    publishDate: '2026-03-06T10:00:00.000Z',
+    seoTitle: 'Modernizing Jewellery Retail with RFID & ERP | Jwelnex',
+    seoDescription: 'Ved Prakash explores the engineering behind Jwelnex ERP: tray-level RFID scanning, live MCX bullion syncing, and Karigar manufacturing loss ledgers.',
+    aiSummary: 'Key takeaways on Jwelnex ERP Jewellery Management System:\n• Precision RFID tray scanning audits hundreds of jewellery ornaments in seconds, eliminating stock shrinkage.\n• Real-time MCX bullion rate integration synchronizes 24K, 22K, and 18K gold pricing instantly across counters.\n• Comprehensive Karigar ledger tracks raw metal issuance, purity wastage, and labor fees.\n• GST jewellery billing calculates making charges, stone deductions, and BIS hallmarking compliance automatically.',
+    faqJson: JSON.stringify([
+      {
+        question: 'What makes Jwelnex ERP specialized for the jewellery sector?',
+        answer: 'Unlike generic retail ERPs, Jwelnex ERP is built from the ground up for gold, diamond, and silver retailers. It natively handles gross-to-net weight calculations, purity deduction formulas (tunch), live MCX rate integration, tray RFID scanning, and Karigar manufacturing loss accounting.'
+      },
+      {
+        question: 'How does Jwelnex ERP prevent inventory shrinkage during stock audits?',
+        answer: 'Jwelnex integrates with high-frequency RFID reader trays. Showroom staff simply place an entire tray of rings or necklaces on the reader, and the system audits 50+ items in under 3 seconds against the master inventory database, instantly flagging missing tags.'
+      },
+      {
+        question: 'Does Jwelnex ERP support multi-branch jewellery showroom chains?',
+        answer: 'Yes. Jwelnex features centralized cloud inventory synchronization with branch-level offline resilience, allowing multi-store chains to manage inter-branch stock transfers and consolidated sales reporting seamlessly.'
+      },
+      {
+        question: 'How can jewellery showroom owners request a demo of Jwelnex ERP?',
+        answer: 'Showroom owners and gold traders can review system specifications at /products/jwelnex and schedule an on-site or virtual demo through the contact portal.'
+      }
+    ]),
+    content: `
+      <p class="lead">The jewellery retail industry operates with astronomical inventory value, microscopic weight tolerances, and volatile commodity pricing. Generic retail billing software collapses under these demands. <a href="/products/jwelnex">Jwelnex ERP</a> was engineered specifically to solve the unique operational complexities of modern jewellery enterprises.</p>
+
+      <h2>1. The High Stakes of Jewellery Inventory Control</h2>
+      <p>In a showroom stocking thousands of gold, diamond, and platinum articles, a discrepancy of even a fraction of a gram represents significant financial leakage. Traditional manual barcoding requires scanning tags one by one, making comprehensive daily audits practically impossible.</p>
+      <p>Jwelnex integrates <strong>High-Precision RFID Smart Trays</strong>. An entire tray of 60 rings or pendants is scanned simultaneously in seconds. Showroom managers receive immediate discrepancy alerts if any article is misplaced, ensuring complete inventory accountability before closing time.</p>
+
+      <h2>2. Live MCX Bullion Rate Synchronization</h2>
+      <p>Gold and silver rates fluctuate continuously during trading hours. Jwelnex connects directly to real-time Multi Commodity Exchange (MCX) price feeds, allowing retail owners to set automated markup and board-rate policies. When market rates shift, billing terminals across all showroom branches update instantly, eliminating counter pricing errors.</p>
+      <ul>
+        <li><strong>Multi-Purity Pricing:</strong> Instant calculations for 24K, 22K, 18K, and 14K hallmarked gold.</li>
+        <li><strong>Stone & Diamond Weight Deductions:</strong> Precise net weight computation isolating precious stones, pearls, and enamel from base metal.</li>
+        <li><strong>Karigar Manufacturing Ledgers:</strong> Complete tracking of 24K raw bullion issued to goldsmiths, returned finished weight, and acceptable scrap/wastage percentages.</li>
+      </ul>
+
+      <h2>3. Regulatory Hallmarking & Tax Compliance</h2>
+      <p>From BIS HUID (Hallmark Unique Identification) recording to automated GST invoice generation with making charge breakdowns, Jwelnex ensures complete statutory compliance. Explore detailed features and calculate ROI on the <a href="/products/jwelnex">Jwelnex ERP Overview</a>.</p>
+    `
+  },
+  {
+    id: 107,
+    title: 'Real-Time Multi-Warehouse Inventory Telemetry: Automated Reordering, Barcode Ingestion, and Batch Expiry Lifecycle',
+    slug: 'real-time-multi-warehouse-inventory-telemetry-automation',
+    author: 'Ved Prakash',
+    category: { name: 'Supply Chain & Logistics', slug: 'supply-chain-logistics' },
+    tags: ['InventoryNex', 'Warehouse Management', 'Inventory Telemetry', 'Barcode Ingestion', 'Supply Chain Optimization'],
+    featuredImage: '/images/inventorynex-hero.webp',
+    status: 'published',
+    createdAt: '2026-03-07T11:00:00.000Z',
+    updatedAt: '2026-03-07T11:00:00.000Z',
+    publishDate: '2026-03-07T11:00:00.000Z',
+    seoTitle: 'Multi-Warehouse Inventory Telemetry & Automation | InventoryNex',
+    seoDescription: 'Ved Prakash breaks down the distributed architecture of InventoryNex: real-time stock mesh tracking, automated purchase reordering, and batch expiry control.',
+    aiSummary: 'Key takeaways on InventoryNex Warehouse Intelligence Platform:\n• Multi-warehouse inventory mesh provides centralized real-time stock visibility across distributed fulfillment centers.\n• Automated reorder algorithms trigger supplier purchase orders before critical stockout thresholds are reached.\n• High-speed barcode receiving speeds up inbound loading dock intake and pallet verification.\n• Strict batch, lot, and expiry tracking prevents inventory obsolescence in FMCG, pharmaceutical, and retail supply chains.',
+    faqJson: JSON.stringify([
+      {
+        question: 'What is InventoryNex and what types of businesses does it serve?',
+        answer: 'InventoryNex is an intelligent multi-warehouse inventory telemetry and stock control platform designed for wholesale distributors, manufacturing units, retail chains, and logistics hubs.'
+      },
+      {
+        question: 'How does InventoryNex prevent warehouse stockouts?',
+        answer: 'InventoryNex continuously analyzes consumption velocity and lead times, dynamically adjusting reorder thresholds and automatically drafting vendor purchase orders before stock hits critical safety limits.'
+      },
+      {
+        question: 'What is the current release status of InventoryNex?',
+        answer: 'InventoryNex is currently in Private Beta / Early Access for select enterprise clients. Organizations can request early pilot deployment at /products/inventorynex.'
+      },
+      {
+        question: 'Does InventoryNex support batch and expiry date tracking?',
+        answer: 'Yes. Every inbound pallet or batch is registered with its manufacturing date, expiration window, and vendor batch code, enabling First-Expiry-First-Out (FEFO) warehouse fulfillment.'
+      }
+    ]),
+    content: `
+      <p class="lead">Supply chain operations run on thin margins where stockouts cause lost revenue and overstocking ties up vital working capital. <a href="/products/inventorynex">InventoryNex</a> was engineered to provide real-time visibility, automated replenishment, and end-to-end traceability across complex multi-facility distribution networks.</p>
+
+      <h2>1. The Blind Spots in Distributed Warehouse Networks</h2>
+      <p>When organizations operate across central distribution hubs, regional fulfillment nodes, and local retail outlets, inventory visibility becomes fragmented. Outdated batch syncs cause warehouses to double-order items that sit idle in another facility, while customer orders are delayed due to unexpected local stock depletion.</p>
+      <p>InventoryNex eliminates these blind spots by establishing a continuous, event-driven <strong>Inventory Telemetry Mesh</strong>. Every SKU movement—from loading dock receipt to inter-facility transfer and final dispatch—is captured in real time.</p>
+
+      <h2>2. Intelligent Automated Reorder Loops</h2>
+      <p>Rather than relying on static reorder minimums, InventoryNex evaluates dynamic lead times, supplier reliability scores, and seasonal demand patterns:</p>
+      <ul>
+        <li><strong>Predictive Reorder Thresholds:</strong> Dynamic replenishment triggers based on rolling 30-day velocity.</li>
+        <li><strong>Automated PO Dispatch:</strong> Draft purchase orders generated and routed to pre-approved suppliers upon threshold breach.</li>
+        <li><strong>High-Speed Dock Barcode Receiving:</strong> Mobile terminal scanning verifies packing slips against purchase orders instantly at intake.</li>
+      </ul>
+
+      <h2>3. Batch, Lot, and Expiry Tracking (FEFO)</h2>
+      <p>For pharmaceuticals, food distribution, and perishable goods, InventoryNex enforces First-Expiry-First-Out (FEFO) logic during picker dispatch, preventing obsolete stock write-offs. To join our early access program, visit the <a href="/products/inventorynex">InventoryNex Overview</a>.</p>
+    `
+  },
+  {
+    id: 108,
+    title: 'Production AI Systems at Vayunex: From Custom RAG Knowledge Bases to Autonomous Multi-Agent Workflows',
+    slug: 'production-ai-systems-rag-autonomous-multi-agent-workflows',
+    author: 'Sandeep Kumar',
+    category: { name: 'AI & Machine Learning', slug: 'ai-machine-learning' },
+    tags: ['Enterprise AI', 'RAG Knowledge Bases', 'Autonomous Agents', 'LangGraph', 'AI Leadership', 'Engineering Mentorship'],
+    featuredImage: '/images/people/sandeep-kumar.jpg',
+    status: 'published',
+    createdAt: '2026-03-08T10:00:00.000Z',
+    updatedAt: '2026-03-08T10:00:00.000Z',
+    publishDate: '2026-03-08T10:00:00.000Z',
+    seoTitle: 'Production AI Systems & Multi-Agent Architecture | Vayunex Solution',
+    seoDescription: 'Sandeep Kumar and Ved Prakash explain how Vayunex engineering squads design, benchmark, and deploy enterprise AI systems, custom RAG pipelines, and autonomous agent swarms.',
+    aiSummary: 'Key takeaways on Vayunex AI Engineering Capabilities:\n• Hybrid vector search combining pgvector dense embeddings with BM25 keyword search eliminates hallucinations in enterprise RAG.\n• Autonomous multi-agent workflows built with LangGraph orchestrate complex decision trees with deterministic guardrails.\n• Active AI Fresher Incubation program pairs top university graduates with 1-on-1 mentorship under Ved Prakash and Sandeep Kumar.\n• Production computer vision systems automate industrial quality assurance and document intelligence.',
+    faqJson: JSON.stringify([
+      {
+        question: 'What AI and Machine Learning services does Vayunex Solution provide?',
+        answer: 'Vayunex Solution delivers end-to-end production AI engineering: custom enterprise RAG pipelines, autonomous multi-agent business automation, computer vision models, fine-tuned LLM inference, and AI cloud architecture.'
+      },
+      {
+        question: 'Who leads the AI and engineering teams at Vayunex Solution?',
+        answer: 'AI systems and delivery are directed by Ved Prakash (Project Head, 20+ years enterprise governance) and Sandeep Kumar (Technical Head, 17+ years distributed systems architecture).'
+      },
+      {
+        question: 'How does Vayunex Solution develop and mentor young AI engineering talent?',
+        answer: 'Through our structured AI Fresher Incubation initiative, select engineering graduates work directly on live production code alongside senior architects, receiving continuous code reviews, architectural training, and prompt engineering best practices.'
+      },
+      {
+        question: 'Where can enterprises consult with Vayunex AI specialists?',
+        answer: 'Explore our AI capabilities at /services/ai-data-science or contact our technical heads directly at /contact.'
+      }
+    ]),
+    content: `
+      <p class="lead">Moving artificial intelligence from a proof-of-concept Jupyter notebook into a robust, low-latency enterprise production system requires rigorous software engineering, deterministic guardrails, and deep systems architecture expertise.</p>
+
+      <h2>1. The Hallucination Trap in Enterprise Generative AI</h2>
+      <p>Too many enterprise AI experiments fail because generic LLMs lack access to proprietary company data and hallucinate inaccurate figures. At <a href="/">Vayunex Solution</a>, our AI engineering squads build grounded, high-precision intelligence layers using <strong>Hybrid Retrieval-Augmented Generation (RAG)</strong>.</p>
+      <p>By coupling vector databases (pgvector / Pinecone) with sparse keyword indexes (BM25) and re-ranking models, our systems retrieve exact enterprise context before generating answers, ensuring complete factual fidelity across regulatory documents, medical records, and financial contracts.</p>
+
+      <h2>2. Autonomous Multi-Agent Swarms with LangGraph</h2>
+      <p>Single prompts cannot handle complex enterprise workflows. Our engineering squads design multi-agent state machines using LangGraph, where specialized autonomous agents collaborate:</p>
+      <ul>
+        <li><strong>Research & Ingestion Agent:</strong> Ingests external market telemetry and user inputs.</li>
+        <li><strong>Verification & Compliance Agent:</strong> Validates outputs against deterministic corporate policy guardrails.</li>
+        <li><strong>Execution Agent:</strong> Triggers external API calls, database writes, and client notifications.</li>
+      </ul>
+
+      <h2>3. Senior Leadership & The AI Fresher Incubation Model</h2>
+      <p>High-caliber AI engineering requires a blend of visionary innovation and experienced governance. Under the leadership of <strong>Ved Prakash</strong> (Project Head) and <strong>Sandeep Kumar</strong> (Technical Head), Vayunex runs an active AI talent incubation program.</p>
+      <p>Promising university graduates and junior engineers are embedded directly into active enterprise sprints, pairing daily with senior leaders to master prompt optimization, model quantization, and distributed GPU inference.</p>
+      <p>Learn more about our engineering team on the <a href="/people">Leadership Directory</a> or explore dedicated AI services at <a href="/services/ai-data-science">AI & Data Science</a>.</p>
     `
   }
 ];

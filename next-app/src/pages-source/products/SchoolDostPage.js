@@ -10,6 +10,8 @@ import LeadCaptureModal from '../../components/common/LeadCaptureModal';
 import schooldostHero from '../../assets/images/schooldost-hero.webp';
 import Breadcrumbs from '../../components/common/Breadcrumbs';
 import QuickAnswers from '../../components/common/QuickAnswers';
+import ProductSchema from '../../components/common/ProductSchema';
+import { getProductById } from '../../data/products';
 import './ProductPage.css';
 
 const SchoolDostPage = () => {
@@ -38,9 +40,9 @@ const SchoolDostPage = () => {
     ];
 
     const outcomes = [
-        { number: '100%', title: 'Verified Users', desc: 'No bots. No creeps.' },
-        { number: '24/7', title: 'Campus Pulse', desc: 'Never miss an event.' },
-        { number: 'Infinite', title: 'Connections', desc: 'Find your lifelong friends.' }
+        { number: '100%', title: 'Verified Users', desc: 'No bots. Real academic network.' },
+        { number: '24/7', title: 'Campus Pulse', desc: 'Never miss an event or notice.' },
+        { number: 'Infinite', title: 'Connections', desc: 'Find peer mentors and lifelong friends.' }
     ];
 
     const audience = [
@@ -52,7 +54,7 @@ const SchoolDostPage = () => {
     const faqs = [
         {
             question: "How do you verify that someone is a real student?",
-            answer: "We use a multi-step verification process requiring either a valid active .edu/university email address or manual review of a valid college ID card."
+            answer: "We use a multi-step verification process requiring either a valid active university/college email address or manual review of a valid college student ID card."
         },
         {
             question: "Is my data private and secure?",
@@ -60,35 +62,35 @@ const SchoolDostPage = () => {
         },
         {
             question: "Can I connect with students from other colleges?",
-            answer: "Yes. While your default feed is hyper-localized to your specific campus, you can join national communities and connect with students across India."
+            answer: "Yes. While your default feed is hyper-localized to your specific campus, you can join national academic communities and connect with peers across India."
         },
         {
             question: "Is the app free to use?",
-            answer: "Yes, SchoolDost is completely free for students. We believe community connection should not sit behind a paywall."
+            answer: "Yes, SchoolDost is completely free for students. We believe authentic campus community connection should not sit behind a paywall."
         },
         {
-            question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
+            question: "How can student clubs or universities partner with SchoolDost?",
+            answer: "University student councils and registered clubs can claim verified institutional pages to broadcast campus fests, hackathons, and announcements directly to verified students."
         }
     ];
 
     return (
         <main className="product-page" style={{ '--product-accent': '#06B6D4' }}>
             <SEO 
-                title="SchoolDost | India's Verified Student Network"
-                description="The verified student-only platform built for genuine campus connections. Find your tribe, join communities, and navigate college life safely."
+                title="SchoolDost | Verified Student Network & Campus Communities"
+                description="The verified student-only network built for genuine campus connections, peer mentorship, and academic micro-communities."
                 keywords="student network, verified college students, campus app, student marketplace, university communities"
                 canonicalUrl="https://vayunexsolution.com/products/schooldost"
             />
+            <ProductSchema product={getProductById('schooldost')} />
 
             <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
                 <Breadcrumbs />
                 <QuickAnswers 
                     title="What is SchoolDost?"
-                    answer="SchoolDost is a comprehensive school management ERP platform. It digitally connects administrators, teachers, parents, and students, automating everything from fee collection and attendance tracking to report card generation and bus routing."
+                    answer="SchoolDost is a verified student network and campus community platform. It connects verified students across colleges and academic institutions, facilitating authentic peer interactions, campus feeds, interest-based communities, and collaborative academic discovery in a safe, verified environment."
                 />
             </div>
-
 
             {/* 1. HERO SECTION */}
             <section className="product-hero" ref={heroRef}>
@@ -98,20 +100,25 @@ const SchoolDostPage = () => {
                 </div>
                 <div className="product-hero-container">
                     <div className="product-hero-content">
-                        <span className="product-eyebrow">Verified Student Network</span>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+                            <span className="product-eyebrow" style={{ margin: 0 }}>Verified Student Network</span>
+                            <span style={{ padding: '0.2rem 0.6rem', fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.05em', borderRadius: '9999px', background: 'rgba(16, 185, 129, 0.15)', color: '#34d399', border: '1px solid rgba(16, 185, 129, 0.3)' }}>
+                                LIVE
+                            </span>
+                        </div>
                         <h1 className="product-hero-title">Find Your SchoolDost. <span style={{ color: 'var(--product-accent)' }}>For Real.</span></h1>
-                        <p className="product-hero-subtext">Students aren't looking for another generic social network—they are looking for their tribe. Join the only verified, student-exclusive platform built for genuine campus connections.</p>
+                        <p className="product-hero-subtext">Students aren't looking for another generic social network—they are looking for their tribe. Join the verified, student-exclusive platform built for genuine campus connections.</p>
                         <div className="product-hero-cta">
-                            <button onClick={openEarlyAccessModal} className="btn-primary">
-                                Join Free <i className="fas fa-arrow-right" style={{ marginLeft: '8px' }}></i>
-                            </button>
-                            <Link to="/contact?subject=SchoolDost%20Partnership" className="btn-secondary">
-                                Explore Features
-                            </Link>
+                            <a href="https://schooldost.com/" target="_blank" rel="noopener noreferrer" className="btn-primary">
+                                Explore SchoolDost <i className="fas fa-external-link-alt" style={{ marginLeft: '8px' }}></i>
+                            </a>
+                            <a href="#features" className="btn-secondary">
+                                Platform Overview
+                            </a>
                         </div>
                     </div>
                     <div className="product-hero-visual">
-                        <img src={schooldostHero?.src || schooldostHero || "/images/schooldost-hero.webp"} alt="SchoolDost Mobile App Interface" />
+                        <img src={schooldostHero?.src || schooldostHero || "/images/schooldost-hero.webp"} alt="SchoolDost Verified Student Platform Interface" />
                     </div>
                 </div>
             </section>
@@ -137,16 +144,16 @@ const SchoolDostPage = () => {
                     
                     <div className="cost-banner">
                         <h3>Don't Miss Out On Your College Experience</h3>
-                        <p style={{ color: 'var(--text-secondary)' }}>The network you build in college dictates your future. Relying on chaotic WhatsApp groups means missing out on lifelong friendships and critical career connections.</p>
+                        <p style={{ color: 'var(--text-secondary)' }}>The network you build in college shapes your future. Relying on chaotic WhatsApp groups means missing out on lifelong friendships and critical peer mentorship.</p>
                     </div>
                 </div>
             </section>
 
             {/* 4 & 5. INTRO & FEATURES */}
-            <section className="product-section" ref={featuresRef}>
+            <section id="features" className="product-section" ref={featuresRef}>
                 <div className="section-container">
                     <div className="section-header-left">
-                        <h2 className="section-title">A Network Built <span style={{ color: 'var(--product-accent)' }}>For You</span></h2>
+                        <h2 className="section-title">A Network Built <span style={{ color: 'var(--product-accent)' }}>For Verified Students</span></h2>
                         <p className="section-subtitle">SchoolDost is strictly gated. We built the features students actually need, completely isolated from the noise of the outside world.</p>
                     </div>
                     <div className="features-grid">
@@ -216,11 +223,11 @@ const SchoolDostPage = () => {
                 <div className="product-cta-bg" />
                 <div className="product-cta-content">
                     <h2>Ready to Find <span style={{ color: 'var(--product-accent)' }}>Your Tribe</span>?</h2>
-                    <p>Join thousands of verified students already connecting on SchoolDost.</p>
+                    <p>Join verified students already connecting on SchoolDost.</p>
                     <div className="product-hero-cta" style={{ justifyContent: 'center', marginTop: '2rem' }}>
-                        <button onClick={openEarlyAccessModal} className="btn-primary">
-                            Join For Free <i className="fas fa-arrow-right" style={{ marginLeft: '8px' }}></i>
-                        </button>
+                        <a href="https://schooldost.com/" target="_blank" rel="noopener noreferrer" className="btn-primary">
+                            Explore SchoolDost <i className="fas fa-external-link-alt" style={{ marginLeft: '8px' }}></i>
+                        </a>
                     </div>
                 </div>
             </section>

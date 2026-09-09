@@ -71,10 +71,20 @@ const SEO = ({
       }
       metaDesc.content = description;
     }
-  }, [title, description]);
+    if (canonical && typeof document !== 'undefined') {
+      let linkCanonical = document.querySelector('link[rel="canonical"]');
+      if (!linkCanonical) {
+        linkCanonical = document.createElement('link');
+        linkCanonical.rel = 'canonical';
+        document.head.appendChild(linkCanonical);
+      }
+      linkCanonical.href = canonical;
+    }
+  }, [title, description, canonical]);
 
   return (
     <>
+      <link rel="canonical" href={canonical} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(finalStructuredData) }}

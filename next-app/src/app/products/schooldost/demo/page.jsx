@@ -14,24 +14,23 @@ export default function SchooldostDemoPage() {
   const [formData, setFormData] = useState({
     institutionName: '',
     contactName: '',
-    designation: 'Principal / Director',
+    designation: 'Dean / Principal / Faculty',
     email: '',
     phone: '',
     studentCount: '1,000 - 2,500',
     preferredDate: '',
-    interestedModules: ['Fee Management', 'Attendance & Bus GPS']
+    interestedModules: ['Verified Student ID Onboarding', 'Campus Club & Event Broadcasting']
   });
 
   const [status, setStatus] = useState('idle'); // idle, submitting, success, error
 
   const modulesList = [
-    'Admissions & Enrollment',
-    'Fee Management & UPI Gateway',
-    'Attendance & Biometric Flap',
-    'Live School Bus GPS Tracking',
-    'CBSE / ICSE Report Card Engine',
-    'Parent-Teacher Mobile App',
-    'Library & Inventory System'
+    'Verified Student ID Onboarding',
+    'Campus Club & Event Broadcasting',
+    'Department Discussion Feeds',
+    'Peer Mentorship & Career Guidance',
+    'Student Marketplace & Book Exchange',
+    'Campus Ambassador Program'
   ];
 
   const handleModuleToggle = (mod) => {
@@ -93,8 +92,8 @@ product=schooldost`;
   return (
     <div className="product-page inner-page">
       <SEO
-        title="Schedule SchoolDost Demo | Live Institutional Walkthrough"
-        description="Book a personalized live demonstration of SchoolDost School ERP. See automated fee collection, RFID bus tracking, and report card modules in action."
+        title="Schedule SchoolDost Campus Walkthrough | Verified Student Network"
+        description="Book a personalized live walkthrough of SchoolDost for your college or university. Connect verified students, clubs, and campus events securely."
         canonicalUrl="https://www.vayunexsolution.com/products/schooldost/demo"
       />
 
@@ -103,20 +102,30 @@ product=schooldost`;
           items={[
             { label: 'Products', to: '/products' },
             { label: 'SchoolDost', to: '/products/schooldost' },
-            { label: 'Book Demo', to: '/products/schooldost/demo' }
+            { label: 'Campus Walkthrough', to: '/products/schooldost/demo' }
           ]}
         />
 
         <section style={{ textAlign: 'center', padding: '3.5rem 0 2rem' }}>
-          <div className="badge-pill" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '6px 16px', background: 'rgba(16, 185, 129, 0.15)', border: '1px solid rgba(16, 185, 129, 0.3)', borderRadius: '9999px', color: '#10B981', fontSize: '0.85rem', fontWeight: 600, marginBottom: '1.5rem' }}>
-            <span>📅 Personalized Walkthrough</span>
+          <div className="badge-pill" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '6px 16px', background: 'rgba(6, 182, 212, 0.15)', border: '1px solid rgba(6, 182, 212, 0.3)', borderRadius: '9999px', color: '#06B6D4', fontSize: '0.85rem', fontWeight: 600, marginBottom: '1.5rem' }}>
+            <span>🎓 Campus & Institutional Walkthrough</span>
           </div>
           <h1 style={{ fontSize: '2.8rem', fontWeight: 800, marginBottom: '1rem', color: '#F9FAFB' }}>
-            Experience <span style={{ color: '#10B981' }}>SchoolDost</span> in Action
+            Experience <span style={{ color: '#06B6D4' }}>SchoolDost</span> for Your Campus
           </h1>
           <p style={{ maxWidth: '680px', margin: '0 auto', color: '#9CA3AF', fontSize: '1.1rem', lineHeight: 1.6 }}>
-            Schedule a 30-minute tailored demonstration for your management committee and administrative heads.
+            Schedule a 30-minute tailored walkthrough for student councils, department heads, and campus club coordinators.
           </p>
+          <div style={{ marginTop: '1.5rem' }}>
+            <a 
+              href="https://schooldost.com/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              style={{ color: '#06B6D4', textDecoration: 'underline', fontSize: '0.95rem', fontWeight: 600 }}
+            >
+              Or explore live platform directly at schooldost.com &rarr;
+            </a>
+          </div>
         </section>
 
         {/* Demo Booking Grid */}

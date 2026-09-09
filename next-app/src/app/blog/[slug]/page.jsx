@@ -1,11 +1,10 @@
 import React from 'react';
 import BlogDetailPage from '../../../pages-source/blog/BlogDetailPage';
-import { getFallbackLeadershipBlog } from '../../../data/leadershipBlogsData';
+import { fallbackLeadershipBlogs, getFallbackLeadershipBlog } from '../../../data/leadershipBlogsData';
 
 export async function generateStaticParams() {
-  const defaultSlugs = [
-    { slug: 'enterprise-software-delivery-and-project-governance' },
-    { slug: 'modern-saas-systems-architecture-scalable-backends' },
+  const leadershipSlugs = fallbackLeadershipBlogs.map(b => ({ slug: b.slug }));
+  const additionalSlugs = [
     { slug: 'unlocking-business-efficiency-the-benefits-of-ai-saas' },
     { slug: 'how-to-scale-enterprise-web-applications' },
     { slug: 'future-of-ai-workflow-automation' },
@@ -14,6 +13,7 @@ export async function generateStaticParams() {
     { slug: 'technical-seo-for-modern-web-apps' },
     { slug: 'post' }
   ];
+  const defaultSlugs = [...leadershipSlugs, ...additionalSlugs];
 
   try {
     const res = await fetch('https://api.web.vayunexsolution.com/api/blogs?status=published', { cache: 'no-store' });

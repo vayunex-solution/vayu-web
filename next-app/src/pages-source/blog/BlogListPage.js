@@ -83,8 +83,8 @@ const BlogListPage = () => {
                     {blogs.map(blog => {
                         const author = blog.author || 'Vayunex Team';
                         const categoryName = typeof blog.category === 'object' ? (blog.category?.name || 'Engineering') : (blog.category || 'Engineering');
-                        const isLeader = author === 'Ved Parkash' || author === 'Sandeep Kumar';
-                        const leaderProfileSlug = author === 'Ved Parkash' ? 'ved-parkash' : author === 'Sandeep Kumar' ? 'sandeep-kumar' : null;
+                        const isLeader = author === 'Ved Prakash' || author === 'Ved Parkash' || author === 'Sandeep Kumar';
+                        const leaderProfileSlug = (author === 'Ved Prakash' || author === 'Ved Parkash') ? 'ved-prakash' : author === 'Sandeep Kumar' ? 'sandeep-kumar' : null;
 
                         return (
                             <article 
@@ -124,7 +124,7 @@ const BlogListPage = () => {
                                     </Link>
 
                                     <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6', marginBottom: '1.5rem' }}>
-                                        {blog.excerpt}
+                                        {blog.excerpt || blog.seoDescription || (blog.aiSummary ? blog.aiSummary.split('\n')[0] : '')}
                                     </p>
                                 </div>
 

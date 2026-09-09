@@ -42,37 +42,47 @@
   "ecosystem": {
     "products": [
       {
-        "name": "Jwelnex ERP",
-        "category": "Jewellery Business Management ERP",
-        "url": "https://www.vayunexsolution.com/products/jwelnex",
-        "features_url": "https://www.vayunexsolution.com/products/jwelnex/features",
-        "pricing_url": "https://www.vayunexsolution.com/products/jwelnex/pricing"
-      },
-      {
-        "name": "PayNex",
-        "category": "Billing & Payment Infrastructure",
-        "url": "https://www.vayunexsolution.com/products/paynex",
-        "features_url": "https://www.vayunexsolution.com/products/paynex/features",
-        "pricing_url": "https://www.vayunexsolution.com/products/paynex/pricing"
-      },
-      {
         "name": "SocialNex",
         "category": "AI Social Media Command Center",
-        "url": "https://www.vayunexsolution.com/products/socialnex",
-        "features_url": "https://www.vayunexsolution.com/products/socialnex/features",
-        "pricing_url": "https://www.vayunexsolution.com/products/socialnex/pricing"
+        "status": "BETA AVAILABLE",
+        "official_url": "https://socialnex.vayunexsolution.com/",
+        "overview_url": "https://www.vayunexsolution.com/products/socialnex/",
+        "features_url": "https://www.vayunexsolution.com/products/socialnex/features/",
+        "pricing_url": "https://www.vayunexsolution.com/products/socialnex/pricing/"
       },
       {
         "name": "SchoolDost",
-        "category": "Verified Student Campus Network & LMS",
-        "url": "https://www.vayunexsolution.com/products/schooldost",
-        "features_url": "https://www.vayunexsolution.com/products/schooldost/features",
-        "demo_url": "https://www.vayunexsolution.com/products/schooldost/demo"
+        "category": "Verified Student Network & Campus Communities",
+        "status": "LIVE",
+        "official_url": "https://schooldost.com/",
+        "overview_url": "https://www.vayunexsolution.com/products/schooldost/",
+        "features_url": "https://www.vayunexsolution.com/products/schooldost/features/",
+        "demo_url": "https://www.vayunexsolution.com/products/schooldost/demo/"
+      },
+      {
+        "name": "PayNex",
+        "category": "GST Invoicing & Business Billing Platform",
+        "status": "PUBLIC BETA",
+        "official_url": "https://paynex.vayunexsolution.com/",
+        "overview_url": "https://www.vayunexsolution.com/products/paynex/",
+        "features_url": "https://www.vayunexsolution.com/products/paynex/features/",
+        "pricing_url": "https://www.vayunexsolution.com/products/paynex/pricing/"
+      },
+      {
+        "name": "Jwelnex ERP",
+        "category": "Jewellery Business Management ERP",
+        "status": "LIVE",
+        "official_url": null,
+        "overview_url": "https://www.vayunexsolution.com/products/jwelnex/",
+        "features_url": "https://www.vayunexsolution.com/products/jwelnex/features/",
+        "pricing_url": "https://www.vayunexsolution.com/products/jwelnex/pricing/"
       },
       {
         "name": "InventoryNex",
-        "category": "Warehouse & Stock Telemetry Platform",
-        "url": "https://www.vayunexsolution.com/products/inventorynex"
+        "category": "Warehouse & Multi-Location Stock Control",
+        "status": "COMING SOON / PRIVATE BETA",
+        "official_url": null,
+        "overview_url": "https://www.vayunexsolution.com/products/inventorynex/"
       }
     ],
     "services": [

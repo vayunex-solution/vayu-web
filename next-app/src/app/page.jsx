@@ -79,7 +79,7 @@ const HeroVisual = () => (
       </div>
       <div className="hv-float-text">
         <span className="hv-float-name">SocialNex</span>
-        <span className="hv-float-sub">Coming Soon</span>
+        <span className="hv-float-sub">Beta Available</span>
       </div>
     </div>
 
@@ -90,7 +90,7 @@ const HeroVisual = () => (
       </div>
       <div className="hv-float-text">
         <span className="hv-float-name">SchoolDost</span>
-        <span className="hv-float-sub">Coming Soon</span>
+        <span className="hv-float-sub">Live</span>
       </div>
     </div>
   </div>

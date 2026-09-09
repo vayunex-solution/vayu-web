@@ -8,6 +8,8 @@ import paynexLogo from '../../assets/images/paynex-logo.webp';
 import socialnexLogo from '../../assets/images/socialnex-logo.webp';
 import schooldostLogo from '../../assets/images/schooldost-logo.webp';
 
+import { getAllProducts } from '../../data/products';
+
 const ProductsPopup = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
@@ -33,68 +35,66 @@ const ProductsPopup = () => {
         }, 300);
     };
 
-    const products = [
-        {
-            id: 'jwelnex',
-            name: 'Jwelnex ERP',
-            desc: 'End-to-end jewellery management',
-            icon: (
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M6 3h12l4 6-10 13L2 9z" />
-                    <path d="M11 3 8 9l4 13 4-13-3-6" />
-                    <path d="M2 9h20" />
-                </svg>
-            ),
-            color: '#F59E0B',
-            url: '/products/jwelnex'
-        },
-        {
-            id: 'paynex',
-            name: 'PayNex',
-            desc: 'Intelligent payment infrastructure',
-            logo: paynexLogo?.src || paynexLogo || '/images/paynex-logo.webp',
-            color: '#10B981',
-            url: '/products/paynex'
-        },
-        {
-            id: 'socialnex',
-            name: 'SocialNex',
-            desc: 'AI social media command center',
-            logo: socialnexLogo?.src || socialnexLogo || '/images/socialnex-logo.webp',
-            color: '#8B5CF6',
-            url: '/products/socialnex'
-        },
-        {
-            id: 'schooldost',
-            name: 'SchoolDost',
-            desc: 'Modern school management',
-            logo: schooldostLogo?.src || schooldostLogo || '/images/schooldost-logo.webp',
-            color: '#06B6D4',
-            url: '/products/schooldost'
-        },
-        {
-            id: 'inventorynex',
-            name: 'InventoryNex',
-            desc: 'Real-time inventory intelligence',
-            icon: (
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-                    <line x1="12" y1="22.08" x2="12" y2="12"/>
-                </svg>
-            ),
-            color: '#F97316',
-            url: '/products/inventorynex'
+    const products = getAllProducts();
+
+    const getProductIcon = (id, color) => {
+        switch (id) {
+            case 'jwelnex':
+                return (
+                    <div className="popup-product-icon-wrapper" style={{ color }}>
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                            <path d="M6 3h12l4 6-10 13L2 9z" />
+                            <path d="M11 3 8 9l4 13 4-13-3-6" />
+                            <path d="M2 9h20" />
+                        </svg>
+                    </div>
+                );
+            case 'inventorynex':
+                return (
+                    <div className="popup-product-icon-wrapper" style={{ color }}>
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                        </svg>
+                    </div>
+                );
+            case 'paynex':
+                return (
+                    <div className="popup-product-logo-wrapper">
+                        <img src={paynexLogo?.src || paynexLogo || '/images/paynex-logo.webp'} alt="" />
+                    </div>
+                );
+            case 'socialnex':
+                return (
+                    <div className="popup-product-logo-wrapper">
+                        <img src={socialnexLogo?.src || socialnexLogo || '/images/socialnex-logo.webp'} alt="" />
+                    </div>
+                );
+            case 'schooldost':
+                return (
+                    <div className="popup-product-logo-wrapper">
+                        <img src={schooldostLogo?.src || schooldostLogo || '/images/schooldost-logo.webp'} alt="" />
+                    </div>
+                );
+            default:
+                return null;
         }
-    ];
+    };
 
     if (!isVisible) return null;
 
     return (
         <div className={`products-popup-overlay ${isClosing ? 'closing' : ''}`} onClick={handleClose}>
-            <div className={`products-popup ${isClosing ? 'closing' : ''}`} onClick={e => e.stopPropagation()}>
+            <div 
+                className={`products-popup ${isClosing ? 'closing' : ''}`} 
+                onClick={e => e.stopPropagation()}
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="popup-title"
+            >
                 {/* Close Button */}
-                <button className="popup-close" onClick={handleClose}>
+                <button className="popup-close" onClick={handleClose} aria-label="Close product dialog">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <line x1="18" y1="6" x2="6" y2="18"></line>
                         <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -102,7 +102,7 @@ const ProductsPopup = () => {
                 </button>
 
                 {/* Animated Background */}
-                <div className="popup-bg-effects">
+                <div className="popup-bg-effects" aria-hidden="true">
                     <div className="popup-orb popup-orb-1"></div>
                     <div className="popup-orb popup-orb-2"></div>
                 </div>
@@ -110,45 +110,62 @@ const ProductsPopup = () => {
                 {/* Content */}
                 <div className="popup-content">
                     <div className="popup-badge">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                             <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
                         </svg>
                         Product Ecosystem
                     </div>
                     
-                    <h2>Discover Our <span className="gradient-text">Platforms</span></h2>
-                    <p>Enterprise-grade SaaS products built for modern businesses.</p>
+                    <h2 id="popup-title">Discover Our <span className="gradient-text">Platforms</span></h2>
+                    <p>Enterprise-grade SaaS products built for modern organizations.</p>
 
                     {/* Products Grid */}
                     <div className="popup-products-grid">
-                        {products.map((product, index) => (
-                            <Link 
-                                key={index}
-                                to={product.url}
-                                className="popup-product-card"
-                                style={{ '--card-color': product.color }}
-                                onClick={handleClose}
-                            >
-                                <div className="popup-product-logo">
-                                    {product.logo ? (
-                                        <div className="popup-product-logo-wrapper">
-                                            <img src={product.logo} alt={product.name} />
+                        {products.map((product) => {
+                            const cardContent = (
+                                <>
+                                    <div className="popup-product-logo">
+                                        {getProductIcon(product.id, product.brandColor)}
+                                    </div>
+                                    <div className="popup-product-info">
+                                        <div className="popup-product-header">
+                                            <h4>{product.name}</h4>
+                                            <span className={`popup-status-badge popup-status-badge--${product.badgeClass}`}>
+                                                {product.statusLabel}
+                                            </span>
                                         </div>
-                                    ) : (
-                                        <div className="popup-product-icon-wrapper" style={{ color: product.color }}>
-                                            {product.icon}
-                                        </div>
-                                    )}
-                                </div>
-                                <div className="popup-product-info">
-                                    <h4>{product.name}</h4>
-                                    <p>{product.desc}</p>
-                                </div>
-                                <svg className="popup-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                                </svg>
-                            </Link>
-                        ))}
+                                        <p>{product.tagline}</p>
+                                    </div>
+                                    <svg className="popup-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                                    </svg>
+                                </>
+                            );
+
+                            return product.officialUrl ? (
+                                <a
+                                    key={product.id}
+                                    href={product.officialUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="popup-product-card"
+                                    style={{ '--card-color': product.brandColor }}
+                                    onClick={handleClose}
+                                >
+                                    {cardContent}
+                                </a>
+                            ) : (
+                                <Link
+                                    key={product.id}
+                                    to={product.internalRoute}
+                                    className="popup-product-card"
+                                    style={{ '--card-color': product.brandColor }}
+                                    onClick={handleClose}
+                                >
+                                    {cardContent}
+                                </Link>
+                            );
+                        })}
                     </div>
 
                     {/* CTA */}

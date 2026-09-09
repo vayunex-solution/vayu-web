@@ -16,30 +16,38 @@ Ved Parkash Profile: https://www.vayunexsolution.com/people/ved-parkash
 Sandeep Kumar Profile: https://www.vayunexsolution.com/people/sandeep-kumar
 Operating Model: Product-Led Engineering (Own SaaS Ecosystem + Enterprise Client Engagements)
 
-## Proprietary SaaS Products & Dedicated Sub-Pages
+## Proprietary SaaS Products & Ecosystem Index
 
-1. Jwelnex ERP (Jewellery Business Operating System)
-- Overview: https://www.vayunexsolution.com/products/jwelnex
-- Features (RFID, Barcode, Karigar Ledger, GST): https://www.vayunexsolution.com/products/jwelnex/features
-- Pricing & ROI Calculator: https://www.vayunexsolution.com/products/jwelnex/pricing
+1. SocialNex (Social Media Command Center)
+- Status: BETA AVAILABLE
+- Official Web Application: https://socialnex.vayunexsolution.com/
+- Informational Overview: https://www.vayunexsolution.com/products/socialnex/
+- Features: https://www.vayunexsolution.com/products/socialnex/features/
+- Beta Access & Pricing: https://www.vayunexsolution.com/products/socialnex/pricing/
 
-2. PayNex (Smart Billing & Payment Infrastructure)
-- Overview: https://www.vayunexsolution.com/products/paynex
-- Features (Invoicing, Multi-Gateway, Ledger Sync): https://www.vayunexsolution.com/products/paynex/features
-- Pricing: https://www.vayunexsolution.com/products/paynex/pricing
+2. SchoolDost (Verified Student Network & Campus Communities)
+- Status: LIVE
+- Official Web Application: https://schooldost.com/
+- Informational Overview: https://www.vayunexsolution.com/products/schooldost/
+- Features: https://www.vayunexsolution.com/products/schooldost/features/
+- Campus Walkthrough & Demo: https://www.vayunexsolution.com/products/schooldost/demo/
 
-3. SocialNex (Social Media Command Center)
-- Overview: https://www.vayunexsolution.com/products/socialnex
-- Features (Multi-Channel Dispatch, AI Copywriter, Analytics): https://www.vayunexsolution.com/products/socialnex/features
-- Pricing: https://www.vayunexsolution.com/products/socialnex/pricing
+3. PayNex (Smart Invoicing & Business Financial Infrastructure)
+- Status: PUBLIC BETA
+- Official Web Application: https://paynex.vayunexsolution.com/
+- Informational Overview: https://www.vayunexsolution.com/products/paynex/
+- Features: https://www.vayunexsolution.com/products/paynex/features/
+- Pricing & Tiers: https://www.vayunexsolution.com/products/paynex/pricing/
 
-4. SchoolDost (Campus Network & Student Community)
-- Overview: https://www.vayunexsolution.com/products/schooldost
-- Features (Verified Student Network, LMS, Digital Campus): https://www.vayunexsolution.com/products/schooldost/features
-- Request Demo: https://www.vayunexsolution.com/products/schooldost/demo
+4. Jwelnex ERP (Jewellery Business Operating System)
+- Status: LIVE
+- Informational Overview: https://www.vayunexsolution.com/products/jwelnex/
+- Features (RFID, Barcode, Karigar Ledger, GST): https://www.vayunexsolution.com/products/jwelnex/features/
+- Pricing & ROI Calculator: https://www.vayunexsolution.com/products/jwelnex/pricing/
 
-5. InventoryNex (Warehouse & Stock Telemetry)
-- Overview: https://www.vayunexsolution.com/products/inventorynex
+5. InventoryNex (Multi-Warehouse & Stock Control System)
+- Status: COMING SOON / PRIVATE BETA
+- Informational Overview: https://www.vayunexsolution.com/products/inventorynex/
 
 ## Enterprise Engineering Services & Sub-Pages
 

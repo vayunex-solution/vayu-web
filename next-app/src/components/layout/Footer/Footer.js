@@ -7,13 +7,7 @@ import paynexLogo from '../../../assets/images/paynex-logo.webp';
 import socialnexLogo from '../../../assets/images/socialnex-logo.webp';
 import schooldostLogo from '../../../assets/images/schooldost-logo.webp';
 
-const FOOTER_PRODUCTS = [
-  { id: 'jwelnex', label: 'Jwelnex ERP', to: '/products/jwelnex', badge: 'Live' },
-  { id: 'paynex', label: 'PayNex', to: '/products/paynex', badge: 'Beta' },
-  { id: 'socialnex', label: 'SocialNex', to: '/products/socialnex', badge: 'Soon' },
-  { id: 'schooldost', label: 'SchoolDost', to: '/products/schooldost', badge: 'Soon' },
-  { id: 'inventorynex', label: 'InventoryNex', to: '/products/inventorynex', badge: 'Soon' },
-];
+import { getAllProducts } from '../../../data/products';
 
 const FOOTER_CAPABILITIES = [
   { label: 'Digital Platforms', to: '/services/web-development' },
@@ -157,19 +151,38 @@ const Footer = () => {
           <div className="footer__col">
             <h4 className="footer__col-title">Products</h4>
             <ul className="footer__col-list">
-              {FOOTER_PRODUCTS.map((p) => (
-                <li key={p.label}>
-                  <Link to={p.to} className="footer__col-link">
-                    {getProductLogo(p.id)}
-                    {p.label}
-                    {p.badge && (
-                      <span className={`footer__badge footer__badge--${p.badge.toLowerCase()}`}>
-                        {p.badge}
+              {getAllProducts().map((p) => (
+                <li key={p.id}>
+                  {p.officialUrl ? (
+                    <a
+                      href={p.officialUrl}
+                      className="footer__col-link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={`${p.name} - ${p.statusLabel}`}
+                    >
+                      {getProductLogo(p.id)}
+                      <span>{p.name}</span>
+                      <span className={`footer__badge footer__badge--${p.badgeClass}`}>
+                        {p.statusLabel}
                       </span>
-                    )}
-                  </Link>
+                    </a>
+                  ) : (
+                    <Link to={p.internalRoute} className="footer__col-link">
+                      {getProductLogo(p.id)}
+                      <span>{p.name}</span>
+                      <span className={`footer__badge footer__badge--${p.badgeClass}`}>
+                        {p.statusLabel}
+                      </span>
+                    </Link>
+                  )}
                 </li>
               ))}
+              <li className="footer__col-overview-item">
+                <Link to="/products" className="footer__col-link footer__col-link--all">
+                  All Products Overview &rarr;
+                </Link>
+              </li>
             </ul>
           </div>
 

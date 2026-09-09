@@ -9,6 +9,8 @@ import LeadCaptureModal from '../../components/common/LeadCaptureModal';
 import paynexHero from '../../assets/images/paynex-hero.webp';
 import Breadcrumbs from '../../components/common/Breadcrumbs';
 import QuickAnswers from '../../components/common/QuickAnswers';
+import ProductSchema from '../../components/common/ProductSchema';
+import { getProductById } from '../../data/products';
 import './ProductPage.css';
 
 const PayNexPage = () => {
@@ -37,25 +39,25 @@ const PayNexPage = () => {
     ];
 
     const outcomes = [
-        { number: '3x', title: 'Faster Payments', desc: 'Get paid instantly via UPI links.' },
-        { number: 'Zero', title: 'Tax Errors', desc: 'Automated GST compliance.' },
-        { number: '100%', title: 'Financial Clarity', desc: 'Know your exact cash position.' }
+        { number: '3x', title: 'Faster Payments', desc: 'Get paid instantly via integrated UPI links.' },
+        { number: 'Zero', title: 'Tax Errors', desc: 'Automated GST compliance calculations.' },
+        { number: '100%', title: 'Financial Clarity', desc: 'Know your exact cash receivables position.' }
     ];
 
     const audience = [
-        { icon: 'fas fa-laptop-code', title: 'SMEs & Startups', desc: 'Move away from messy Excel sheets and run your finances like a tech company.' },
-        { icon: 'fas fa-user-tie', title: 'Service Providers', desc: 'Freelancers and agencies looking to look professional and track recurring retainers.' },
+        { icon: 'fas fa-laptop-code', title: 'SMEs & Startups', desc: 'Move away from messy Excel sheets and run your billing like a modern tech company.' },
+        { icon: 'fas fa-user-tie', title: 'Service Providers', desc: 'Freelancers and agencies looking to look professional and track recurring client retainers.' },
         { icon: 'fas fa-store', title: 'Retail Businesses', desc: 'Generate quick, compliant bills for daily counter sales and B2B orders.' }
     ];
 
     const faqs = [
         {
             question: "Does PayNex process payments directly?",
-            answer: "PayNex integrates with leading payment gateways (like Razorpay and Stripe) to generate payment links, allowing funds to settle directly into your existing merchant accounts."
+            answer: "PayNex integrates with leading payment gateways to generate UPI and card payment links, allowing customer funds to settle directly into your existing merchant accounts."
         },
         {
             question: "Is the invoicing fully GST compliant for Indian businesses?",
-            answer: "Yes, PayNex is built specifically for Indian taxation standards. It automatically handles HSN/SAC codes, reverse charge mechanisms, and state-wise GST calculations."
+            answer: "Yes, PayNex is built specifically for Indian taxation standards. It automatically handles HSN/SAC codes, reverse charge mechanisms, and state-wise CGST/SGST/IGST calculations."
         },
         {
             question: "Can I customize the invoices with my logo?",
@@ -67,27 +69,27 @@ const PayNexPage = () => {
         },
         {
             question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
+            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your financial workflow remains secure, updated, and fully optimized."
         }
     ];
 
     return (
         <main className="product-page" style={{ '--product-accent': '#10B981' }}>
             <SEO 
-                title="PayNex | Business Financial Infrastructure"
+                title="PayNex | Smart GST Invoicing & Business Financial Infrastructure"
                 description="Simplify billing, payments & business operations. Manage invoices, GST compliance, and cash flow from one centralized platform."
                 keywords="gst billing software, invoice generator, business payment tracking, SME financial software"
                 canonicalUrl="https://vayunexsolution.com/products/paynex"
             />
+            <ProductSchema product={getProductById('paynex')} />
 
             <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
                 <Breadcrumbs />
                 <QuickAnswers 
                     title="What is PayNex?"
-                    answer="PayNex is a modern payroll and HR management system that automates employee onboarding, attendance tracking, compliance, and salary disbursements. It eliminates manual errors and saves hundreds of HR hours every month."
+                    answer="PayNex is an automated GST billing, invoicing, and payment reconciliation platform designed for growing enterprises, service providers, and modern businesses. It streamlines professional invoicing, embeds UPI/card payment links for faster collections, visualizes real-time cash flow, and automates GSTR-ready financial exports."
                 />
             </div>
-
 
             {/* 1. HERO SECTION */}
             <section className="product-hero" ref={heroRef}>
@@ -97,16 +99,21 @@ const PayNexPage = () => {
                 </div>
                 <div className="product-hero-container">
                     <div className="product-hero-content">
-                        <span className="product-eyebrow">Financial Infrastructure</span>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+                            <span className="product-eyebrow" style={{ margin: 0 }}>Financial Infrastructure</span>
+                            <span style={{ padding: '0.2rem 0.6rem', fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.05em', borderRadius: '9999px', background: 'rgba(59, 130, 246, 0.15)', color: '#60a5fa', border: '1px solid rgba(59, 130, 246, 0.3)' }}>
+                                PUBLIC BETA
+                            </span>
+                        </div>
                         <h1 className="product-hero-title">Simplify Billing, Payments & <span style={{ color: 'var(--product-accent)' }}>Operations.</span></h1>
                         <p className="product-hero-subtext">Stop fighting with Excel spreadsheets. Manage your invoices, GST compliance, and daily business workflows from one intelligent platform.</p>
                         <div className="product-hero-cta">
                             <a href="https://paynex.vayunexsolution.com/" target="_blank" rel="noopener noreferrer" className="btn-primary">
-                                Launch PayNex <i className="fas fa-arrow-right" style={{ marginLeft: '8px' }}></i>
+                                Launch PayNex <i className="fas fa-external-link-alt" style={{ marginLeft: '8px' }}></i>
                             </a>
-                            <button onClick={openDemoModal} className="btn-secondary">
-                                Request Demo
-                            </button>
+                            <a href="#features" className="btn-secondary">
+                                View Product
+                            </a>
                         </div>
                     </div>
                     <div className="product-hero-visual">
@@ -142,7 +149,7 @@ const PayNexPage = () => {
             </section>
 
             {/* 4 & 5. INTRO & FEATURES */}
-            <section className="product-section" ref={featuresRef}>
+            <section id="features" className="product-section" ref={featuresRef}>
                 <div className="section-container">
                     <div className="section-header-left">
                         <h2 className="section-title">Complete Financial <span style={{ color: 'var(--product-accent)' }}>Clarity</span></h2>
@@ -184,8 +191,8 @@ const PayNexPage = () => {
             <section className="product-section">
                 <div className="section-container">
                     <div className="section-header-center">
-                        <h2 className="section-title">Built For Growing Teams</h2>
-                        <p className="section-subtitle">From solo freelancers to high-volume retail operations, PayNex scales with your transaction volume.</p>
+                        <h2 className="section-title">Who Is PayNex Built For?</h2>
+                        <p className="section-subtitle">Designed from the ground up for founders, accountants, and finance teams across India.</p>
                     </div>
                     <div className="audience-grid">
                         {audience.map((aud, idx) => (
@@ -218,7 +225,7 @@ const PayNexPage = () => {
                     <p>Start generating compliant invoices and collecting payments faster today.</p>
                     <div className="product-hero-cta" style={{ justifyContent: 'center', marginTop: '2rem' }}>
                         <a href="https://paynex.vayunexsolution.com/" target="_blank" rel="noopener noreferrer" className="btn-primary">
-                            Launch PayNex <i className="fas fa-arrow-right" style={{ marginLeft: '8px' }}></i>
+                            Launch PayNex <i className="fas fa-external-link-alt" style={{ marginLeft: '8px' }}></i>
                         </a>
                     </div>
                 </div>

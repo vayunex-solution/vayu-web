@@ -1,219 +1,202 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useScrollAnimation from '../../hooks/useScrollAnimation';
+import LeadCaptureModal from './LeadCaptureModal';
+import { trackProductInterest } from '../../utils/analytics';
+import { PRODUCTS_DATA, PRODUCT_STATUS } from '../../data/products';
 import './ProductEcosystem.css';
 
-import paynexLogo from '../../assets/images/paynex-logo.webp';
-import socialnexLogo from '../../assets/images/socialnex-logo.webp';
-import schooldostLogo from '../../assets/images/schooldost-logo.webp';
-
-const PRODUCTS = [
-  {
-    id: 'paynex',
-    name: 'PayNex',
-    isFlagship: true,
-    category: 'Financial Infrastructure',
-    mission: 'Simplify billing and compliance operations.',
-    outcome: 'Automate invoicing, GST workflows, and business visibility.',
-    status: 'Public Beta',
-    statusType: 'beta',
-    accentA: '#14B8A6',
-    accentB: '#10B981',
-    link: '/products/paynex',
-    icon: (
-      <div className="product-card__logo-img-wrapper">
-        <img src={paynexLogo?.src || paynexLogo || '/images/paynex-logo.webp'} alt="PayNex" className="product-card__logo-img" />
-      </div>
-    ),
-    previewNode: (
-      <div className="flagship-preview flagship-preview--paynex">
-        <div className="fp-header">
-          <div className="fp-dot" />
-          <div className="fp-dot" />
-          <div className="fp-dot" />
-        </div>
-        <div className="fp-body">
-          <div className="fp-chart">
-            <div className="fp-bar fp-bar--1" />
-            <div className="fp-bar fp-bar--2" />
-            <div className="fp-bar fp-bar--3" />
-            <div className="fp-bar fp-bar--4" />
-          </div>
-          <div className="fp-stats">
-            <div className="fp-stat-line" />
-            <div className="fp-stat-line fp-stat-line--short" />
-          </div>
-        </div>
-      </div>
-    ),
-  },
-  {
-    id: 'jwelnex',
-    name: 'Jwelnex ERP',
-    isFlagship: true,
-    category: 'Jewellery Business Operations',
-    mission: 'Digitize jewellery business management.',
-    outcome: 'Centralize inventory, billing, customer relationships and reporting.',
-    status: 'Live',
-    statusType: 'live',
-    accentA: '#F59E0B',
-    accentB: '#3B82F6',
-    link: '/products/jwelnex',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M6 3h12l4 6-10 13L2 9z" />
-        <path d="M11 3 8 9l4 13 4-13-3-6" />
-        <path d="M2 9h20" />
-      </svg>
-    ),
-    previewNode: (
-      <div className="flagship-preview flagship-preview--jwelnex">
-        <div className="fp-sidebar">
-          <div className="fp-nav-item active" />
-          <div className="fp-nav-item" />
-          <div className="fp-nav-item" />
-        </div>
-        <div className="fp-main">
-          <div className="fp-card fp-card--large" />
-          <div className="fp-card" />
-          <div className="fp-card" />
-        </div>
-      </div>
-    ),
-  },
-  {
-    id: 'socialnex',
-    name: 'SocialNex',
-    category: 'Marketing Operations',
-    mission: 'Centralize social media execution.',
-    outcome: 'Plan, create and manage content from a unified platform.',
-    status: 'Coming Soon',
-    statusType: 'soon',
-    accentA: '#8B5CF6',
-    accentB: '#EC4899',
-    link: '/products/socialnex',
-    icon: (
-      <div className="product-card__logo-img-wrapper">
-        <img src={socialnexLogo?.src || socialnexLogo || '/images/socialnex-logo.webp'} alt="SocialNex" className="product-card__logo-img" />
-      </div>
-    ),
-  },
-  {
-    id: 'schooldost',
-    name: 'SchoolDost',
-    category: 'Student Network',
-    mission: 'Connect verified students safely.',
-    outcome: 'Enable communication, collaboration and student-focused opportunities.',
-    status: 'Coming Soon',
-    statusType: 'soon',
-    accentA: '#06B6D4',
-    accentB: '#3B82F6',
-    link: '/products/schooldost',
-    icon: (
-      <div className="product-card__logo-img-wrapper">
-        <img src={schooldostLogo?.src || schooldostLogo || '/images/schooldost-logo.webp'} alt="SchoolDost" className="product-card__logo-img" />
-      </div>
-    ),
-  },
-  {
-    id: 'inventorynex',
-    name: 'InventoryNex',
-    category: 'Inventory Infrastructure',
-    mission: 'Deliver inventory visibility.',
-    outcome: 'Track stock, movement and operations in real time.',
-    status: 'Coming Soon',
-    statusType: 'soon',
-    accentA: '#F97316',
-    accentB: '#F59E0B',
-    link: '/products/inventorynex',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-        <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-        <line x1="12" y1="22.08" x2="12" y2="12"/>
-      </svg>
-    ),
-  },
-];
-
-const ProductCard = ({ product, index }) => {
+const ProductCard = ({ product, index, onOpenModal }) => {
   const [ref, isVisible] = useScrollAnimation(0.1);
+  const statusConfig = PRODUCT_STATUS[product.status] || PRODUCT_STATUS.COMING_SOON;
 
   return (
-    <div
+    <article
       ref={ref}
-      className={`product-card product-card--${product.id} ${product.isFlagship ? 'product-card--flagship' : ''} ${isVisible ? 'is-visible' : ''}`}
+      className={`product-card product-card--${product.id} ${isVisible ? 'is-visible' : ''}`}
       style={{
         '--accent-a': product.accentA,
         '--accent-b': product.accentB,
         '--delay': `${index * 0.08}s`,
       }}
+      aria-labelledby={`product-heading-${product.id}`}
     >
-      {/* Glow background */}
+      {/* Subtle ambient card glow */}
       <div className="product-card__glow" aria-hidden="true" />
 
-      {/* Card Content */}
       <div className="product-card__body">
-        {/* Header */}
+        {/* Top Meta: Brand Mark + Status Badge */}
         <div className="product-card__header">
-          <div className="product-card__icon">
-            {product.icon}
+          <div className="product-card__logo-wrapper" aria-hidden="true">
+            {product.logoUrl ? (
+              <img
+                src={product.logoUrl}
+                alt=""
+                className="product-card__logo-img"
+                width={36}
+                height={36}
+                loading="lazy"
+              />
+            ) : product.id === 'jwelnex' ? (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="product-card__vector-icon">
+                <path d="M6 3h12l4 6-10 13L2 9z" />
+                <path d="M11 3 8 9l4 13 4-13-3-6" />
+                <path d="M2 9h20" />
+              </svg>
+            ) : (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="product-card__vector-icon">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                <line x1="12" y1="22.08" x2="12" y2="12" />
+              </svg>
+            )}
           </div>
-          <span className={`product-card__badge product-card__badge--${product.statusType}`}>
-            {product.statusType === 'live' && <span className="live-dot" aria-hidden="true" />}
-            {product.status}
+
+          <span
+            className={`product-card__badge product-card__badge--${statusConfig.type}`}
+            style={{ '--badge-dot': statusConfig.dotColor }}
+          >
+            {statusConfig.pulse && <span className="live-dot" aria-hidden="true" />}
+            {product.statusLabel}
           </span>
         </div>
 
-        {/* Info */}
-        <div className="product-card__info">
-          {product.isFlagship && product.previewNode && (
-            <div className="product-card__preview-wrapper">
-              {product.previewNode}
-            </div>
-          )}
-          <div className="product-card__company-header">
-            <h3 className="product-card__name">{product.name}</h3>
-            <span className="product-card__category">{product.category}</span>
-          </div>
-          
-          <div className="product-card__mission-outcome">
-            <div className="product-card__mo-item">
-              <span className="product-card__mo-label">Mission</span>
-              <p className="product-card__mo-text">{product.mission}</p>
-            </div>
-            <div className="product-card__mo-item">
-              <span className="product-card__mo-label">Outcome</span>
-              <p className="product-card__mo-text">{product.outcome}</p>
-            </div>
+        {/* Product Identity & High-Impact Value Proposition */}
+        <div className="product-card__identity">
+          <span className="product-card__category">{product.category}</span>
+          <h3 id={`product-heading-${product.id}`} className="product-card__name">
+            {product.name}
+          </h3>
+          <p className="product-card__value-prop">
+            {product.valueProposition}
+          </p>
+        </div>
+
+        {/* Authentic Product UI Showcase */}
+        <div className="product-card__visual">
+          <div className="product-card__image-frame">
+            <img
+              src={product.heroImageUrl}
+              alt={`${product.name} Interface preview`}
+              className="product-card__hero-img"
+              width={600}
+              height={400}
+              loading="lazy"
+            />
           </div>
         </div>
 
-        {/* CTA */}
-        <Link
-          to={product.link}
-          className="product-card__cta"
-          aria-label={`Learn more about ${product.name}`}
-        >
-          {product.statusType === 'live' ? 'View Product' : product.statusType === 'beta' ? 'Join Beta' : 'Learn More'}
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        </Link>
-      </div>
+        {/* Key Core Capabilities */}
+        <div className="product-card__capabilities-section">
+          <span className="product-card__caps-label">Core Capabilities</span>
+          <ul className="product-card__caps-list">
+            {product.capabilities.slice(0, 3).map((cap, i) => (
+              <li key={i} className="product-card__cap-pill">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>{cap}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-      {/* Shine overlay */}
-      <div className="product-card__shine" aria-hidden="true" />
-    </div>
+        {/* Dual Actions Footer */}
+        <div className="product-card__actions">
+          {product.primaryCTA.external ? (
+            <a
+              href={product.primaryCTA.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="product-card__btn-primary"
+              onClick={() => trackProductInterest(product.name, 'external_launch')}
+            >
+              {product.primaryCTA.label}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                <polyline points="15 3 21 3 21 9" />
+                <line x1="10" y1="14" x2="21" y2="3" />
+              </svg>
+            </a>
+          ) : product.primaryCTA.action ? (
+            <button
+              type="button"
+              onClick={() => onOpenModal(product.primaryCTA.action, product.name, product.id)}
+              className="product-card__btn-primary"
+              aria-haspopup="dialog"
+            >
+              {product.primaryCTA.label}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </button>
+          ) : (
+            <Link
+              to={product.primaryCTA.url}
+              className="product-card__btn-primary"
+              onClick={() => trackProductInterest(product.name, 'explore_product')}
+            >
+              {product.primaryCTA.label}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </Link>
+          )}
+
+          {product.secondaryCTA && (
+            product.secondaryCTA.action ? (
+              <button
+                type="button"
+                onClick={() => onOpenModal(product.secondaryCTA.action, product.name, product.id)}
+                className="product-card__btn-secondary"
+                aria-haspopup="dialog"
+              >
+                {product.secondaryCTA.label}
+              </button>
+            ) : product.secondaryCTA.external ? (
+              <a
+                href={product.secondaryCTA.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="product-card__btn-secondary"
+              >
+                {product.secondaryCTA.label}
+              </a>
+            ) : (
+              <Link
+                to={product.secondaryCTA.url || product.internalRoute}
+                className="product-card__btn-secondary"
+              >
+                {product.secondaryCTA.label}
+              </Link>
+            )
+          )}
+        </div>
+      </div>
+    </article>
   );
 };
 
 const ProductEcosystem = () => {
   const [headerRef, headerVisible] = useScrollAnimation(0.2);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMode, setModalMode] = useState('demo');
+  const [modalProductName, setModalProductName] = useState('');
+  const [modalProductId, setModalProductId] = useState('');
+
+  const handleOpenModal = (mode, productName, productId) => {
+    trackProductInterest(productName, `open_${mode}_modal`);
+    setModalMode(mode);
+    setModalProductName(productName);
+    setModalProductId(productId);
+    setIsModalOpen(true);
+  };
 
   return (
     <section id="products" className="product-ecosystem" aria-label="Product Ecosystem">
-      {/* Ambient bg orbs */}
+      {/* Ambient background glow */}
       <div className="product-ecosystem__bg" aria-hidden="true">
         <div className="eco-orb eco-orb--1" />
         <div className="eco-orb eco-orb--2" />
@@ -225,34 +208,48 @@ const ProductEcosystem = () => {
           ref={headerRef}
           className={`product-ecosystem__header fade-up ${headerVisible ? 'is-visible' : ''}`}
         >
-          <span className="section-eyebrow">Product Ecosystem</span>
+          <span className="section-eyebrow">Enterprise Product Portfolio</span>
           <h2 className="section-heading">
-            Software We Build &amp; Ship
+            Proprietary Systems Built for Scale
           </h2>
           <p className="section-subheading">
-            Real products. Real customers. Active development. Vayunex is building a suite of enterprise-grade SaaS platforms — each purpose-built for a specific industry vertical.
+            We architect, deploy, and operate high-availability SaaS platforms solving mission-critical business challenges across vertical markets.
           </p>
         </div>
 
-        {/* Product Grid */}
-        <div className="product-grid">
-          {PRODUCTS.map((product, i) => (
-            <ProductCard key={product.id} product={product} index={i} />
+        {/* Balanced Enterprise Grid */}
+        <div className="product-grid" role="region" aria-label="Products Grid">
+          {PRODUCTS_DATA.map((product, i) => (
+            <ProductCard
+              key={product.id}
+              product={product}
+              index={i}
+              onOpenModal={handleOpenModal}
+            />
           ))}
         </div>
 
-        {/* Bottom CTA */}
+        {/* Section Footer */}
         <div
           className={`product-ecosystem__footer fade-up ${headerVisible ? 'is-visible stagger-4' : ''}`}
         >
           <Link to="/products" className="btn-outline" id="view-all-products">
-            View All Products
+            Explore All Platforms
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
           </Link>
         </div>
       </div>
+
+      {/* Lead Capture Modal for Interactive Actions */}
+      <LeadCaptureModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        mode={modalMode}
+        productName={modalProductName}
+        productId={modalProductId}
+      />
     </section>
   );
 };

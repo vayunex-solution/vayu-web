@@ -10,6 +10,8 @@ import LeadCaptureModal from '../../components/common/LeadCaptureModal';
 import socialnexHero from '../../assets/images/socialnex-hero.webp';
 import Breadcrumbs from '../../components/common/Breadcrumbs';
 import QuickAnswers from '../../components/common/QuickAnswers';
+import ProductSchema from '../../components/common/ProductSchema';
+import { getProductById } from '../../data/products';
 import './ProductPage.css';
 
 const SocialNexPage = () => {
@@ -25,50 +27,46 @@ const SocialNexPage = () => {
     const problems = [
         { icon: 'fas fa-layer-group', title: 'Content Chaos', desc: 'Juggling spreadsheets, messy Google Drives, and scattered chat threads just to plan a single week of content.' },
         { icon: 'fas fa-clock', title: 'Missed Schedules', desc: 'Forgetting to post during peak hours because your team is overwhelmed with manual publishing tasks.' },
-        { icon: 'fas fa-eye-slash', title: 'Zero Visibility', desc: 'No clear understanding of which posts are actually driving engagement and revenue across different platforms.' }
+        { icon: 'fas fa-eye-slash', title: 'Zero Visibility', desc: 'No clear understanding of which posts are actually driving engagement and reach across different channels.' }
     ];
 
     const features = [
-        { icon: 'fas fa-robot', title: 'AI Content Generation', desc: 'Generate highly engaging captions, hashtags, and visual concepts tailored to your brand voice in seconds.' },
-        { icon: 'fas fa-calendar-alt', title: 'Unified Content Calendar', desc: 'Visualize your entire social strategy across all platforms in one intuitive drag-and-drop calendar interface.' },
-        { icon: 'fas fa-paper-plane', title: 'Automated Publishing', desc: 'Schedule posts across Instagram, LinkedIn, X, and Facebook simultaneously without manual intervention.' },
-        { icon: 'fas fa-users', title: 'Team Collaboration', desc: 'Assign tasks, leave feedback on drafts, and streamline the approval workflow before anything goes live.' },
-        { icon: 'fas fa-chart-line', title: 'Cross-Platform Analytics', desc: 'Track follower growth, engagement rates, and top-performing content across your entire digital footprint.' },
-        { icon: 'fas fa-comments', title: 'Unified Inbox', desc: 'Manage comments and messages from all platforms in a single inbox so you never miss a lead.' }
+        { icon: 'fas fa-robot', title: 'AI Copy Co-Pilot', desc: 'Draft engaging captions, hooks, and hashtags tailored to your brand voice in seconds.' },
+        { icon: 'fas fa-calendar-alt', title: 'Omnichannel Content Calendar', desc: 'Visualize your entire publishing strategy across channels in one intuitive drag-and-drop calendar interface.' },
+        { icon: 'fas fa-paper-plane', title: 'Automated Multi-Channel Dispatch', desc: 'Schedule and coordinate post campaigns simultaneously with visual post previews.' },
+        { icon: 'fas fa-users', title: 'Team Approval Workflows', desc: 'Streamline client draft approvals and team collaboration before any scheduled content goes live.' },
+        { icon: 'fas fa-chart-line', title: 'Engagement Analytics', desc: 'Track audience velocity, post impressions, and top-performing themes in real-time.' },
+        { icon: 'fas fa-comments', title: 'Unified Social Inbox', desc: 'Monitor audience mentions and comments in a consolidated stream to accelerate response times.' }
     ];
 
     const outcomes = [
-        { number: '10x', title: 'Content Output', desc: 'Scale your posting frequency.' },
+        { number: '10x', title: 'Publishing Cadence', desc: 'Scale your content rhythm.' },
         { number: '15h', title: 'Saved Weekly', desc: 'Eliminate manual publishing.' },
         { number: '100%', title: 'Brand Consistency', desc: 'Maintain a unified voice.' }
     ];
 
     const audience = [
-        { icon: 'fas fa-bullhorn', title: 'Marketing Agencies', desc: 'Manage dozens of client accounts from a single dashboard without password sharing.' },
-        { icon: 'fas fa-rocket', title: 'Growth Startups', desc: 'Maintain an aggressive posting schedule to build early traction and community.' },
-        { icon: 'fas fa-building', title: 'In-House Teams', desc: 'Streamline the content approval pipeline between creators, managers, and executives.' }
+        { icon: 'fas fa-bullhorn', title: 'Marketing Agencies', desc: 'Coordinate multi-brand calendars and client approvals from a single operational workspace.' },
+        { icon: 'fas fa-rocket', title: 'Growth Startups', desc: 'Maintain a consistent organic social presence to build audience momentum.' },
+        { icon: 'fas fa-building', title: 'In-House Brand Teams', desc: 'Streamline the content review pipeline between copywriters, designers, and brand managers.' }
     ];
 
     const faqs = [
         {
-            question: "Which social platforms does SocialNex support?",
-            answer: "SocialNex currently supports automated publishing and analytics for Instagram, LinkedIn, Facebook, X (Twitter), and Pinterest."
+            question: "How do I access SocialNex during the Beta period?",
+            answer: "SocialNex is currently in Beta Available status. You can access the live beta platform directly at socialnex.vayunexsolution.com to test scheduling and calendar workflows."
         },
         {
-            question: "Can I collaborate with external clients on the platform?",
-            answer: "Yes. You can invite clients with 'Viewer' or 'Approver' permissions so they can review and approve content drafts before they are scheduled."
+            question: "Can multiple team members collaborate on drafts?",
+            answer: "Yes. SocialNex includes team roles and approval workflows so content creators can draft posts and managers can review before scheduling."
         },
         {
-            question: "How does the AI content generator work?",
-            answer: "We use advanced LLMs fine-tuned for social media. You define your brand's tone of voice once, and the AI will generate contextual captions and hashtags based on your prompts."
-        },
-        {
-            question: "Is there a limit to how many posts I can schedule?",
-            answer: "Our Pro and Enterprise tiers offer unlimited post scheduling. Starter tiers have generous monthly limits designed for small businesses."
+            question: "How does the AI copy assistant work?",
+            answer: "The integrated AI co-pilot assists with generating creative headline angles, caption drafts, and topic ideation based on your brand guidelines."
         },
         {
             question: "Is there ongoing support provided?",
-            answer: "Yes, we provide comprehensive ongoing support and maintenance packages to ensure your solution remains secure, updated, and fully optimized."
+            answer: "Yes, our product engineering team actively monitors beta feedback and provides prompt technical assistance."
         }
     ];
 
@@ -76,19 +74,19 @@ const SocialNexPage = () => {
         <main className="product-page" style={{ '--product-accent': '#8B5CF6' }}>
             <SEO 
                 title="SocialNex | Social Media Command Center"
-                description="Create, schedule, manage and analyze your social presence from one unified platform. Automate your social media growth."
+                description="Create, schedule, manage and analyze your social presence from one unified platform. Automate your social media operations."
                 keywords="social media management tool, automated publishing, AI content generator, social media calendar"
                 canonicalUrl="https://vayunexsolution.com/products/socialnex"
             />
+            <ProductSchema product={getProductById('socialnex')} />
 
             <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
                 <Breadcrumbs />
                 <QuickAnswers 
                     title="What is SocialNex?"
-                    answer="SocialNex is an advanced social media management and analytics platform. It empowers brands to schedule posts, monitor audience sentiment, and analyze campaign performance across all major networks from a single, centralized dashboard."
+                    answer="SocialNex is an AI-assisted social media command center. It empowers marketing teams and agencies to schedule multi-channel content, visualize publishing calendars, leverage an AI copy co-pilot, and analyze cross-platform audience engagement from a single dashboard."
                 />
             </div>
-
 
             {/* 1. HERO SECTION */}
             <section className="product-hero" ref={heroRef}>
@@ -98,20 +96,25 @@ const SocialNexPage = () => {
                 </div>
                 <div className="product-hero-container">
                     <div className="product-hero-content">
-                        <span className="product-eyebrow">Social Media Operations</span>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+                            <span className="product-eyebrow" style={{ margin: 0 }}>Social Operations Platform</span>
+                            <span style={{ padding: '0.2rem 0.6rem', fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.05em', borderRadius: '9999px', background: 'rgba(6, 182, 212, 0.15)', color: '#22d3ee', border: '1px solid rgba(6, 182, 212, 0.3)' }}>
+                                BETA AVAILABLE
+                            </span>
+                        </div>
                         <h1 className="product-hero-title">Manage Every Social Channel From <span style={{ color: 'var(--product-accent)' }}>One Command Center.</span></h1>
-                        <p className="product-hero-subtext">Stop logging into five different apps. Create, schedule, manage, and analyze your brand's entire social presence from one unified platform.</p>
+                        <p className="product-hero-subtext">Stop logging into separate tools. Plan, schedule, draft, and track your brand's digital social presence with visual calendars and AI copy co-pilots.</p>
                         <div className="product-hero-cta">
-                            <button onClick={openEarlyAccessModal} className="btn-primary">
-                                Request Access <i className="fas fa-arrow-right" style={{ marginLeft: '8px' }}></i>
-                            </button>
-                            <Link to="/contact?subject=SocialNex%20Demo" className="btn-secondary">
-                                Book Demo
-                            </Link>
+                            <a href="https://socialnex.vayunexsolution.com/" target="_blank" rel="noopener noreferrer" className="btn-primary">
+                                Access Beta <i className="fas fa-external-link-alt" style={{ marginLeft: '8px' }}></i>
+                            </a>
+                            <a href="#features" className="btn-secondary">
+                                Explore Features
+                            </a>
                         </div>
                     </div>
                     <div className="product-hero-visual">
-                        <img src={socialnexHero?.src || socialnexHero || "/images/socialnex-hero.webp"} alt="SocialNex Dashboard Interface" />
+                        <img src={socialnexHero?.src || socialnexHero || "/images/socialnex-hero.webp"} alt="SocialNex Command Center Interface" />
                     </div>
                 </div>
             </section>
@@ -120,8 +123,8 @@ const SocialNexPage = () => {
             <section className="product-section bg-alt" ref={problemRef}>
                 <div className="section-container">
                     <div className="section-header-center">
-                        <h2 className="section-title">The Cost of Manual Marketing</h2>
-                        <p className="section-subtitle">When your marketing team is bogged down by manual scheduling and platform-switching, strategy and creativity suffer.</p>
+                        <h2 className="section-title">The Friction in Modern Content Operations</h2>
+                        <p className="section-subtitle">When your team is bogged down by manual scheduling across fragmented interfaces, content quality and consistency suffer.</p>
                     </div>
                     <div className="problem-grid">
                         {problems.map((prob, idx) => (
@@ -136,18 +139,18 @@ const SocialNexPage = () => {
                     </div>
                     
                     <div className="cost-banner">
-                        <h3>Inconsistent Posting Kills Growth</h3>
-                        <p style={{ color: 'var(--text-secondary)' }}>Social algorithms penalize inconsistency. If you aren't maintaining a steady cadence across channels, your competitors are capturing your audience.</p>
+                        <h3>Inconsistent Posting Slows Growth</h3>
+                        <p style={{ color: 'var(--text-secondary)' }}>Social algorithms prioritize consistency. Without a centralized operations calendar, teams miss optimal publishing windows and waste strategic momentum.</p>
                     </div>
                 </div>
             </section>
 
             {/* 4 & 5. INTRO & FEATURES */}
-            <section className="product-section" ref={featuresRef}>
+            <section id="features" className="product-section" ref={featuresRef}>
                 <div className="section-container">
                     <div className="section-header-left">
-                        <h2 className="section-title">Your Engine For <span style={{ color: 'var(--product-accent)' }}>Predictable Growth</span></h2>
-                        <p className="section-subtitle">SocialNex transforms your content creation pipeline from a chaotic mess into a streamlined, automated assembly line.</p>
+                        <h2 className="section-title">Unified Workflow <span style={{ color: 'var(--product-accent)' }}>Architecture</span></h2>
+                        <p className="section-subtitle">Everything required to coordinate multi-channel social media publishing without operational chaos.</p>
                     </div>
                     <div className="features-grid">
                         {features.map((feature, idx) => (
@@ -167,7 +170,7 @@ const SocialNexPage = () => {
             <section className="product-section bg-alt" ref={outcomesRef}>
                 <div className="section-container">
                     <div className="section-header-center">
-                        <h2 className="section-title">Measurable Marketing Impact</h2>
+                        <h2 className="section-title">Operational Velocity</h2>
                     </div>
                     <div className="outcomes-grid">
                         {outcomes.map((outcome, idx) => (
@@ -185,8 +188,8 @@ const SocialNexPage = () => {
             <section className="product-section">
                 <div className="section-container">
                     <div className="section-header-center">
-                        <h2 className="section-title">Built For Content Teams</h2>
-                        <p className="section-subtitle">Designed specifically to handle the collaborative workflows required by professional content creators and marketers.</p>
+                        <h2 className="section-title">Who Uses SocialNex?</h2>
+                        <p className="section-subtitle">Built for content creators, high-growth startups, and multi-client marketing agencies.</p>
                     </div>
                     <div className="audience-grid">
                         {audience.map((aud, idx) => (
@@ -208,19 +211,19 @@ const SocialNexPage = () => {
             <ServiceTrustLayer />
             
             <div style={{ padding: '50px 0', background: 'var(--bg-primary)' }}>
-                <FAQAccordion faqs={faqs} title="Common Questions About SocialNex" />
+                <FAQAccordion faqs={faqs} title="Frequently Asked Questions" />
             </div>
 
             {/* 11 & 12. CTA */}
             <section className="product-cta-section">
                 <div className="product-cta-bg" />
                 <div className="product-cta-content">
-                    <h2>Ready to Scale Your <span style={{ color: 'var(--product-accent)' }}>Social Presence</span>?</h2>
-                    <p>Join the waitlist to get early access to the ultimate social media command center.</p>
+                    <h2>Ready to Experience <span style={{ color: 'var(--product-accent)' }}>SocialNex</span>?</h2>
+                    <p>Access the live beta today and transform your team's publishing workflow.</p>
                     <div className="product-hero-cta" style={{ justifyContent: 'center', marginTop: '2rem' }}>
-                        <button onClick={openEarlyAccessModal} className="btn-primary">
-                            Request Access <i className="fas fa-arrow-right" style={{ marginLeft: '8px' }}></i>
-                        </button>
+                        <a href="https://socialnex.vayunexsolution.com/" target="_blank" rel="noopener noreferrer" className="btn-primary">
+                            Access Beta <i className="fas fa-external-link-alt" style={{ marginLeft: '8px' }}></i>
+                        </a>
                     </div>
                 </div>
             </section>

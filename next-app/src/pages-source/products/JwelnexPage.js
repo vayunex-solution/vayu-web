@@ -10,6 +10,8 @@ import LeadCaptureModal from '../../components/common/LeadCaptureModal';
 import jwelnexHero from '../../assets/images/jwelnex-hero.webp';
 import Breadcrumbs from '../../components/common/Breadcrumbs';
 import QuickAnswers from '../../components/common/QuickAnswers';
+import ProductSchema from '../../components/common/ProductSchema';
+import { getProductById } from '../../data/products';
 import './ProductPage.css';
 
 const JwelnexPage = () => {
@@ -64,7 +66,7 @@ const JwelnexPage = () => {
         },
         {
             question: "How secure is my business data?",
-            answer: "Your data is hosted on highly secure AWS servers with daily automated backups. We use bank-level encryption to ensure your financial and customer data is never compromised."
+            answer: "Your data is hosted on highly secure cloud infrastructure with automated daily encrypted backups. We use bank-level encryption to protect financial and customer records."
         },
         {
             question: "Is there ongoing support provided?",
@@ -80,6 +82,7 @@ const JwelnexPage = () => {
                 keywords="jewellery erp software, jewellery billing software, jewellery inventory management, multi branch jewellery software"
                 canonicalUrl="https://vayunexsolution.com/products/jwelnex"
             />
+            <ProductSchema product={getProductById('jwelnex')} />
 
             <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
                 <Breadcrumbs />
@@ -89,7 +92,6 @@ const JwelnexPage = () => {
                 />
             </div>
 
-
             {/* 1. HERO SECTION */}
             <section className="product-hero" ref={heroRef}>
                 <div className="product-hero-bg">
@@ -98,7 +100,12 @@ const JwelnexPage = () => {
                 </div>
                 <div className="product-hero-container">
                     <div className="product-hero-content">
-                        <span className="product-eyebrow">Enterprise Jewellery Platform</span>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+                            <span className="product-eyebrow" style={{ margin: 0 }}>Enterprise Jewellery Platform</span>
+                            <span style={{ padding: '0.2rem 0.6rem', fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.05em', borderRadius: '9999px', background: 'rgba(16, 185, 129, 0.15)', color: '#34d399', border: '1px solid rgba(16, 185, 129, 0.3)' }}>
+                                LIVE
+                            </span>
+                        </div>
                         <h1 className="product-hero-title">Run Your Entire Jewellery Business From <span style={{ color: 'var(--product-accent)' }}>One Platform.</span></h1>
                         <p className="product-hero-subtext">Inventory, billing, customer management, reporting, and operations unified in one centralized operating system.</p>
                         <div className="product-hero-cta">
@@ -143,11 +150,11 @@ const JwelnexPage = () => {
             </section>
 
             {/* 4 & 5. INTRO & FEATURES */}
-            <section className="product-section" ref={featuresRef}>
+            <section id="features" className="product-section" ref={featuresRef}>
                 <div className="section-container">
                     <div className="section-header-left">
-                        <h2 className="section-title">Total Operational <span style={{ color: 'var(--product-accent)' }}>Control</span></h2>
-                        <p className="section-subtitle">Jwelnex replaces your disconnected tools with a unified operating system built specifically for the complex workflows of the jewellery industry.</p>
+                        <h2 className="section-title">End-to-End Jewellery <span style={{ color: 'var(--product-accent)' }}>Features</span></h2>
+                        <p className="section-subtitle">Purpose-built for retail jewellers, multi-branch showrooms, and bullion traders.</p>
                     </div>
                     <div className="features-grid">
                         {features.map((feature, idx) => (
@@ -185,8 +192,8 @@ const JwelnexPage = () => {
             <section className="product-section">
                 <div className="section-container">
                     <div className="section-header-center">
-                        <h2 className="section-title">Built For Scale</h2>
-                        <p className="section-subtitle">Whether you operate a single premium boutique or a nationwide retail chain, Jwelnex scales with your operations.</p>
+                        <h2 className="section-title">Who Is Jwelnex Built For?</h2>
+                        <p className="section-subtitle">Trusted by independent showrooms, regional chains, and jewellery manufacturers.</p>
                     </div>
                     <div className="audience-grid">
                         {audience.map((aud, idx) => (
@@ -216,7 +223,7 @@ const JwelnexPage = () => {
                 <div className="product-cta-bg" />
                 <div className="product-cta-content">
                     <h2>Ready to Modernize Your <span style={{ color: 'var(--product-accent)' }}>Jewellery Business</span>?</h2>
-                    <p>Join the leading brands using Jwelnex to secure their inventory and accelerate their sales.</p>
+                    <p>Request a personalized system walkthrough and discover how Jwelnex streamlines operations.</p>
                     <div className="product-hero-cta" style={{ justifyContent: 'center', marginTop: '2rem' }}>
                         <button onClick={openDemoModal} className="btn-primary">
                             Request Demo <i className="fas fa-arrow-right" style={{ marginLeft: '8px' }}></i>
@@ -229,7 +236,7 @@ const JwelnexPage = () => {
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
                 mode="demo"
-                productName="Jwelnex ERP"
+                productName="Jwelnex"
                 productId="jwelnex"
             />
         </main>
