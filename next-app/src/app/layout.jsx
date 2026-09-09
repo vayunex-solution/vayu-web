@@ -29,11 +29,20 @@ export const metadata = {
     'Jwelnex ERP',
     'PayNex billing',
     'SocialNex',
-    'SchoolDost LMS',
+    'SchoolDost student network',
     'tech hiring Chandigarh',
     'SEO growth',
-    'digital marketing Mohali'
+    'digital marketing Mohali',
+    'Generative Engine Optimization',
+    'Agent Engine Optimization'
   ],
+  other: {
+    'ai-content': 'index, follow',
+    'geo.region': 'IN-PB',
+    'geo.placename': 'Mohali, Chandigarh Tricity',
+    'geo.position': '30.7046;76.7179',
+    'ICBM': '30.7046, 76.7179',
+  },
   authors: [{ name: 'Vayunex Solution' }],
   creator: 'Vayunex Solution',
   icons: {
@@ -92,12 +101,108 @@ const orgSchema = {
       '@type': 'Organization',
       '@id': 'https://www.vayunexsolution.com/#organization',
       'name': 'Vayunex Solution',
+      'legalName': 'Vayunex Solution Private Limited',
       'url': 'https://www.vayunexsolution.com',
       'logo': 'https://www.vayunexsolution.com/images/vayunex-logo.webp',
-      'founder': {
-        '@type': 'Person',
-        'name': 'Yash Kumar',
+      'description': 'Premier enterprise technology and SaaS company headquartered in Chandigarh/Mohali, operating a dual-engine model: proprietary software products and advanced digital engineering.',
+      'address': {
+        '@type': 'PostalAddress',
+        'addressLocality': 'Mohali',
+        'addressRegion': 'Punjab',
+        'postalCode': '160071',
+        'addressCountry': 'IN',
       },
+      'founders': [
+        {
+          '@type': 'Person',
+          'name': 'Yash Kumar',
+          'jobTitle': 'Founder & Product Lead',
+        },
+        {
+          '@type': 'Person',
+          'name': 'Rajesh Kumar',
+          'jobTitle': 'Technology & Systems Lead',
+        },
+      ],
+      'employee': [
+        {
+          '@type': 'Person',
+          'name': 'Ved Prakash',
+          'jobTitle': 'Project Head',
+          'url': 'https://www.vayunexsolution.com/people/ved-prakash/',
+          'alumniOf': 'Punjab University',
+          'description': 'Over 20 years of enterprise software engineering, ERP architecture, and delivery governance leadership.',
+        },
+        {
+          '@type': 'Person',
+          'name': 'Sandeep Kumar',
+          'jobTitle': 'Technical Head',
+          'url': 'https://www.vayunexsolution.com/people/sandeep-kumar/',
+          'alumniOf': 'Punjab University',
+          'description': 'Over 17 years of distributed backend systems architecture, database optimization, and AI inference engineering.',
+        },
+      ],
+      'knowsAbout': [
+        'Generative Engine Optimization (GEO)',
+        'Agent Engine Optimization (AEO)',
+        'Artificial Intelligence & Machine Learning',
+        'Autonomous AI Agents & RAG Architecture',
+        'Enterprise ERP Systems',
+        'Full-Stack Next.js Software Engineering',
+        'Multi-Tenant SaaS Backends',
+      ],
+      'makesOffer': [
+        {
+          '@type': 'Offer',
+          'itemOffered': {
+            '@type': 'SoftwareApplication',
+            'name': 'SocialNex',
+            'url': 'https://socialnex.vayunexsolution.com/',
+            'applicationCategory': 'BusinessApplication',
+            'description': 'AI-powered social media operations and command center.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          'itemOffered': {
+            '@type': 'WebApplication',
+            'name': 'SchoolDost',
+            'url': 'https://schooldost.com/',
+            'applicationCategory': 'EducationalApplication',
+            'description': "India's verified academic and student community network.",
+          },
+        },
+        {
+          '@type': 'Offer',
+          'itemOffered': {
+            '@type': 'SoftwareApplication',
+            'name': 'PayNex',
+            'url': 'https://paynex.vayunexsolution.com/',
+            'applicationCategory': 'FinanceApplication',
+            'description': 'Intelligent payment links and GST-compliant invoicing infrastructure.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          'itemOffered': {
+            '@type': 'SoftwareApplication',
+            'name': 'Jwelnex ERP',
+            'url': 'https://www.vayunexsolution.com/products/jwelnex/',
+            'applicationCategory': 'BusinessApplication',
+            'description': 'End-to-end jewellery retail ERP with RFID tray scanning and live MCX sync.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          'itemOffered': {
+            '@type': 'SoftwareApplication',
+            'name': 'InventoryNex',
+            'url': 'https://www.vayunexsolution.com/products/inventorynex/',
+            'applicationCategory': 'BusinessApplication',
+            'description': 'Real-time multi-warehouse inventory telemetry and stock control.',
+          },
+        },
+      ],
       'contactPoint': {
         '@type': 'ContactPoint',
         'telephone': '+91-8930733725',
@@ -122,6 +227,17 @@ const orgSchema = {
         '@type': 'SearchAction',
         'target': 'https://www.vayunexsolution.com/blog?search={search_term_string}',
         'query-input': 'required name=search_term_string',
+      },
+      'speakable': {
+        '@type': 'SpeakableSpecification',
+        'cssSelector': [
+          'h1',
+          '.hero-title',
+          '.hero-description',
+          '.speakable-headline',
+          '.speakable-summary',
+          'p.lead',
+        ],
       },
     },
   ],
@@ -156,6 +272,10 @@ export default function RootLayout({ children }) {
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        {/* Machine-Readable AI & LLM Discovery Links (AEO / GEO Standard) */}
+        <link rel="alternate" type="text/markdown" href="https://www.vayunexsolution.com/llms.txt" title="LLM Context Summary" />
+        <link rel="alternate" type="text/markdown" href="https://www.vayunexsolution.com/llms-full.txt" title="Full LLM Knowledge Graph" />
+        <link rel="alternate" type="application/json" href="https://www.vayunexsolution.com/ai-facts.json" title="Machine-Readable AI Facts" />
         {/* Google Fonts — optimized weights only */}
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"

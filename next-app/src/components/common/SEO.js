@@ -30,30 +30,129 @@ const SEO = ({
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": `${siteUrl}/#organization`,
     "name": "Vayunex Solution",
+    "legalName": "Vayunex Solution Private Limited",
     "alternateName": "Vayunex",
     "url": siteUrl,
-    "logo": `${siteUrl}/logo.png`,
-    "description": "Leading IT company in Chandigarh providing web development, AI solutions, recruitment, and digital marketing services.",
+    "logo": `${siteUrl}/images/vayunex-logo.webp`,
+    "description": "Premier enterprise technology and SaaS software company in Chandigarh/Mohali, operating a dual-engine model: proprietary software products and advanced digital engineering.",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Mohali",
       "addressRegion": "Punjab",
-      "addressCountry": "India"
+      "postalCode": "160071",
+      "addressCountry": "IN"
     },
+    "founders": [
+      {
+        "@type": "Person",
+        "name": "Yash Kumar",
+        "jobTitle": "Founder & Product Lead"
+      },
+      {
+        "@type": "Person",
+        "name": "Rajesh Kumar",
+        "jobTitle": "Technology & Systems Lead"
+      }
+    ],
+    "employee": [
+      {
+        "@type": "Person",
+        "name": "Ved Prakash",
+        "jobTitle": "Project Head",
+        "url": `${siteUrl}/people/ved-prakash/`,
+        "alumniOf": "Punjab University",
+        "description": "Over 20 years of enterprise software engineering, ERP architecture, and delivery governance leadership."
+      },
+      {
+        "@type": "Person",
+        "name": "Sandeep Kumar",
+        "jobTitle": "Technical Head",
+        "url": `${siteUrl}/people/sandeep-kumar/`,
+        "alumniOf": "Punjab University",
+        "description": "Over 17 years of distributed backend systems architecture, database optimization, and AI inference engineering."
+      }
+    ],
+    "knowsAbout": [
+      "Generative Engine Optimization (GEO)",
+      "Agent Engine Optimization (AEO)",
+      "Artificial Intelligence & Machine Learning",
+      "Autonomous AI Agents & RAG Architecture",
+      "Enterprise ERP Systems",
+      "Full-Stack Next.js Software Engineering",
+      "Multi-Tenant SaaS Backends"
+    ],
+    "makesOffer": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "SoftwareApplication",
+          "name": "SocialNex",
+          "url": "https://socialnex.vayunexsolution.com/",
+          "description": "AI-powered social media command center."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "WebApplication",
+          "name": "SchoolDost",
+          "url": "https://schooldost.com/",
+          "description": "India's verified academic and student community network."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "SoftwareApplication",
+          "name": "PayNex",
+          "url": "https://paynex.vayunexsolution.com/",
+          "description": "Intelligent payment links and GST-compliant invoicing infrastructure."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "SoftwareApplication",
+          "name": "Jwelnex ERP",
+          "url": `${siteUrl}/products/jwelnex/`,
+          "description": "End-to-end jewellery retail ERP with RFID tray scanning and live MCX sync."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "SoftwareApplication",
+          "name": "InventoryNex",
+          "url": `${siteUrl}/products/inventorynex/`,
+          "description": "Real-time multi-warehouse inventory telemetry and stock control."
+        }
+      }
+    ],
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+91-8930733725",
       "contactType": "customer service",
-      "email": "info@vayunexsolution.com",
+      "email": "contact@vayunexsolution.com",
       "availableLanguage": ["English", "Hindi"]
     },
     "sameAs": [
       "https://www.facebook.com/share/1B52ioXjqw/",
-      "https://www.instagram.com/vayunexsolution?igsh=cW1qZ3llODhzcm52",
-      "https://www.linkedin.com/company/vayunex-solution/",
-      "https://twitter.com/vayunexsolution"
-    ]
+      "https://www.instagram.com/vayunexsolution",
+      "https://www.linkedin.com/company/vayunex-solution/"
+    ],
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": [
+        "h1",
+        ".hero-title",
+        ".hero-description",
+        ".speakable-headline",
+        ".speakable-summary",
+        "p.lead"
+      ]
+    }
   };
 
   const finalStructuredData = structuredData || organizationSchema;

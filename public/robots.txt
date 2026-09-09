@@ -6,6 +6,7 @@ Allow: /
 Allow: /ai-facts.json
 Allow: /manifest.json
 Allow: /llms.txt
+Allow: /llms-full.txt
 Allow: /ai-knowledge-layer.txt
 Disallow: /admin/
 Disallow: /dashboard/

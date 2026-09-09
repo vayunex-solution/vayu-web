@@ -14,6 +14,7 @@ const ProductCard = ({ product, index, onOpenModal }) => {
 
   return (
     <article
+      id={`product-card-${product.id}`}
       ref={ref}
       className={`product-card product-card--${product.id} ${isVisible ? 'is-visible' : ''}`}
       style={{
@@ -22,6 +23,8 @@ const ProductCard = ({ product, index, onOpenModal }) => {
         '--delay': `${index * 0.08}s`,
       }}
       aria-labelledby={`product-heading-${product.id}`}
+      itemScope
+      itemType="https://schema.org/SoftwareApplication"
     >
       {/* Subtle ambient card glow */}
       <div className="product-card__glow" aria-hidden="true" />
@@ -65,11 +68,11 @@ const ProductCard = ({ product, index, onOpenModal }) => {
 
         {/* Product Identity & High-Impact Value Proposition */}
         <div className="product-card__identity">
-          <span className="product-card__category">{product.category}</span>
-          <h3 id={`product-heading-${product.id}`} className="product-card__name">
+          <span className="product-card__category" itemProp="applicationCategory">{product.category}</span>
+          <h3 id={`product-heading-${product.id}`} className="product-card__name" itemProp="name">
             {product.name}
           </h3>
-          <p className="product-card__value-prop">
+          <p className="product-card__value-prop speakable-summary" itemProp="description">
             {product.valueProposition}
           </p>
         </div>
@@ -84,6 +87,7 @@ const ProductCard = ({ product, index, onOpenModal }) => {
               width={600}
               height={400}
               loading="lazy"
+              itemProp="image"
             />
           </div>
         </div>
