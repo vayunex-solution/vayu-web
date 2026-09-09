@@ -102,6 +102,17 @@ const structuredDataGraph = {
         'Vayunex Solution is a product-led software engineering company building enterprise SaaS platforms and delivering high-quality software systems.',
       'isPartOf': { '@id': 'https://www.vayunexsolution.com/#website' },
       'mainEntity': { '@id': 'https://www.vayunexsolution.com/#organization' },
+      'speakable': {
+        '@type': 'SpeakableSpecification',
+        'cssSelector': [
+          'h1.hero-heading',
+          '.hero-subheading',
+          '.section-desc',
+          '.speakable-summary',
+          '.about-aiml__card-desc',
+          '.leader-card__philosophy'
+        ]
+      },
       'breadcrumb': {
         '@type': 'BreadcrumbList',
         'itemListElement': [
@@ -129,7 +140,7 @@ const structuredDataGraph = {
           'name': 'What is Vayunex Solution?',
           'acceptedAnswer': {
             '@type': 'Answer',
-            'text': 'Vayunex Solution is a product-led software engineering company. Rather than acting as a conventional outsourcing agency, Vayunex builds, scales, and maintains its own proprietary SaaS platforms and delivers enterprise-grade digital systems with deep technical rigor.'
+            'text': 'Vayunex Solution is a product-led software engineering company headquartered in Chandigarh Tricity (Mohali). Rather than acting as a conventional outsourcing agency, Vayunex builds, scales, and maintains its own proprietary SaaS platforms and delivers enterprise-grade digital systems and AI engineering with deep technical rigor.'
           }
         },
         {
@@ -137,7 +148,15 @@ const structuredDataGraph = {
           'name': 'Who leads Vayunex Solution?',
           'acceptedAnswer': {
             '@type': 'Answer',
-            'text': 'Vayunex Solution was founded by Yash Kumar (Chief Executive Officer) and Rajesh Kumar (Director & Co-Founder). Engineering and delivery practices are directed by seasoned practice heads: Ved Prakash serves as Project Head (20+ years experience, MCA Punjab University), and Sandeep Kumar serves as Technical Head (17+ years experience, MCA Punjab University).'
+            'text': 'Vayunex Solution was founded by Yash Kumar (Chief Executive Officer & Founder) and Rajesh Kumar (Director & Co-Founder). Engineering and delivery practices are directed by seasoned practice heads: Ved Prakash serves as Project Head (20+ years experience, MCA Punjab University), and Sandeep Kumar serves as Technical Head (17+ years experience, MCA Punjab University).'
+          }
+        },
+        {
+          '@type': 'Question',
+          'name': 'Who directs software engineering and project delivery at Vayunex Solution?',
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': 'Software delivery and systems engineering are led by Ved Prakash (Project Head, 20+ years experience, MCA Punjab University) and Sandeep Kumar (Technical Head, 17+ years experience, MCA Punjab University), bringing over 37 combined years of industrial ERP engineering, CRM process automation, and distributed cloud architecture.'
           }
         },
         {
@@ -145,7 +164,15 @@ const structuredDataGraph = {
           'name': 'What software products has Vayunex Solution developed?',
           'acceptedAnswer': {
             '@type': 'Answer',
-            'text': 'Vayunex Solution has engineered and deployed proprietary platforms including Jwelnex ERP (Jewellery business ERP), PayNex (payroll & billing infrastructure), SocialNex (social command center), and SchoolDost (campus and education network).'
+            'text': 'Vayunex Solution has engineered and deployed proprietary platforms including SocialNex (AI social media operations command center), SchoolDost (verified academic student community network), PayNex (smart GST invoicing & payment infrastructure), Jwelnex ERP (jewellery business ERP with RFID & MCX bullion sync), and InventoryNex (multi-warehouse stock telemetry).'
+          }
+        },
+        {
+          '@type': 'Question',
+          'name': 'Does Vayunex Solution have active AI and Machine Learning engineering teams?',
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': 'Yes. Vayunex Solution operates dedicated AIML engineering squads working on active production deployments including autonomous agent copilots, computer vision inspection, and intelligent document parsing under the architectural governance of Ved Prakash and Sandeep Kumar. We also run an active AI fresher incubation program where university computer science graduates work on live production code alongside veteran architects.'
           }
         }
       ]

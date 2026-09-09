@@ -70,7 +70,7 @@ export default function Page({ params }) {
   /* ── Structured Data (JSON-LD) ── */
   const schemas = person
     ? [
-        // ProfilePage
+        // ProfilePage with Siri & Voice Engine Speakable Specification
         {
           '@context': 'https://schema.org',
           '@type': 'ProfilePage',
@@ -80,6 +80,17 @@ export default function Page({ params }) {
           'description': person.seo.description,
           'isPartOf': { '@id': `${siteUrl}/#website` },
           'mainEntity': { '@id': person.schema.id },
+          'speakable': {
+            '@type': 'SpeakableSpecification',
+            'cssSelector': [
+              'h1.person-hero__name',
+              '.person-hero__role',
+              '.person-hero__summary',
+              '.speakable-bio',
+              '.person-facts-dl',
+              '.person-faq__answer'
+            ]
+          },
           'breadcrumb': {
             '@type': 'BreadcrumbList',
             'itemListElement': [
@@ -104,30 +115,50 @@ export default function Page({ params }) {
             ],
           },
         },
-        // Person
+        // Person with full Academic & Professional Credentials
         {
           '@context': 'https://schema.org',
           '@type': 'Person',
           '@id': person.schema.id,
           'name': person.name,
+          'alternateName': person.aliasSlugs && person.aliasSlugs.length > 0 ? person.aliasSlugs[0].replace('-', ' ') : undefined,
           'url': profileUrl,
           'image': `${siteUrl}${person.image}`,
           'jobTitle': person.role,
+          'description': person.shortBio,
           'worksFor': {
+            '@type': 'Organization',
             '@id': `${siteUrl}/#organization`,
+            'name': 'Vayunex Solution',
+            'url': siteUrl
           },
           'alumniOf': {
             '@type': 'EducationalOrganization',
-            'name': person.schema.alumniOf,
+            'name': person.schema.alumniOf || person.university,
+          },
+          'hasCredential': {
+            '@type': 'EducationalOccupationalCredential',
+            'credentialCategory': 'degree',
+            'name': `${person.education} — ${person.university}`,
+          },
+          'address': {
+            '@type': 'PostalAddress',
+            'addressLocality': person.origin,
+            'addressCountry': 'IN'
           },
           'knowsAbout': person.schema.knowsAbout,
+          'sameAs': [
+            profileUrl,
+            `${siteUrl}/people/`
+          ]
         },
-        // FAQPage
+        // FAQPage for Siri / ChatGPT Direct Voice Answers
         ...(person.faq && person.faq.length > 0
           ? [
               {
                 '@context': 'https://schema.org',
                 '@type': 'FAQPage',
+                '@id': `${profileUrl}#faq`,
                 'mainEntity': person.faq.map((f) => ({
                   '@type': 'Question',
                   'name': f.question,

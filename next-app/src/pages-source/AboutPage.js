@@ -30,7 +30,7 @@ const HeroSection = () => {
           About Vayunex
         </span>
         <h1 className="hero-heading">Building Software That Businesses <span className="gradient-text">Depend On</span></h1>
-        <p className="hero-subheading">Vayunex develops software products, business platforms and enterprise systems designed for long-term growth.</p>
+        <p className="hero-subheading speakable-summary">Vayunex develops software products, business platforms and enterprise systems designed for long-term growth.</p>
       </div>
     </section>
   );
@@ -45,7 +45,7 @@ const WhoWeAreSection = () => {
           <div className="who-we-are__text">
             <span className="section-eyebrow">Who We Are</span>
             <h2 className="section-heading">Product Builders & Software Engineers</h2>
-            <p className="section-desc">We are not a traditional IT agency. We are a team of product builders, systems architects, and problem solvers. We actively build, scale, and maintain our own ecosystem of SaaS platforms, and we apply that exact same product-led engineering philosophy to the systems we build for our enterprise partners.</p>
+            <p className="section-desc speakable-summary">We are not a traditional IT agency. We are a team of product builders, systems architects, and problem solvers. We actively build, scale, and maintain our own ecosystem of SaaS platforms, and we apply that exact same product-led engineering philosophy to the systems we build for our enterprise partners.</p>
           </div>
           <div className="who-we-are__visual">
             <div className="wwa-card">

@@ -199,7 +199,8 @@ const PersonDetailPage = ({ slug }) => {
   }
 
   return (
-    <main className="person-page">
+    <main className="person-page" itemScope itemType="https://schema.org/Person">
+      <meta itemProp="url" content={`https://www.vayunexsolution.com/people/${person.slug}/`} />
 
       {/* ── HERO ─────────────────────────────────────────────── */}
       <section className="person-hero" ref={heroRef}>
@@ -218,14 +219,14 @@ const PersonDetailPage = ({ slug }) => {
           <div className="person-hero__inner" style={{ marginTop: '2rem' }}>
             {/* Left: Info */}
             <div className="person-hero__info">
-              <span className="person-hero__role">{person.role} — {person.company}</span>
-              <h1 className="person-hero__name">{person.name}</h1>
+              <span className="person-hero__role" itemProp="jobTitle">{person.role} — {person.company}</span>
+              <h1 className="person-hero__name" itemProp="name">{person.name}</h1>
               {person.subRole && (
                 <p className="person-hero__subrole" style={{ fontSize: '0.95rem', color: 'var(--accent-cyan)', fontWeight: 600, marginBottom: '1.25rem', letterSpacing: '0.02em', lineHeight: 1.4 }}>
                   {person.subRole}
                 </p>
               )}
-              <p className="person-hero__summary">{person.shortBio}</p>
+              <p className="person-hero__summary speakable-bio" itemProp="description">{person.shortBio}</p>
 
               <div className="person-hero__facts-strip">
                 <div className="person-hero__fact">
@@ -238,7 +239,9 @@ const PersonDetailPage = ({ slug }) => {
                 </div>
                 <div className="person-hero__fact">
                   <span className="person-hero__fact-label">Origin</span>
-                  <span className="person-hero__fact-value">{person.origin}</span>
+                  <span className="person-hero__fact-value" itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
+                    <span itemProp="addressLocality">{person.origin}</span>
+                  </span>
                 </div>
               </div>
             </div>
@@ -250,6 +253,7 @@ const PersonDetailPage = ({ slug }) => {
                   src={person.image}
                   alt={person.imageAlt}
                   className="person-hero__portrait"
+                  itemProp="image"
                   width={420}
                   height={525}
                   loading="eager"
