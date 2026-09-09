@@ -107,10 +107,10 @@ const LeadershipSection = () => {
     },
     {
       name: 'Rajesh Kumar',
-      title: 'Technology & Systems Lead',
+      title: 'AI/ML Engineer & Researcher',
       avatar: ronitAvatar,
-      focus: ['Core Infrastructure', 'Systems Architecture', 'Engineering Standards'],
-      philosophy: "Reliability is the ultimate feature. We engineer platforms to be fault-tolerant, secure, and maintainable from day one to year five.",
+      focus: ['Applied Machine Learning', 'Neural Architectures', 'Autonomous Agent Research'],
+      philosophy: "Building intelligent systems that move beyond prediction to autonomous reasoning and production-grade reliability.",
     },
   ];
 
@@ -121,9 +121,9 @@ const LeadershipSection = () => {
         {/* Section Header: Executive Leadership */}
         <div className="leadership__header">
           <span className="section-eyebrow">COMPANY LEADERSHIP</span>
-          <h2 className="section-heading">Founders & Leadership</h2>
+          <h2 className="section-heading">Leadership & Engineering</h2>
           <p className="section-desc" style={{ maxWidth: '620px', margin: '0.75rem auto 0' }}>
-            Vayunex is founded and directed by product-led software builders who guide company vision and core systems architecture.
+            Vayunex is driven by product-led software builders, AI researchers, and engineering heads dedicated to scalable digital architecture.
           </p>
         </div>
 

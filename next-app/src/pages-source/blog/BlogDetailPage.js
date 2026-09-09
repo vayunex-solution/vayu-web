@@ -254,7 +254,11 @@ const BlogDetailPage = ({ slug: propSlug, initialBlog }) => {
                                         aria-label={`View profile of ${authorPerson.name}`}
                                     >
                                         <div className="blog-author-avatar">
-                                            {authorPerson.name.charAt(0).toUpperCase()}
+                                            {authorPerson.image ? (
+                                                <img src={authorPerson.image} alt={authorPerson.name} className="blog-author-avatar-img" />
+                                            ) : (
+                                                authorPerson.name.charAt(0).toUpperCase()
+                                            )}
                                         </div>
                                         <div className="blog-author-info">
                                             <span className="blog-author-name">{authorPerson.name}</span>
@@ -305,7 +309,7 @@ const BlogDetailPage = ({ slug: propSlug, initialBlog }) => {
                         {/* Main Column */}
                         <main className="blog-main-col">
 
-                            {blog.featuredImage && (
+                            {blog.featuredImage && !blog.featuredImage.includes('/images/people/') && (
                                 <div className="blog-featured-image-wrap">
                                     <img src={blog.featuredImage} alt={blog.title} className="blog-featured-image" />
                                 </div>
@@ -395,7 +399,11 @@ const BlogDetailPage = ({ slug: propSlug, initialBlog }) => {
                                     <h4 className="sidebar-card-title">About the Author</h4>
                                     <div className="sidebar-author">
                                         <div className="sidebar-author-avatar">
-                                            {authorName.charAt(0).toUpperCase()}
+                                            {authorPerson && authorPerson.image ? (
+                                                <img src={authorPerson.image} alt={authorName} className="blog-author-avatar-img" />
+                                            ) : (
+                                                authorName.charAt(0).toUpperCase()
+                                            )}
                                         </div>
                                         <div>
                                             <p className="sidebar-author-name">{authorName}</p>

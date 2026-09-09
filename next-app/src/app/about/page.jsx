@@ -53,15 +53,15 @@ const structuredDataGraph = {
           'name': 'Yash Kumar',
           'jobTitle': 'Chief Executive Officer & Founder',
           'worksFor': { '@id': 'https://www.vayunexsolution.com/#organization' }
-        },
-        {
-          '@type': 'Person',
-          'name': 'Rajesh Kumar',
-          'jobTitle': 'Director & Co-Founder',
-          'worksFor': { '@id': 'https://www.vayunexsolution.com/#organization' }
         }
       ],
       'employee': [
+        {
+          '@type': 'Person',
+          'name': 'Rajesh Kumar',
+          'jobTitle': 'AI/ML Engineer & Researcher',
+          'worksFor': { '@id': 'https://www.vayunexsolution.com/#organization' }
+        },
         {
           '@type': 'Person',
           '@id': 'https://www.vayunexsolution.com/people/ved-prakash/#person',

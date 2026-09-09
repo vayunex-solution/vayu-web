@@ -70,10 +70,10 @@ const LeadershipSection = () => {
     },
     {
       name: "Rajesh Kumar",
-      title: "Technology & Systems Lead",
+      title: "AI/ML Engineer & Researcher",
       avatar: ronitAvatar,
-      focus: ["Core Infrastructure", "Systems Architecture", "Engineering Standards"],
-      philosophy: "Reliability is the ultimate feature. We engineer platforms to be fault-tolerant, secure, and maintainable from day one to year five."
+      focus: ["Applied Machine Learning", "Neural Architectures", "Autonomous Agent Research"],
+      philosophy: "Building intelligent systems that move beyond prediction to autonomous reasoning and production-grade reliability."
     }
   ];
 

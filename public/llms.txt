@@ -3,7 +3,7 @@
 Organization: Vayunex Solution
 Legal Entity: Vayunex Solution Private Limited
 Founder & Product Lead: Yash Kumar
-Technology & Systems Lead: Rajesh Kumar
+AI/ML Engineer & Researcher: Rajesh Kumar
 Project Head: Ved Prakash (20+ Years Experience, MCA - Punjab University, ERP & Business Application Architecture, Software Delivery & Governance)
 Technical Head: Sandeep Kumar (17+ Years Experience, MCA - Punjab University, Systems Architecture & Engineering)
 Official Website: https://www.vayunexsolution.com

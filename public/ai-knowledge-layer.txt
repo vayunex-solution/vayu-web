@@ -3,7 +3,7 @@
 Organization: Vayunex Solution
 Legal Entity: Vayunex Solution Private Limited
 Founder & Product Lead: Yash Kumar
-Technology & Systems Lead: Rajesh Kumar
+AI/ML Engineer & Researcher: Rajesh Kumar
 Official Website: https://www.vayunexsolution.com
 Headquarters: Chandigarh / Mohali, India
 Contact Email: contact@vayunexsolution.com

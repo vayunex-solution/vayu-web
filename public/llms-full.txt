@@ -24,7 +24,7 @@ Operating Model: Dual-Engine Technology Firm
 Founder & Product Lead: Yash Kumar
   - Responsibility: Product vision, SaaS roadmap, and strategic client partnerships.
 
-Technology & Systems Lead: Rajesh Kumar
+AI/ML Engineer & Researcher: Rajesh Kumar
   - Responsibility: Systems infrastructure, platform operations, and enterprise security.
 
 Project Head: Ved Prakash

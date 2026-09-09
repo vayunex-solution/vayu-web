@@ -130,8 +130,8 @@ const BlogDetailPage = () => {
                 />
             )}
 
-            {blog.featuredImage && (
-                <img src={blog.featuredImage} alt={blog.title} style={{ width: '100%', borderRadius: '12px', marginBottom: '2rem' }} />
+            {blog.featuredImage && !blog.featuredImage.includes('/images/people/') && (
+                <img src={blog.featuredImage} alt={blog.title} style={{ width: '100%', maxWidth: '680px', maxHeight: '320px', objectFit: 'cover', objectPosition: 'top center', borderRadius: '12px', margin: '0 auto 2rem', display: 'block' }} />
             )}
 
             <div 
