@@ -33,6 +33,7 @@ const productRoutes = [
 
 const peopleRoutes = [
     '/people',
+    '/people/ved-prakash',
     '/people/ved-parkash',
     '/people/sandeep-kumar'
 ];

@@ -195,6 +195,11 @@ const PersonDetailPage = ({ slug }) => {
             <div className="person-hero__info">
               <span className="person-hero__role">{person.role} — {person.company}</span>
               <h1 className="person-hero__name">{person.name}</h1>
+              {person.subRole && (
+                <p className="person-hero__subrole" style={{ fontSize: '0.95rem', color: 'var(--accent-cyan)', fontWeight: 600, marginBottom: '1.25rem', letterSpacing: '0.02em', lineHeight: 1.4 }}>
+                  {person.subRole}
+                </p>
+              )}
               <p className="person-hero__summary">{person.shortBio}</p>
 
               <div className="person-hero__facts-strip">
@@ -371,6 +376,58 @@ const PersonDetailPage = ({ slug }) => {
           </div>
         </div>
       </section>
+
+      {/* ── FUNCTIONAL EXPERIENCE MATRIX ──────────────────────── */}
+      {person.functionalMatrix && person.functionalMatrix.length > 0 && (
+        <section className="person-matrix-section">
+          <div className="container">
+            <div className="person-matrix__header">
+              <span className="section-eyebrow">FUNCTIONAL CAPABILITIES</span>
+              <h2 className="section-heading">End-to-End Enterprise Experience</h2>
+              <p className="person-matrix__desc">
+                Comprehensive practical involvement across core industrial and commercial ERP modules.
+              </p>
+            </div>
+            <div className="person-matrix__grid">
+              {person.functionalMatrix.map((item, i) => (
+                <div key={i} className="person-matrix__card">
+                  <div className="person-matrix__area-badge">{item.area}</div>
+                  <p className="person-matrix__details">{item.details}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── VERIFIED PROJECT PORTFOLIO ────────────────────────── */}
+      {person.industryPortfolio && person.industryPortfolio.length > 0 && (
+        <section className="person-portfolio-section">
+          <div className="container">
+            <div className="person-portfolio__header">
+              <span className="section-eyebrow">INDUSTRY PORTFOLIO</span>
+              <h2 className="section-heading">Major ERP & Enterprise Engagements</h2>
+              <p className="person-portfolio__desc">
+                Verified delivery history across manufacturing, automobile dealership, telecom, and commercial automation.
+              </p>
+            </div>
+            <div className="person-portfolio__grid">
+              {person.industryPortfolio.map((proj, i) => (
+                <div key={i} className="person-portfolio__card">
+                  <div className="person-portfolio__top">
+                    <div>
+                      <h3 className="person-portfolio__client">{proj.client}</h3>
+                      <span className="person-portfolio__location">{proj.location}</span>
+                    </div>
+                    <span className="person-portfolio__badge">{proj.industry}</span>
+                  </div>
+                  <p className="person-portfolio__desc-text">{proj.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── RELATED ARTICLES (dynamic) ──────────────────────── */}
       <PersonArticles personName={person.name} />

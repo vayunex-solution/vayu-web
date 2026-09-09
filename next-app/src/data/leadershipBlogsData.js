@@ -1,6 +1,6 @@
 /**
  * leadershipBlogsData.js
- * Ground-truth fallback articles for Ved Parkash (Project Head) & Sandeep Kumar (Technical Head).
+ * Ground-truth fallback articles for Ved Prakash (Project Head) & Sandeep Kumar (Technical Head).
  * Provides full content, SEO metadata, FAQs, and author resolution if the remote API is unavailable during build or offline.
  */
 
@@ -9,25 +9,25 @@ export const fallbackLeadershipBlogs = [
     id: 101,
     title: 'Enterprise Software Delivery & Project Governance: Mitigating Architectural and Timeline Risks in Full-Stack Deployments',
     slug: 'enterprise-software-delivery-and-project-governance',
-    author: 'Ved Parkash',
+    author: 'Ved Prakash',
     category: { name: 'Enterprise Engineering', slug: 'enterprise-engineering' },
     tags: ['Software Delivery', 'Project Governance', 'Enterprise Architecture', 'Full-Stack Development', 'Engineering Leadership'],
-    featuredImage: '/images/people/ved-parkash.jpg',
+    featuredImage: '/images/people/ved-prakash.jpg',
     status: 'published',
     createdAt: '2026-03-01T09:00:00.000Z',
     updatedAt: '2026-03-01T09:00:00.000Z',
     publishDate: '2026-03-01T09:00:00.000Z',
-    seoTitle: 'Enterprise Software Delivery & Project Governance | Ved Parkash',
-    seoDescription: 'Ved Parkash, Project Head at Vayunex Solution, shares foundational principles for mitigating architectural, governance, and timeline risks in enterprise software delivery.',
-    aiSummary: 'Key takeaways from Ved Parkash on enterprise software governance:\n• Early architectural alignment eliminates compounding technical debt.\n• Structured delivery briefs bridge the gap between executive objectives and code.\n• Disciplined milestone reviews prevent timeline slippage in complex full-stack ecosystems.\n• Sustainable engineering practices protect long-term platform maintainability.',
+    seoTitle: 'Enterprise Software Delivery & Project Governance | Ved Prakash',
+    seoDescription: 'Ved Prakash, Project Head at Vayunex Solution, shares foundational principles for mitigating architectural, governance, and timeline risks in enterprise software delivery.',
+    aiSummary: 'Key takeaways from Ved Prakash on enterprise software governance:\n• Early architectural alignment eliminates compounding technical debt.\n• Structured delivery briefs bridge the gap between executive objectives and code.\n• Disciplined milestone reviews prevent timeline slippage in complex full-stack ecosystems.\n• Sustainable engineering practices protect long-term platform maintainability.',
     faqJson: JSON.stringify([
       {
         question: 'Why do large-scale enterprise software rollouts frequently suffer timeline delays?',
         answer: 'Delays in enterprise software rollouts typically stem from architectural ambiguity, uncontrolled scope creep, and poor translation of business goals into technical milestones. Rigorous governance and early requirement decoupling eliminate these risks.'
       },
       {
-        question: 'How does Ved Parkash approach project delivery at Vayunex Solution?',
-        answer: 'Ved Parkash combines over two decades of full-stack engineering and project leadership to enforce disciplined sprint cadences, transparent milestone tracking, proactive architectural risk audits, and clear communication between client stakeholders and engineering squads.'
+        question: 'How does Ved Prakash approach project delivery at Vayunex Solution?',
+        answer: 'Ved Prakash combines over two decades of full-stack engineering and project leadership to enforce disciplined sprint cadences, transparent milestone tracking, proactive architectural risk audits, and clear communication between client stakeholders and engineering squads.'
       },
       {
         question: 'What is the difference between project governance and project bureaucracy?',
@@ -35,7 +35,7 @@ export const fallbackLeadershipBlogs = [
       },
       {
         question: 'Where can enterprise teams learn more about Vayunex Solution delivery methodologies?',
-        answer: 'You can explore Vayunex Solution enterprise web and software engineering services at /services/web-development or review executive profiles at /people/ved-parkash.'
+        answer: 'You can explore Vayunex Solution enterprise web and software engineering services at /services/web-development or review executive profiles at /people/ved-prakash.'
       }
     ]),
     content: `
@@ -61,7 +61,7 @@ export const fallbackLeadershipBlogs = [
       <p>Enterprise clients frequently request accelerated release schedules to capture immediate market opportunities. The role of the Project Head is to ensure that speed does not compromise reliability. By establishing robust automated regression testing and clear definition-of-done criteria, platforms like our proprietary SaaS products (<a href="/products/jwelnex">Jwelnex ERP</a> and <a href="/products/paynex">PayNex</a>) maintain production-grade reliability across rapid update cycles.</p>
 
       <h2>5. Summary & Engineering Leadership Perspective</h2>
-      <p>Predictable enterprise delivery requires uniting high-caliber engineering talent with methodical leadership. To learn more about our engineering standards or discuss custom platform architecture, visit our <a href="/people/ved-parkash/">leadership profile</a> or explore our <a href="/services/web-development">enterprise engineering services</a>.</p>
+      <p>Predictable enterprise delivery requires uniting high-caliber engineering talent with methodical leadership. To learn more about our engineering standards or discuss custom platform architecture, visit our <a href="/people/ved-prakash/">leadership profile</a> or explore our <a href="/services/web-development">enterprise engineering services</a>.</p>
     `
   },
   {

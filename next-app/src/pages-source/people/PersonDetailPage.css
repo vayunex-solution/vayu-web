@@ -797,6 +797,143 @@
   }
 }
 
+/* ── FUNCTIONAL EXPERIENCE MATRIX ────────────────────────────── */
+.person-matrix-section {
+  padding: 6rem 0;
+  border-top: 1px solid var(--border-default);
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.person-matrix__header {
+  margin-bottom: 3.5rem;
+}
+
+.person-matrix__desc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin-top: 0.75rem;
+  line-height: 1.6;
+}
+
+.person-matrix__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.person-matrix__card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.person-matrix__card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-cyan);
+}
+
+.person-matrix__area-badge {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.65rem;
+}
+
+.person-matrix__details {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ── INDUSTRY PORTFOLIO ────────────────────────────────────────── */
+.person-portfolio-section {
+  padding: 6rem 0;
+  border-top: 1px solid var(--border-default);
+}
+
+.person-portfolio__header {
+  margin-bottom: 3.5rem;
+}
+
+.person-portfolio__desc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 650px;
+  margin-top: 0.75rem;
+  line-height: 1.6;
+}
+
+.person-portfolio__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 2rem;
+}
+
+.person-portfolio__card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-radius: 14px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justifyContent: space-between;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.person-portfolio__card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 242, 254, 0.4);
+  box-shadow: 0 10px 30px -10px rgba(0, 242, 254, 0.15);
+}
+
+.person-portfolio__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.person-portfolio__client {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 0.25rem;
+}
+
+.person-portfolio__location {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: block;
+}
+
+.person-portfolio__badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(0, 242, 254, 0.08);
+  border: 1px solid rgba(0, 242, 254, 0.25);
+  color: var(--accent-cyan);
+  white-space: nowrap;
+}
+
+.person-portfolio__desc-text {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0.75rem 0 0;
+}
+
 /* ── REDUCED MOTION ───────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .person-expertise__card,

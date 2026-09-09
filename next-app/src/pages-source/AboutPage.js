@@ -72,15 +72,15 @@ const WhoWeAreSection = () => {
 const LeadershipSection = () => {
   const engineeringLeaders = [
     {
-      name: 'Ved Parkash',
+      name: 'Ved Prakash',
       title: 'Project Head',
-      slug: 'ved-parkash',
-      image: '/images/people/ved-parkash.jpg',
-      imageAlt: 'Ved Parkash — Project Head at Vayunex Solution',
+      slug: 'ved-prakash',
+      image: '/images/people/ved-prakash.jpg',
+      imageAlt: 'Ved Prakash — Project Head at Vayunex Solution',
       experience: '20+ Years Experience',
       education: 'MCA — Punjab University',
-      bio: 'Over two decades of experience directing software engineering delivery, architecting enterprise systems, and leading high-performance technology teams across complex initiatives.',
-      focus: ['Project Leadership', 'Software Delivery', 'Engineering Governance', 'Full-Stack Development'],
+      bio: 'Over two decades of enterprise engineering experience directing ERP implementations, CRM process automation, and full-stack software delivery across manufacturing, automobile, and telecom sectors.',
+      focus: ['ERP Implementation', 'CRM Automation', 'Project Leadership', 'Full-Stack Delivery'],
       hasProfile: true,
     },
     {

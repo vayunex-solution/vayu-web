@@ -49,18 +49,20 @@ const structuredDataGraph = {
       'employee': [
         {
           '@type': 'Person',
-          '@id': 'https://www.vayunexsolution.com/people/ved-parkash/#person',
-          'name': 'Ved Parkash',
+          '@id': 'https://www.vayunexsolution.com/people/ved-prakash/#person',
+          'name': 'Ved Prakash',
           'jobTitle': 'Project Head',
-          'url': 'https://www.vayunexsolution.com/people/ved-parkash/',
+          'url': 'https://www.vayunexsolution.com/people/ved-prakash/',
           'alumniOf': {
             '@type': 'EducationalOrganization',
             'name': 'Punjab University'
           },
           'knowsAbout': [
+            'ERP Systems Implementation',
+            'CRM Process Automation',
             'Full-Stack Software Development',
             'Project Leadership',
-            'Software Delivery Management',
+            'Material Requirement Planning (MRP)',
             'Engineering Governance'
           ]
         },
@@ -135,7 +137,7 @@ const structuredDataGraph = {
           'name': 'Who leads Vayunex Solution?',
           'acceptedAnswer': {
             '@type': 'Answer',
-            'text': 'Vayunex Solution was founded by Yash Kumar (Chief Executive Officer) and Rajesh Kumar (Director & Co-Founder). Engineering and delivery practices are directed by seasoned practice heads: Ved Parkash serves as Project Head (20+ years experience, MCA Punjab University), and Sandeep Kumar serves as Technical Head (17+ years experience, MCA Punjab University).'
+            'text': 'Vayunex Solution was founded by Yash Kumar (Chief Executive Officer) and Rajesh Kumar (Director & Co-Founder). Engineering and delivery practices are directed by seasoned practice heads: Ved Prakash serves as Project Head (20+ years experience, MCA Punjab University), and Sandeep Kumar serves as Technical Head (17+ years experience, MCA Punjab University).'
           }
         },
         {

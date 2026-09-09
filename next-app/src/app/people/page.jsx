@@ -56,10 +56,10 @@ const peoplePageSchemas = [
           'position': 1,
           'item': {
             '@type': 'Person',
-            '@id': `${siteUrl}/people/ved-parkash/#person`,
-            'name': 'Ved Parkash',
+            '@id': `${siteUrl}/people/ved-prakash/#person`,
+            'name': 'Ved Prakash',
             'jobTitle': 'Project Head',
-            'url': `${siteUrl}/people/ved-parkash/`,
+            'url': `${siteUrl}/people/ved-prakash/`,
             'worksFor': { '@id': `${siteUrl}/#organization` },
           },
         },
@@ -88,7 +88,7 @@ const peoplePageSchemas = [
         'name': 'Who leads software engineering and project delivery at Vayunex Solution?',
         'acceptedAnswer': {
           '@type': 'Answer',
-          'text': 'Software delivery and systems engineering at Vayunex Solution are headed by Ved Parkash (Project Head, 20+ years experience, MCA Punjab University) and Sandeep Kumar (Technical Head, 17+ years experience, MCA Punjab University).',
+          'text': 'Software delivery and systems engineering at Vayunex Solution are headed by Ved Prakash (Project Head, 20+ years experience, MCA Punjab University) and Sandeep Kumar (Technical Head, 17+ years experience, MCA Punjab University).',
         },
       },
       {
@@ -96,7 +96,7 @@ const peoplePageSchemas = [
         'name': 'What are the qualifications of Vayunex Solution engineering leaders?',
         'acceptedAnswer': {
           '@type': 'Answer',
-          'text': 'Both Ved Parkash and Sandeep Kumar hold Master of Computer Applications (MCA) degrees from Punjab University and bring between 17 and 20+ years of proven hands-on full-stack development, systems architecture, and delivery governance experience.',
+          'text': 'Both Ved Prakash and Sandeep Kumar hold Master of Computer Applications (MCA) degrees from Punjab University and bring between 17 and 20+ years of proven hands-on full-stack development, systems architecture, and delivery governance experience.',
         },
       },
     ],

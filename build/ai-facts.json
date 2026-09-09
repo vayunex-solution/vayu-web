@@ -5,13 +5,14 @@
   "tech_systems_lead": "Rajesh Kumar",
   "leadership": [
     {
-      "name": "Ved Parkash",
+      "name": "Ved Prakash",
       "role": "Project Head",
+      "sub_role": "Software Engineer | Project Coordinator | ERP & Business Application Professional",
       "experience": "20+ Years",
       "education": "MCA - Punjab University",
       "origin": "Yamuna Nagar, Haryana",
-      "expertise": ["Full-Stack Software Development", "Project Leadership", "Software Delivery Management", "Engineering Governance"],
-      "profile_url": "https://www.vayunexsolution.com/people/ved-parkash"
+      "expertise": ["ERP Implementation", "CRM Process Automation", "Full-Stack Software Development", "Project Coordination & Governance", "Data Conversion & Migration"],
+      "profile_url": "https://www.vayunexsolution.com/people/ved-prakash"
     },
     {
       "name": "Sandeep Kumar",

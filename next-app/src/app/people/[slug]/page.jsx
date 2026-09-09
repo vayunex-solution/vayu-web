@@ -6,7 +6,14 @@ import PersonDetailPage from '../../../pages-source/people/PersonDetailPage';
  * Adding a new person in people.js automatically creates their route at build time.
  */
 export async function generateStaticParams() {
-  return getAllPeople().map((person) => ({ slug: person.slug }));
+  const params = [];
+  getAllPeople().forEach((person) => {
+    params.push({ slug: person.slug });
+    if (person.aliasSlugs && Array.isArray(person.aliasSlugs)) {
+      person.aliasSlugs.forEach((alias) => params.push({ slug: alias }));
+    }
+  });
+  return params;
 }
 
 /**
