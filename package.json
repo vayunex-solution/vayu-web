@@ -25,7 +25,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "npm run build --prefix next-app",
+    "build:cra": "react-scripts build",
     "build:next": "npm run build --prefix next-app",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
