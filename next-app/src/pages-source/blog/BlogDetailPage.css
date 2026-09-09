@@ -322,8 +322,9 @@
   width: 100%;
   display: block;
   object-fit: cover;
-  object-position: top center;
-  max-height: 320px;
+  object-position: center;
+  aspect-ratio: 16 / 9;
+  max-height: 380px;
 }
 
 @media (max-width: 768px) {
@@ -331,7 +332,9 @@
     margin-bottom: 1.5rem;
   }
   .blog-featured-image {
-    max-height: 200px;
+    aspect-ratio: 16 / 9;
+    max-height: 240px;
+    object-position: center;
   }
 }
 

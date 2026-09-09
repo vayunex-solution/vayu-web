@@ -857,8 +857,12 @@
   }
 
   .eng-leader-row__image-panel {
-    height: 260px;
-    min-height: 260px;
+    height: 310px;
+    min-height: 310px;
+  }
+
+  .eng-leader-row__image {
+    object-position: center 15%;
   }
 
   .eng-leader-row__content-panel {
@@ -868,6 +872,21 @@
   .eng-leader-row--reverse .eng-leader-row__badge {
     right: auto;
     left: 1.25rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .eng-leader-row__image-panel {
+    height: 280px;
+    min-height: 280px;
+  }
+
+  .eng-leader-row__image {
+    object-position: center 12%;
+  }
+
+  .eng-leader-row__content-panel {
+    padding: 1.85rem 1.35rem;
   }
 }
 

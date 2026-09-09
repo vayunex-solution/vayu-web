@@ -140,7 +140,7 @@
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 15%;
   display: block;
 }
 
@@ -740,16 +740,30 @@
 @media (max-width: 900px) {
   .person-hero__inner {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2.5rem;
+  }
+  .person-hero__portrait-wrap {
+    width: 100%;
+    max-width: 270px;
+    margin: 0 auto;
+    justify-self: center;
+    align-self: center;
   }
   .person-hero__portrait-frame {
     border-radius: var(--radius-xl);
     border: 1px solid var(--border-default);
-    max-width: 300px;
+    max-width: 270px;
     margin: 0 auto;
+    overflow: hidden;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28);
   }
   .person-hero__portrait {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 4 / 5;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center 15%;
+    display: block;
   }
   .person-hero__info {
     padding-bottom: 0;
@@ -779,6 +793,16 @@
 }
 
 @media (max-width: 480px) {
+  .person-hero__portrait-wrap {
+    max-width: 240px;
+  }
+  .person-hero__portrait-frame {
+    max-width: 240px;
+  }
+  .person-hero__portrait {
+    aspect-ratio: 4 / 5;
+    object-position: center 12%;
+  }
   .person-facts-dl {
     grid-template-columns: 1fr 1fr;
     gap: 1.25rem;
