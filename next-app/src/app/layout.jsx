@@ -66,10 +66,10 @@ export const metadata = {
     siteName: 'Vayunex Solution',
     images: [
       {
-        url: '/assets/og-default.jpg',
+        url: 'https://www.vayunexsolution.com/assets/vayunex-brand-banner.jpg',
         width: 1200,
         height: 630,
-        alt: 'Vayunex Solution Enterprise Engineering',
+        alt: 'Vayunex Solution - Engineering Growth, Delivering Excellence',
       },
     ],
     locale: 'en_US',
@@ -79,7 +79,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Vayunex Solution | Enterprise AI, Cloud & Software Engineering',
     description: 'Transform your business with intelligent software systems and enterprise SaaS products.',
-    images: ['/assets/og-default.jpg'],
+    images: ['https://www.vayunexsolution.com/assets/vayunex-brand-banner.jpg'],
   },
   robots: {
     index: true,

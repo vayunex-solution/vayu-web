@@ -16,6 +16,21 @@ export const metadata = {
       'Meet the experienced engineering leadership at Vayunex Solution. Project and technical heads with 17–20+ years of enterprise software delivery and systems architecture expertise.',
     url: 'https://www.vayunexsolution.com/people/',
     type: 'website',
+    images: [
+      {
+        url: 'https://www.vayunexsolution.com/assets/vayunex-brand-banner.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Engineering Leadership — Vayunex Solution',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Engineering Leadership | Vayunex Solution',
+    description:
+      'Meet the experienced engineering leadership at Vayunex Solution.',
+    images: ['https://www.vayunexsolution.com/assets/vayunex-brand-banner.jpg'],
   },
 };
 

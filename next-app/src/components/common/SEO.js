@@ -14,7 +14,7 @@ const SEO = ({
 }) => {
   const siteName = 'Vayunex Solution';
   const siteUrl = 'https://www.vayunexsolution.com';
-  const defaultImage = `${siteUrl}/assets/og-default.jpg`;
+  const defaultImage = `${siteUrl}/assets/vayunex-brand-banner.jpg`;
   
   let rawUrl = canonicalUrl || (typeof window !== 'undefined' ? window.location.href : siteUrl);
   rawUrl = rawUrl.replace(/^http:\/\//i, 'https://');

@@ -13,6 +13,21 @@ export const metadata = {
       'Software engineering company building enterprise SaaS platforms with product-led thinking and experienced technical leadership.',
     url: 'https://www.vayunexsolution.com/about/',
     type: 'website',
+    images: [
+      {
+        url: 'https://www.vayunexsolution.com/assets/vayunex-brand-banner.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'About Vayunex Solution - Engineering Growth, Delivering Excellence',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Vayunex Solution | Product-Led Engineering & Leadership',
+    description:
+      'Software engineering company building enterprise SaaS platforms with product-led thinking and experienced technical leadership.',
+    images: ['https://www.vayunexsolution.com/assets/vayunex-brand-banner.jpg'],
   },
 };
 
