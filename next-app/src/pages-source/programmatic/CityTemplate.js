@@ -37,7 +37,7 @@ const CityTemplate = ({ city = 'chandigarh' }) => {
                 "@id": `${pageUrl}#localbusiness`,
                 "name": `Vayunex Solution - ${formattedCity}`,
                 "url": pageUrl,
-                "telephone": "+91-8930733725",
+                "telephone": "+91-8307271155",
                 "email": "contact@vayunexsolution.com",
                 "priceRange": "$$",
                 "image": "https://www.vayunexsolution.com/images/og-image.jpg",

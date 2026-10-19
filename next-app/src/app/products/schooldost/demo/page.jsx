@@ -250,7 +250,7 @@ product=schooldost`;
 
               {status === 'error' && (
                 <div style={{ color: '#EF4444', fontSize: '0.9rem', padding: '12px', background: 'rgba(239, 68, 68, 0.1)', borderRadius: '8px' }}>
-                  Failed to send demo request. Please check your internet or reach us directly on WhatsApp (+91 89307 33725).
+                  Failed to send demo request. Please check your internet or reach us directly on WhatsApp (+91 83072 71155).
                 </div>
               )}
 

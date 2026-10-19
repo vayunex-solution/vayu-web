@@ -279,7 +279,7 @@ const PrivacyPolicyPage = () => {
                         <div className="legal-contact-box">
                             <p><strong>Grievance Officer - Vayunex Solution</strong></p>
                             <p>Email: grievance@vayunexsolution.com</p>
-                            <p>Phone: +91-8930733725</p>
+                            <p>Phone: +91-8307271155</p>
                             <p>Address: Zirakpur, Punjab, India - 140603</p>
                             <p><em>Response Time: Within 30 days of receiving complaint</em></p>
                         </div>
@@ -289,7 +289,7 @@ const PrivacyPolicyPage = () => {
                         <div className="legal-contact-box">
                             <p><strong>Vayunex Solution</strong></p>
                             <p>Email: info@vayunexsolution.com</p>
-                            <p>Phone: +91-8930733725</p>
+                            <p>Phone: +91-8307271155</p>
                             <p>Address: Zirakpur, Punjab, India - 140603</p>
                         </div>
 

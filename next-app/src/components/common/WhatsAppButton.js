@@ -31,8 +31,8 @@ const WhatsAppButton = () => {
   const [hasUnread, setHasUnread] = useState(true);
   const widgetRef = useRef(null);
 
-  const phoneNumber = '918930733725';
-  const displayPhone = '+91 8930733725';
+  const phoneNumber = '918307271155';
+  const displayPhone = '+91 8307271155';
   const message = encodeURIComponent('Hi! I would like to know more about Vayunex services.');
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 

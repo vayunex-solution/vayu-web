@@ -11,6 +11,12 @@ if (!fs.existsSync(src)) {
 
 if (!fs.existsSync(dest)) {
   fs.mkdirSync(dest, { recursive: true });
+} else {
+  // Clean stale _next directory to prevent accumulation of outdated chunks
+  const destNext = path.join(dest, '_next');
+  if (fs.existsSync(destNext)) {
+    fs.rmSync(destNext, { recursive: true, force: true });
+  }
 }
 
 function copyRecursive(source, target) {

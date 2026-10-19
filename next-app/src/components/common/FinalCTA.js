@@ -42,7 +42,7 @@ const FinalCTA = () => {
               </Link>
 
               <a
-                href="https://wa.me/918930733725"
+                href="https://wa.me/918307271155"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="cta-btn-whatsapp"

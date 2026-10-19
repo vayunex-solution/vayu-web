@@ -170,7 +170,7 @@ Preferred Contact: ${uiData.contactMethod}`;
             <section className="quick-contact">
                 <div className="container">
                     <div className="qc-grid">
-                        <a href="https://wa.me/918930733725" target="_blank" rel="noopener noreferrer" className="qc-card qc-card--whatsapp">
+                        <a href="https://wa.me/918307271155" target="_blank" rel="noopener noreferrer" className="qc-card qc-card--whatsapp">
                             <div className="qc-icon"><i className="fab fa-whatsapp"></i></div>
                             <div className="qc-text">
                                 <h3>WhatsApp</h3>
@@ -184,11 +184,11 @@ Preferred Contact: ${uiData.contactMethod}`;
                                 <p>info@vayunexsolution.com</p>
                             </div>
                         </a>
-                        <a href="tel:+918930733725" className="qc-card qc-card--phone">
+                        <a href="tel:+918307271155" className="qc-card qc-card--phone">
                             <div className="qc-icon"><i className="fas fa-phone-alt"></i></div>
                             <div className="qc-text">
                                 <h3>Phone</h3>
-                                <p>+91-8930733725</p>
+                                <p>+91-8307271155</p>
                             </div>
                         </a>
                     </div>

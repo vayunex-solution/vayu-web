@@ -45,7 +45,7 @@ const SEO = ({
     },
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+91-8930733725",
+      "telephone": "+91-8307271155",
       "contactType": "customer service",
       "email": "info@vayunexsolution.com",
       "availableLanguage": ["English", "Hindi"]
@@ -65,7 +65,7 @@ const SEO = ({
     "name": "Vayunex Solution",
     "image": `${siteUrl}/logo.png`,
     "url": siteUrl,
-    "telephone": "+91-8930733725",
+    "telephone": "+91-8307271155",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Mohali",

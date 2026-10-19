@@ -208,7 +208,7 @@ const orgSchema = {
       ],
       'contactPoint': {
         '@type': 'ContactPoint',
-        'telephone': '+91-8930733725',
+        'telephone': '+91-8307271155',
         'contactType': 'customer service',
         'availableLanguage': ['English', 'Hindi'],
       },
